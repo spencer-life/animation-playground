@@ -26,6 +26,7 @@ const customColors = [
 ];
 const readablePairs = [
   ['ink', 'paper'], ['ink', 'demo-bg'], ['muted', 'paper'], ['muted', 'demo-bg'],
+  ['accent-ink', 'paper'], ['accent-ink', 'demo-bg'], ['accent-ink', 'accent-soft'],
   ['on-accent', 'accent'], ['on-accent', 'accent-hover'],
 ];
 
@@ -117,7 +118,8 @@ test('token exports retain complete fallbacks and distinguish solid from readabl
   for (const [name, value] of Object.entries(tokens)) expect(values).toContain(`--${name}: ${value};`);
   const radix = tokenExport(selection, 'green', 'radix');
   expect(radix).toContain(`--accent: var(--jade-9, ${tokens.accent});`);
-  expect(radix).toContain(`--accent-ink: var(--jade-11, ${tokens['accent-ink']});`);
+  expect(radix).toContain(`--accent-ink: ${tokens['accent-ink']};`);
+  expect(radix).not.toContain('var(--jade-11,');
   expect(radix).toContain(`--paper: var(--gray-2, ${tokens.paper});`);
   const geist = tokenExport(selection, 'green', 'geist');
   expect(geist).toContain(`--demo-bg: var(--ds-background-100, ${tokens['demo-bg']});`);
@@ -128,6 +130,61 @@ test('token exports retain complete fallbacks and distinguish solid from readabl
     expect(exported).toContain(`--on-accent: ${tokens['on-accent']};`);
   }
 });
+
+for (const accent of ['jade', 'amber']) {
+  test(`light Radix ${accent}: stepper action text stays readable in the preview and offline export`, async ({ page, browser }) => {
+    const recipe = catalog.recipes.find(item => item.id === 'stepper-progress');
+    const selection = { ...defaults, palette: 'radix', mode: 'light', accent };
+    const tokens = resolveTheme(selection, recipe.color);
+
+    async function expectReadableAction(surface, description) {
+      const action = surface.getByRole('button', { name: 'Next step', exact: true });
+      await expect(action).toBeVisible();
+      // This is small text on the actual accent-soft button, so the rendered
+      // contrast check must use the normal-text 4.5:1 threshold.
+      const accessibility = await new AxeBuilder({ page: surface }).include('.stepper-next')
+        .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa']).analyze();
+      expect(accessibility.violations, `${description}: ${JSON.stringify(accessibility.violations.map(issue => ({
+        id: issue.id, nodes: issue.nodes.map(node => ({ target: node.target, summary: node.failureSummary })),
+      })))}`).toEqual([]);
+      await expect(action).toHaveCSS('color', rgb(tokens['accent-ink']));
+      await expect(action).toHaveCSS('background-color', rgb(tokens['accent-soft']));
+      await expectTheme(surface, selection, recipe.color);
+    }
+
+    await page.setViewportSize({ width: 300, height: 230 });
+    await page.goto(`/${recipe.example}?${new URLSearchParams({ ...selection, reduced: 'true' })}`);
+    await expectReadableAction(page, `${accent} preview`);
+
+    // Import the scoped Radix token export into a host that already supplies
+    // official step-11 colors; those aliases must not undo the corrected ink.
+    await page.addStyleTag({ content: ':root { --jade-11: #208368; --amber-11: #ab6400; }\n'
+      + tokenExport(selection, recipe.color, 'radix') });
+    await page.locator('.stepper').evaluate(element => element.classList.add('animation-theme'));
+    await expectReadableAction(page, `${accent} scoped token export with host Radix colors`);
+
+    const built = await readFile(new URL(`../dist/${recipe.example}`, import.meta.url), 'utf8');
+    const exported = themedCode(built, selection, recipe.color);
+    expect(embeddedTheme(exported)).toEqual({ ...selection, color: recipe.color });
+    expect(exported).toContain(`--accent-ink: ${tokens['accent-ink']};`);
+    const offline = await browser.newContext({ offline: true, viewport: { width: 300, height: 230 }, reducedMotion: 'reduce' });
+    try {
+      const standalone = await offline.newPage();
+      const errors = [];
+      const requests = [];
+      standalone.on('pageerror', error => errors.push(error.message));
+      standalone.on('request', request => { if (/^https?:/.test(request.url())) requests.push(request.url()); });
+      // No URL theme parameters or host color variables are available here;
+      // the portable document must preserve its readable selected colors.
+      await standalone.setContent(exported, { waitUntil: 'load' });
+      await expectReadableAction(standalone, `${accent} offline export`);
+      expect(requests).toEqual([]);
+      expect(errors).toEqual([]);
+    } finally {
+      await offline.close();
+    }
+  });
+}
 
 for (const recipe of catalog.recipes) {
   test(`dark standalone ${recipe.id}: semantic colors, AA access, and compact layout`, async ({ page }) => {

@@ -132,8 +132,10 @@ on the current environment and revision. A missing browser or blocked download i
 unavailable coverage, not a successful test run. See [Contributing](CONTRIBUTING.md)
 for the review workflow and verification scope.
 
-The [hub validation record](docs/hub-validation.md) describes the 151-test run,
-theme and export coverage, independent reviews, and the verified hosted preview.
+The [hub validation record](docs/hub-validation.md) describes the final 153-test
+run, Codex's contrast correction, theme/export coverage, and independent reviews.
+The [hub delivery issue](https://github.com/spencer-life/animation-playground/issues/5)
+records the latest reviewed revision and verified deployment.
 The [initial validation record](docs/validation.md) preserves the first delivery.
 
 ## Structure and portable references

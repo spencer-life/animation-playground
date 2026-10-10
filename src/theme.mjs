@@ -27,7 +27,7 @@ const neutral = {
   light: ['#fcfcfd', '#f9f9fb', '#f0f0f3', '#cdced6', '#60646c', '#1c2024'],
   dark: ['#111113', '#18191b', '#212225', '#43484e', '#b0b4ba', '#edeef0'],
 };
-// Step 3 = subtle fill, 9/10 = solid/hover, 11 = readable accent text.
+// Step 3 = subtle fill, 9/10 = solid/hover, 11 seeds the resolved accent text.
 const radix = {
   indigo: { light: ['#edf2fe', '#3e63dd', '#3358d4', '#3a5bc7'], dark: ['#182449', '#3e63dd', '#5472e4', '#9eb1ff'] },
   blue: { light: ['#e6f4fe', '#0090ff', '#0588f0', '#0d74ce'], dark: ['#0d2847', '#0090ff', '#3b9eff', '#70b8ff'] },
@@ -60,11 +60,11 @@ export function contrast(a, b) {
   const first = luminance(a), second = luminance(b);
   return (Math.max(first, second) + .05) / (Math.min(first, second) + .05);
 }
-function readableAccent(accent, background) {
-  const destination = luminance(background) < .2 ? '#ffffff' : '#111113';
+function readableAccent(accent, backgrounds) {
+  const destination = luminance(backgrounds[0]) < .2 ? '#ffffff' : '#111113';
   for (let step = 0; step <= 20; step++) {
     const color = mix(accent, destination, step / 20);
-    if (contrast(color, background) >= 4.5) return color;
+    if (backgrounds.every(background => contrast(color, background) >= 4.5)) return color;
   }
   return destination;
 }
@@ -86,7 +86,7 @@ export function resolveTheme(selection = defaults, color = 'lavender') {
     accent = dark ? mix(family[1], '#ffffff', .52) : family[1];
     hover = mix(accent, dark ? '#ffffff' : '#000000', .10);
     soft = mix(paper, accent, dark ? .15 : .12);
-    accentInk = readableAccent(accent, paper);
+    accentInk = accent;
     art = family.slice(2).map(value => dark ? mix(value, '#111113', .17) : value);
   } else if (config.palette === 'geist' || config.palette === 'custom') {
     // A portable neutral preview, not a vendored copy of Vercel's design system.
@@ -98,9 +98,12 @@ export function resolveTheme(selection = defaults, color = 'lavender') {
     if (config.palette === 'custom') accent = config.custom;
     hover = mix(accent, dark ? '#ffffff' : '#000000', .12);
     soft = mix(paper, accent, dark ? .16 : .11);
-    accentInk = readableAccent(accent, paper);
+    accentInk = accent;
     art = [accent, mix(accent, dark ? '#ffffff' : '#171717', .28), mix(accent, '#8395a7', .60)];
   }
+  // Small labels use the canvas, component paper, and tinted control surfaces.
+  // A palette's text step is only a starting point: validate the actual pairings.
+  accentInk = readableAccent(accentInk, [paper, bg, soft]);
   // Preserve the chosen solid color first, then keep hover readable with it.
   const candidates = ['#ffffff', '#000000'];
   const onAccent = candidates.sort((a, b) => contrast(b, accent) - contrast(a, accent))[0];
@@ -140,16 +143,17 @@ export function tokenExport(selection, color = 'lavender', system = 'values') {
   const config = normalizeTheme(selection);
   const tokens = resolveTheme(config, color);
   const radixName = config.accent;
+  // Host step 11 can fail on mixed neutral/tinted surfaces; keep resolved text literal.
   const aliases = system === 'radix' ? {
     'demo-bg': 'gray-1', paper: 'gray-2', ink: 'gray-12', muted: 'gray-11', line: 'gray-7',
-    accent: `${radixName}-9`, 'accent-hover': `${radixName}-10`, 'accent-soft': `${radixName}-3`, 'accent-ink': `${radixName}-11`,
+    accent: `${radixName}-9`, 'accent-hover': `${radixName}-10`, 'accent-soft': `${radixName}-3`,
   } : system === 'geist' ? {
     'demo-bg': 'ds-background-100', paper: 'ds-background-200', ink: 'ds-gray-1000', muted: 'ds-gray-900', line: 'ds-gray-500',
   } : {};
   const note = system === 'radix' ? 'Scope inside your Radix color theme; load the matching gray/accent scales first. Values are fallbacks.'
     : system === 'geist' ? 'Scope inside your Geist theme. Neutral roles use host tokens; accent colors keep this preview’s values.'
       : 'Scoped palette for this animation. Use on the demo wrapper in your own project.';
-  return `/* ${note}\n   Solid accent foreground: ${tokens['on-accent']}. Recheck it if you change the host accent scale. */\n.animation-theme {\n  color-scheme: ${config.mode};\n${Object.entries(tokens).map(([name, value]) => `  --${name}: ${aliases[name] ? `var(--${aliases[name]}, ${value})` : value};`).join('\n')}\n}`;
+  return `/* ${note}\n   Accent text and solid foreground keep this preview's resolved values.\n   Recheck their contrast if you change the host scale or appearance. */\n.animation-theme {\n  color-scheme: ${config.mode};\n${Object.entries(tokens).map(([name, value]) => `  --${name}: ${aliases[name] ? `var(--${aliases[name]}, ${value})` : value};`).join('\n')}\n}`;
 }
 export function installTheme() {
   const node = document.getElementById('playground-theme-config');

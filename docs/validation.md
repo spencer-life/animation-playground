@@ -1,6 +1,6 @@
 # Initial implementation validation
 
-For the current 44-study hub expansion and its 151-test run, see the
+For the current 44-study hub expansion and its final 153-test run, see the
 [theme-aware hub validation](hub-validation.md). This page preserves the initial
 36-study delivery as historical evidence.
 

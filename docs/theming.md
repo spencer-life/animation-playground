@@ -97,9 +97,12 @@ set fixed colors in the recipe or override a selected project palette.
 | `--shadow` | A translucent color for a bounded shadow. |
 
 Use `--accent-ink` for accent-colored text rather than assuming the solid accent
-is readable on every background. Use `--on-accent` for text placed over
-`--accent`. The resolver selects a foreground and manages the hover pairing;
-that does not establish contrast for every possible combination of tokens.
+is readable on every background. The resolver checks this role against `--paper`,
+`--demo-bg`, and `--accent-soft`, adjusting the palette's starting text color until
+all three pairings reach 4.5:1. The selected solid accent stays unchanged. Use
+`--on-accent` for text placed over `--accent`. The resolver selects that foreground
+and manages the hover pairing. These checks do not establish contrast for every
+possible combination of tokens.
 Decorative artwork colors are not text colors.
 
 All future recipes must consume these roles in markup, CSS, and JavaScript. Use
@@ -152,7 +155,6 @@ The Radix alias export maps these roles and keeps a literal fallback for each:
 | `--accent` | `--{accent}-9` |
 | `--accent-hover` | `--{accent}-10` |
 | `--accent-soft` | `--{accent}-3` |
-| `--accent-ink` | `--{accent}-11` |
 
 `{accent}` is the selected scale, such as `indigo` or `jade`. The receiver must
 load the **active gray scale and the chosen accent scale**, including the needed
@@ -162,14 +164,19 @@ the generated neutral aliases or provide corresponding gray aliases in the host.
 
 The alias export is an integration option independent of the preview preset. Its
 fallbacks are the selected preview values. Once host variables resolve, those
-host values take precedence. Solid foreground, status, decorative, and shadow
-roles retain literal values; review them when changing the host scale or mode.
+host values take precedence. Readable accent text (`--accent-ink`), solid
+foreground, status, decorative, and shadow roles retain literal values; review
+them when changing the host scale or mode. In particular, `--accent-ink` keeps
+the resolver's contrast-adjusted value: directly binding it to a host's step 11
+can make small text unreadable on mixed neutral and tinted backgrounds, as with
+light Jade and Amber. Recheck text against the receiving project's actual
+surfaces when overriding host scales or appearance.
 
 The role choices follow the official
 [Radix scale guidance](https://www.radix-ui.com/colors/docs/palette-composition/understanding-the-scale):
-backgrounds use the early steps, solid controls use steps 9/10, and text uses
-steps 11/12. The Playground embeds selected scale values, not the Radix Themes
-component library.
+backgrounds use the early steps, solid controls use steps 9/10, and text starts
+from steps 11/12. The Playground adjusts its accent text for the actual surfaces
+it uses. It embeds selected scale values, not the Radix Themes component library.
 
 ### Geist neutral aliases
 

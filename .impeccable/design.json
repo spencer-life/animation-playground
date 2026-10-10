@@ -1405,7 +1405,7 @@
       },
       {
         "name": "The Shared Color Contract Rule",
-        "body": "Resolve demonstration surfaces, text, controls, and artwork through the same semantic roles in previews, standalone examples, copied code, downloads, and AI handoffs. Use `--accent-ink` for readable accent text and focus, `--on-accent` over solid accent fills, and `--on-ink` over ink fills. Keep raw palette values in the shared resolver.",
+        "body": "Resolve demonstration surfaces, text, controls, and artwork through the same semantic roles in previews, standalone examples, copied code, downloads, and AI handoffs. Use `--accent-ink` for readable accent text and focus, `--on-accent` over solid accent fills, and `--on-ink` over ink fills. Validate accent text at 4.5:1 against paper, canvas, and soft accent surfaces, and retain the corrected foreground in host-token exports. Keep raw palette values in the shared resolver.",
         "section": "colors"
       },
       {

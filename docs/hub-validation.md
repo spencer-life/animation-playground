@@ -2,12 +2,44 @@
 
 This record covers the expansion tracked in [issue #5](https://github.com/spencer-life/animation-playground/issues/5)
 and reviewed in [PR #6](https://github.com/spencer-life/animation-playground/pull/6).
-The validated application, export pipeline, and test sources are preserved in
+The initial hub application, export pipeline, and test sources are preserved in
 [`445f3647cf5d4511df2eb2fa726973a9f5751a57`](https://github.com/spencer-life/animation-playground/commit/445f3647cf5d4511df2eb2fa726973a9f5751a57).
-Subsequent design and delivery documentation does not change those sources.
-These are observed results from 10 October 2026.
+The final Codex correction below updates the color resolver, token export, and
+regression coverage. The PR and issue record its full reviewed revision and
+latest hosted delivery. These are observed results from 10 October 2026.
 
-## Runtime and commands
+## Final Codex review correction
+
+[Codex's P2 finding](https://github.com/spencer-life/animation-playground/pull/6#discussion_r4239523979)
+identified insufficient small-text contrast for light Radix Jade and Amber on
+the actual neutral and tinted surfaces. Before the correction, both new rendered
+stepper regressions failed Axe's normal-text contrast check: Jade at 4.19:1 and
+Amber at 4.24:1 on their soft accent buttons.
+
+The resolver now checks `--accent-ink` against `--paper`, `--demo-bg`, and
+`--accent-soft` together for every palette, retaining the selected solid accent.
+Radix token exports keep the corrected foreground as a literal; loading the host's
+unadjusted step 11 can no longer override it and recreate this defect.
+
+| Light accent | Corrected text | On paper | On canvas | On soft accent |
+| --- | --- | --- | --- | --- |
+| Jade | `#1f7d64` | 4.783:1 | 4.905:1 | 4.524:1 |
+| Amber | `#a36001` | 4.720:1 | 4.841:1 | 4.570:1 |
+
+The full suite passed **153 tests, 0 failed, 0 skipped, 0 flaky**, in 74.1 seconds;
+the run began at 23:18:01 UTC. `pnpm check`, `pnpm build`, `pnpm security`, and
+`git diff --check` also passed. Runtime versions and the documented browser
+override below are unchanged.
+
+The expanded palette matrix checks all three accent-text pairs. Two new browser
+tests inspect the actual 11-pixel stepper label in the live standalone preview,
+after scoped token import with the official raw host Jade/Amber step-11 variables
+present, and in complete HTML with networking disabled. They verify colors,
+embedded theme configuration, rendered accessibility, no external requests, and
+no runtime errors. A bounded independent review of the implementation, tests, and
+affected design/theming records found no material missed path or regression.
+
+## Initial hub runtime and commands
 
 | Item | Observed result |
 | --- | --- |
