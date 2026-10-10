@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-10T20:56:09Z",
+  "generatedAt": "2026-10-10T22:56:12Z",
   "title": "Design System: Animation Playground",
   "extensions": {
     "colorMeta": {
@@ -535,12 +535,586 @@
           "oklch(83.57% 0.05046 100.92)",
           "oklch(95.00% 0.05046 100.92)"
         ]
+      },
+      "demo-bg": {
+        "role": "neutral",
+        "displayName": "Study Canvas — Playground Light",
+        "tonalRamp": [
+          "oklch(15.00% 0.02056 298.18)",
+          "oklch(26.43% 0.02056 298.18)",
+          "oklch(37.86% 0.02056 298.18)",
+          "oklch(49.29% 0.02056 298.18)",
+          "oklch(60.71% 0.02056 298.18)",
+          "oklch(72.14% 0.02056 298.18)",
+          "oklch(83.57% 0.02056 298.18)",
+          "oklch(95.00% 0.02056 298.18)"
+        ]
+      },
+      "demo-paper": {
+        "role": "neutral",
+        "displayName": "Study Surface — Playground Light",
+        "tonalRamp": [
+          "oklch(15.00% 0.00000 0.00)",
+          "oklch(26.43% 0.00000 0.00)",
+          "oklch(37.86% 0.00000 0.00)",
+          "oklch(49.29% 0.00000 0.00)",
+          "oklch(60.71% 0.00000 0.00)",
+          "oklch(72.14% 0.00000 0.00)",
+          "oklch(83.57% 0.00000 0.00)",
+          "oklch(95.00% 0.00000 0.00)"
+        ]
+      },
+      "demo-ink": {
+        "role": "neutral",
+        "displayName": "Study Ink — Playground Light",
+        "tonalRamp": [
+          "oklch(15.00% 0.01442 261.67)",
+          "oklch(26.43% 0.01442 261.67)",
+          "oklch(37.86% 0.01442 261.67)",
+          "oklch(49.29% 0.01442 261.67)",
+          "oklch(60.71% 0.01442 261.67)",
+          "oklch(72.14% 0.01442 261.67)",
+          "oklch(83.57% 0.01442 261.67)",
+          "oklch(95.00% 0.01442 261.67)"
+        ]
+      },
+      "demo-on-ink": {
+        "role": "neutral",
+        "displayName": "Foreground on Study Ink — Playground Light",
+        "tonalRamp": [
+          "oklch(15.00% 0.00000 0.00)",
+          "oklch(26.43% 0.00000 0.00)",
+          "oklch(37.86% 0.00000 0.00)",
+          "oklch(49.29% 0.00000 0.00)",
+          "oklch(60.71% 0.00000 0.00)",
+          "oklch(72.14% 0.00000 0.00)",
+          "oklch(83.57% 0.00000 0.00)",
+          "oklch(95.00% 0.00000 0.00)"
+        ]
+      },
+      "demo-muted": {
+        "role": "neutral",
+        "displayName": "Study Secondary Text — Playground Light",
+        "tonalRamp": [
+          "oklch(15.00% 0.01468 275.84)",
+          "oklch(26.43% 0.01468 275.84)",
+          "oklch(37.86% 0.01468 275.84)",
+          "oklch(49.29% 0.01468 275.84)",
+          "oklch(60.71% 0.01468 275.84)",
+          "oklch(72.14% 0.01468 275.84)",
+          "oklch(83.57% 0.01468 275.84)",
+          "oklch(95.00% 0.01468 275.84)"
+        ]
+      },
+      "demo-line": {
+        "role": "neutral",
+        "displayName": "Study Boundary — Playground Light",
+        "tonalRamp": [
+          "oklch(15.00% 0.01863 293.01)",
+          "oklch(26.43% 0.01863 293.01)",
+          "oklch(37.86% 0.01863 293.01)",
+          "oklch(49.29% 0.01863 293.01)",
+          "oklch(60.71% 0.01863 293.01)",
+          "oklch(72.14% 0.01863 293.01)",
+          "oklch(83.57% 0.01863 293.01)",
+          "oklch(95.00% 0.01863 293.01)"
+        ]
+      },
+      "demo-accent": {
+        "role": "secondary",
+        "displayName": "Study Solid Accent — Playground Light",
+        "tonalRamp": [
+          "oklch(15.00% 0.12758 292.91)",
+          "oklch(26.43% 0.12758 292.91)",
+          "oklch(37.86% 0.12758 292.91)",
+          "oklch(49.29% 0.12758 292.91)",
+          "oklch(60.71% 0.12758 292.91)",
+          "oklch(72.14% 0.12758 292.91)",
+          "oklch(83.57% 0.12758 292.91)",
+          "oklch(95.00% 0.12758 292.91)"
+        ]
+      },
+      "demo-accent-hover": {
+        "role": "secondary",
+        "displayName": "Study Accent Hover — Playground Light",
+        "tonalRamp": [
+          "oklch(15.00% 0.11735 293.01)",
+          "oklch(26.43% 0.11735 293.01)",
+          "oklch(37.86% 0.11735 293.01)",
+          "oklch(49.29% 0.11735 293.01)",
+          "oklch(60.71% 0.11735 293.01)",
+          "oklch(72.14% 0.11735 293.01)",
+          "oklch(83.57% 0.11735 293.01)",
+          "oklch(95.00% 0.11735 293.01)"
+        ]
+      },
+      "demo-accent-soft": {
+        "role": "secondary",
+        "displayName": "Study Accent Wash — Playground Light",
+        "tonalRamp": [
+          "oklch(15.00% 0.01371 299.79)",
+          "oklch(26.43% 0.01371 299.79)",
+          "oklch(37.86% 0.01371 299.79)",
+          "oklch(49.29% 0.01371 299.79)",
+          "oklch(60.71% 0.01371 299.79)",
+          "oklch(72.14% 0.01371 299.79)",
+          "oklch(83.57% 0.01371 299.79)",
+          "oklch(95.00% 0.01371 299.79)"
+        ]
+      },
+      "demo-accent-ink": {
+        "role": "secondary",
+        "displayName": "Readable Study Accent — Playground Light",
+        "tonalRamp": [
+          "oklch(15.00% 0.12758 292.91)",
+          "oklch(26.43% 0.12758 292.91)",
+          "oklch(37.86% 0.12758 292.91)",
+          "oklch(49.29% 0.12758 292.91)",
+          "oklch(60.71% 0.12758 292.91)",
+          "oklch(72.14% 0.12758 292.91)",
+          "oklch(83.57% 0.12758 292.91)",
+          "oklch(95.00% 0.12758 292.91)"
+        ]
+      },
+      "demo-on-accent": {
+        "role": "neutral",
+        "displayName": "Foreground on Study Accent — Playground Light",
+        "tonalRamp": [
+          "oklch(15.00% 0.00000 0.00)",
+          "oklch(26.43% 0.00000 0.00)",
+          "oklch(37.86% 0.00000 0.00)",
+          "oklch(49.29% 0.00000 0.00)",
+          "oklch(60.71% 0.00000 0.00)",
+          "oklch(72.14% 0.00000 0.00)",
+          "oklch(83.57% 0.00000 0.00)",
+          "oklch(95.00% 0.00000 0.00)"
+        ]
+      },
+      "demo-success": {
+        "role": "tertiary",
+        "displayName": "Study Success — Playground Light",
+        "tonalRamp": [
+          "oklch(15.00% 0.08075 160.43)",
+          "oklch(26.43% 0.08075 160.43)",
+          "oklch(37.86% 0.08075 160.43)",
+          "oklch(49.29% 0.08075 160.43)",
+          "oklch(60.71% 0.08075 160.43)",
+          "oklch(72.14% 0.08075 160.43)",
+          "oklch(83.57% 0.08075 160.43)",
+          "oklch(95.00% 0.08075 160.43)"
+        ]
+      },
+      "demo-danger": {
+        "role": "tertiary",
+        "displayName": "Study Error — Playground Light",
+        "tonalRamp": [
+          "oklch(15.00% 0.16782 21.31)",
+          "oklch(26.43% 0.16782 21.31)",
+          "oklch(37.86% 0.16782 21.31)",
+          "oklch(49.29% 0.16782 21.31)",
+          "oklch(60.71% 0.16782 21.31)",
+          "oklch(72.14% 0.16782 21.31)",
+          "oklch(83.57% 0.16782 21.31)",
+          "oklch(95.00% 0.16782 21.31)"
+        ]
+      },
+      "demo-art-1": {
+        "role": "secondary",
+        "displayName": "Study Artwork One — Playground Light",
+        "tonalRamp": [
+          "oklch(15.00% 0.09139 298.07)",
+          "oklch(26.43% 0.09139 298.07)",
+          "oklch(37.86% 0.09139 298.07)",
+          "oklch(49.29% 0.09139 298.07)",
+          "oklch(60.71% 0.09139 298.07)",
+          "oklch(72.14% 0.09139 298.07)",
+          "oklch(83.57% 0.09139 298.07)",
+          "oklch(95.00% 0.09139 298.07)"
+        ]
+      },
+      "demo-art-2": {
+        "role": "secondary",
+        "displayName": "Study Artwork Two — Playground Light",
+        "tonalRamp": [
+          "oklch(15.00% 0.05726 56.09)",
+          "oklch(26.43% 0.05726 56.09)",
+          "oklch(37.86% 0.05726 56.09)",
+          "oklch(49.29% 0.05726 56.09)",
+          "oklch(60.71% 0.05726 56.09)",
+          "oklch(72.14% 0.05726 56.09)",
+          "oklch(83.57% 0.05726 56.09)",
+          "oklch(95.00% 0.05726 56.09)"
+        ]
+      },
+      "demo-art-3": {
+        "role": "secondary",
+        "displayName": "Study Artwork Three — Playground Light",
+        "tonalRamp": [
+          "oklch(15.00% 0.03372 224.41)",
+          "oklch(26.43% 0.03372 224.41)",
+          "oklch(37.86% 0.03372 224.41)",
+          "oklch(49.29% 0.03372 224.41)",
+          "oklch(60.71% 0.03372 224.41)",
+          "oklch(72.14% 0.03372 224.41)",
+          "oklch(83.57% 0.03372 224.41)",
+          "oklch(95.00% 0.03372 224.41)"
+        ]
+      },
+      "demo-shadow": {
+        "role": "neutral",
+        "displayName": "Study Shadow Color — Playground Light",
+        "tonalRamp": [
+          "oklch(15.00% 0.03913 262.61 / 0.14118)",
+          "oklch(26.43% 0.03913 262.61 / 0.14118)",
+          "oklch(37.86% 0.03913 262.61 / 0.14118)",
+          "oklch(49.29% 0.03913 262.61 / 0.14118)",
+          "oklch(60.71% 0.03913 262.61 / 0.14118)",
+          "oklch(72.14% 0.03913 262.61 / 0.14118)",
+          "oklch(83.57% 0.03913 262.61 / 0.14118)",
+          "oklch(95.00% 0.03913 262.61 / 0.14118)"
+        ]
+      },
+      "demo-dark-bg": {
+        "role": "neutral",
+        "displayName": "Study Canvas — Playground Dark",
+        "tonalRamp": [
+          "oklch(15.00% 0.03691 288.22)",
+          "oklch(26.43% 0.03691 288.22)",
+          "oklch(37.86% 0.03691 288.22)",
+          "oklch(49.29% 0.03691 288.22)",
+          "oklch(60.71% 0.03691 288.22)",
+          "oklch(72.14% 0.03691 288.22)",
+          "oklch(83.57% 0.03691 288.22)",
+          "oklch(95.00% 0.03691 288.22)"
+        ]
+      },
+      "demo-dark-paper": {
+        "role": "neutral",
+        "displayName": "Study Surface — Playground Dark",
+        "tonalRamp": [
+          "oklch(15.00% 0.03351 289.20)",
+          "oklch(26.43% 0.03351 289.20)",
+          "oklch(37.86% 0.03351 289.20)",
+          "oklch(49.29% 0.03351 289.20)",
+          "oklch(60.71% 0.03351 289.20)",
+          "oklch(72.14% 0.03351 289.20)",
+          "oklch(83.57% 0.03351 289.20)",
+          "oklch(95.00% 0.03351 289.20)"
+        ]
+      },
+      "demo-dark-ink": {
+        "role": "neutral",
+        "displayName": "Study Ink — Playground Dark",
+        "tonalRamp": [
+          "oklch(15.00% 0.00866 264.52)",
+          "oklch(26.43% 0.00866 264.52)",
+          "oklch(37.86% 0.00866 264.52)",
+          "oklch(49.29% 0.00866 264.52)",
+          "oklch(60.71% 0.00866 264.52)",
+          "oklch(72.14% 0.00866 264.52)",
+          "oklch(83.57% 0.00866 264.52)",
+          "oklch(95.00% 0.00866 264.52)"
+        ]
+      },
+      "demo-dark-on-ink": {
+        "role": "neutral",
+        "displayName": "Foreground on Study Ink — Playground Dark",
+        "tonalRamp": [
+          "oklch(15.00% 0.00407 285.98)",
+          "oklch(26.43% 0.00407 285.98)",
+          "oklch(37.86% 0.00407 285.98)",
+          "oklch(49.29% 0.00407 285.98)",
+          "oklch(60.71% 0.00407 285.98)",
+          "oklch(72.14% 0.00407 285.98)",
+          "oklch(83.57% 0.00407 285.98)",
+          "oklch(95.00% 0.00407 285.98)"
+        ]
+      },
+      "demo-dark-muted": {
+        "role": "neutral",
+        "displayName": "Study Secondary Text — Playground Dark",
+        "tonalRamp": [
+          "oklch(15.00% 0.01427 277.00)",
+          "oklch(26.43% 0.01427 277.00)",
+          "oklch(37.86% 0.01427 277.00)",
+          "oklch(49.29% 0.01427 277.00)",
+          "oklch(60.71% 0.01427 277.00)",
+          "oklch(72.14% 0.01427 277.00)",
+          "oklch(83.57% 0.01427 277.00)",
+          "oklch(95.00% 0.01427 277.00)"
+        ]
+      },
+      "demo-dark-line": {
+        "role": "neutral",
+        "displayName": "Study Boundary — Playground Dark",
+        "tonalRamp": [
+          "oklch(15.00% 0.02361 285.52)",
+          "oklch(26.43% 0.02361 285.52)",
+          "oklch(37.86% 0.02361 285.52)",
+          "oklch(49.29% 0.02361 285.52)",
+          "oklch(60.71% 0.02361 285.52)",
+          "oklch(72.14% 0.02361 285.52)",
+          "oklch(83.57% 0.02361 285.52)",
+          "oklch(95.00% 0.02361 285.52)"
+        ]
+      },
+      "demo-dark-accent": {
+        "role": "secondary",
+        "displayName": "Study Solid Accent — Playground Dark",
+        "tonalRamp": [
+          "oklch(15.00% 0.05614 296.79)",
+          "oklch(26.43% 0.05614 296.79)",
+          "oklch(37.86% 0.05614 296.79)",
+          "oklch(49.29% 0.05614 296.79)",
+          "oklch(60.71% 0.05614 296.79)",
+          "oklch(72.14% 0.05614 296.79)",
+          "oklch(83.57% 0.05614 296.79)",
+          "oklch(95.00% 0.05614 296.79)"
+        ]
+      },
+      "demo-dark-accent-hover": {
+        "role": "secondary",
+        "displayName": "Study Accent Hover — Playground Dark",
+        "tonalRamp": [
+          "oklch(15.00% 0.05140 296.65)",
+          "oklch(26.43% 0.05140 296.65)",
+          "oklch(37.86% 0.05140 296.65)",
+          "oklch(49.29% 0.05140 296.65)",
+          "oklch(60.71% 0.05140 296.65)",
+          "oklch(72.14% 0.05140 296.65)",
+          "oklch(83.57% 0.05140 296.65)",
+          "oklch(95.00% 0.05140 296.65)"
+        ]
+      },
+      "demo-dark-accent-soft": {
+        "role": "secondary",
+        "displayName": "Study Accent Wash — Playground Dark",
+        "tonalRamp": [
+          "oklch(15.00% 0.03703 292.96)",
+          "oklch(26.43% 0.03703 292.96)",
+          "oklch(37.86% 0.03703 292.96)",
+          "oklch(49.29% 0.03703 292.96)",
+          "oklch(60.71% 0.03703 292.96)",
+          "oklch(72.14% 0.03703 292.96)",
+          "oklch(83.57% 0.03703 292.96)",
+          "oklch(95.00% 0.03703 292.96)"
+        ]
+      },
+      "demo-dark-accent-ink": {
+        "role": "secondary",
+        "displayName": "Readable Study Accent — Playground Dark",
+        "tonalRamp": [
+          "oklch(15.00% 0.05614 296.79)",
+          "oklch(26.43% 0.05614 296.79)",
+          "oklch(37.86% 0.05614 296.79)",
+          "oklch(49.29% 0.05614 296.79)",
+          "oklch(60.71% 0.05614 296.79)",
+          "oklch(72.14% 0.05614 296.79)",
+          "oklch(83.57% 0.05614 296.79)",
+          "oklch(95.00% 0.05614 296.79)"
+        ]
+      },
+      "demo-dark-on-accent": {
+        "role": "neutral",
+        "displayName": "Foreground on Study Accent — Playground Dark",
+        "tonalRamp": [
+          "oklch(15.00% 0.00000 0.00)",
+          "oklch(26.43% 0.00000 0.00)",
+          "oklch(37.86% 0.00000 0.00)",
+          "oklch(49.29% 0.00000 0.00)",
+          "oklch(60.71% 0.00000 0.00)",
+          "oklch(72.14% 0.00000 0.00)",
+          "oklch(83.57% 0.00000 0.00)",
+          "oklch(95.00% 0.00000 0.00)"
+        ]
+      },
+      "demo-dark-success": {
+        "role": "tertiary",
+        "displayName": "Study Success — Playground Dark",
+        "tonalRamp": [
+          "oklch(15.00% 0.12288 158.32)",
+          "oklch(26.43% 0.12288 158.32)",
+          "oklch(37.86% 0.12288 158.32)",
+          "oklch(49.29% 0.12288 158.32)",
+          "oklch(60.71% 0.12288 158.32)",
+          "oklch(72.14% 0.12288 158.32)",
+          "oklch(83.57% 0.12288 158.32)",
+          "oklch(95.00% 0.12288 158.32)"
+        ]
+      },
+      "demo-dark-danger": {
+        "role": "tertiary",
+        "displayName": "Study Error — Playground Dark",
+        "tonalRamp": [
+          "oklch(15.00% 0.11870 20.05)",
+          "oklch(26.43% 0.11870 20.05)",
+          "oklch(37.86% 0.11870 20.05)",
+          "oklch(49.29% 0.11870 20.05)",
+          "oklch(60.71% 0.11870 20.05)",
+          "oklch(72.14% 0.11870 20.05)",
+          "oklch(83.57% 0.11870 20.05)",
+          "oklch(95.00% 0.11870 20.05)"
+        ]
+      },
+      "demo-dark-art-1": {
+        "role": "secondary",
+        "displayName": "Study Artwork One — Playground Dark",
+        "tonalRamp": [
+          "oklch(15.00% 0.07903 298.19)",
+          "oklch(26.43% 0.07903 298.19)",
+          "oklch(37.86% 0.07903 298.19)",
+          "oklch(49.29% 0.07903 298.19)",
+          "oklch(60.71% 0.07903 298.19)",
+          "oklch(72.14% 0.07903 298.19)",
+          "oklch(83.57% 0.07903 298.19)",
+          "oklch(95.00% 0.07903 298.19)"
+        ]
+      },
+      "demo-dark-art-2": {
+        "role": "secondary",
+        "displayName": "Study Artwork Two — Playground Dark",
+        "tonalRamp": [
+          "oklch(15.00% 0.04800 55.88)",
+          "oklch(26.43% 0.04800 55.88)",
+          "oklch(37.86% 0.04800 55.88)",
+          "oklch(49.29% 0.04800 55.88)",
+          "oklch(60.71% 0.04800 55.88)",
+          "oklch(72.14% 0.04800 55.88)",
+          "oklch(83.57% 0.04800 55.88)",
+          "oklch(95.00% 0.04800 55.88)"
+        ]
+      },
+      "demo-dark-art-3": {
+        "role": "secondary",
+        "displayName": "Study Artwork Three — Playground Dark",
+        "tonalRamp": [
+          "oklch(15.00% 0.02915 227.02)",
+          "oklch(26.43% 0.02915 227.02)",
+          "oklch(37.86% 0.02915 227.02)",
+          "oklch(49.29% 0.02915 227.02)",
+          "oklch(60.71% 0.02915 227.02)",
+          "oklch(72.14% 0.02915 227.02)",
+          "oklch(83.57% 0.02915 227.02)",
+          "oklch(95.00% 0.02915 227.02)"
+        ]
+      },
+      "demo-dark-shadow": {
+        "role": "neutral",
+        "displayName": "Study Shadow Color — Playground Dark",
+        "tonalRamp": [
+          "oklch(15.00% 0.00000 0.00 / 0.33333)",
+          "oklch(26.43% 0.00000 0.00 / 0.33333)",
+          "oklch(37.86% 0.00000 0.00 / 0.33333)",
+          "oklch(49.29% 0.00000 0.00 / 0.33333)",
+          "oklch(60.71% 0.00000 0.00 / 0.33333)",
+          "oklch(72.14% 0.00000 0.00 / 0.33333)",
+          "oklch(83.57% 0.00000 0.00 / 0.33333)",
+          "oklch(95.00% 0.00000 0.00 / 0.33333)"
+        ]
+      },
+      "palette-indigo": {
+        "role": "secondary",
+        "displayName": "Indigo Palette Accent",
+        "tonalRamp": [
+          "oklch(15.00% 0.19102 267.01)",
+          "oklch(26.43% 0.19102 267.01)",
+          "oklch(37.86% 0.19102 267.01)",
+          "oklch(49.29% 0.19102 267.01)",
+          "oklch(60.71% 0.19102 267.01)",
+          "oklch(72.14% 0.19102 267.01)",
+          "oklch(83.57% 0.19102 267.01)",
+          "oklch(95.00% 0.19102 267.01)"
+        ]
+      },
+      "palette-blue": {
+        "role": "secondary",
+        "displayName": "Blue Palette Accent",
+        "tonalRamp": [
+          "oklch(15.00% 0.19304 251.78)",
+          "oklch(26.43% 0.19304 251.78)",
+          "oklch(37.86% 0.19304 251.78)",
+          "oklch(49.29% 0.19304 251.78)",
+          "oklch(60.71% 0.19304 251.78)",
+          "oklch(72.14% 0.19304 251.78)",
+          "oklch(83.57% 0.19304 251.78)",
+          "oklch(95.00% 0.19304 251.78)"
+        ]
+      },
+      "palette-violet": {
+        "role": "secondary",
+        "displayName": "Violet Palette Accent",
+        "tonalRamp": [
+          "oklch(15.00% 0.17903 288.03)",
+          "oklch(26.43% 0.17903 288.03)",
+          "oklch(37.86% 0.17903 288.03)",
+          "oklch(49.29% 0.17903 288.03)",
+          "oklch(60.71% 0.17903 288.03)",
+          "oklch(72.14% 0.17903 288.03)",
+          "oklch(83.57% 0.17903 288.03)",
+          "oklch(95.00% 0.17903 288.03)"
+        ]
+      },
+      "palette-jade": {
+        "role": "secondary",
+        "displayName": "Jade Palette Accent",
+        "tonalRamp": [
+          "oklch(15.00% 0.11503 170.73)",
+          "oklch(26.43% 0.11503 170.73)",
+          "oklch(37.86% 0.11503 170.73)",
+          "oklch(49.29% 0.11503 170.73)",
+          "oklch(60.71% 0.11503 170.73)",
+          "oklch(72.14% 0.11503 170.73)",
+          "oklch(83.57% 0.11503 170.73)",
+          "oklch(95.00% 0.11503 170.73)"
+        ]
+      },
+      "palette-amber": {
+        "role": "secondary",
+        "displayName": "Amber Palette Accent",
+        "tonalRamp": [
+          "oklch(15.00% 0.15721 84.13)",
+          "oklch(26.43% 0.15721 84.13)",
+          "oklch(37.86% 0.15721 84.13)",
+          "oklch(49.29% 0.15721 84.13)",
+          "oklch(60.71% 0.15721 84.13)",
+          "oklch(72.14% 0.15721 84.13)",
+          "oklch(83.57% 0.15721 84.13)",
+          "oklch(95.00% 0.15721 84.13)"
+        ]
+      },
+      "palette-crimson": {
+        "role": "secondary",
+        "displayName": "Crimson Palette Accent",
+        "tonalRamp": [
+          "oklch(15.00% 0.21296 1.28)",
+          "oklch(26.43% 0.21296 1.28)",
+          "oklch(37.86% 0.21296 1.28)",
+          "oklch(49.29% 0.21296 1.28)",
+          "oklch(60.71% 0.21296 1.28)",
+          "oklch(72.14% 0.21296 1.28)",
+          "oklch(83.57% 0.21296 1.28)",
+          "oklch(95.00% 0.21296 1.28)"
+        ]
+      },
+      "palette-custom": {
+        "role": "secondary",
+        "displayName": "Initial Custom Accent",
+        "tonalRamp": [
+          "oklch(15.00% 0.20081 289.21)",
+          "oklch(26.43% 0.20081 289.21)",
+          "oklch(37.86% 0.20081 289.21)",
+          "oklch(49.29% 0.20081 289.21)",
+          "oklch(60.71% 0.20081 289.21)",
+          "oklch(72.14% 0.20081 289.21)",
+          "oklch(83.57% 0.20081 289.21)",
+          "oklch(95.00% 0.20081 289.21)"
+        ]
       }
     },
     "typographyMeta": {
       "display": {
         "displayName": "Display",
-        "purpose": "Primary collection and notes headings."
+        "purpose": "General page and notes headings; the discovery introduction uses its own observed heading role."
       },
       "headline": {
         "displayName": "Headline",
@@ -560,7 +1134,7 @@
       },
       "sample-title": {
         "displayName": "Sample Title",
-        "purpose": "Names beneath gallery stages."
+        "purpose": "Semibold names beneath main gallery stages; compact related-study titles remain local."
       },
       "body": {
         "displayName": "Body",
@@ -592,7 +1166,35 @@
       },
       "code": {
         "displayName": "Code",
-        "purpose": "Readable source panes using the available system mono font."
+        "purpose": "Source panes in the system mono stack, with the smaller observed mobile size."
+      },
+      "hub-heading": {
+        "displayName": "Hub Heading",
+        "purpose": "The discovery introduction, retaining the shared Inter heading character."
+      },
+      "sample-description": {
+        "displayName": "Sample Description",
+        "purpose": "Readable descriptions beneath main gallery stages."
+      },
+      "sample-metadata": {
+        "displayName": "Sample Metadata",
+        "purpose": "Wrapping technology, duration, and intent metadata beneath sample descriptions."
+      },
+      "theme-title": {
+        "displayName": "Theme Title",
+        "purpose": "The heading within the native color disclosure summary."
+      },
+      "theme-input": {
+        "displayName": "Theme Input",
+        "purpose": "Native color and token-export selects and hex input. Color-disclosure selects and hex text grow on mobile; the token-export select retains its regular size."
+      },
+      "field-label": {
+        "displayName": "Field Label",
+        "purpose": "Visible labels for the color controls and token-export format."
+      },
+      "discovery-input": {
+        "displayName": "Discovery Input",
+        "purpose": "Regular-weight native technology, complexity, and ordering selects."
       }
     },
     "shadows": [
@@ -688,7 +1290,7 @@
       "refersTo": "button-primary",
       "description": "The principal copy action uses ink and surface colors and responds immediately.",
       "html": "<button class=\"ds-btn-primary\" type=\"button\"><svg class=\"ds-icon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><rect x=\"8\" y=\"8\" width=\"12\" height=\"13\" rx=\"2\"/><path d=\"M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h3\"/></svg>Copy full example</button>",
-      "css": ".ds-btn-primary{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:38px;padding:9px 13px;border:0;border-radius:8px;font-family:Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif;font-size:12px;line-height:1.5;font-weight:500;white-space:nowrap;cursor:pointer;touch-action:manipulation;background:var(--ink,#20242c);color:var(--surface,#fff)}.ds-icon{width:15px;height:15px;display:block;flex:none;stroke:currentColor;fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}.ds-btn-primary:focus-visible{outline:3px solid var(--accent,#3358d4);outline-offset:4px}.ds-btn-primary:disabled{cursor:wait;opacity:.65}@media(hover:hover) and (pointer:fine){.ds-btn-primary:hover{filter:brightness(1.15)}}"
+      "css": ".ds-btn-primary{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:38px;padding:9px 13px;border:0;border-radius:8px;font-family:Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif;font-size:12px;line-height:1.5;font-weight:500;white-space:nowrap;cursor:pointer;touch-action:manipulation;background:var(--ink,#20242c);color:var(--surface,#fff)}.ds-icon{width:15px;height:15px;display:block;flex:none;stroke:currentColor;fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}.ds-btn-primary:focus-visible{outline:3px solid var(--accent,#3358d4);outline-offset:4px}.ds-btn-primary:disabled{cursor:not-allowed;opacity:.55}@media(hover:hover) and (pointer:fine){.ds-btn-primary:hover{filter:brightness(1.15)}}"
     },
     {
       "name": "Secondary Copy Button",
@@ -696,7 +1298,7 @@
       "refersTo": "button-secondary",
       "description": "A surface-filled secondary action sits alongside the main copy action.",
       "html": "<button class=\"ds-btn-secondary\" type=\"button\"><svg class=\"ds-icon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"m10 13 4-4m-5 7-1.5 1.5a3.5 3.5 0 0 1-5-5L6 9m9-1 1.5-1.5a3.5 3.5 0 0 1 5 5L18 15\"/></svg>Copy link</button>",
-      "css": ".ds-btn-secondary{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:38px;padding:9px 13px;border:0;border-radius:8px;font-family:Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif;font-size:12px;line-height:1.5;font-weight:500;white-space:nowrap;cursor:pointer;touch-action:manipulation;background:var(--surface,#fff);color:var(--ink,#20242c)}.ds-icon{width:15px;height:15px;display:block;flex:none;stroke:currentColor;fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}.ds-btn-secondary:focus-visible{outline:3px solid var(--accent,#3358d4);outline-offset:4px}.ds-btn-secondary:disabled{cursor:wait;opacity:.65}@media(hover:hover) and (pointer:fine){.ds-btn-secondary:hover{filter:brightness(.97)}}"
+      "css": ".ds-btn-secondary{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:38px;padding:9px 13px;border:0;border-radius:8px;font-family:Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif;font-size:12px;line-height:1.5;font-weight:500;white-space:nowrap;cursor:pointer;touch-action:manipulation;background:var(--surface,#fff);color:var(--ink,#20242c)}.ds-icon{width:15px;height:15px;display:block;flex:none;stroke:currentColor;fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}.ds-btn-secondary:focus-visible{outline:3px solid var(--accent,#3358d4);outline-offset:4px}.ds-btn-secondary:disabled{cursor:not-allowed;opacity:.55}@media(hover:hover) and (pointer:fine){.ds-btn-secondary:hover{filter:brightness(.97)}}"
     },
     {
       "name": "Quiet Playback Button",
@@ -742,17 +1344,17 @@
       "name": "Motion Sample Card",
       "kind": "card",
       "refersTo": "sample-stage",
-      "description": "The open caption and stage overlay reproduce the gallery. The press-feedback study is a static inline depiction; the app supplies the live recipe runtime.",
-      "html": "<article class=\"ds-sample\"><div class=\"ds-sample-stage\"><div class=\"ds-study-depiction\" aria-hidden=\"true\"><span class=\"ds-study-label\">A little give goes a long way.</span><span class=\"ds-study-press\">Press me <svg class=\"ds-study-arrow\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M5 12h14m-5-5 5 5-5 5\"/></svg></span><span class=\"ds-study-label\">Ready when you are</span></div><button class=\"ds-sample-open\" type=\"button\" aria-label=\"Explore Press feedback\"><span class=\"ds-open-label\">Try it <svg class=\"ds-icon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M5 12h14m-5-5 5 5-5 5\"/></svg></span></button></div><div class=\"ds-sample-meta\"><div class=\"ds-sample-copy\"><button class=\"ds-sample-title\" type=\"button\">Press feedback</button><p class=\"ds-sample-description\">A three-percent compression makes a button acknowledge the moment your finger lands.</p><div class=\"ds-sample-bottom\"><span class=\"ds-sample-tech\">CSS</span><span class=\"ds-sample-duration\">160 ms</span></div></div><button class=\"ds-sample-save\" type=\"button\" aria-label=\"Save Press feedback\" aria-pressed=\"false\"><svg class=\"ds-icon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M6 4.5A1.5 1.5 0 0 1 7.5 3h9A1.5 1.5 0 0 1 18 4.5V21l-6-4-6 4Z\"/></svg></button></div></article>",
-      "css": ".ds-sample{min-width:0;width:100%;font-family:Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif;line-height:1.5;color:var(--ink,#20242c)}.ds-sample-stage{height:232px;position:relative;border-radius:var(--radius,14px);overflow:hidden;background:var(--sample-bg,#e8e4f3);isolation:isolate}.ds-study-depiction{height:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:20px}.ds-study-label{font-size:12px;line-height:1.5;color:#57616f;text-align:center}.ds-study-press{display:inline-flex;align-items:center;justify-content:center;gap:22px;min-width:174px;min-height:54px;box-sizing:border-box;padding:14px 24px;border-radius:13px;background:#40356c;color:#fff;font-size:15px;font-weight:600;box-shadow:0 3px 0 rgba(48,34,88,.16)}.ds-sample-open{position:absolute;inset:0;width:100%;display:flex;align-items:flex-end;justify-content:flex-end;padding:14px;background:transparent;border:0;border-radius:inherit;color:#20242c;cursor:pointer;touch-action:manipulation}.ds-open-label{display:inline-flex;align-items:center;gap:6px;font-family:Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif;font-size:11px;line-height:1.5;font-weight:600;background:#fff;color:#20242c;padding:7px 10px;border-radius:6px;box-shadow:0 2px 8px rgb(20 26 40 / .08);opacity:0}.ds-sample-meta{display:flex;align-items:flex-start;gap:10px;margin-top:13px;padding-left:1px}.ds-sample-copy{flex:1;min-width:0}.ds-sample-title{display:inline-block;font-family:Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif;font-size:13px;font-weight:600;letter-spacing:-.015em;line-height:1.4;text-align:left;color:var(--ink,#20242c);background:transparent;border:0;padding:0;cursor:pointer}.ds-sample-description{color:var(--muted,#626b79);font-size:11px;line-height:1.6;margin:5px 0 0;max-width:42ch}.ds-sample-bottom{display:flex;gap:8px;margin-top:8px;font-size:10px;color:var(--muted,#626b79);align-items:center}.ds-sample-duration::before{content:\"·\";margin-right:8px}.ds-sample-save{width:30px;height:30px;margin-top:-5px;display:inline-flex;align-items:center;justify-content:center;flex:none;border:0;border-radius:8px;background:transparent;color:var(--ink,#20242c);cursor:pointer}.ds-sample-save[aria-pressed=\"true\"]{color:var(--accent,#3358d4)}.ds-sample-save[aria-pressed=\"true\"] .ds-icon{fill:currentColor}.ds-icon{width:16px;height:16px;display:block;flex:none;stroke:currentColor;fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}.ds-study-arrow{width:18px;height:18px;display:block;flex:none;stroke:currentColor;fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}.ds-sample-open:focus-visible{outline:3px solid var(--accent,#3358d4);outline-offset:-5px}.ds-sample-title:focus-visible{outline:3px solid var(--accent,#3358d4);outline-offset:4px}.ds-sample-save:focus-visible{outline:3px solid var(--accent,#3358d4);outline-offset:4px}.ds-sample-open:focus-visible .ds-open-label{opacity:1}@media(hover:hover) and (pointer:fine){.ds-sample-open:hover .ds-open-label{opacity:1}.ds-sample-title:hover{color:var(--accent,#3358d4)}.ds-sample-save:hover{background:var(--subtle,#eceff3);color:var(--ink,#20242c)}}@media(max-width:780px){.ds-sample-stage{height:226px}.ds-open-label{display:none}}@media(max-width:520px){.ds-sample-stage{height:262px}.ds-sample-title{font-size:14px}.ds-sample-description{font-size:12px;max-width:48ch}.ds-sample-save{width:36px;height:36px;margin-top:-3px}}"
+      "description": "The current open caption, stage boundary, and shell overlay surround a static Playground/lavender/light depiction. Scoped demonstration colors come from the shared resolver; the retained press-study geometry is illustrative and is not a universal shell token.",
+      "html": "<article class=\"ds-sample\"><div class=\"ds-sample-stage\"><div class=\"ds-study-depiction\" aria-hidden=\"true\"><span class=\"ds-study-label\">A little give goes a long way.</span><span class=\"ds-study-press\">Press me <svg class=\"ds-study-arrow\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M5 12h14m-5-5 5 5-5 5\"/></svg></span><span class=\"ds-study-label\">Ready when you are</span></div><button class=\"ds-sample-open\" type=\"button\" aria-label=\"Explore Press feedback\"><span class=\"ds-open-label\">Try it <svg class=\"ds-icon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M5 12h14m-5-5 5 5-5 5\"/></svg></span></button></div><div class=\"ds-sample-meta\"><div class=\"ds-sample-copy\"><button class=\"ds-sample-title\" type=\"button\">Press feedback</button><p class=\"ds-sample-description\">A three-percent compression makes a button acknowledge the moment your finger lands.</p><div class=\"ds-sample-bottom\"><span class=\"ds-sample-tech\">CSS</span><span class=\"ds-sample-duration\">160 ms</span><span class=\"ds-sample-intent\">Everyday UI</span></div></div><button class=\"ds-sample-save\" type=\"button\" aria-label=\"Save Press feedback\" aria-pressed=\"false\"><svg class=\"ds-icon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M6 4.5A1.5 1.5 0 0 1 7.5 3h9A1.5 1.5 0 0 1 18 4.5V21l-6-4-6 4Z\"/></svg></button></div></article>",
+      "css": ".ds-sample{min-width:0;width:100%;font-family:Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif;line-height:1.5;color:var(--ink,#20242c)}.ds-sample-stage{height:232px;position:relative;border-radius:var(--radius,14px);overflow:hidden;background:var(--sample-bg,#e8e4f3);isolation:isolate;outline:1px solid color-mix(in srgb,var(--ink,#20242c) 7%,transparent);outline-offset:-1px}.ds-study-depiction{--demo-bg:#e8e4f3;--paper:#ffffff;--ink:#20242b;--on-ink:#ffffff;--muted:#585a63;--line:#aaa8b5;--accent:#6550a2;--accent-hover:#5b4892;--accent-soft:#edeaf4;--accent-ink:#6550a2;--on-accent:#ffffff;--success:#246346;--danger:#b12d38;--art-1:#a592d0;--art-2:#d1ab91;--art-3:#94afba;--shadow:#17213424;height:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:20px}.ds-study-label{font-size:12px;line-height:1.5;color:var(--muted);text-align:center}.ds-study-press{display:inline-flex;align-items:center;justify-content:center;gap:22px;min-width:174px;min-height:54px;box-sizing:border-box;padding:14px 24px;border-radius:13px;background:var(--accent);color:var(--on-accent);font-size:15px;font-weight:600;box-shadow:0 3px 0 var(--shadow)}.ds-sample-open{position:absolute;inset:0;width:100%;display:flex;align-items:flex-end;justify-content:flex-end;padding:14px;background:transparent;border:0;border-radius:inherit;color:#20242c;cursor:pointer;touch-action:manipulation}.ds-open-label{display:inline-flex;align-items:center;gap:6px;font-family:Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif;font-size:11px;line-height:1.5;font-weight:600;background:var(--surface,#fff);color:var(--ink,#20242c);padding:7px 10px;border-radius:6px;box-shadow:0 2px 8px rgb(20 26 40 / .08);opacity:0}.ds-sample-meta{display:flex;align-items:flex-start;gap:10px;margin-top:13px;padding-left:1px}.ds-sample-copy{flex:1;min-width:0}.ds-sample-title{display:inline-block;font-family:Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif;font-size:14px;font-weight:600;letter-spacing:-.015em;line-height:1.5;text-align:left;color:var(--ink,#20242c);background:transparent;border:0;padding:0;cursor:pointer}.ds-sample-description{color:var(--muted,#626b79);font-size:12px;line-height:1.65;margin:5px 0 0;max-width:42ch}.ds-sample-bottom{display:flex;flex-wrap:wrap;gap:8px;row-gap:3px;margin-top:8px;font-size:11px;color:var(--muted,#626b79);align-items:center}.ds-sample-bottom span+span::before{content:\"·\";margin-right:8px}.ds-sample-save{width:38px;height:38px;margin-top:-5px;display:inline-flex;align-items:center;justify-content:center;flex:none;border:0;border-radius:8px;background:transparent;color:var(--ink,#20242c);cursor:pointer}.ds-sample-save[aria-pressed=\"true\"]{color:var(--accent,#3358d4)}.ds-sample-save[aria-pressed=\"true\"] .ds-icon{fill:currentColor}.ds-icon{width:16px;height:16px;display:block;flex:none;stroke:currentColor;fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}.ds-study-arrow{width:18px;height:18px;display:block;flex:none;stroke:currentColor;fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}.ds-sample-open:focus-visible{outline:3px solid var(--accent,#3358d4);outline-offset:-5px}.ds-sample-title:focus-visible{outline:3px solid var(--accent,#3358d4);outline-offset:4px}.ds-sample-save:focus-visible{outline:3px solid var(--accent,#3358d4);outline-offset:4px}.ds-sample-open:focus-visible .ds-open-label{opacity:1}@media(hover:hover) and (pointer:fine){.ds-sample-open:hover .ds-open-label{opacity:1}.ds-sample-title:hover{color:var(--accent,#3358d4)}.ds-sample-save:hover{background:var(--subtle,#eceff3);color:var(--ink,#20242c)}}@media(max-width:780px){.ds-sample-stage{height:226px}.ds-open-label{display:none}}@media(max-width:520px){.ds-sample-stage{height:262px}.ds-sample-title{font-size:14px}.ds-sample-description{font-size:12px;max-width:48ch}.ds-sample-save{width:38px;height:38px;margin-top:-3px}.ds-sample-bottom{font-size:10px}}"
     },
     {
       "name": "Source Inspector",
       "kind": "custom",
       "refersTo": "source-inspector",
-      "description": "The selected source tab, language group, and code inset render without a framework; the application supplies tab and copy behavior.",
-      "html": "<section class=\"ds-inspector\" aria-label=\"Animation reference\"><div class=\"ds-inspector-tabs\" role=\"tablist\" aria-label=\"Reference section\"><button class=\"ds-tab\" type=\"button\" role=\"tab\" aria-selected=\"true\">Code</button><button class=\"ds-tab\" type=\"button\" role=\"tab\" aria-selected=\"false\" tabindex=\"-1\">How it works</button><button class=\"ds-tab\" type=\"button\" role=\"tab\" aria-selected=\"false\" tabindex=\"-1\">Copy for AI</button></div><div class=\"ds-inspector-content\"><div class=\"ds-code-toolbar\"><div class=\"ds-code-languages\" role=\"group\" aria-label=\"Source language\"><button class=\"ds-code-language\" type=\"button\" aria-pressed=\"true\">CSS</button><button class=\"ds-code-language\" type=\"button\" aria-pressed=\"false\">JavaScript</button><button class=\"ds-code-language\" type=\"button\" aria-pressed=\"false\">HTML</button><button class=\"ds-code-language\" type=\"button\" aria-pressed=\"false\">Full file</button></div><button class=\"ds-code-copy\" type=\"button\" aria-label=\"Copy CSS\"><svg class=\"ds-icon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><rect x=\"8\" y=\"8\" width=\"12\" height=\"13\" rx=\"2\"/><path d=\"M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h3\"/></svg>Copy</button></div><div class=\"ds-code-container\"><pre class=\"ds-code-pre\"><code class=\"ds-code-text\"><span class=\"ds-code-comment\">/* The selection moves; content stays immediate. */</span>\n.tab-indicator {\n  height: <span class=\"ds-code-number\">3</span>px;\n  transform-origin: left center;\n  transition: transform\n    calc(<span class=\"ds-code-number\">220</span>ms * var(--time-scale))\n    var(--ease-in-out);\n}</code></pre></div><p class=\"ds-code-caption\">Showing the motion-specific source. Use <strong class=\"ds-code-strong\">Copy full example</strong> for a complete, portable HTML file.</p></div></section>",
-      "css": ".ds-inspector{background:var(--surface,#fff);border-radius:14px;min-width:0;overflow:hidden;color:var(--ink,#20242c);font-family:Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif;line-height:1.5;width:100%}.ds-inspector-tabs{display:flex;gap:20px;padding:0 19px;border-bottom:1px solid var(--faint,#dce1e8)}.ds-tab{background:transparent;border:0;font-family:Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif;font-size:12px;line-height:1.5;font-weight:500;min-height:50px;color:var(--muted,#626b79);padding:0 1px;border-radius:0;position:relative;white-space:nowrap;cursor:pointer}.ds-tab[aria-selected=\"true\"]{color:var(--ink,#20242c)}.ds-tab[aria-selected=\"true\"]::after{content:\"\";position:absolute;bottom:-1px;height:2px;background:var(--ink,#20242c);left:0;right:0;border-radius:2px}.ds-inspector-content{padding:18px}.ds-code-toolbar{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px}.ds-code-languages{display:flex;align-items:center;gap:3px;background:var(--subtle,#eceff3);padding:3px;border-radius:6px}.ds-code-language{background:transparent;color:var(--muted,#626b79);font-family:Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif;font-size:10px;line-height:1.5;border:0;padding:5px 8px;border-radius:4px;min-height:27px;cursor:pointer}.ds-code-language[aria-pressed=\"true\"]{color:var(--ink,#20242c);background:var(--surface,#fff)}.ds-code-copy{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif;font-size:10px;line-height:1.5;font-weight:500;padding:6px 7px;min-height:30px;border:0;border-radius:8px;background:transparent;color:var(--muted,#626b79);cursor:pointer}.ds-code-container{background:var(--code,#f0f2f6);border-radius:9px;overflow:auto;max-height:430px;min-height:338px;overscroll-behavior:contain}.ds-code-pre{margin:0;padding:17px 17px 24px;font-family:\"SFMono-Regular\", Consolas, \"Liberation Mono\", monospace;font-size:11px;line-height:1.85;tab-size:2;white-space:pre;width:max-content;min-width:100%;color:var(--ink,#20242c)}.ds-code-text{font:inherit}.ds-code-comment{color:var(--code-comment,#5b677b)}.ds-code-number{color:var(--code-number,#954e2d)}.ds-code-caption{font-size:10px;line-height:1.6;color:var(--muted,#626b79);margin:11px 0 0}.ds-icon{width:13px;height:13px;display:block;flex:none;stroke:currentColor;fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}.ds-tab:focus-visible{outline:3px solid var(--accent,#3358d4);outline-offset:4px}.ds-code-language:focus-visible{outline:3px solid var(--accent,#3358d4);outline-offset:4px}.ds-code-copy:focus-visible{outline:3px solid var(--accent,#3358d4);outline-offset:4px}@media(hover:hover) and (pointer:fine){.ds-code-copy:hover{background:var(--subtle,#eceff3);color:var(--ink,#20242c)}}@media(max-width:780px){.ds-inspector-content{padding:16px}.ds-inspector-tabs{gap:23px;padding:0 17px}.ds-tab{min-height:48px}}@media(max-width:520px){.ds-inspector-tabs{gap:21px}.ds-code-language{padding:5px 7px}.ds-code-copy{font-size:0;gap:0;padding:8px}.ds-code-copy .ds-icon{width:16px;height:16px}.ds-code-container{min-height:300px;max-height:400px}}"
+      "description": "Code, How it works, Colors, and Copy for AI share the same source surface. This preview shows source states; the app supplies tab behavior, scoped token export, and copying.",
+      "html": "<section class=\"ds-inspector\" aria-label=\"Animation reference\"><div class=\"ds-inspector-tabs\" role=\"tablist\" aria-label=\"Reference section\"><button class=\"ds-tab\" type=\"button\" role=\"tab\" aria-selected=\"true\">Code</button><button class=\"ds-tab\" type=\"button\" role=\"tab\" aria-selected=\"false\" tabindex=\"-1\">How it works</button><button class=\"ds-tab\" type=\"button\" role=\"tab\" aria-selected=\"false\" tabindex=\"-1\">Colors</button><button class=\"ds-tab\" type=\"button\" role=\"tab\" aria-selected=\"false\" tabindex=\"-1\">Copy for AI</button></div><div class=\"ds-inspector-content\"><div class=\"ds-code-toolbar\"><div class=\"ds-code-languages\" role=\"group\" aria-label=\"Source language\"><button class=\"ds-code-language\" type=\"button\" aria-pressed=\"true\">CSS</button><button class=\"ds-code-language\" type=\"button\" aria-pressed=\"false\">JavaScript</button><button class=\"ds-code-language\" type=\"button\" aria-pressed=\"false\">HTML</button><button class=\"ds-code-language\" type=\"button\" aria-pressed=\"false\">Full file</button></div><button class=\"ds-code-copy\" type=\"button\" aria-label=\"Copy CSS\"><svg class=\"ds-icon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><rect x=\"8\" y=\"8\" width=\"12\" height=\"13\" rx=\"2\"/><path d=\"M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h3\"/></svg>Copy</button></div><div class=\"ds-code-container\"><pre class=\"ds-code-pre\"><code class=\"ds-code-text\"><span class=\"ds-code-comment\">/* The selection moves; content stays immediate. */</span>\n.tab-indicator {\n  height: <span class=\"ds-code-number\">3</span>px;\n  transform-origin: left center;\n  transition: transform\n    calc(<span class=\"ds-code-number\">220</span>ms * var(--time-scale))\n    var(--ease-in-out);\n}</code></pre></div><p class=\"ds-code-caption\">Showing the motion-specific source. Use <strong class=\"ds-code-strong\">Copy full example</strong> for a complete, portable HTML file.</p></div></section>",
+      "css": ".ds-inspector{background:var(--surface,#fff);border-radius:14px;min-width:0;overflow:hidden;color:var(--ink,#20242c);font-family:Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif;line-height:1.5;width:100%}.ds-inspector-tabs{display:flex;gap:18px;padding:0 19px;border-bottom:1px solid var(--faint,#dce1e8)}.ds-tab{background:transparent;border:0;font-family:Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif;font-size:12px;line-height:1.5;font-weight:500;min-height:50px;color:var(--muted,#626b79);padding:0 1px;border-radius:0;position:relative;white-space:nowrap;cursor:pointer}.ds-tab[aria-selected=\"true\"]{color:var(--ink,#20242c)}.ds-tab[aria-selected=\"true\"]::after{content:\"\";position:absolute;bottom:-1px;height:2px;background:var(--ink,#20242c);left:0;right:0;border-radius:2px}.ds-inspector-content{padding:18px}.ds-code-toolbar{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px}.ds-code-languages{display:flex;align-items:center;gap:3px;background:var(--subtle,#eceff3);padding:3px;border-radius:6px}.ds-code-language{background:transparent;color:var(--muted,#626b79);font-family:Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif;font-size:10px;line-height:1.5;border:0;padding:5px 8px;border-radius:4px;min-height:27px;cursor:pointer}.ds-code-language[aria-pressed=\"true\"]{color:var(--ink,#20242c);background:var(--surface,#fff)}.ds-code-copy{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif;font-size:10px;line-height:1.5;font-weight:500;padding:6px 7px;min-height:30px;border:0;border-radius:8px;background:transparent;color:var(--muted,#626b79);cursor:pointer}.ds-code-container{background:var(--code,#f0f2f6);border-radius:9px;overflow:auto;max-height:430px;min-height:338px;overscroll-behavior:contain}.ds-code-pre{margin:0;padding:17px 17px 24px;font-family:\"SFMono-Regular\", Consolas, \"Liberation Mono\", monospace;font-size:12px;line-height:1.85;tab-size:2;white-space:pre;width:max-content;min-width:100%;color:var(--ink,#20242c)}.ds-code-text{font:inherit}.ds-code-comment{color:var(--code-comment,#5b677b)}.ds-code-number{color:var(--code-number,#954e2d)}.ds-code-caption{font-size:10px;line-height:1.6;color:var(--muted,#626b79);margin:11px 0 0}.ds-icon{width:13px;height:13px;display:block;flex:none;stroke:currentColor;fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}.ds-tab:focus-visible{outline:3px solid var(--accent,#3358d4);outline-offset:4px}.ds-code-language:focus-visible{outline:3px solid var(--accent,#3358d4);outline-offset:4px}.ds-code-copy:focus-visible{outline:3px solid var(--accent,#3358d4);outline-offset:4px}@media(hover:hover) and (pointer:fine){.ds-code-copy:hover{background:var(--subtle,#eceff3);color:var(--ink,#20242c)}}@media(max-width:780px){.ds-inspector-content{padding:16px}.ds-inspector-tabs{gap:18px;padding:0 17px}.ds-code-pre{font-size:11px}.ds-tab{min-height:48px}}@media(max-width:520px){.ds-inspector-tabs{gap:0;justify-content:space-between;padding:0 13px}.ds-tab{font-size:11px}.ds-code-language{padding:5px 7px}.ds-code-copy{font-size:0;gap:0;padding:8px}.ds-code-copy .ds-icon{width:16px;height:16px}.ds-code-container{min-height:300px;max-height:400px}}"
     },
     {
       "name": "Motion Specifications",
@@ -761,14 +1363,31 @@
       "description": "A noninteractive definition list pairs practical motion facts with an exact, wrapping curve value.",
       "html": "<dl class=\"ds-motion-specs\"><div class=\"ds-spec\"><dt class=\"ds-spec-label\">Duration</dt><dd class=\"ds-spec-value\">220 ms</dd></div><div class=\"ds-spec\"><dt class=\"ds-spec-label\">Purpose</dt><dd class=\"ds-spec-value\">Spatial consistency</dd></div><div class=\"ds-spec ds-spec-wide\"><dt class=\"ds-spec-label\">Easing / spring</dt><dd class=\"ds-spec-value ds-spec-code\">cubic-bezier(0.77, 0, 0.175, 1)</dd></div><div class=\"ds-spec ds-spec-wide\"><dt class=\"ds-spec-label\">Dependencies</dt><dd class=\"ds-spec-value\">None · just the browser</dd></div></dl>",
       "css": ".ds-motion-specs{display:grid;grid-template-columns:1fr 1fr;gap:16px 20px;padding:20px;margin:0;background:var(--surface,#fff);color:var(--ink,#20242c);border-radius:12px;font-family:Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif;line-height:1.5}.ds-spec{min-width:0}.ds-spec-label{font-size:10px;color:var(--muted,#626b79);margin-bottom:6px}.ds-spec-value{margin:0;font-size:12px;overflow-wrap:anywhere}.ds-spec-wide{grid-column:1/-1}.ds-spec-code{font-family:\"SFMono-Regular\", Consolas, \"Liberation Mono\", monospace;font-size:11px;letter-spacing:-.02em}@media(max-width:520px){.ds-motion-specs{padding:18px}}"
+    },
+    {
+      "name": "Color Disclosure",
+      "kind": "custom",
+      "refersTo": "theme-studio",
+      "description": "Native details/summary in its expanded default Playground state. The app sets the initial desktop/mobile disclosure, remembers the visitor’s choice, and resolves palette changes; this snippet preserves the native disclosure and shared control styling.",
+      "html": "<details class=\"ds-theme-studio\" open><summary class=\"ds-theme-heading\"><div><h2 class=\"ds-theme-title\">Preview in your colors</h2><p class=\"ds-theme-summary\"><span class=\"ds-theme-value\">Playground colors · Match site</span><span class=\"ds-theme-explanation\">One palette, from the live demo to the code you take.</span></p></div><span class=\"ds-theme-end\"><span class=\"ds-theme-swatches\" aria-hidden=\"true\"><i class=\"ds-theme-swatch\" style=\"--ds-swatch:#e8e4f3\"></i><i class=\"ds-theme-swatch\" style=\"--ds-swatch:#ffffff\"></i><i class=\"ds-theme-swatch\" style=\"--ds-swatch:#6550a2\"></i><i class=\"ds-theme-swatch\" style=\"--ds-swatch:#d1ab91\"></i><i class=\"ds-theme-swatch\" style=\"--ds-swatch:#94afba\"></i></span><svg class=\"ds-theme-chevron\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M5 12h14m-5-5 5 5-5 5\"/></svg></span></summary><div class=\"ds-theme-fields\"><label class=\"ds-theme-field\">Palette<select class=\"ds-theme-select\"><option selected>Playground colors</option><option>Radix</option><option>Geist-inspired</option><option>Custom accent</option></select></label><label class=\"ds-theme-field\">Appearance<select class=\"ds-theme-select\"><option selected>Match site</option><option>Light</option><option>Dark</option></select></label><label class=\"ds-theme-field\">Accent<select class=\"ds-theme-select\" disabled><option selected>Indigo</option><option>Blue</option><option>Violet</option><option>Jade</option><option>Amber</option><option>Crimson</option></select></label><button class=\"ds-theme-copy\" type=\"button\" disabled title=\"Open a study to copy its individual color family, or choose a project palette.\"><svg class=\"ds-theme-icon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><rect x=\"8\" y=\"8\" width=\"12\" height=\"13\" rx=\"2\"/><path d=\"M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h3\"/></svg>Copy tokens</button></div><p class=\"ds-theme-help\">Each study keeps its own color family. Choose a project palette to compare the whole collection.</p></details>",
+      "css": ".ds-theme-studio{padding:18px 20px;background:var(--surface,#fff);color:var(--ink,#20242c);border-radius:14px;min-width:0;width:100%;font-family:Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif;line-height:1.5}.ds-theme-heading{display:flex;justify-content:space-between;align-items:center;gap:18px;list-style:none;cursor:pointer;min-height:44px}.ds-theme-heading::-webkit-details-marker{display:none}.ds-theme-studio[open] .ds-theme-heading{margin-bottom:14px}.ds-theme-title{margin:0;font-size:14px;font-weight:600;letter-spacing:-.01em;line-height:1.3}.ds-theme-summary{font-size:12px;color:var(--muted,#626b79);margin:4px 0 0;line-height:1.5}.ds-theme-end{display:flex;align-items:center;gap:14px;flex:none}.ds-theme-swatches{display:flex;gap:5px;align-items:center;flex:none}.ds-theme-swatch{display:block;width:22px;height:22px;border-radius:6px;background:var(--ds-swatch);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--ink,#20242c) 12%,transparent)}.ds-theme-chevron{width:16px;height:16px;transform:rotate(90deg);color:var(--muted,#626b79);stroke:currentColor;fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round;flex:none}.ds-theme-studio[open] .ds-theme-chevron{transform:rotate(-90deg)}.ds-theme-explanation,.ds-theme-studio[open] .ds-theme-value{display:none}.ds-theme-studio[open] .ds-theme-explanation{display:inline}.ds-theme-fields{display:grid;grid-template-columns:minmax(135px,1.25fr) minmax(120px,1fr) minmax(130px,1fr) auto;gap:14px;align-items:end}.ds-theme-field{display:flex;flex-direction:column;gap:6px;font-size:11px;color:var(--muted,#626b79);min-width:0}.ds-theme-select{min-height:42px;background:var(--subtle,#eceff3);color:var(--ink,#20242c);border:0;border-radius:7px;padding:8px 11px;font-family:Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif;font-size:13px;line-height:1.4;width:100%;max-width:100%}.ds-theme-select:disabled{opacity:.65;cursor:not-allowed}.ds-theme-copy{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:42px;padding:9px 13px;background:var(--subtle,#eceff3);color:var(--ink,#20242c);border:0;border-radius:8px;font-family:Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif;font-size:12px;font-weight:500;line-height:1.5;white-space:nowrap;cursor:pointer;align-self:end}.ds-theme-copy:disabled{opacity:.55;cursor:not-allowed}.ds-theme-icon{width:15px;height:15px;display:block;flex:none;stroke:currentColor;fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}.ds-theme-help{margin:11px 0 0;font-size:11px;line-height:1.6;color:var(--muted,#626b79)}.ds-theme-heading:focus-visible,.ds-theme-select:focus-visible,.ds-theme-copy:focus-visible{outline:3px solid var(--accent,#3358d4);outline-offset:4px}@media(hover:hover) and (pointer:fine){.ds-theme-copy:hover{filter:brightness(.97)}}@media(max-width:1190px){.ds-theme-fields{grid-template-columns:1.25fr 1fr 1fr auto;gap:10px}.ds-theme-copy{font-size:11px;padding:9px}}@media(max-width:780px){.ds-theme-studio{padding:17px}.ds-theme-fields{grid-template-columns:1fr 1fr;gap:13px}.ds-theme-select{font-size:16px;min-height:44px}.ds-theme-copy{min-height:44px;font-size:12px}.ds-theme-swatch{width:17px;height:22px;border-radius:5px}.ds-theme-heading{gap:12px}.ds-theme-end{gap:10px}.ds-theme-summary{max-width:34ch;font-size:11px}}@media(max-width:520px){.ds-theme-studio{padding:15px}.ds-theme-swatches{gap:3px}.ds-theme-swatch{width:12px;height:22px;border-radius:4px}.ds-theme-title{font-size:13px}.ds-theme-summary{max-width:27ch}}"
+    },
+    {
+      "name": "Discovery Filters",
+      "kind": "custom",
+      "refersTo": "intent-group",
+      "description": "Pressed intent controls and native technology, complexity, and ordering selects share the quiet shell vocabulary. The application supplies result filtering; the snippet shows the observed default and selected styles.",
+      "html": "<div class=\"ds-discovery\"><div class=\"ds-intents\" role=\"group\" aria-label=\"Animation purpose\"><button class=\"ds-intent\" type=\"button\" aria-pressed=\"true\">All motion</button><button class=\"ds-intent\" type=\"button\" aria-pressed=\"false\">Everyday UI</button><button class=\"ds-intent\" type=\"button\" aria-pressed=\"false\">Expressive</button></div><div class=\"ds-filter-selects\"><select class=\"ds-filter-select\" aria-label=\"Filter by technology\"><option selected>Any technology</option><option>CSS only</option><option>Web Animations API</option><option>Motion springs</option></select><select class=\"ds-filter-select\" aria-label=\"Filter by complexity\"><option selected>Any complexity</option><option>Starter friendly</option><option>Intermediate</option></select><select class=\"ds-filter-select\" aria-label=\"Sort animations\"><option selected>Curated order</option><option>Name A–Z</option></select></div></div>",
+      "css": ".ds-discovery{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;width:100%;font-family:Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif;line-height:1.5}.ds-intents{display:flex;align-items:center;gap:3px;padding:3px;border-radius:8px;background:var(--subtle,#eceff3)}.ds-intent{min-height:36px;padding:8px 12px;border:0;border-radius:6px;font-family:Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif;font-size:12px;line-height:1.5;font-weight:500;background:transparent;color:var(--muted,#626b79);white-space:nowrap;cursor:pointer}.ds-intent[aria-pressed=\"true\"]{color:var(--ink,#20242c);background:var(--surface,#fff)}.ds-filter-selects{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.ds-filter-select{background:transparent;color:var(--muted,#626b79);font-family:Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif;font-size:12px;line-height:1.5;padding:8px 16px 8px 0;border:0;max-width:175px;min-height:38px;cursor:pointer}.ds-filter-select option{background:var(--surface,#fff);color:var(--ink,#20242c)}.ds-intent:focus-visible,.ds-filter-select:focus-visible{outline:3px solid var(--accent,#3358d4);outline-offset:4px}@media(hover:hover) and (pointer:fine){.ds-filter-select:hover{color:var(--ink,#20242c)}}@media(max-width:1190px){.ds-filter-selects{gap:16px}}@media(max-width:780px){.ds-discovery{gap:10px}.ds-filter-selects{gap:10px;row-gap:0}.ds-filter-select{min-height:40px;max-width:160px}.ds-intent{min-height:39px}}@media(max-width:520px){.ds-filter-selects{width:100%;justify-content:flex-start;gap:6px 10px}.ds-filter-select{font-size:11px;max-width:155px}.ds-intents{width:100%}.ds-intent{flex:1;padding:8px 10px}}"
     }
   ],
   "narrative": {
     "northStar": "The Material Sample Rack",
-    "overview": "The Material Sample Rack gives small motion studies the clarity of objects laid out for close inspection. The surrounding workspace is cool, quiet, and matter-of-fact: graphite type on paper surfaces, compact cobalt selection cues, and generous sample fields. Precision belongs to the tools; warmth and individual character belong to the examples.\n\nInter supplies a consistent working voice, with system monospace reserved for code and motion values. Rounded rectangles feel handled and practical. Tonal separation carries most of the hierarchy, while the lavender, apricot, blue, green, sand, and pale graphite fields distinguish the material being studied. The samples retain their own light environment when the surrounding workspace switches to dark.\n\nKeep the shared tools still and responsive. Motion belongs inside studies that people choose to inspect, replay, or slow down. Expressive type and playful shapes can be part of a study; the shell remains readable and consistent. Reduced-motion states preserve visible content and understandable state.",
+    "overview": "The Material Sample Rack gives small motion studies the clarity of objects laid out for close inspection. The surrounding workspace is cool, quiet, and matter-of-fact: graphite type on paper surfaces, compact cobalt selection cues, and generous sample fields. Precision belongs to the tools; warmth and individual character belong to the examples.\n\nInter supplies a consistent working voice, with system monospace reserved for code and motion values. Rounded rectangles feel handled and practical. Tonal separation carries most of the hierarchy. Playground colors preserve each study's lavender, apricot, blue, green, sand, or graphite family in light and dark compositions. Radix, Geist-inspired, and custom-accent palettes let the demonstrations take on a project's colors. Their appearance can follow the site or use an explicit light or dark mode.\n\nKeep the shared tools still and responsive. Motion belongs inside studies that people choose to inspect, replay, or slow down. Expressive type and playful shapes can be part of a study; the shell remains readable and consistent. Reduced-motion states preserve visible content and understandable state.",
     "keyCharacteristics": [
       "Cool paper surfaces, graphite text, and cobalt control cues.",
       "Compact, legible tools around generous sample stages.",
+      "A shared semantic palette colors the live demonstration and the implementation taken from it.",
       "Inter for the interface; system monospace for source and precise values.",
       "Flat containers, restrained rounding, and small functional shadows.",
       "Immediate navigation with deliberate, controllable motion inside examples."
@@ -776,12 +1395,17 @@
     "rules": [
       {
         "name": "The Control Accent Rule",
-        "body": "Use the accent pair for current navigation, selected utility controls, links, the brand mark, and visible keyboard focus. The principal copy action uses the ink and surface pair.",
+        "body": "Use the shell accent pair for current navigation, selected utility controls, links, the brand mark, and visible keyboard focus. The principal copy action uses the shell ink and surface pair.",
         "section": "colors"
       },
       {
         "name": "The Sample Material Rule",
-        "body": "Keep sample fields tied to the recipe palette across both shell themes. Their colors identify a study’s material, not application status or navigation selection.",
+        "body": "Preserve each recipe's family in Playground colors, including its mode-appropriate dark composition. Project palettes may recolor the whole demonstration. Keep the shell's navigation selection and application status meanings separate from these palette choices.",
+        "section": "colors"
+      },
+      {
+        "name": "The Shared Color Contract Rule",
+        "body": "Resolve demonstration surfaces, text, controls, and artwork through the same semantic roles in previews, standalone examples, copied code, downloads, and AI handoffs. Use `--accent-ink` for readable accent text and focus, `--on-accent` over solid accent fills, and `--on-ink` over ink fills. Keep raw palette values in the shared resolver.",
         "section": "colors"
       },
       {
@@ -797,17 +1421,22 @@
     ],
     "dos": [
       "Do keep the shell’s background, surfaces, text, selection colors, and source colors bound to the current theme.",
-      "Do preserve the six established sample fields and their light appearance inside either shell theme.",
+      "Do preserve each study's original color family in Playground colors and resolve its light or dark composition through the shared theme system.",
+      "Do carry the same selected demonstration colors into live previews, copied code, standalone downloads, and AI handoffs.",
+      "Do use readable accent and solid-foreground roles for demonstration text and focus, with scoped token exports when adapting a study to a host theme.",
       "Do use Inter for interface copy and system monospace for source and exact motion values.",
       "Do keep category changes, search, keyboard navigation, and source-tab changes immediate.",
-      "Do give each sample a generous clipped stage with its name, concise explanation, technology, and duration below.",
+      "Do give each sample a generous clipped stage with its name, concise explanation, technology, duration, and intent below.",
+      "Do keep project collections, native filters, and the color disclosure within the existing quiet control vocabulary.",
       "Do retain visible keyboard focus, readable labels, and a coherent reduced-motion state.",
       "Do use the existing responsive grid and horizontal mobile category strip before inventing a new navigation pattern."
     ],
     "donts": [
       "Don't add ornamental gradients, glow, or unnecessary marketing decoration to the shared workspace.",
       "Don't add animation to the navigation or make repeated utility actions wait for a transition.",
-      "Don't replace the sample-specific palette with application selection or status colors.",
+      "Don't confuse shell selection colors with the selected demonstration palette, or force studies to stay light when a dark appearance is chosen.",
+      "Don't hard-code recipe colors or let exported color values diverge from the live demonstration.",
+      "Don't assume host token aliases preserve foreground contrast after the receiving theme changes its scale or appearance.",
       "Don't surround every sample with an extra border, shadow, or enclosing card surface.",
       "Don't hide essential meaning behind hover, playback, or spatial movement.",
       "Don't treat an individual recipe’s expressive colors, type, shadows, or timings as universal shell tokens."

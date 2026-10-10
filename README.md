@@ -132,8 +132,9 @@ on the current environment and revision. A missing browser or blocked download i
 unavailable coverage, not a successful test run. See [Contributing](CONTRIBUTING.md)
 for the review workflow and verification scope.
 
-The [initial validation record](docs/validation.md) describes the 58-test run,
-independent reviews, and the precise limits of the browser coverage.
+The [hub validation record](docs/hub-validation.md) describes the 151-test run,
+theme and export coverage, independent reviews, and the verified hosted preview.
+The [initial validation record](docs/validation.md) preserves the first delivery.
 
 ## Structure and portable references
 

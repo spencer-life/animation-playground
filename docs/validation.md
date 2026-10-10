@@ -1,5 +1,9 @@
 # Initial implementation validation
 
+For the current 44-study hub expansion and its 151-test run, see the
+[theme-aware hub validation](hub-validation.md). This page preserves the initial
+36-study delivery as historical evidence.
+
 This record covers the application delivered through [PR #2](https://github.com/spencer-life/animation-playground/pull/2).
 The pull request records its exact reviewed head and the resulting merge revision.
 These are observed results from 10 October 2026, not a promise that future changes
