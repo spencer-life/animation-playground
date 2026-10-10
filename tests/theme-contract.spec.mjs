@@ -3,6 +3,18 @@ import AxeBuilder from '@axe-core/playwright';
 import { readFile } from 'node:fs/promises';
 import { normalizeTheme, resolveTheme, themedCode, tokenExport, defaults, palettes, accents, contrast } from '../src/theme.mjs';
 
+test('dark workbench collection navigation stays readable and keyboard operable', async ({ page }) => {
+  await page.emulateMedia({ colorScheme: 'dark' });
+  await page.goto('/?animation=press-feedback&palette=radix&mode=dark&accent=amber');
+  const back = page.getByRole('button', { name: 'The whole collection', exact: true });
+  await back.scrollIntoViewIfNeeded();
+  const accessibility = await new AxeBuilder({ page }).include('.related-heading')
+    .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa']).analyze();
+  expect(accessibility.violations).toEqual([]);
+  await back.press('Enter');
+  await expect(page.getByRole('heading', { name: 'Motion worth borrowing.', exact: true })).toBeVisible();
+  await expect(page.locator('#main')).toBeFocused();
+});
 // Import the built catalog so new recipes automatically receive the same dark
 // preview checks. Run the build before this suite, as with playground.spec.mjs.
 const catalog = JSON.parse(await readFile(new URL('../dist/catalog.json', import.meta.url), 'utf8'));

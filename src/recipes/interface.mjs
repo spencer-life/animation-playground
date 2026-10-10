@@ -351,7 +351,7 @@ Demo.onSettings((next, previous) => {
 .switch-thumb { display: block; width: 22px; height: 22px; border-radius: 50%; background: var(--ink); box-shadow: 0 1px 3px var(--shadow); transition: transform calc(180ms * var(--time-scale)) var(--ease-out); }
 #focus-switch:checked + .switch-track { background: var(--accent); }
 #focus-switch:checked + .switch-track .switch-thumb { transform: translateX(19px); background: var(--on-accent); }
-#focus-switch:focus-visible + .switch-track { outline: 3px solid var(--accent); outline-offset: 4px; }
+#focus-switch:focus-visible + .switch-track { outline: 3px solid var(--accent-ink); outline-offset: 4px; }
 `,
     js: timeline + String.raw`
 const input = document.querySelector('#focus-switch');
@@ -626,7 +626,7 @@ Demo.onCleanup(() => observer.disconnect());
 .segments { position: relative; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2px; width: 254px; max-width: 100%; margin: 0; padding: 4px; border: 0; border-radius: 14px; background: var(--paper); }
 .segments > label, .segment-copy > span { display: flex; align-items: center; justify-content: center; min-height: 44px; padding: 9px 7px; border-radius: 10px; font-size: 13px; font-weight: 550; line-height: 1.3; }
 .segments > label { cursor: pointer; touch-action: manipulation; color: var(--muted); }
-.segments > label:has(input:focus-visible) { outline: 3px solid var(--accent); outline-offset: 4px; }
+.segments > label:has(input:focus-visible) { outline: 3px solid var(--accent-ink); outline-offset: 4px; }
 .segment-copy { pointer-events: none; position: absolute; inset: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2px; padding: 4px; border-radius: 14px; background: var(--ink); color: var(--on-ink); clip-path: inset(4px 66% 4px 4px round 10px); transition: clip-path calc(250ms * var(--time-scale)) var(--ease-in-out); }
 .period-caption { min-height: 18px; }
 `,

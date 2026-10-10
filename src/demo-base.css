@@ -35,7 +35,7 @@ button { cursor: pointer; touch-action: manipulation; -webkit-tap-highlight-colo
 button, a, input { -webkit-tap-highlight-color: transparent; }
 button:disabled { cursor: wait; }
 button:focus-visible, a:focus-visible, input:focus-visible, summary:focus-visible, [tabindex]:focus-visible {
-  outline: 3px solid var(--accent); outline-offset: 5px;
+  outline: 3px solid var(--accent-ink); outline-offset: 5px;
 }
 input, textarea { font-size: 16px; caret-color: var(--accent); }
 svg { display: block; max-width: 100%; }

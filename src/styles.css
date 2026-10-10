@@ -69,6 +69,7 @@
 .theme-code{min-height:230px;max-height:320px}
 .token-copy{margin-top:14px}
 .detail-footer button{padding:0;background:transparent;text-decoration:underline;text-underline-offset:3px}
+.related-heading > button.text-link{padding:0;background:transparent}
 .inspector-tabs{gap:18px}
 .code-container pre{font-size:12px}
 .rail{overflow-y:auto}
