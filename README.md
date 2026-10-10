@@ -5,8 +5,11 @@ live demonstrations, practical explanations, complete copyable code, and stable
 references for future ChatGPT and Codex work.
 
 <!-- live-url -->
-The live URL will be added after production deployment is verified. The initial
-build and delivery are tracked in [issue #1](https://github.com/spencer-life/animation-playground/issues/1).
+**[Open Animation Playground](https://animation-playground-murex.vercel.app/)**
+
+The public site is deployed on Vercel from this repository's `main` branch. The
+initial build and verified delivery are recorded in
+[issue #1](https://github.com/spencer-life/animation-playground/issues/1).
 
 ## Explore the collection
 
@@ -121,8 +124,8 @@ It is an independent project with no implied endorsement. The
 [source review](docs/emil-research.md) records applicability, and
 [skill routes](docs/skills.md) preserve the reviewed revision for future work.
 
-Deploy `dist/` to a static host. See [deployment](docs/deployment.md) for the planned
-Vercel route, GitHub Pages configuration, and later portability. No automatic
+Deploy `dist/` to a static host. See [deployment](docs/deployment.md) for the verified
+Vercel setup, GitHub Pages configuration, and later portability. No automatic
 GitHub Actions validation or deployment workflow is required by this project.
 
 Contributions follow [CONTRIBUTING.md](CONTRIBUTING.md) and the
