@@ -1,0 +1,26 @@
+{
+  "name": "animation-playground",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "A portable, interactive library of 36 carefully considered web animations.",
+  "license": "MIT",
+  "packageManager": "pnpm@11.25.0",
+  "engines": { "node": ">=24" },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "dev": "node scripts/serve.mjs",
+    "preview": "node scripts/serve.mjs",
+    "check": "node scripts/check.mjs",
+    "test": "playwright test",
+    "ci": "pnpm check && pnpm build && pnpm test",
+    "security": "node scripts/security.mjs"
+  },
+  "dependencies": { "motion": "14.1.0" },
+  "devDependencies": {
+    "@axe-core/playwright": "4.13.0",
+    "@fontsource-variable/inter": "5.3.0",
+    "@playwright/test": "1.64.0",
+    "esbuild": "0.28.2"
+  }
+}
