@@ -2,9 +2,40 @@
 
 The production artifact is `dist/`. Build it once and publish it to a static host;
 the application needs no server functions, database, API key, or runtime secrets.
-Vercel is the planned initial route. Deployment is not established by this
-document: record the verified production URL and delivered revision in the README
-and build issue after publishing.
+The initial production host is Vercel, connected to this repository's `main`
+branch. The public domain is
+[animation-playground-murex.vercel.app](https://animation-playground-murex.vercel.app/).
+
+## Verified initial delivery
+
+| Item | Recorded result |
+| --- | --- |
+| Date | 10 October 2026 |
+| Source | [`ef45f94b1e0ef1b1446ae4261978f4ad853524b7`](https://github.com/spencer-life/animation-playground/commit/ef45f94b1e0ef1b1446ae4261978f4ad853524b7), merged through [PR #2](https://github.com/spencer-life/animation-playground/pull/2) |
+| Project | `animation-playground`, Git-linked to `spencer-life/animation-playground` |
+| Initial deployment | [`dpl_3z5Egh9z4cArqM1W7MZhPy2sWfBo`](https://vercel.com/spencer-schofields-projects/animation-playground/3z5Egh9z4cArqM1W7MZhPy2sWfBo) |
+| Deployment state | `READY`, target `production`, with the public domain verified independently |
+| Build | Frozen-lockfile installation used pnpm 11.25.0; `pnpm build` produced all 36 examples |
+| Verification | Public-host smoke check began at 21:03:27 UTC and passed in Chromium 153.0.8010.0 |
+
+The public root, catalog, and agent reference returned HTTP 200 without account
+authentication. The gallery rendered all 36 entries and an embedded example. A
+direct [shared-element workbench](https://animation-playground-murex.vercel.app/?animation=shared-element)
+opened and changed state through its actual control. Full-code copying matched
+the published standalone source exactly; Copy link and Copy for AI used the
+production hostname. The downloaded HTML matched the copied file and opened with
+browser networking disabled. Published native and Motion example files matched
+the locally validated build. The mobile workbench had no horizontal overflow,
+and the smoke check produced no page errors.
+
+The browser used the workspace's required HTTP proxy and its supplied CA for this
+temporary verification session. This is test-environment setup, not a setting
+required by visitors or by the application. See [validation](validation.md) for
+the full 58-test source run and its browser and accessibility limits.
+
+This commit and deployment provide a known working rollback reference. Later
+delivery-documentation changes do not alter the tested application source. The
+build issue records the final documentation merge and current production result.
 
 ## Build contract
 
@@ -52,7 +83,7 @@ it does not watch or rebuild source. Browser installation or audit access may be
 blocked in an environment; report those checks as unavailable until they can run.
 Do not infer browser-test success from a successful static build.
 
-## Initial Vercel route
+## Reproduce the Vercel setup
 
 Create or reuse the Vercel project linked to the specified repository, selecting
 the intended existing account/team and the build settings above. Inspect existing
