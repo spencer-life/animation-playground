@@ -6,6 +6,30 @@ The initial production host is Vercel, connected to this repository's `main`
 branch. The public domain is
 [animation-playground-murex.vercel.app](https://animation-playground-murex.vercel.app/).
 
+## Theme-aware hub delivery record
+
+The expansion in [issue #5](https://github.com/spencer-life/animation-playground/issues/5)
+was prepared in [PR #6](https://github.com/spencer-life/animation-playground/pull/6).
+Its initial validated application source was
+[`445f3647cf5d4511df2eb2fa726973a9f5751a57`](https://github.com/spencer-life/animation-playground/commit/445f3647cf5d4511df2eb2fa726973a9f5751a57).
+Vercel deployment
+[`dpl_HQyUpSkZ4NWavw72KrvjuayaXb9Q`](https://vercel.com/spencer-schofields-projects/animation-playground/HQyUpSkZ4NWavw72KrvjuayaXb9Q)
+reached `READY` as a preview with 44 studies, five project collections, and themed
+standalone exports. A subsequent Codex review correction strengthened accent-text
+contrast and Radix token exports; the PR and issue record the final reviewed head,
+merge, and verified production deployment. The full final suite passed 153 tests.
+
+The preview uses the project's existing Vercel Authentication setting. A
+temporary share-link session verified catalog/module delivery, selected colors,
+exact copy/download equality, native and Motion examples operating offline, and
+a 390-pixel workbench without page errors or horizontal overflow. Full results
+and limits are in the [hub validation record](hub-validation.md).
+
+The deployment above preserves the initial hub preview evidence. The public
+production domain follows reviewed merges to `main` through the existing Git
+integration and [Git workflow](git-workflow.md). Use issue #5 for the hub's latest
+delivery status. The initial delivery below remains a rollback reference.
+
 ## Verified initial delivery
 
 | Item | Recorded result |

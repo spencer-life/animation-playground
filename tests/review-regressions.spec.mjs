@@ -1,4 +1,7 @@
 import { test, expect } from '@playwright/test';
+import { readFile } from 'node:fs/promises';
+
+const catalog = JSON.parse(await readFile('dist/catalog.json', 'utf8'));
 
 // These checks exercise the review's interaction and lifecycle regressions.
 // The controlled clock is used only for bounded demonstration timers; visual
@@ -10,7 +13,7 @@ async function openWithStoppedClock(page, id) {
 }
 
 test('Play previews starts scenes that were first loaded paused', async ({ page }) => {
-  await page.addInitScript(() => localStorage.setItem('ap-playing', 'false'));
+  await page.addInitScript(() => { if (window.top === window) localStorage.setItem('ap-playing', 'false'); });
   await page.goto('/');
   const preview = page.frameLocator('iframe[data-preview="sliding-tabs"]');
   await expect(preview.locator('html')).toHaveAttribute('data-paused', 'true');
@@ -146,7 +149,7 @@ test('keyboard route changes focus the destination while search keeps typing foc
   await expect(page.locator('#detail-frame')).toBeVisible();
   await expect(page.locator('#main')).toBeFocused();
   await page.getByRole('button', { name: 'Back to the collection', exact: true }).press('Enter');
-  await expect(page.locator('.sample')).toHaveCount(36);
+  await expect(page.locator('.sample')).toHaveCount(catalog.count);
   await expect(page.locator('#main')).toBeFocused();
 
   await page.getByLabel('Search animations').fill('spring');

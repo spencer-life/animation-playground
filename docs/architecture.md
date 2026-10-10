@@ -3,26 +3,32 @@
 Animation Playground separates the browsing interface from each executable study.
 The gallery is a static JavaScript application; every example is a complete HTML
 document. The preview iframe, copied full example, and downloaded HTML all use the
-same generated document.
+same generated recipe source. A shared theme resolver applies the selected color
+roles to the preview and embeds those same roles in copied or downloaded HTML.
 
 ## Source ownership
 
 | Source | Responsibility |
 | --- | --- |
-| `src/recipes/interface.mjs` | Six feedback and six navigation recipes. |
-| `src/recipes/structure.mjs` | Six layout and six text recipes. |
-| `src/recipes/expressive.mjs` | Six entrance and six expressive recipes. |
+| `src/recipes/interface.mjs` | The original feedback and navigation recipes. |
+| `src/recipes/structure.mjs` | The original layout and text recipes. |
+| `src/recipes/expressive.mjs` | The original entrance and expressive recipes. |
+| `src/recipes/hub.mjs` | Eight additional loading, navigation, layout, chart, reading, and signature studies. |
+| `src/collections.mjs` | Five project collections, original-study curation, and required discovery metadata validation. |
+| `src/theme.mjs` | Palette definitions, semantic color resolution, validated theme settings, URL parameters, preview installation, and token exports. |
 | `src/demo-base.css` | Embedded typography, controls, layout helpers, motion tokens, and preference rules. |
 | `src/demo-runtime.js` | Embedded playback state, WAAPI wrapper, replay/settings callbacks, and cleanup. |
 | `src/motion-entry.js` | Explicit Motion exports bundled for the three spring studies. |
-| `src/app.js` | Catalog browsing, workbench, routing, copying, saving, and iframe coordination. |
+| `src/app.js` | Collection/category browsing, search and filters, workbench, routing, palette controls, copying, saving, and iframe coordination. |
 | `src/styles.css` and `src/index.html` | Responsive site shell, theme, markup, and loading fallback. |
 | `scripts/build.mjs` | Static output, bundled Motion, executable examples, metadata, and agent references. |
 | `scripts/serve.mjs` | Local HTTP server for the built `dist/` directory. |
 
-See the [recipe contract](recipe-contract.md) for fields and helper APIs. The build
-currently expects 36 recipes; changing the size of the collection requires updating
-that expectation and related content and checks together.
+See the [recipe contract](recipe-contract.md) for fields and helper APIs. The
+collection contains 44 studies. The build guards against accidentally dropping
+below that set; useful new studies can extend it when their complete source and
+required discovery metadata are provided. Update related documentation and
+applicable checks when changing the collection.
 
 ## Build outputs
 
@@ -30,13 +36,15 @@ that expectation and related content and checks together.
 
 | Output | Use |
 | --- | --- |
-| `catalog.json` | Compact schema-versioned metadata, IDs, categories, tags, timing, dependencies, source links, and paths. |
+| `catalog.json` | Compact schema-versioned collection definitions and recipe metadata: IDs, category, intent, collections, complexity, added date, tags, timing, dependencies, source links, and paths. |
+| `theme-presets.json` | Available palettes, accents, concrete appearance modes, defaults, semantic token names, and a link to the theming guide. |
 | `examples/{id}.html` | Complete runnable source for one study. |
 | `examples/{id}.json` | Workbench metadata, full HTML, compact study source, and copyable snippets with prerequisites. |
 | `examples/index.html` | A simple directory of standalone examples. |
 | `llms.txt` | Entry points for agents and other automated readers. |
 | `llms-full.txt` | Complete educational source, use constraints, timing, and source references for the collection. |
 | `assets/` | The gallery font and favicon. |
+| `theme.mjs` | The browser module shared by the gallery's live palette and export controls. Its resolver is also bundled into every standalone example. |
 | `.nojekyll` | Static publishing marker for hosts that recognize it. |
 
 The build also copies license and third-party notices when present. Preserve
@@ -49,9 +57,16 @@ The site shell fetches same-origin catalog and example JSON. Gallery previews ar
 sandboxed iframes with script permission, loaded near the viewport and paused
 when out of view. A gallery overlay opens the workbench; the workbench iframe
 provides the interactive example. Parent and child exchange only the documented
-playback messages, with sender-window checks.
+playback and theme messages, with sender-window checks.
 
-Every example embeds `window.Demo`. It provides current reduced-motion, paused,
+Every example embeds the theme resolver and `window.Demo`. The resolver validates
+its embedded configuration and URL overrides, then installs semantic CSS custom
+properties. Parent messages can update the same properties while a preview is
+open. All recipe colors consume those roles; raw palette values stay in the
+shared registry. The standalone fallback stylesheet supplies a coherent appearance
+before scripts run. See [theming](theming.md) for the complete color contract.
+
+`window.Demo` provides current reduced-motion, paused,
 and speed values; duration adjustment; `Demo.animate`; replay and settings hooks;
 and page cleanup. CSS tokens are embedded too. Read dynamic getters at the point
 of interaction rather than capturing a preference once. Cancel prior sequences
@@ -62,7 +77,7 @@ requests the educational motion even when activated by keyboard. Reduced motion
 still preserves an immediate readable state. Visibility changes pause active
 animations; page cleanup releases registered resources.
 
-The 33 native studies need no third-party runtime. `spring-orb`, `magnetic-button`,
+The 41 native studies need no third-party animation runtime. `spring-orb`, `magnetic-button`,
 and `drag-card` use Motion 14.1.0, which esbuild embeds into their individual HTML
 documents. The Motion code is not fetched from a CDN when the example runs.
 Standalone files use local/system typography and make no external asset requests.
@@ -70,20 +85,38 @@ Standalone files use local/system typography and make no external asset requests
 ## Navigation, persistence, and reuse
 
 Routing uses query parameters, so a static host does not need an application-route
-rewrite. A focused link is `?animation={id}`; category/search and the notes page
-also use query parameters. Recipe IDs also identify saved items and generated
-filenames. Preserve IDs or provide a deliberate compatibility migration.
+rewrite. A focused link is `?animation={id}`. Category, collection, intent,
+technology, complexity, sort order, search, and the notes page also use query
+parameters. Recipe IDs identify saved items and generated filenames. Preserve IDs
+or provide a deliberate compatibility migration.
 
-Favorites, theme, playback preference, and the user's reduced-motion choice use
-browser storage. The site has no account or synchronization service. When storage
-is unavailable, controls continue to work for the visit. Clipboard operations
+Collections describe five practical project contexts while categories describe
+the motion family. `src/collections.mjs` supplies reviewed metadata for the
+original 36 studies; new recipes declare their own intent, one to three valid
+collections, complexity, and added date. The build validates this metadata before
+producing the catalog. Search includes use cases and collection vocabulary.
+
+Theme parameters are `palette`, `mode`, `accent`, and `custom`. The gallery offers
+Match site in addition to Light and Dark. Copying a link or full example resolves
+Match site to the current concrete appearance, so another person's site setting
+does not change that reference. The chosen appearance is embedded in both the
+standalone stylesheet and its configuration; a valid URL override takes precedence.
+
+Favorites, the shell theme, palette/appearance preference, playback preference,
+and the user's reduced-motion choice use browser storage. The site has no account
+or synchronization service. When storage is unavailable, controls continue to
+work for the visit. Clipboard operations
 have a selection-based fallback and then a native manual-copy dialog.
 
-Agents can read `catalog.json` for discovery and `llms-full.txt` for explanations
-and study source. The full standalone HTML is the executable authority because it
-also contains the shared styles and runtime. Copying one study into another
-project should preserve its behavior and constraints while adopting that project's
-existing tokens and component primitives.
+Agents can read `catalog.json` for discovery, `theme-presets.json` for palette
+options, and `llms-full.txt` for explanations and study source. The full standalone
+HTML is the executable authority because it also contains the shared styles,
+theme resolver, and runtime. Copying one study into another project should
+preserve its behavior and constraints while adopting that project's existing
+tokens and component primitives. The Colors tab exports `.animation-theme`
+wrappers with literal values or scoped host aliases. Radix aliases require active
+gray and selected-accent scales; Geist aliases map neutral roles and retain the
+selected accent's fallback values.
 
 ## Deployment boundary
 
