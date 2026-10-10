@@ -52,6 +52,47 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
+## Radix Colors
+
+Selected Slate neutral and accent scale values are included in `src/theme.mjs`
+and in the theme resolver embedded in each standalone example. Sources:
+[`src/light.ts`](https://github.com/radix-ui/colors/blob/main/src/light.ts) and
+[`src/dark.ts`](https://github.com/radix-ui/colors/blob/main/src/dark.ts).
+The following notice was retrieved from the
+[official license](https://github.com/radix-ui/colors/blob/main/LICENSE) on
+October 10, 2026. No exact upstream commit is asserted for these palette values.
+
+MIT License
+
+Copyright (c) 2021-2022 Modulz
+Copyright (c) 2022-Present WorkOS
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+## Geist-inspired preview
+
+The neutral preview is an original adaptation informed by the
+[official Geist color documentation](https://vercel.com/geist/colors). It does
+not bundle Vercel's complete design system. Optional neutral token aliases resolve
+tokens supplied by a receiving project; the selected accent remains a local value.
+No Vercel endorsement is implied.
+
 ## Inter Variable 5.3.0 package
 
 The site self-hosts the Inter Latin variable font from @fontsource-variable/inter. The font retains its SIL Open Font License. Standalone examples use the system font stack and do not need a font download.

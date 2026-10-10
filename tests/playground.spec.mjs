@@ -6,11 +6,11 @@ const catalog = JSON.parse(await readFile('dist/catalog.json','utf8'));
 
 test('catalog search, category and saved state remain useful across reloads',async ({page}) => {
   await page.goto('/');
-  await expect(page.locator('.sample')).toHaveCount(36);
+  await expect(page.locator('.sample')).toHaveCount(catalog.count);
   await page.getByLabel('Search animations').fill('spring');
   await expect(page.locator('.sample').first()).toBeVisible();
   expect(await page.locator('.sample').count()).toBeGreaterThan(0);
-  expect(await page.locator('.sample').count()).toBeLessThan(36);
+  expect(await page.locator('.sample').count()).toBeLessThan(catalog.count);
   await page.getByLabel('Search animations').fill('<nothing matches this>');
   await expect(page.getByRole('heading',{name:'No matching animations.'})).toBeVisible();
   await page.getByRole('button',{name:'Browse all animations'}).click();
@@ -41,12 +41,16 @@ test('workbench exposes exact runnable source, reference tabs and a portable AI 
   expect(prompt).toContain('examples/sliding-tabs.html');
   expect(prompt).toContain('Reduced motion:');
   await page.getByRole('button',{name:'Copy link',exact:true}).click();
-  expect(await page.evaluate(() => navigator.clipboard.readText())).toBe('http://127.0.0.1:4173/?animation=sliding-tabs');
+  const shared = new URL(await page.evaluate(() => navigator.clipboard.readText()));
+  expect(shared.origin).toBe('http://127.0.0.1:4173');
+  expect(shared.searchParams.get('animation')).toBe('sliding-tabs');
+  expect(shared.searchParams.get('palette')).toBe('original');
+  expect(shared.searchParams.get('mode')).toBe('light');
   await page.getByRole('tab',{name:'Code',exact:true}).focus();
   await page.keyboard.press('ArrowRight');
   await expect(page.getByRole('tab',{name:'How it works'})).toBeFocused();
   await page.getByRole('button',{name:'Back to the collection',exact:true}).click();
-  await expect(page.locator('.sample')).toHaveCount(36);
+  await expect(page.locator('.sample')).toHaveCount(catalog.count);
   await page.goBack();
   await expect(page.locator('#detail-frame')).toBeVisible();
 });
@@ -67,7 +71,7 @@ test('reduced motion follows OS preference and all examples remain readable',asy
 
 test('keyboard search shortcut and theme are functional',async ({page}) => {
   await page.goto('/');
-  await expect(page.locator('.sample')).toHaveCount(36);
+  await expect(page.locator('.sample')).toHaveCount(catalog.count);
   await page.keyboard.press('/');
   await expect(page.getByLabel('Search animations')).toBeFocused();
   const old = await page.locator('html').getAttribute('data-theme');

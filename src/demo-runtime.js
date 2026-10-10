@@ -4,7 +4,7 @@
   const media = matchMedia('(prefers-reduced-motion: reduce)');
   const params = new URLSearchParams(location.search);
   const settings = {
-    reduced: media.matches || params.get('reduced') === 'true',
+    reduced: params.has('reduced') ? params.get('reduced') === 'true' : media.matches,
     paused: params.get('paused') === 'true',
     speed: [0.25, 0.5, 1].includes(Number(params.get('speed'))) ? Number(params.get('speed')) : 1,
   };

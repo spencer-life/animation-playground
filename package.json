@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "description": "A portable, interactive library of 36 carefully considered web animations.",
+  "description": "A theme-aware hub of portable web animations for everyday projects and expressive details.",
   "license": "MIT",
   "packageManager": "pnpm@11.25.0",
   "engines": { "node": ">=24" },

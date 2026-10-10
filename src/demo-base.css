@@ -4,16 +4,29 @@
   --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
   --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
   --time-scale: 1;
-  --ink: #20242b;
+  --demo-bg: #e8e4f3;
+  --ink: #302a3c;
+  --on-ink: #ffffff;
   --paper: #ffffff;
-  --accent: #3358d4;
-  --muted: #57616f;
+  --accent: #6550a2;
+  --accent-ink: #6550a2;
+  --accent-hover: #54418d;
+  --accent-soft: #e8e0f6;
+  --on-accent: #ffffff;
+  --muted: #655d73;
+  --line: #c4bacf;
+  --success: #326e4d;
+  --danger: #ae4238;
+  --art-1: #a592d0;
+  --art-2: #d1ab91;
+  --art-3: #94afba;
+  --shadow: #251c3830;
 }
 * { box-sizing: border-box; }
 html, body { width: 100%; min-height: 100%; margin: 0; }
-html { height: 100%; background: transparent; }
+html { height: 100%; background: var(--demo-bg); }
 body {
-  height: 100%; color: var(--ink); background: transparent;
+  height: 100%; color: var(--ink); background: var(--demo-bg);
   font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: 16px; line-height: 1.45; -webkit-font-smoothing: antialiased;
 }
@@ -24,23 +37,23 @@ button:disabled { cursor: wait; }
 button:focus-visible, a:focus-visible, input:focus-visible, summary:focus-visible, [tabindex]:focus-visible {
   outline: 3px solid var(--accent); outline-offset: 5px;
 }
-input, textarea { font-size: 16px; }
+input, textarea { font-size: 16px; caret-color: var(--accent); }
 svg { display: block; max-width: 100%; }
 .study-icon { display: inline-block; vertical-align: -.14em; flex: none; }
 p, h1, h2, h3 { margin: 0; }
-::selection { color: #fff; background: #3358d4; }
+::selection { color: var(--on-accent); background: var(--accent); }
 .stage {
   min-height: 100%; width: 100%; display: flex; flex-direction: column;
   justify-content: center; align-items: center; gap: 20px; padding: 26px 20px;
 }
 .demo-button {
   min-height: 44px; padding: 11px 19px; border: 0; border-radius: 10px;
-  background: var(--ink); color: white; font-size: 14px; font-weight: 600;
+  background: var(--ink); color: var(--on-ink); font-size: 14px; font-weight: 600;
   line-height: 1.2; display: inline-flex; gap: 8px; align-items: center; justify-content: center;
   transition: transform calc(160ms * var(--time-scale)) var(--ease-out);
 }
 .demo-button:active { transform: scale(0.97); }
-.demo-button.secondary { background: #fff; color: var(--ink); }
+.demo-button.secondary { background: var(--paper); color: var(--ink); }
 .demo-label { font-size: 12px; line-height: 1.5; color: var(--muted); text-align: center; }
 .demo-row { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; }
 [hidden] { display: none !important; }
