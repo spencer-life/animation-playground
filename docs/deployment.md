@@ -12,7 +12,7 @@ and build issue after publishing.
 | --- | --- |
 | Source repository | `spencer-life/animation-playground` |
 | Build directory | Repository root |
-| Node | 24 or a compatible newer version permitted by `package.json` |
+| Node | 24.x on Vercel; the local validation used 24.19.0 |
 | Install command | `pnpm install --frozen-lockfile` |
 | Build command | `pnpm build` |
 | Published directory | `dist` |
@@ -22,6 +22,13 @@ and build issue after publishing.
 Use the package-manager version declared in `package.json`. Installation must
 include build dependencies because the build embeds Motion and copies the local
 font. Do not run the local preview server as the production service.
+
+For Vercel builds, set the non-secret configuration variable
+`ENABLE_EXPERIMENTAL_COREPACK=1` for production and preview. This selects the pinned
+package-manager version from `package.json`, following
+[Vercel's Corepack guidance](https://vercel.com/docs/builds/configure-a-build).
+This is build configuration; the published static application needs no environment
+variables or secrets at runtime.
 
 ## Verify the artifact before publishing
 

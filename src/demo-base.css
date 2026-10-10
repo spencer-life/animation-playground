@@ -26,6 +26,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, summary:focus-visibl
 }
 input, textarea { font-size: 16px; }
 svg { display: block; max-width: 100%; }
+.study-icon { display: inline-block; vertical-align: -.14em; flex: none; }
 p, h1, h2, h3 { margin: 0; }
 ::selection { color: #fff; background: #3358d4; }
 .stage {

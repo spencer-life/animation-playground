@@ -1,4 +1,6 @@
 /* Original, portable motion studies. MIT. See each recipe's source field for the upstream principle. */
+import { recipeIcon } from '../recipe-icons.mjs';
+
 export default [
   {
     id: "staggered-list",
@@ -173,7 +175,7 @@ export default [
     html: `<main class="stage dialog-stage">
   <button class="demo-button secondary dialog-launch" data-launch>Open dialog</button>
   <dialog class="study-dialog" open aria-labelledby="dialog-title" aria-describedby="dialog-description">
-    <span class="dialog-emblem" aria-hidden="true">✳</span>
+    <span class="dialog-emblem" aria-hidden="true">${recipeIcon("spark", 18)}</span>
     <h2 id="dialog-title">Room to think.</h2>
     <p id="dialog-description">One small decision. Everything else can wait.</p>
     <button class="demo-button" data-dismiss>Got it</button>
@@ -274,9 +276,9 @@ export default [
     html: `<main class="stage sheet-stage">
   <button class="demo-button secondary sheet-launch" data-launch>Open sheet</button>
   <dialog class="study-sheet" open aria-labelledby="sheet-title">
-    <header><h2 id="sheet-title">Make it yours</h2><button class="sheet-close" data-dismiss aria-label="Close sheet">×</button></header>
+    <header><h2 id="sheet-title">Make it yours</h2><button class="sheet-close" data-dismiss aria-label="Close sheet">${recipeIcon("close", 16)}</button></header>
     <p>Choose a format. This is a motion demo.</p>
-    <button class="sheet-option" data-dismiss><span class="file-symbol" aria-hidden="true">‹/›</span><span>Standalone HTML<small>One file, ready to explore</small></span><span class="option-arrow" aria-hidden="true">↗</span></button>
+    <button class="sheet-option" data-dismiss><span class="file-symbol" aria-hidden="true">${recipeIcon("code", 17)}</span><span>Standalone HTML<small>One file, ready to explore</small></span><span class="option-arrow" aria-hidden="true">${recipeIcon("arrow", 16)}</span></button>
   </dialog>
 </main>`,
     css: `.sheet-stage { position: relative; overflow: hidden; min-height: 230px; height: 100%; }
@@ -288,7 +290,7 @@ export default [
 .study-sheet p { margin: 1px 0 13px; font-size: 10px; color: #627185; }
 .sheet-option { width: 100%; min-height: 50px; padding: 9px; display: flex; align-items: center; gap: 10px; border: 0; border-radius: 11px; text-align: left; background: #edf2f9; color: #293646; font-size: 11px; font-weight: 600; }
 .file-symbol { display: grid; place-items: center; width: 29px; height: 32px; border-radius: 6px; background: #fff; color: #4f6f9b; font-size: 15px; }
-.sheet-option small { display: block; margin-top: 2px; color: #64758b; font-size: 9px; font-weight: 400; }
+.sheet-option small { display: block; margin-top: 2px; color: #52657e; font-size: 9px; font-weight: 400; }
 .option-arrow { margin-left: auto; font-size: 17px; color: #627da1; }
 .study-sheet::backdrop { background: #202b4426; opacity: 1; transition: opacity calc(300ms * var(--time-scale)) var(--ease-drawer); }
 .study-sheet[data-closing]::backdrop { opacity: 0; }
@@ -453,14 +455,12 @@ export default [
     source: "animate/RECIPES.md",
     html: `<main class="stage">
   <section class="welcome-panel" aria-labelledby="welcome-title">
-    <span class="panel-index">A fresh start</span>
     <div class="welcome-emblem" aria-hidden="true"><span></span><span></span><span></span></div>
     <div class="welcome-copy"><h2 id="welcome-title">Space for good ideas.</h2><p>A little structure. A lot of possibility.</p></div>
-    <button class="welcome-action" type="button" aria-pressed="false">Make some room <span aria-hidden="true">↗</span></button>
+    <button class="welcome-action" type="button" aria-pressed="false">Make some room <span aria-hidden="true">${recipeIcon("arrow", 14)}</span></button>
   </section>
 </main>`,
     css: `.welcome-panel { position: relative; display: flex; flex-direction: column; align-items: center; width: min(100%, 258px); padding: 15px 18px 13px; border-radius: 18px; background: #fbfdf8; color: #354537; box-shadow: 0 3px 0 #3c58400a; }
-.panel-index { align-self: flex-start; font-size: 9px; color: #687a66; }
 .welcome-emblem { position: relative; width: 58px; height: 48px; margin: 6px 0 9px; }
 .welcome-emblem span { position: absolute; bottom: 0; width: 21px; border-radius: 6px; background: #829875; }
 .welcome-emblem span:nth-child(1) { height: 31px; left: 0; transform: rotate(-12deg); background: #d3ddc4; }
@@ -665,7 +665,7 @@ action.addEventListener('click', () => {
     source: "emil-design-eng/SKILL.md",
     usesMotion: true,
     html: `<main class="stage magnetic-stage">
-  <button class="magnetic-hit" aria-pressed="false"><span class="magnetic-face"><span class="magnetic-label">Stay curious</span><span class="magnetic-arrow" aria-hidden="true">↗</span></span></button>
+  <button class="magnetic-hit" aria-pressed="false"><span class="magnetic-face"><span class="magnetic-label">Stay curious</span><span class="magnetic-arrow" aria-hidden="true">${recipeIcon("arrow", 15)}</span></span></button>
   <p class="demo-label">A little pull. A steady target.</p>
 </main>`,
     css: `.magnetic-stage { gap: 5px; }
@@ -780,7 +780,7 @@ action.addEventListener('click', () => {
     featured: true,
     html: `<main class="stage drag-stage">
   <div class="drag-track"><span class="snap-guide guide-left" aria-hidden="true"></span><span class="snap-guide guide-middle" aria-hidden="true"></span><span class="snap-guide guide-right" aria-hidden="true"></span>
-    <button class="drag-note" aria-label="Move note. Drag sideways, use arrow keys, or press to cycle positions." aria-describedby="drag-help"><span class="note-top"><span>No. 07</span><span aria-hidden="true">✳</span></span><span class="note-title">Good things<br>take shape.</span><span class="note-dots" aria-hidden="true">···</span></button>
+    <button class="drag-note" aria-label="Move note. Drag sideways, use arrow keys, or press to cycle positions." aria-describedby="drag-help"><span class="note-top"><span>No. 07</span><span aria-hidden="true">${recipeIcon("spark", 16)}</span></span><span class="note-title">Good things<br>take shape.</span></button>
   </div>
   <div class="drag-controls" aria-label="Note position"><button data-snap="-1" aria-pressed="false">Left</button><button data-snap="0" aria-pressed="true">Center</button><button data-snap="1" aria-pressed="false">Right</button></div>
   <p class="demo-label" id="drag-help">Drag sideways, or choose a position.</p>
@@ -791,10 +791,9 @@ action.addEventListener('click', () => {
 .guide-left { left: 24%; }.guide-right { left: 73%; }
 .drag-note { position: absolute; left: calc(50% - 68px); top: 0; width: 136px; height: 103px; padding: 12px 14px; border: 0; border-radius: 12px; color: #fff6e8; background: #985f46; box-shadow: 0 3px 0 #77433216; text-align: left; cursor: grab; user-select: none; touch-action: pan-y pinch-zoom; }
 .drag-note[data-dragging] { cursor: grabbing; background: #8b533d; }
-.note-top { display: flex; align-items: center; justify-content: space-between; font-size: 8px; color: #ead3c3; }
-.note-top span:last-child { font-size: 18px; line-height: 1; }
+.note-top { display: flex; align-items: center; justify-content: space-between; font-size: 8px; color: #fff6e8; }
+.note-top span:last-child { display: inline-flex; align-items: center; line-height: 1; }
 .note-title { display: block; margin-top: 7px; font-size: 16px; line-height: 1.14; letter-spacing: -.025em; font-weight: 600; }
-.note-dots { position: absolute; right: 14px; bottom: 9px; color: #e3bca1; font-size: 17px; letter-spacing: 1px; }
 .drag-controls { display: flex; gap: 5px; }
 .drag-controls button { min-height: 35px; padding: 7px 14px; border: 0; border-radius: 9px; background: #fff8ef99; color: #795842; font-size: 10px; }
 .drag-controls button[aria-pressed="true"] { background: #fffaf4; color: #553822; box-shadow: 0 2px 0 #7954320a; }
@@ -1030,8 +1029,8 @@ syncOrbitControl();`
     html: `<main class="stage flip-stage">
   <button class="flip-card" data-flipped="false" aria-pressed="false" aria-label="Show the reverse side" aria-describedby="flip-front-content">
     <span class="flip-turn">
-      <span class="flip-face flip-front" id="flip-front-content" aria-hidden="false"><span class="flip-kicker">A different point of view</span><span class="flip-heading">There’s more<br>to the story.</span><span class="flip-corner" aria-hidden="true">↗</span><span class="flip-footer">Tap to turn</span></span>
-      <span class="flip-face flip-back" id="flip-back-content" aria-hidden="true"><span class="flip-kicker">The other side</span><span class="flip-heading">Same object.<br>New perspective.</span><span class="flip-footer">180° · 800px perspective</span><span class="flip-corner" aria-hidden="true">↶</span></span>
+      <span class="flip-face flip-front" id="flip-front-content" aria-hidden="false"><span class="flip-heading">There’s more<br>to the story.</span><span class="flip-corner" aria-hidden="true">${recipeIcon("arrow", 18)}</span><span class="flip-footer">Tap to turn</span></span>
+      <span class="flip-face flip-back" id="flip-back-content" aria-hidden="true"><span class="flip-kicker">The other side</span><span class="flip-heading">Same object.<br>New perspective.</span><span class="flip-footer">180° · 800px perspective</span><span class="flip-corner" aria-hidden="true">${recipeIcon("undo", 18)}</span></span>
     </span>
   </button>
   <p class="demo-label">Turn it. Turn it back.</p>
@@ -1045,7 +1044,8 @@ syncOrbitControl();`
 .flip-back { background: #dde6cd; color: #354937; transform: rotateY(180deg); }
 .flip-kicker { display: block; font-size: 9px; opacity: .85; }
 .flip-heading { display: block; margin-top: 11px; font-size: 21px; font-weight: 550; line-height: 1.12; letter-spacing: -.025em; }
-.flip-corner { position: absolute; top: 44px; right: 18px; font-size: 36px; color: #b6ca9b; }
+.flip-front .flip-heading { margin-top: 24px; }
+.flip-corner { position: absolute; top: 17px; right: 18px; display: grid; place-items: center; width: 18px; height: 18px; color: #b6ca9b; }
 .flip-back .flip-corner { color: #6b8553; }
 .flip-footer { position: absolute; left: 18px; bottom: 15px; font-size: 9px; opacity: .85; }
 :root[data-reduced="true"] .flip-turn { transform: none !important; }

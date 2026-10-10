@@ -21,7 +21,8 @@ for (const recipe of recipes) {
   assert(!/<script\b/i.test(recipe.html),`${recipe.id}: put behavior in js for source consistency.`);
   new vm.Script(`(() => {\n${recipe.js}\n})();`,{filename:recipe.id});
   assert(recipe.js.includes('Demo.onReplay'),`${recipe.id}: replay contract required.`);
-  assert(!/https?:\/\//.test(recipe.html),`${recipe.id}: previews must not fetch external images/scripts.`);
+  // An SVG namespace URI identifies markup; resource attributes load content.
+  assert(!/\b(?:src|srcset|href|xlink:href|poster)\s*=\s*["']\s*(?:https?:)?\/\//i.test(recipe.html),`${recipe.id}: previews must not fetch external assets.`);
 }
 for (const file of ['src/app.js','src/demo-runtime.js']) new vm.Script(await readFile(file,'utf8'),{filename:file});
 const packageJson = JSON.parse(await readFile('package.json','utf8'));

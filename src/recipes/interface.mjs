@@ -1,6 +1,8 @@
 // Original examples informed by Emil Kowalski's MIT-licensed animation skills.
 // The build embeds each recipe's complete markup, styles, script and runtime.
 
+import { recipeIcon } from '../recipe-icons.mjs';
+
 const timeline = String.raw`
 // Delays use logical milliseconds: pausing keeps the remaining time, and a
 // playback-rate change only changes how fast that remaining time passes.
@@ -532,9 +534,9 @@ Demo.onCleanup(() => motion?.cancel());
       <button id="tab-notes" type="button" role="tab" aria-selected="false" aria-controls="panel-notes" tabindex="-1">Notes</button>
       <span class="tab-indicator" aria-hidden="true"></span>
     </div>
-    <div class="tab-panel" id="panel-overview" role="tabpanel" aria-labelledby="tab-overview" tabindex="0"><span class="tab-eyebrow">The next chapter</span><strong>A little more room to play.</strong><span>12 ideas in progress</span></div>
-    <div class="tab-panel" id="panel-activity" role="tabpanel" aria-labelledby="tab-activity" tabindex="0" hidden><span class="tab-eyebrow">Recently added</span><strong>Three fresh experiments.</strong><span>Updated a moment ago</span></div>
-    <div class="tab-panel" id="panel-notes" role="tabpanel" aria-labelledby="tab-notes" tabindex="0" hidden><span class="tab-eyebrow">Worth remembering</span><strong>Small details add up.</strong><span>Keep the useful ones close</span></div>
+    <div class="tab-panel" id="panel-overview" role="tabpanel" aria-labelledby="tab-overview" tabindex="0"><strong>A little more room to play.</strong><span>12 ideas in progress</span></div>
+    <div class="tab-panel" id="panel-activity" role="tabpanel" aria-labelledby="tab-activity" tabindex="0" hidden><strong>Three fresh experiments.</strong><span>Updated a moment ago</span></div>
+    <div class="tab-panel" id="panel-notes" role="tabpanel" aria-labelledby="tab-notes" tabindex="0" hidden><strong>Small details add up.</strong><span>Keep the useful ones close</span></div>
   </section>
 </main>`,
     css: String.raw`
@@ -543,10 +545,9 @@ Demo.onCleanup(() => motion?.cancel());
 .tab-row [role="tab"] { flex: 1; min-width: 0; min-height: 42px; padding: 8px 6px; border: 0; border-radius: 5px; background: transparent; color: #77756e; font-size: 12px; font-weight: 550; }
 .tab-row [aria-selected="true"] { color: #373b32; }
 .tab-indicator { position: absolute; left: 0; bottom: 0; width: 1px; height: 3px; background: #697556; transform-origin: left center; transition: transform calc(220ms * var(--time-scale)) var(--ease-in-out); }
-.tab-panel { display: flex; flex-direction: column; gap: 6px; min-height: 92px; padding: 17px 5px 0; }
+.tab-panel { display: flex; flex-direction: column; justify-content: center; gap: 6px; min-height: 92px; padding: 14px 5px; }
 .tab-panel strong { font-size: 14px; font-weight: 550; line-height: 1.35; }
 .tab-panel > span:last-child { font-size: 11px; color: #77756e; }
-.tab-eyebrow { color: #7b835f; font-size: 10px; }
 `,
     js: timeline + String.raw`
 const tabs = [...document.querySelectorAll('[role="tab"]')];
@@ -680,7 +681,7 @@ Demo.onCleanup(() => observer.disconnect());
   <section class="menu-card" aria-label="Navigation example">
     <header><strong>Little studio</strong><button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="sample-navigation"><span class="menu-lines" aria-hidden="true"><span></span><span></span></span></button></header>
     <p class="menu-note">A small gesture for opening things up.</p>
-    <nav id="sample-navigation" aria-label="Sample navigation" hidden><button type="button">Projects<span aria-hidden="true">↗</span></button><button type="button">Field notes<span aria-hidden="true">↗</span></button></nav>
+    <nav id="sample-navigation" aria-label="Sample navigation" hidden><button type="button">Projects<span aria-hidden="true">${recipeIcon('arrow')}</span></button><button type="button">Field notes<span aria-hidden="true">${recipeIcon('arrow')}</span></button></nav>
   </section>
 </main>`,
     css: String.raw`
@@ -747,8 +748,8 @@ Demo.onReplay(() => {
   </div>
   <section id="quick-actions" class="quick-actions" popover="auto" aria-label="Quick actions">
     <p>Keep this idea close</p>
-    <button type="button" data-action="Pinned for later in this demo."><span aria-hidden="true">↗</span>Pin for later</button>
-    <button type="button" data-action="Added to a collection in this demo."><span aria-hidden="true">＋</span>Add to collection</button>
+    <button type="button" data-action="Pinned for later in this demo."><span aria-hidden="true">${recipeIcon('arrow', 15)}</span>Pin for later</button>
+    <button type="button" data-action="Added to a collection in this demo."><span aria-hidden="true">${recipeIcon('plus', 15)}</span>Add to collection</button>
   </section>
 </main>`,
     css: String.raw`

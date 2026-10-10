@@ -1,10 +1,11 @@
+import { recipeIcon } from '../recipe-icons.mjs';
+
 // These helpers are concatenated into each recipe's standalone stylesheet.
 // The build also embeds the documented Demo runtime and shared base styles.
 const shared = `
 .structure-stage { padding: 20px; gap: 16px; }
 .structure-stage * { box-sizing: border-box; }
 .structure-stage .demo-button { min-height: 44px; max-width: 100%; font-size: 13px; }
-.study-kicker { margin: 0; color: var(--muted); font-size: 11px; line-height: 1.4; font-weight: 550; }
 .study-note { margin: 0; color: var(--muted); font-size: 11px; line-height: 1.5; text-align: center; }
 .study-sr { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
 .structure-stage button { touch-action: manipulation; -webkit-tap-highlight-color: transparent; user-select: none; }
@@ -31,7 +32,6 @@ export default [
     reducedMotion: 'The native disclosure changes state immediately, with all text available.',
     source: 'animate/RECIPES.md',
     html: `<main class="stage structure-stage accordion-stage">
-  <p class="study-kicker">A little more context</p>
   <details class="measured-details" open>
     <summary><span>Why does this feel calm?</span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m5 8 5 5 5-5"/></svg></summary>
     <div class="accordion-copy"><p>One surface opens. The content stays connected to the question that revealed it.</p><span class="accordion-meta">Small movement. Clear relationship.</span></div>
@@ -109,10 +109,10 @@ Demo.onCleanup(settle);`,
     source: 'animate/SKILL.md',
     html: `<main class="stage structure-stage">
   <ol class="flip-grid" aria-label="Four design notes">
-    <li class="flip-tile tile-violet"><span class="tile-symbol" aria-hidden="true">✳</span><span>Shape</span><small>01</small></li>
-    <li class="flip-tile tile-cream"><span class="tile-symbol" aria-hidden="true">◒</span><span>Space</span><small>02</small></li>
-    <li class="flip-tile tile-blue"><span class="tile-symbol" aria-hidden="true">↗</span><span>Motion</span><small>03</small></li>
-    <li class="flip-tile tile-green"><span class="tile-symbol" aria-hidden="true">◈</span><span>Detail</span><small>04</small></li>
+    <li class="flip-tile tile-violet"><span class="tile-symbol" aria-hidden="true">${recipeIcon('spark', 26)}</span><span>Shape</span><small>01</small></li>
+    <li class="flip-tile tile-cream"><span class="tile-symbol" aria-hidden="true">${recipeIcon('half-circle', 26)}</span><span>Space</span><small>02</small></li>
+    <li class="flip-tile tile-blue"><span class="tile-symbol" aria-hidden="true">${recipeIcon('arrow', 26)}</span><span>Motion</span><small>03</small></li>
+    <li class="flip-tile tile-green"><span class="tile-symbol" aria-hidden="true">${recipeIcon('diamond', 26)}</span><span>Detail</span><small>04</small></li>
   </ol>
   <button class="demo-button" type="button">Reorder grid</button>
   <span class="study-sr flip-status" role="status"></span>
@@ -121,7 +121,7 @@ Demo.onCleanup(settle);`,
 .flip-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; width: 100%; max-width: 300px; margin: 0; padding: 0; list-style: none; }
 .flip-tile { position: relative; display: flex; align-items: center; gap: 9px; min-height: 61px; padding: 12px; border-radius: 13px; color: #303341; font-size: 12px; font-weight: 600; }
 .flip-tile small { position: absolute; right: 9px; top: 6px; font-size: 9px; font-weight: 500; color: #514b60; }
-.tile-symbol { font-size: 26px; line-height: 1; }
+.tile-symbol { display: inline-flex; align-items: center; flex: none; line-height: 1; }
 .tile-violet { background: #dcd6eb; } .tile-cream { background: #eee5d2; } .tile-blue { background: #d5e0ed; } .tile-green { background: #d8e4db; }
 @media (min-height: 320px) { .flip-tile { min-height: 80px; padding: 18px; } }
 `,
@@ -241,11 +241,11 @@ Demo.onCleanup(() => { stop(); window.removeEventListener('resize', stop); });`,
     source: 'review-animations/STANDARDS.md',
     html: `<main class="stage structure-stage">
   <div class="stack-deck">
-    <article class="stack-card" data-slot="0"><span>Field notes / 01</span><h3>Small details.<br>Lasting impressions.</h3><b aria-hidden="true">↗</b></article>
-    <article class="stack-card" data-slot="1" aria-hidden="true"><span>Field notes / 02</span><h3>Make space<br>for a little quiet.</h3><b aria-hidden="true">◒</b></article>
-    <article class="stack-card" data-slot="2" aria-hidden="true"><span>Field notes / 03</span><h3>A clear path<br>to what comes next.</h3><b aria-hidden="true">✳</b></article>
+    <article class="stack-card" data-slot="0"><span>Field notes / 01</span><h3>Small details.<br>Lasting impressions.</h3><b aria-hidden="true">${recipeIcon('arrow', 21)}</b></article>
+    <article class="stack-card" data-slot="1" aria-hidden="true"><span>Field notes / 02</span><h3>Make space<br>for a little quiet.</h3><b aria-hidden="true">${recipeIcon('half-circle', 21)}</b></article>
+    <article class="stack-card" data-slot="2" aria-hidden="true"><span>Field notes / 03</span><h3>A clear path<br>to what comes next.</h3><b aria-hidden="true">${recipeIcon('spark', 21)}</b></article>
   </div>
-  <button class="demo-button" type="button">Next card <span aria-hidden="true">↗</span></button>
+  <button class="demo-button" type="button">Next card <span aria-hidden="true">${recipeIcon('arrow')}</span></button>
   <span class="study-sr stack-status" role="status">Card 1 of 3</span>
 </main>`,
     css: `${shared}
@@ -256,7 +256,7 @@ Demo.onCleanup(() => { stop(); window.removeEventListener('resize', stop); });`,
 .stack-card[data-slot="1"] { transform: translateY(8px) rotate(-5deg) scale(.97); z-index: 2; opacity: 1; }
 .stack-card[data-slot="2"] { transform: translateY(14px) rotate(5deg) scale(.94); z-index: 1; opacity: 1; }
 .stack-card > span { color: #433e50; font-size: 9px; } .stack-card h3 { margin: 13px 0 0; font-size: 17px; font-weight: 600; line-height: 1.17; letter-spacing: -.015em; }
-.stack-card b { position: absolute; top: 12px; right: 14px; font-size: 21px; font-weight: 400; }
+.stack-card b { position: absolute; display: inline-flex; top: 12px; right: 14px; }
 .stack-deck[data-static="true"] .stack-card, .stack-deck.is-reset .stack-card { transition: none; }
 @media (prefers-reduced-motion: reduce) { .stack-card { transition: none; } }
 `,
@@ -303,9 +303,9 @@ Demo.onSettings(settings);`,
     html: `<main class="stage structure-stage">
   <article class="expand-note">
     <div class="expand-surface" aria-hidden="true"></div>
-    <div class="expand-heading"><div class="expand-mark" aria-hidden="true">◒</div><div><p>Field note 017</p><h3>Soft geometry</h3></div></div>
+    <div class="expand-heading"><div class="expand-mark" aria-hidden="true">${recipeIcon('half-circle', 25)}</div><div><p>Field note 017</p><h3>Soft geometry</h3></div></div>
     <div class="expand-copy" id="note-detail" hidden><p>Keep one familiar shape as the anchor. Let the extra detail arrive around it.</p></div>
-    <button class="expand-trigger" type="button" aria-expanded="false" aria-controls="note-detail">Read note <span aria-hidden="true">↗</span></button>
+    <button class="expand-trigger" type="button" aria-expanded="false" aria-controls="note-detail">Read note <span aria-hidden="true">${recipeIcon('arrow')}</span></button>
   </article>
   <p class="study-note">One note, a little more room.</p>
 </main>`,
@@ -314,7 +314,7 @@ Demo.onSettings(settings);`,
 .expand-surface { position: absolute; inset: 0; background: #f8fbf5; border-radius: 17px; transform-origin: top left; }
 .expand-heading, .expand-copy, .expand-trigger { position: relative; }
 .expand-heading { display: flex; align-items: center; gap: 12px; }
-.expand-mark { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; color: #566d50; background: #e0e8d9; font-size: 25px; flex: none; }
+.expand-mark { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; color: #566d50; background: #e0e8d9; flex: none; }
 .expand-heading p { margin: 0 0 4px; color: #697662; font-size: 9px; }
 .expand-heading h3 { margin: 0; font-size: 17px; font-weight: 600; letter-spacing: -.012em; }
 .expand-copy p { margin: 13px 0 0; color: #53644f; font-size: 12px; line-height: 1.5; }
@@ -378,12 +378,12 @@ Demo.onCleanup(() => { stop(); window.removeEventListener('resize', stop); });`,
     html: `<main class="stage structure-stage activity-stage">
   <section class="activity-card" aria-labelledby="activity-title"><h3 id="activity-title">Activity history <span>Demo</span></h3>
     <ol class="activity-list">
-      <li class="activity-entry" style="transform: translateY(0)"><i aria-hidden="true">✓</i><span>Draft saved</span><small>01</small></li>
-      <li class="activity-entry" style="transform: translateY(32px)"><i aria-hidden="true">✓</i><span>Colors checked</span><small>02</small></li>
-      <li class="activity-entry" style="transform: translateY(64px)"><i aria-hidden="true">✓</i><span>Collection created</span><small>03</small></li>
+      <li class="activity-entry" style="transform: translateY(0)"><i aria-hidden="true">${recipeIcon('check', 11)}</i><span>Draft saved</span><small>01</small></li>
+      <li class="activity-entry" style="transform: translateY(32px)"><i aria-hidden="true">${recipeIcon('check', 11)}</i><span>Colors checked</span><small>02</small></li>
+      <li class="activity-entry" style="transform: translateY(64px)"><i aria-hidden="true">${recipeIcon('check', 11)}</i><span>Collection created</span><small>03</small></li>
     </ol>
   </section>
-  <button class="demo-button" type="button">Add activity <span aria-hidden="true">+</span></button>
+  <button class="demo-button" type="button">Add activity <span aria-hidden="true">${recipeIcon('plus')}</span></button>
   <span class="study-sr activity-status" role="status"></span>
 </main>`,
     css: `${shared}
@@ -422,7 +422,7 @@ function add() {
   clearRetired(); settings();
   const entry = document.createElement('li');
   entry.className = 'activity-entry';
-  const icon = document.createElement('i'); icon.textContent = '✓'; icon.setAttribute('aria-hidden', 'true');
+  const icon = document.createElement('i'); icon.innerHTML = ${JSON.stringify(recipeIcon('check', 11))}; icon.setAttribute('aria-hidden', 'true');
   const message = document.createElement('span'); message.textContent = messages[count % messages.length];
   const number = document.createElement('small'); number.textContent = String(++count).padStart(2, '0');
   entry.append(icon, message, number);
@@ -464,7 +464,7 @@ Demo.onCleanup(clearRetired);`,
     source: 'animate/RECIPES.md',
     html: `<main class="stage structure-stage word-stage">
   <h2 class="word-heading"><span class="study-sr">Make room for the details.</span><span class="word-visual" aria-hidden="true"><i>Make</i> <i>room</i> <i>for</i> <i>the</i> <i>details.</i></span></h2>
-  <button class="demo-button secondary" type="button">Replay words <span aria-hidden="true">↺</span></button>
+  <button class="demo-button secondary" type="button">Replay words <span aria-hidden="true">${recipeIcon('replay')}</span></button>
 </main>`,
     css: `${shared}
 .word-heading { width: 100%; max-width: 380px; margin: 0; color: #353040; font-size: 34px; font-weight: 560; line-height: 1.04; letter-spacing: -.025em; font-optical-sizing: auto; }
@@ -511,13 +511,13 @@ Demo.onCleanup(stop);`,
     reducedMotion: 'The new phrase appears immediately in the same reserved space.',
     source: 'review-animations/STANDARDS.md',
     html: `<main class="stage structure-stage crossfade-stage">
-  <div class="crossfade-block" data-state="0"><p class="study-kicker">A small shift in perspective</p><div class="copy-frame" aria-hidden="true"><span class="copy-line copy-first">Less friction.</span><span class="copy-line copy-second">More flow.</span></div><span class="crossfade-dot" aria-hidden="true"></span></div>
+  <div class="crossfade-block" data-state="0"><div class="copy-frame" aria-hidden="true"><span class="copy-line copy-first">Less friction.</span><span class="copy-line copy-second">More flow.</span></div><span class="crossfade-dot" aria-hidden="true"></span></div>
   <button class="demo-button secondary" type="button">Change phrase</button>
   <span class="study-sr crossfade-status" role="status">Less friction.</span>
 </main>`,
     css: `${shared}
 .crossfade-block { width: 100%; max-width: 350px; }
-.copy-frame { position: relative; min-height: 57px; margin-top: 12px; }
+.copy-frame { position: relative; min-height: 57px; }
 .copy-line { position: absolute; inset: 0 auto auto 0; white-space: nowrap; color: #514b3e; font-size: 33px; font-weight: 550; line-height: 1.1; letter-spacing: -.025em; transition: opacity calc(200ms * var(--time-scale)) var(--ease-out); }
 .copy-second { color: #8a7353; opacity: 0; }
 .crossfade-block[data-state="1"] .copy-first { opacity: 0; }
@@ -557,17 +557,17 @@ Demo.onSettings(settings);`,
     reducedMotion: 'Each reel goes straight to the new digit; the full number is announced once.',
     source: 'review-animations/STANDARDS.md',
     html: `<main class="stage structure-stage">
-  <div class="number-surface"><p class="study-kicker">An archive of small things</p><div class="number-display" aria-hidden="true">
+  <div class="number-surface"><div class="number-display" aria-hidden="true">
     <span class="digit-window"><span class="digit-reel" style="transform: translateY(-10%)"><i>0</i><i>1</i><i>2</i><i>3</i><i>4</i><i>5</i><i>6</i><i>7</i><i>8</i><i>9</i></span></span>
     <span class="digit-window"><span class="digit-reel" style="transform: translateY(-20%)"><i>0</i><i>1</i><i>2</i><i>3</i><i>4</i><i>5</i><i>6</i><i>7</i><i>8</i><i>9</i></span></span>
     <span class="digit-window"><span class="digit-reel" style="transform: translateY(-80%)"><i>0</i><i>1</i><i>2</i><i>3</i><i>4</i><i>5</i><i>6</i><i>7</i><i>8</i><i>9</i></span></span>
   </div><p class="number-caption">Digit-strip demo</p></div>
-  <button class="demo-button secondary" type="button">Next value <span aria-hidden="true">+</span></button>
+  <button class="demo-button secondary" type="button">Next value <span aria-hidden="true">${recipeIcon('plus')}</span></button>
   <output class="study-sr number-status" aria-live="polite" aria-atomic="true">128</output>
 </main>`,
     css: `${shared}
 .number-surface { text-align: center; }
-.number-display { display: flex; justify-content: center; gap: 1px; margin: 8px 0 4px; color: #35485b; font-size: 63px; line-height: 1; font-weight: 550; font-variant-numeric: tabular-nums; letter-spacing: -.035em; }
+.number-display { display: flex; justify-content: center; gap: 1px; margin: 0 0 4px; color: #35485b; font-size: 63px; line-height: 1; font-weight: 550; font-variant-numeric: tabular-nums; letter-spacing: -.035em; }
 .digit-window { display: block; height: 1em; width: .64em; overflow: hidden; }
 .digit-reel { display: block; transition: transform calc(250ms * var(--time-scale)) var(--ease-in-out); }
 .digit-reel i { display: block; height: 1em; font-style: normal; line-height: 1; }
@@ -612,7 +612,7 @@ Demo.onSettings(settings);`,
     source: 'animate/RECIPES.md',
     html: `<main class="stage structure-stage clip-stage">
   <h2 class="clip-heading"><span class="study-sr">Quietly confident.</span><span class="clip-line" aria-hidden="true"><i>Quietly</i></span><span class="clip-line" aria-hidden="true"><i>confident.</i></span></h2>
-  <button class="demo-button secondary" type="button">Reveal headline <span aria-hidden="true">↗</span></button>
+  <button class="demo-button secondary" type="button">Reveal headline <span aria-hidden="true">${recipeIcon('arrow')}</span></button>
 </main>`,
     css: `${shared}
 .clip-heading { width: 100%; max-width: 376px; margin: 0; color: #654b42; font-size: 39px; font-weight: 540; line-height: 1.06; letter-spacing: -.025em; font-optical-sizing: auto; }
@@ -659,12 +659,12 @@ Demo.onCleanup(stop);`,
     reducedMotion: 'The complete sentence is shown immediately and the decorative caret is removed.',
     source: 'animate/SKILL.md',
     html: `<main class="stage structure-stage type-stage">
-  <div class="type-page"><p class="study-kicker">A thought taking shape</p><p class="type-line" aria-hidden="true"><span class="type-copy">Make the next move.</span><i class="type-caret"></i></p><p class="study-sr">Make the next move.</p><span class="type-rule" aria-hidden="true"></span></div>
-  <button class="demo-button secondary" type="button">Type again <span aria-hidden="true">↺</span></button>
+  <div class="type-page"><p class="type-line" aria-hidden="true"><span class="type-copy">Make the next move.</span><i class="type-caret"></i></p><p class="study-sr">Make the next move.</p><span class="type-rule" aria-hidden="true"></span></div>
+  <button class="demo-button secondary" type="button">Type again <span aria-hidden="true">${recipeIcon('replay')}</span></button>
 </main>`,
     css: `${shared}
 .type-page { width: 100%; max-width: 410px; }
-.type-line { position: relative; width: max-content; max-width: 100%; margin: 20px 0 16px; color: #40464c; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 19px; line-height: 1.3; font-weight: 450; letter-spacing: 0; }
+.type-line { position: relative; width: max-content; max-width: 100%; margin: 0 0 16px; color: #40464c; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 19px; line-height: 1.3; font-weight: 450; letter-spacing: 0; }
 .type-copy { display: inline-block; white-space: nowrap; }
 .type-caret { position: absolute; top: .13em; left: 0; width: 2px; height: 1em; background: #59616a; transform: translateX(19ch); }
 .type-rule { display: block; width: 38px; height: 3px; border-radius: 2px; background: #bcc1c5; }
@@ -722,9 +722,8 @@ Demo.onCleanup(stop);`,
     reducedMotion: 'The complete next word appears immediately without a 3D flip or stagger.',
     source: 'review-animations/STANDARDS.md',
     html: `<main class="stage structure-stage">
-  <p class="study-kicker">A little mechanical poetry</p>
   <div class="flap-board" aria-hidden="true"><div class="flap"><span class="flap-base">F</span></div><div class="flap"><span class="flap-base">L</span></div><div class="flap"><span class="flap-base">O</span></div><div class="flap"><span class="flap-base">W</span></div></div>
-  <button class="demo-button secondary" type="button">Next word <span aria-hidden="true">↗</span></button>
+  <button class="demo-button secondary" type="button">Next word <span aria-hidden="true">${recipeIcon('arrow')}</span></button>
   <span class="study-sr flap-status" role="status">FLOW</span>
 </main>`,
     css: `${shared}

@@ -86,6 +86,9 @@ on the current environment and revision. A missing browser or blocked download i
 unavailable coverage, not a successful test run. See [Contributing](CONTRIBUTING.md)
 for the review workflow and verification scope.
 
+The [initial validation record](docs/validation.md) describes the 58-test run,
+independent reviews, and the precise limits of the browser coverage.
+
 ## Structure and portable references
 
 - `src/recipes/interface.mjs`: feedback and navigation studies.
@@ -101,6 +104,8 @@ The build produces `catalog.json`, `llms.txt`, and `llms-full.txt`, plus
 `?animation={id}`. IDs such as `shared-element` and `staggered-words` are durable
 references. Read the [architecture](docs/architecture.md) and
 [recipe contract](docs/recipe-contract.md) before adding a pattern.
+The [design system](DESIGN.md) records the actual palette, typography, components,
+and responsive rules so new additions remain consistent with the playground.
 
 The main site needs static HTTP hosting because it fetches its catalog. Individual
 downloaded HTML examples can be opened directly. The three Motion studies

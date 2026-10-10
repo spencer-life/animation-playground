@@ -60,58 +60,54 @@ All upstream skills were reviewed. They are not all implementation dependencies:
 | Stagger | 30–80 ms between items, commonly 50 ms. | A contained instructional group can stagger; results must remain interactive and should not stagger every time a user types. |
 | Blur | Around 2 px for a difficult crossfade; below 20 px. | Keep blur small and isolated; avoid full-page animated blur layers. |
 | Main-thread work | No React state update per animation frame; do not drive descendant transforms through an inherited parent variable. | Write continuous values to Motion values or the actual element; React state describes discrete UI state. |
-| Layers | `will-change` only when an observed issue requires it or motion is imminent. | Do not permanently promote all 40 previews. |
+| Layers | `will-change` only when an observed issue requires it or motion is imminent. | Do not permanently promote all 36 previews. |
 | Reduced motion | Replace translation, spring, parallax and overshoot with short opacity/color feedback or a static final state. | Honor OS preference by default; provide a discoverable playback preference; prevent ambient loops from starting automatically for reduced motion. |
 | Playback | People control the moving demonstrations. | Play/pause, replay and slower playback; pause loops out of view or in hidden tabs. Never keep dozens of hidden timelines running. |
 | Mobile | 16 px minimum inputs, zoom allowed, `dvh` for panels, safe-area padding, capability queries. | Code is selectable and horizontally scrollable inside its panel; controls work with touch and a trackpad on the same device. |
 | Verification | Mechanical checks plus interaction/visual inspection. | Test rapid reversals, repeated Play, cancel during hold/drag, dialog Escape and focus return, reduced motion, 320 px layout and 200% text size. Report hardware limits honestly. |
 
-## A diverse 40-demo collection
+## Published 36-demo collection
 
-These are original implementation directions organized by what a future project needs. The set deliberately mixes frequent practical details with less common expressive studies. The taxonomy can be adjusted while implementing; stable IDs should not change after release.
+The initial research considered a broader set of ideas. The implemented collection selects six recipes per category, with the stable identifiers below. This table records the published selection; the generated `catalog.json` is the executable catalog.
 
-| ID | Name | What it demonstrates | Suitable tool |
+| ID | Name | Category | Tool |
 | --- | --- | --- | --- |
-| `press-feedback` | Press feedback | A control physically acknowledges pointer-down. | CSS transition |
-| `arrow-nudge` | Directional arrow | A small affordance clarifies the destination of a link. | CSS transition |
-| `link-underline` | Underline reveal | A transform-driven line emphasizes an interactive label. | CSS transition |
-| `icon-swap` | Icon crossfade | Two symbols communicate a changed state without jumping. | CSS transition |
-| `submit-success` | Submit to success | A button moves through ready, pending and confirmed states. | CSS + discrete React state |
-| `hold-confirm` | Hold to confirm | Deliberate linear progress with fast cancellation. | CSS clip + pointer/keyboard events |
-| `error-shake` | Error shake | A one-shot, restrained rejection signal paired with visible text. | WAAPI |
-| `success-check` | Success check | A short path-drawing confirmation for a completed action. | SVG + CSS/WAAPI |
-| `origin-popover` | Origin-aware popover | A surface grows from the thing that opened it. | Base UI + CSS |
-| `tooltip-group` | Instant neighboring tooltips | Delayed first hint, immediate subsequent hints. | Base UI + CSS |
-| `dialog-scale` | Dialog entrance | Centered scale/fade coordinated with a backdrop. | Base UI + CSS |
-| `bottom-sheet` | Bottom sheet | A content-sized sheet enters and leaves the same edge. | Accessible primitive + CSS/Motion |
-| `toast-stack` | Toast stack | New notifications arrive without restarting an in-flight stack. | Sonner |
-| `accordion` | Accordion collapse | Measured content height avoids an abrupt disclosure. | Base UI + measured-height transition |
-| `segmented-control` | Clipped active tab | Active text and background move as one clipped layer. | Accessible tabs + clip-path |
-| `notification-peek` | Notification peek | A compact status surface briefly expands to show context. | CSS transition |
-| `stagger-list` | Staggered entrance | A 50 ms sequence makes a small group readable. | CSS keyframes |
-| `layout-filter` | Filtered layout | Remaining items keep identity while moving to new positions. | Motion layout |
-| `shared-card` | Shared element | A thumbnail and expanded preview read as the same object. | View Transition/Motion |
-| `directional-stepper` | Direction-aware steps | Forward and backward progress use consistent spatial directions. | CSS/WAAPI |
-| `content-crossfade` | Content crossfade | A subtle blur bridges difficult text or icon state changes. | CSS opacity/filter |
-| `number-roll` | Number ticker | Fixed-width digits preserve readable alignment during updates. | NumberFlow |
-| `reorder-list` | Reorder a list | Surrounding items visibly make room for a move. | dnd kit + transforms |
-| `inline-expand` | Inline detail | Extra context appears without losing the selected item's identity. | CSS or Motion layout |
-| `spring-drag` | Spring drag | A freely grabbed element settles while preserving its velocity. | Motion |
-| `rubber-band` | Rubber-banding | Dragging past a boundary adds resistance and snaps back. | Pointer events + spring |
-| `swipe-dismiss` | Swipe to dismiss | Distance or an intentional flick dismisses a surface. | Pointer events + spring |
-| `magnetic-target` | Magnetic target | A restrained, spring-following decorative button effect. | Motion, fine pointer only |
-| `tilt-card` | 3D tilt | Decorative perspective follows a pointer with a soft settle. | Motion + transform |
-| `comparison-wipe` | Comparison wipe | A directly manipulated clip exposes one of two states. | Native range input + clip-path |
-| `mask-reveal` | Mask reveal | Content is uncovered without moving its final layout. | CSS/WAAPI clip-path |
-| `word-stagger` | Word stagger | A small editorial heading appears in readable word groups. | CSS keyframes |
-| `letter-cascade` | Letter cascade | A short, one-shot display treatment for a rare title. | CSS keyframes |
-| `scroll-progress` | Scroll progress | A linear indicator follows a contained scroll area's position. | Scroll timeline + fallback |
-| `depth-parallax` | Shallow parallax | A contained scene explains different layers of depth. | Scroll timeline or Motion |
-| `card-flip` | Card flip | Two faces exchange through a controlled 3D rotation. | CSS transition |
-| `orbit` | Orbit study | Transform composition creates a consistent circular path. | CSS keyframes |
-| `marquee` | Seamless marquee | Duplicate content loops at a constant speed with pause control. | CSS keyframes |
-| `skeleton-shimmer` | Skeleton shimmer | A low-contrast sheen explains pending content. | CSS transform/opacity |
-| `celebration` | Completion burst | A finite, user-triggered celebratory sequence. | CSS/WAAPI, limited particles |
+| `sliding-tabs` | Sliding tabs | navigation | CSS |
+| `spring-orb` | Catch the spring | expressive | Motion |
+| `card-stack` | Card stack | layout | CSS |
+| `hold-confirm` | Hold to confirm | feedback | CSS |
+| `staggered-words` | Staggered words | text | WAAPI |
+| `toggle-switch` | Toggle switch | feedback | CSS |
+| `orchestrated-panel` | A coordinated entrance | entrances | WAAPI |
+| `magnetic-button` | A gentle attraction | expressive | Motion |
+| `staggered-list` | A little stagger | entrances | WAAPI |
+| `notification-stack` | Activity stack | layout | CSS |
+| `card-flip` | Another side to it | expressive | CSS |
+| `clip-text` | Clipped headline | text | WAAPI |
+| `svg-draw` | Draw the route | expressive | WAAPI |
+| `error-nudge` | Error nudge | feedback | WAAPI |
+| `expandable-card` | Expandable card | layout | WAAPI |
+| `typewriter` | Finite typewriter | text | WAAPI |
+| `drag-card` | Flick, catch, repeat | expressive | Motion |
+| `layout-flip` | FLIP reorder | layout | WAAPI |
+| `blur-reveal` | From soft to sharp | entrances | WAAPI |
+| `accordion` | Measured accordion | layout | WAAPI |
+| `menu-icon` | Menu to close | navigation | CSS |
+| `orbit` | Objects in orbit | expressive | CSS |
+| `origin-popover` | Origin-aware popover | navigation | CSS |
+| `press-feedback` | Press feedback | feedback | CSS |
+| `progress-button` | Progress button | feedback | CSS |
+| `rolling-number` | Rolling digits | text | CSS |
+| `scale-dialog` | Room to think | entrances | WAAPI |
+| `save-state` | Save state | feedback | CSS |
+| `segmented-control` | Segmented control | navigation | CSS |
+| `shared-element` | Shared element | layout | WAAPI |
+| `split-flap` | Split-flap letters | text | WAAPI |
+| `text-crossfade` | Text crossfade | text | CSS |
+| `tooltip-reveal` | Tooltip reveal | navigation | CSS |
+| `masked-reveal` | Uncover the scene | entrances | WAAPI |
+| `underline-trail` | Underline trail | navigation | CSS |
+| `slide-sheet` | Up from the edge | entrances | WAAPI |
 
 ## Recipe and reuse contract
 
