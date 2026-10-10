@@ -5,6 +5,11 @@ The pull request records its exact reviewed head and the resulting merge revisio
 These are observed results from 10 October 2026, not a promise that future changes
 or other browser engines have the same coverage.
 
+The validated application, export pipeline, and tests are preserved in source
+commit [`733c6f4c40861234453235d7f3bdb2a17a1450dc`](https://github.com/spencer-life/animation-playground/commit/733c6f4c40861234453235d7f3bdb2a17a1450dc).
+Subsequent design and delivery documentation does not change that application
+source.
+
 ## Runtime and commands
 
 | Item | Observed result |
