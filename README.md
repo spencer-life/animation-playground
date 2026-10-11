@@ -49,6 +49,24 @@ typographic sequences, dimensional galleries, native-scroll storytelling, image
 reveals, path following, and finite celebrations. Color variants use the theme
 controls; each catalog entry teaches a distinct interaction or motion behavior.
 
+### Find a control style
+
+Solid and outlined controls lead the collection. Accent-solid, ghost/text, icon,
+segmented, surface, and selective soft treatments provide a useful range. Search
+by style and task together, such as **outline hold** or **solid save**.
+
+| Style | Starting points |
+| --- | --- |
+| [Solid](https://animation-playground-murex.vercel.app/?q=solid) | Press feedback, Save state, selected segments, and primary workflow actions. |
+| [Outline](https://animation-playground-murex.vercel.app/?q=outline) | Hold to confirm, menu toggle, replay controls, and secondary actions. |
+| [Ghost](https://animation-playground-murex.vercel.app/?q=ghost) / [text actions](https://animation-playground-murex.vercel.app/?q=text+action) | Close and back controls, inline disclosures, and underlined navigation. |
+| [Soft](https://animation-playground-murex.vercel.app/?q=soft) | In-button progress, dock icon faces, and the chart replay icon. |
+| [Icon](https://animation-playground-murex.vercel.app/?q=icon) / [segmented](https://animation-playground-murex.vercel.app/?q=segmented) | Compact controls and grouped choices in several surface treatments. |
+
+Styles can overlap within an example. The palette controls change its colors;
+each study keeps its authored control treatment and motion. A color or button
+variant does not count as an additional animation.
+
 ## Preview in your colors
 
 The palette controls update the actual animation and the source you take with you:

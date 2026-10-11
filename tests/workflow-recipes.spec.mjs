@@ -499,15 +499,19 @@ test('the board supports all three tasks in one native scroll column and cleans 
       animation.pause(); animation.currentTime = animation.effect.getTiming().duration * .4;
       const rect = oldNavigation.getBoundingClientRect(), before = { x: rect.x, y: rect.y };
       document.querySelector('[data-task="Type scale"] button').click();
+      // Selection must update the visible in-flight copy immediately, before
+      // another move has an opportunity to replace that snapshot.
+      const previousMarker = oldNavigation.querySelector('button').getAttribute('aria-pressed');
       document.querySelector('.kanban-move').click();
       const navigation = document.querySelector('.kanban-flight[data-flight="Navigation"]');
       navigation.getAnimations().forEach(animation => { animation.pause(); animation.currentTime = 0; });
       const next = navigation.getBoundingClientRect(), two = document.querySelectorAll('.kanban-flight').length;
       document.querySelector('[data-task="Copy review"] button').click();
       document.querySelector('.kanban-move').click();
-      return { before, after: { x: next.x, y: next.y }, removed: !oldNavigation.isConnected, two, three: document.querySelectorAll('.kanban-flight').length, originals: document.querySelectorAll('[data-task]').length, names: [...document.querySelectorAll('.kanban-flight')].map(element => element.dataset.flight).sort(), accessible: [...document.querySelectorAll('.kanban-flight')].every(element => element.inert && element.getAttribute('aria-hidden') === 'true') };
+      return { before, after: { x: next.x, y: next.y }, previousMarker, removed: !oldNavigation.isConnected, two, three: document.querySelectorAll('.kanban-flight').length, originals: document.querySelectorAll('[data-task]').length, names: [...document.querySelectorAll('.kanban-flight')].map(element => element.dataset.flight).sort(), accessible: [...document.querySelectorAll('.kanban-flight')].every(element => element.inert && element.getAttribute('aria-hidden') === 'true') };
     });
     expect(multiple.removed).toBe(true);
+    expect(multiple.previousMarker).toBe('false');
     expect(multiple.two).toBe(2);
     expect(multiple.three).toBe(3);
     expect(multiple.originals).toBe(3);

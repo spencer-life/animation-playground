@@ -25,7 +25,7 @@ const customColors = [
   '#ffff00', '#00ffff', '#ff00ff', '#7c5ce7',
 ];
 const readablePairs = [
-  ['ink', 'paper'], ['ink', 'demo-bg'], ['muted', 'paper'], ['muted', 'demo-bg'],
+  ['ink', 'paper'], ['ink', 'demo-bg'], ['ink', 'line'], ['on-ink', 'ink'], ['muted', 'paper'], ['muted', 'demo-bg'],
   ['accent-ink', 'paper'], ['accent-ink', 'demo-bg'], ['accent-ink', 'accent-soft'],
   ['on-accent', 'accent'], ['on-accent', 'accent-hover'],
 ];
@@ -140,15 +140,15 @@ for (const accent of ['jade', 'amber']) {
     async function expectReadableAction(surface, description) {
       const action = surface.getByRole('button', { name: 'Next step', exact: true });
       await expect(action).toBeVisible();
-      // This is small text on the actual accent-soft button, so the rendered
-      // contrast check must use the normal-text 4.5:1 threshold.
+      // The primary action now uses a solid accent. Keep the rendered 4.5:1
+      // check across preview, scoped host aliases, and the offline document.
       const accessibility = await new AxeBuilder({ page: surface }).include('.stepper-next')
         .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa']).analyze();
       expect(accessibility.violations, `${description}: ${JSON.stringify(accessibility.violations.map(issue => ({
         id: issue.id, nodes: issue.nodes.map(node => ({ target: node.target, summary: node.failureSummary })),
       })))}`).toEqual([]);
-      await expect(action).toHaveCSS('color', rgb(tokens['accent-ink']));
-      await expect(action).toHaveCSS('background-color', rgb(tokens['accent-soft']));
+      await expect(action).toHaveCSS('color', rgb(tokens['on-accent']));
+      await expect(action).toHaveCSS('background-color', rgb(tokens.accent));
       await expectTheme(surface, selection, recipe.color);
     }
 

@@ -535,6 +535,24 @@ Compact, legible, and immediate.
 - **Focus:** A visible shell-accent outline (3px) sits outside the control with an offset of (4px). Regular disabled action buttons use partial opacity (.55) and a not-allowed cursor; quiet controls retain their inherited disabled treatment. Demonstration focus uses its readable `--accent-ink` role with an offset of (5px). Do not add a press transform to the shared tools simply because a recipe demonstrates one.
 - **Text actions:** Related-collection and reference-footer buttons use an explicit transparent background and the surrounding muted text color. Their background must stay consistent in both shell appearances.
 
+### Demonstration control styles
+
+Solid and outline are the preferred starting points for controls inside the studies. This applies to the demonstrations; the surrounding workspace keeps the shell button rules above.
+
+| Treatment | Color and boundary | Use |
+| --- | --- | --- |
+| Solid neutral | `--ink` fill and `--on-ink` foreground. | Primary everyday actions and selected segments. |
+| Solid accent | `--accent` fill and `--on-accent` foreground; `--accent-hover` on hover. | Deliberate color emphasis, such as Press feedback and the stepper's Next action. |
+| Outline | Transparent or `--paper` surface, `--ink` text, and a visible neutral outline, normally 1.5px. | Secondary actions, replay controls, and selectable cards. |
+| Ghost / text | Transparent at rest, readable ink or muted foreground. | Back, close, inline disclosures, and text navigation where a box would add weight. |
+| Soft | `--accent-soft` with a contrast-checked foreground. | Selected examples such as in-button progress, dock icon faces, and the chart replay icon. Keep it local to the study. |
+
+Icon, segmented, circular, and text controls provide additional form variety; they can use the solid, outline, or ghost treatments above. Do not turn every study into the same rounded button or count a surface variant as another animation.
+
+Reserve border geometry before state changes. An outline should be visible against its actual surface; `--line` alone is a separator color and is often too faint for a control boundary. Use ink or a checked muted foreground for the control stroke. Neutral hover surfaces mix `--ink` with `--paper`; the original `--demo-bg` can be colored. Keep solid foregrounds readable on hover and disable hover treatment for unavailable actions.
+
+Large selection regions, including the bulk toolbar and Kanban cards, stay neutral. Use a border, compact marker, native checked state, or solid selected segment to identify state. Keep focus independent, using the existing visible focus ring. Keep `--accent-soft` available for intentional artwork and the small set of soft examples; do not redefine the theme token to remove incidental button tint.
+
 ### Chips / Tags
 
 Small pieces of information, with no simulated button behavior.
