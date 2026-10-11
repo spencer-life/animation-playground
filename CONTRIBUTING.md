@@ -46,7 +46,7 @@ The local `mise.toml` pins Node 24.19.0 and pnpm 11.25.0.
 Inspect the affected behavior at compact and expanded sizes. Exercise keyboard
 and touch operation, rapid retriggering, replay, pause, speed changes, reduced
 motion, and the exported standalone file. A shared runtime or build change can
-affect all 36 examples. Validate copy/download and deep links when their paths
+affect all 100 examples. Validate copy/download and deep links when their paths
 change. Check layout and accessibility beyond what automated tools can prove.
 
 Report the exact revision, commands, and passed, failed, skipped, unavailable, or

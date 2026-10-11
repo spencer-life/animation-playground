@@ -93,7 +93,7 @@ function load() {
   card.setAttribute('aria-busy', 'true');
   status.textContent = 'Loading demo content…';
   // This finite animation stands in for a request; real content must follow its promise.
-  const waiting = Demo.animate(skeleton, [{ opacity: .65 }, { opacity: 1 }, { opacity: .65 }], { duration: 900, easing: 'ease-in-out' });
+  const waiting = Demo.animate(skeleton, [{ opacity: .65 }, { opacity: 1 }, { opacity: .65 }], { duration: 900, easing: 'cubic-bezier(0.77, 0, 0.175, 1)' });
   animations.push(waiting);
   waiting.finished.then(() => {
     if (run !== generation) return;

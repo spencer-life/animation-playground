@@ -14,19 +14,24 @@ roles to the preview and embeds those same roles in copied or downloaded HTML.
 | `src/recipes/structure.mjs` | The original layout and text recipes. |
 | `src/recipes/expressive.mjs` | The original entrance and expressive recipes. |
 | `src/recipes/hub.mjs` | Eight additional loading, navigation, layout, chart, reading, and signature studies. |
+| `src/recipes/forms.mjs` | Twenty form, selection, upload, and request-feedback studies. |
+| `src/recipes/workflows.mjs` | Twenty navigation, layout, dashboard, and contextual-control studies. |
+| `src/recipes/storytelling.mjs` | Sixteen typography, reveal, native-scroll, and expressive studies. |
 | `src/collections.mjs` | Five project collections, original-study curation, and required discovery metadata validation. |
+| `src/catalog-contract.mjs` | Minimum catalog size, unique and retained published IDs, and featured-collection membership. |
 | `src/theme.mjs` | Palette definitions, semantic color resolution, validated theme settings, URL parameters, preview installation, and token exports. |
 | `src/demo-base.css` | Embedded typography, controls, layout helpers, motion tokens, and preference rules. |
 | `src/demo-runtime.js` | Embedded playback state, WAAPI wrapper, replay/settings callbacks, and cleanup. |
-| `src/motion-entry.js` | Explicit Motion exports bundled for the three spring studies. |
+| `src/motion-entry.js` | Explicit Motion exports bundled for the four spring studies. |
 | `src/app.js` | Collection/category browsing, search and filters, workbench, routing, palette controls, copying, saving, and iframe coordination. |
 | `src/styles.css` and `src/index.html` | Responsive site shell, theme, markup, and loading fallback. |
 | `scripts/build.mjs` | Static output, bundled Motion, executable examples, metadata, and agent references. |
 | `scripts/serve.mjs` | Local HTTP server for the built `dist/` directory. |
 
 See the [recipe contract](recipe-contract.md) for fields and helper APIs. The
-collection contains 44 studies. The build guards against accidentally dropping
-below that set; useful new studies can extend it when their complete source and
+collection contains 100 studies. The shared catalog contract guards against dropping
+below 100, removing any of the preceding 44 published IDs, or featuring a missing
+or incorrectly assigned study. Useful new studies can extend it when their complete source and
 required discovery metadata are provided. Update related documentation and
 applicable checks when changing the collection.
 
@@ -77,8 +82,8 @@ requests the educational motion even when activated by keyboard. Reduced motion
 still preserves an immediate readable state. Visibility changes pause active
 animations; page cleanup releases registered resources.
 
-The 41 native studies need no third-party animation runtime. `spring-orb`, `magnetic-button`,
-and `drag-card` use Motion 14.1.0, which esbuild embeds into their individual HTML
+The 96 native studies need no third-party animation runtime. `spring-orb`, `magnetic-button`,
+`drag-card`, and `dock-magnification` use Motion 14.1.0, which esbuild embeds into their individual HTML
 documents. The Motion code is not fetched from a CDN when the example runs.
 Standalone files use local/system typography and make no external asset requests.
 

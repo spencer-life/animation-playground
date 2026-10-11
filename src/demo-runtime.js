@@ -99,7 +99,18 @@
   };
   cssState();
   document.addEventListener('keydown', () => { keyboard = true; cssState(); }, true);
-  document.addEventListener('pointerdown', () => { keyboard = false; cssState(); }, true);
+  function pointerInput() {
+    if (!keyboard) return;
+    keyboard = false;
+    cssState();
+  }
+  document.addEventListener('pointerdown', pointerInput, true);
+  // A wheel or a deliberate hover movement can follow keyboard navigation
+  // without a click. Recognize that input while leaving native scrolling alone.
+  document.addEventListener('pointermove', event => {
+    if (event.pointerType !== 'touch' && (event.movementX || event.movementY)) pointerInput();
+  }, { capture: true, passive: true });
+  document.addEventListener('wheel', pointerInput, { capture: true, passive: true });
   for (const name of ['animationstart', 'transitionrun']) document.addEventListener(name, () => {
     if (settings.paused || settings.reduced) requestAnimationFrame(syncAnimations);
   }, true);

@@ -1,6 +1,7 @@
 # Initial implementation validation
 
-For the current 44-study hub expansion and its final 153-test run, see the
+For the current 100-study expansion, see the [catalog expansion record](catalog-expansion.md).
+For the preceding 44-study hub expansion and its final 153-test run, see the
 [theme-aware hub validation](hub-validation.md). This page preserves the initial
 36-study delivery as historical evidence.
 

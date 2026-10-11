@@ -1,6 +1,6 @@
 # Animation Playground
 
-**44 animations to explore, match to your project, and reuse.** A responsive hub
+**100 animations to explore, match to your project, and reuse.** A responsive hub
 with live demonstrations, practical explanations, complete copyable code, and
 stable references for future ChatGPT and Codex work.
 
@@ -43,9 +43,11 @@ The six motion categories remain available as another way to browse:
 
 The workbench provides replay, pause, 1×/0.5×/0.25× speed, reduced motion, source
 code, usage guidance, color tokens, and a ready-to-copy brief for an AI assistant.
-New studies include skeleton-to-content loading, connected steps, a collapsing
-sidebar, a bar chart reveal, filtered layout, reading progress, a spotlight card,
-and finite SVG ripples.
+The catalog covers everyday form feedback, upload queues, reversible actions,
+navigation, tables, charts, and workspace layouts. Its expressive studies include
+typographic sequences, dimensional galleries, native-scroll storytelling, image
+reveals, path following, and finite celebrations. Color variants use the theme
+controls; each catalog entry teaches a distinct interaction or motion behavior.
 
 ## Preview in your colors
 
@@ -132,11 +134,13 @@ on the current environment and revision. A missing browser or blocked download i
 unavailable coverage, not a successful test run. See [Contributing](CONTRIBUTING.md)
 for the review workflow and verification scope.
 
-The [hub validation record](docs/hub-validation.md) describes the final 153-test
-run, Codex's contrast correction, theme/export coverage, and independent reviews.
-The [hub delivery issue](https://github.com/spencer-life/animation-playground/issues/5)
-records the latest reviewed revision and verified deployment.
-The [initial validation record](docs/validation.md) preserves the first delivery.
+The [catalog expansion record](docs/catalog-expansion.md) documents the 100-study
+scope, relevant Emil guidance, validation, and review. Its
+[delivery issue](https://github.com/spencer-life/animation-playground/issues/7)
+tracks the reviewed revision and preview. The earlier
+[hub validation record](docs/hub-validation.md) preserves the 44-study delivery,
+including Codex's contrast correction and its 153-test run. The
+[initial validation record](docs/validation.md) preserves the first delivery.
 
 ## Structure and portable references
 
@@ -144,7 +148,11 @@ The [initial validation record](docs/validation.md) preserves the first delivery
 - `src/recipes/structure.mjs`: layout and text studies.
 - `src/recipes/expressive.mjs`: entrances and expressive studies.
 - `src/recipes/hub.mjs`: eight additional interface, layout, reading, and signature studies.
+- `src/recipes/forms.mjs`: 20 form, selection, upload, and request-feedback studies.
+- `src/recipes/workflows.mjs`: 20 navigation, layout, dashboard, and contextual-control studies.
+- `src/recipes/storytelling.mjs`: 16 typography, reveal, scrolling, and expressive studies.
 - `src/collections.mjs`: project collections and curated discovery metadata.
+- `src/catalog-contract.mjs`: catalog size, retained IDs, and featured-collection integrity.
 - `src/theme.mjs`: palette resolution, URL settings, live theme updates, and token exports.
 - `src/demo-base.css` and `src/demo-runtime.js`: shared styles and playback behavior
   embedded into every standalone example.
@@ -161,8 +169,8 @@ The [design system](DESIGN.md) records the actual palette, typography, component
 and responsive rules so new additions remain consistent with the playground.
 
 The main site needs static HTTP hosting because it fetches its catalog. Individual
-downloaded HTML examples can be opened directly. The three Motion studies
-(`spring-orb`, `magnetic-button`, and `drag-card`) embed Motion 14.1.0; the other 41
+downloaded HTML examples can be opened directly. The four Motion studies
+(`spring-orb`, `magnetic-button`, `drag-card`, and `dock-magnification`) embed Motion 14.1.0; the other 96
 use native browser APIs. No React runtime, backend, API key, account, or external
 asset request is required by a standalone example.
 

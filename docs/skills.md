@@ -68,7 +68,7 @@ The initial manifest pins these implementation dependencies:
 
 | Package | Version | Role |
 | --- | --- | --- |
-| `motion` | `14.1.0` | Spring behavior in three studies, bundled into each corresponding full HTML file. |
+| `motion` | `14.1.0` | Spring behavior in four studies, bundled into each corresponding full HTML file. |
 | `esbuild` | `0.28.2` | Build-time bundling of the Motion export. |
 | `@fontsource-variable/inter` | `5.3.0` | Self-hosted font for the gallery shell. |
 | `@playwright/test` | `1.64.0` | Browser validation tooling. |
