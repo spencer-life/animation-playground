@@ -12,7 +12,7 @@ const shared = String.raw`
 .story-note { margin: 0; font-size: 10px; line-height: 1.45; color: var(--muted); text-align: center; }
 .story-scroll { scrollbar-width: thin; scrollbar-color: var(--muted) var(--paper); }
 .story-scroll:focus-visible { outline-offset: -4px; }
-@media (hover: hover) and (pointer: fine) { .story-control:hover { background: color-mix(in srgb, var(--ink) 6%, var(--demo-bg)); } }
+@media (hover: hover) and (pointer: fine) { .story-control:hover { background: color-mix(in srgb, var(--ink) 6%, var(--paper)); } }
 @media (min-height: 320px) { .story-stage { gap: 20px; padding: 26px; } .story-note { font-size: 12px; } }
 `;
 

@@ -227,7 +227,7 @@ Demo.onReplay(() => { choose(0); choose(1, true); });
 .drill-folders { display: grid; gap: 4px; margin-top: 12px; }
 .drill-folder { display: flex; justify-content: space-between; align-items: center; gap: 10px; width: 100%; min-height: 44px; padding: 5.5px 8.5px; border: 1.5px solid var(--ink); border-radius: 9px; background: var(--paper); color: var(--ink); font-size: 12px; }
 .drill-folder > span:first-child { display: flex; align-items: center; gap: 9px; }
-.drill-back { padding-left: 0; min-height: 44px; }
+.wf-button.drill-back { padding-left: 0; min-height: 44px; }
 .drill-heading { margin: 5px 0 8px; }
 .drill-items { margin: 0; padding-left: 17px; color: var(--muted); font-size: 11px; line-height: 1.7; }
 @media (hover: hover) and (pointer: fine) { .drill-folder:hover { background: color-mix(in srgb, var(--paper) 92%, var(--ink)); } }
