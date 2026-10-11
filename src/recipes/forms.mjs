@@ -16,11 +16,11 @@ const shared = String.raw`
 .form-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
 .form-mark { display: inline-grid; place-items: center; flex: none; width: 34px; height: 34px; border-radius: 10px; color: var(--accent-ink); background: var(--accent-soft); }
 .form-action, .form-icon-button { display: inline-flex; align-items: center; justify-content: center; gap: 7px; min-height: 44px; border: 0; border-radius: 9px; background: var(--ink); color: var(--on-ink); font-size: 12px; font-weight: 600; padding: 9px 13px; cursor: pointer; }
-.form-action.secondary { background: var(--accent-soft); color: var(--accent-ink); }
+.form-action.secondary { padding: 7.5px 11.5px; border: 1.5px solid var(--ink); background: transparent; color: var(--ink); }
 .form-icon-button { width: 44px; padding: 0; flex: none; background: transparent; color: var(--muted); }
 .form-action, .form-icon-button, .form-choice, .form-check { touch-action: manipulation; -webkit-tap-highlight-color: transparent; user-select: none; transition: scale calc(140ms * var(--time-scale)) var(--ease-out); }
 .form-action:active:not(:disabled), .form-icon-button:active:not(:disabled), .form-choice:active, .form-check:active { scale: .97; }
-.form-action:disabled { color: var(--muted); background: var(--demo-bg); cursor: default; }
+.form-action:disabled { border-color: var(--line); color: var(--muted); background: color-mix(in srgb, var(--paper), var(--ink) 6%); cursor: default; }
 .form-actions { display: flex; align-items: center; gap: 8px; }
 .form-label { display: block; margin-bottom: 5px; color: var(--ink); font-size: 12px; font-weight: 600; }
 .form-input { width: 100%; min-width: 0; min-height: 44px; padding: 9px 11px; border: 1px solid var(--line); border-radius: 9px; background: var(--paper); color: var(--ink); font-size: 16px; }
@@ -32,7 +32,7 @@ const shared = String.raw`
 :root[data-keyboard="true"] .form-stage :is(.form-action, .form-icon-button, .form-choice, .form-check):active,
 :root[data-reduced="true"] .form-stage :is(.form-action, .form-icon-button, .form-choice, .form-check):active { scale: 1; }
 @media (prefers-reduced-motion: reduce) { :root:not([data-reduced="false"]) .form-stage :is(.form-action, .form-icon-button, .form-choice, .form-check):active { scale: 1; } }
-@media (hover: hover) and (pointer: fine) { .form-icon-button:hover { color: var(--ink); background: var(--demo-bg); } }
+@media (hover: hover) and (pointer: fine) { .form-action.secondary:not(:disabled):hover { background: color-mix(in srgb, var(--paper), var(--ink) 6%); } .form-icon-button:not(:disabled):hover { color: var(--ink); background: color-mix(in srgb, var(--paper), var(--ink) 6%); } }
 @media (min-height: 300px) { .form-panel { padding: 20px; } .form-panel h2, .form-title { font-size: 16px; } .form-meta { font-size: 12px; } }
 `;
 
@@ -92,7 +92,7 @@ Demo.onReplay(() => {
     duration: '140 ms press · 160 ms marker',
     easing: 'cubic-bezier(0.23, 1, 0.32, 1)',
     trigger: 'Choose a cadence or replay',
-    tech: 'CSS', color: 'blue', tags: ['radio', 'selection', 'settings', 'frequency', 'native input'],
+    tech: 'CSS', color: 'blue', tags: ['radio', 'selection', 'settings', 'frequency', 'native input', 'outline'],
     intent: 'everyday', collections: ['product-ui'], complexity: 'starter', added: '2026-10-10',
     reducedMotion: 'Radio selection and the marker update immediately; native keyboard behavior is preserved.',
     source: 'emil-design-eng/SKILL.md',
@@ -106,12 +106,12 @@ Demo.onReplay(() => {
 .cadence-panel legend { float: left; width: 100%; padding: 0 0 7px; font-size: 14px; font-weight: 650; }
 .cadence-panel > p { clear: both; }
 .cadence-options { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; margin-top: 16px; }
-.cadence-choice { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 9px; min-height: 82px; padding: 10px 4px; border: 1px solid var(--line); border-radius: 10px; cursor: pointer; }
+.cadence-choice { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 9px; min-height: 82px; padding: 9.5px 3.5px; border: 1.5px solid var(--muted); border-radius: 10px; cursor: pointer; }
 .cadence-choice input { position: absolute; width: 1px; height: 1px; opacity: 0; }
 .cadence-choice strong { font-size: 10px; line-height: 1.25; font-weight: 600; text-align: center; }
 .cadence-dot { display: grid; place-items: center; width: 20px; height: 20px; border: 1.5px solid var(--muted); border-radius: 50%; }
 .cadence-dot::after { content: ''; width: 10px; height: 10px; border-radius: 50%; background: var(--accent-ink); opacity: 0; transform: scale(.95); transition: transform calc(160ms * var(--time-scale)) var(--ease-out), opacity calc(160ms * var(--time-scale)) var(--ease-out); }
-.cadence-choice:has(input:checked) { background: var(--accent-soft); border-color: var(--accent-ink); }
+.cadence-choice:has(input:checked) { border-color: var(--accent-ink); }
 .cadence-choice input:checked + .cadence-dot::after { transform: scale(1); opacity: 1; }
 .cadence-choice:has(input:focus-visible) { outline: 3px solid var(--accent-ink); outline-offset: 3px; }
 `,
@@ -132,7 +132,7 @@ Demo.onReplay(() => { choices[0].checked = true; void choices[1].parentElement.o
     duration: '140 ms press · 180 ms message',
     easing: 'cubic-bezier(0.23, 1, 0.32, 1)',
     trigger: 'Check email, finish editing, or replay',
-    tech: 'WAAPI', color: 'peach', tags: ['validation', 'email', 'form', 'error', 'helper text'],
+    tech: 'WAAPI', color: 'peach', tags: ['validation', 'email', 'form', 'error', 'helper text', 'solid'],
     intent: 'everyday', collections: ['product-ui', 'landing-pages'], complexity: 'starter', added: '2026-10-10',
     reducedMotion: 'The field state and specific message update instantly; nothing shakes or travels.',
     source: 'emil-design-eng/SKILL.md',
@@ -183,7 +183,7 @@ Demo.onCleanup(() => animation?.cancel());
     duration: '140 ms press · 160 ms icon',
     easing: 'cubic-bezier(0.23, 1, 0.32, 1)',
     trigger: 'Show or hide the demo password',
-    tech: 'CSS', color: 'graphite', tags: ['password', 'visibility', 'input', 'eye', 'reveal'],
+    tech: 'CSS', color: 'graphite', tags: ['password', 'visibility', 'input', 'eye', 'reveal', 'ghost'],
     intent: 'everyday', collections: ['product-ui'], complexity: 'starter', added: '2026-10-10',
     reducedMotion: 'The input type and accessible pressed state change instantly; the icon does not travel.',
     source: 'mobile-native/SKILL.md',
@@ -303,7 +303,7 @@ Demo.onReplay(() => { input.value = ''; update(); void ring.getBoundingClientRec
     duration: '140 ms clear affordance · immediate results',
     easing: 'cubic-bezier(0.23, 1, 0.32, 1)',
     trigger: 'Type, clear the query, or replay',
-    tech: 'CSS', color: 'blue', tags: ['search', 'clear', 'filter', 'input', 'focus'],
+    tech: 'CSS', color: 'blue', tags: ['search', 'clear', 'filter', 'input', 'focus', 'ghost'],
     intent: 'everyday', collections: ['product-ui', 'dashboards'], complexity: 'starter', added: '2026-10-10',
     reducedMotion: 'The clear control, query, and results change immediately; focus returns to the input.',
     source: 'emil-design-eng/SKILL.md',
@@ -351,7 +351,7 @@ Demo.onReplay(() => { input.value = ''; update(); void clear.offsetWidth; input.
     duration: '140 ms press · 180 ms icon swap',
     easing: 'cubic-bezier(0.23, 1, 0.32, 1)',
     trigger: 'Copy code; replay previews feedback without copying',
-    tech: 'CSS', color: 'lavender', tags: ['clipboard', 'copy', 'confirmation', 'code', 'fallback'],
+    tech: 'CSS', color: 'lavender', tags: ['clipboard', 'copy', 'confirmation', 'code', 'fallback', 'solid'],
     intent: 'everyday', collections: ['product-ui', 'dashboards'], complexity: 'intermediate', added: '2026-10-10',
     reducedMotion: 'The result, icon, and label update instantly; clipboard failure still offers manual selection.',
     source: 'emil-design-eng/SKILL.md',
@@ -408,7 +408,7 @@ Demo.onCleanup(() => { generation += 1; });
     duration: '1.5 s simulated queue · 160 ms completion marks',
     easing: 'linear progress; cubic-bezier(0.23, 1, 0.32, 1) feedback',
     trigger: 'Start demo, cancel, or replay',
-    tech: 'WAAPI', color: 'blue', tags: ['upload', 'queue', 'files', 'progress', 'cancel', 'transfer'],
+    tech: 'WAAPI', color: 'blue', tags: ['upload', 'queue', 'files', 'progress', 'cancel', 'transfer', 'solid', 'outline'],
     intent: 'everyday', collections: ['product-ui', 'dashboards'], complexity: 'intermediate', added: '2026-10-10',
     reducedMotion: 'Both demo files complete immediately without progress travel; cancellation retains a readable state.',
     source: 'animate/SKILL.md',
@@ -507,7 +507,7 @@ Demo.onCleanup(stop);
     duration: '140 ms press · 180 ms drop feedback',
     easing: 'cubic-bezier(0.23, 1, 0.32, 1)',
     trigger: 'Choose a file, drop a file, or try the demo attachment',
-    tech: 'CSS', color: 'sand', tags: ['upload', 'dropzone', 'file picker', 'attachment', 'drag and drop'],
+    tech: 'CSS', color: 'sand', tags: ['upload', 'dropzone', 'file picker', 'attachment', 'drag and drop', 'outline'],
     intent: 'everyday', collections: ['product-ui'], complexity: 'intermediate', added: '2026-10-10',
     reducedMotion: 'Drag-over and selected states change instantly; the picker, filenames, and status stay usable.',
     source: 'mobile-native/SKILL.md',
@@ -571,7 +571,7 @@ Demo.onCleanup(() => { depth = 0; });
     duration: '140 ms press · 180 ms connection line',
     easing: 'cubic-bezier(0.23, 1, 0.32, 1)',
     trigger: 'Simulate going offline or online',
-    tech: 'CSS', color: 'green', tags: ['connection', 'offline', 'online', 'status', 'workspace'],
+    tech: 'CSS', color: 'green', tags: ['connection', 'offline', 'online', 'status', 'workspace', 'outline'],
     intent: 'everyday', collections: ['product-ui', 'dashboards'], complexity: 'starter', added: '2026-10-10',
     reducedMotion: 'The status and connecting line change instantly; the explanation is always visible.',
     source: 'emil-design-eng/SKILL.md',
@@ -614,7 +614,7 @@ Demo.onReplay(() => { setOnline(false); void panel.offsetWidth; setOnline(true);
     duration: '800 ms simulated sync · immediate confirmation',
     easing: 'linear sync; cubic-bezier(0.23, 1, 0.32, 1) feedback',
     trigger: 'Edit the title, sync, or replay',
-    tech: 'WAAPI', color: 'graphite', tags: ['sync', 'autosave', 'revision', 'editor', 'race condition', 'status'],
+    tech: 'WAAPI', color: 'graphite', tags: ['sync', 'autosave', 'revision', 'editor', 'race condition', 'status', 'outline'],
     intent: 'everyday', collections: ['product-ui', 'dashboards'], complexity: 'intermediate', added: '2026-10-10',
     reducedMotion: 'The latest demo revision saves immediately; edits still cancel older completion callbacks.',
     source: 'emil-design-eng/SKILL.md',
@@ -663,7 +663,7 @@ Demo.onCleanup(stop);
     duration: '140 ms press · 220 ms receipt',
     easing: 'cubic-bezier(0.23, 1, 0.32, 1)',
     trigger: 'Send the local demo form, edit details, or replay',
-    tech: 'WAAPI', color: 'green', tags: ['form', 'success', 'receipt', 'confirmation', 'submit', 'focus'],
+    tech: 'WAAPI', color: 'green', tags: ['form', 'success', 'receipt', 'confirmation', 'submit', 'focus', 'solid', 'outline'],
     intent: 'everyday', collections: ['product-ui', 'landing-pages'], complexity: 'intermediate', added: '2026-10-10',
     reducedMotion: 'The receipt appears immediately, with the same focus movement and edit action.',
     source: 'animate/SKILL.md',
@@ -710,7 +710,7 @@ Demo.onCleanup(() => animation?.cancel());
     duration: '900 ms simulated retry · 180 ms result',
     easing: 'linear wait; cubic-bezier(0.23, 1, 0.32, 1) result',
     trigger: 'Try again, cancel, reset, or replay',
-    tech: 'WAAPI', color: 'peach', tags: ['retry', 'error', 'recovery', 'loading', 'cancel', 'preview'],
+    tech: 'WAAPI', color: 'peach', tags: ['retry', 'error', 'recovery', 'loading', 'cancel', 'preview', 'solid', 'outline'],
     intent: 'everyday', collections: ['product-ui', 'dashboards'], complexity: 'intermediate', added: '2026-10-10',
     reducedMotion: 'Retry immediately reveals the recovered demo preview; result text and controls remain available.',
     source: 'emil-design-eng/SKILL.md',
@@ -773,7 +773,7 @@ Demo.onCleanup(stop);
     duration: '140 ms press · 180 ms reversible exit',
     easing: 'cubic-bezier(0.23, 1, 0.32, 1)',
     trigger: 'Remove the demo draft, undo, or replay',
-    tech: 'CSS', color: 'sand', tags: ['undo', 'remove', 'delete', 'reversible', 'draft', 'focus'],
+    tech: 'CSS', color: 'sand', tags: ['undo', 'remove', 'delete', 'reversible', 'draft', 'focus', 'outline', 'ghost'],
     intent: 'everyday', collections: ['product-ui', 'dashboards'], complexity: 'intermediate', added: '2026-10-10',
     reducedMotion: 'The draft and undo state change immediately, with identical focus recovery and no travel.',
     source: 'apple-design/SKILL.md',
@@ -916,21 +916,21 @@ Demo.onCleanup(stop);
     duration: '140 ms press · 180 ms toolbar',
     easing: 'cubic-bezier(0.23, 1, 0.32, 1)',
     trigger: 'Select tasks, select all, clear, or replay',
-    tech: 'CSS', color: 'graphite', tags: ['bulk actions', 'selection', 'checkbox', 'indeterminate', 'toolbar', 'tasks'],
+    tech: 'CSS', color: 'graphite', tags: ['bulk actions', 'selection', 'checkbox', 'indeterminate', 'toolbar', 'tasks', 'outline'],
     intent: 'everyday', collections: ['product-ui', 'dashboards'], complexity: 'intermediate', added: '2026-10-10',
     reducedMotion: 'Selection, the mixed checkbox, and contextual actions update immediately without toolbar travel.',
     source: 'emil-design-eng/SKILL.md',
-    html: `<main class="stage form-stage"><section class="form-panel bulk-panel"><label class="form-check bulk-all"><input type="checkbox" id="bulk-all"><span>Page tasks</span><span class="form-sr"> — select all tasks</span></label><label class="form-check bulk-row"><input type="checkbox" name="bulk-task" value="hero"><span>Hero layout</span><span class="form-meta">Design</span></label><label class="form-check bulk-row"><input type="checkbox" name="bulk-task" value="footer"><span>Footer links</span><span class="form-meta">Content</span></label><div class="bulk-toolbar" aria-hidden="true" inert><span class="bulk-count form-number" role="status">0 selected</span><button class="form-action bulk-clear" type="button">Clear selection</button></div></section></main>`,
+    html: `<main class="stage form-stage"><section class="form-panel bulk-panel"><label class="form-check bulk-all"><input type="checkbox" id="bulk-all"><span>Page tasks</span><span class="form-sr"> — select all tasks</span></label><label class="form-check bulk-row"><input type="checkbox" name="bulk-task" value="hero"><span>Hero layout</span><span class="form-meta">Design</span></label><label class="form-check bulk-row"><input type="checkbox" name="bulk-task" value="footer"><span>Footer links</span><span class="form-meta">Content</span></label><div class="bulk-toolbar" aria-hidden="true" inert><span class="bulk-count form-number" role="status">0 selected</span><button class="form-action secondary bulk-clear" type="button">Clear selection</button></div></section></main>`,
     css: shared + String.raw`
 .bulk-panel { padding: 9px 13px; }
 .bulk-all { gap: 10px; font-size: 12px; font-weight: 650; border-bottom: 1px solid var(--line); }
 .bulk-row { font-size: 11px; gap: 10px; }
 .bulk-row > span:nth-child(2) { flex: 1; }
 .bulk-row > .form-meta { font-size: 9px; }
-.bulk-toolbar { display: flex; justify-content: space-between; align-items: center; gap: 8px; min-height: 44px; padding-left: 9px; border-radius: 9px; background: var(--accent-soft); color: var(--accent-ink); opacity: 0; transform: translateY(12%); visibility: hidden; transition: opacity calc(180ms * var(--time-scale)) var(--ease-out), transform calc(180ms * var(--time-scale)) var(--ease-out), visibility 0s calc(180ms * var(--time-scale)); }
+.bulk-toolbar { display: flex; justify-content: space-between; align-items: center; gap: 8px; min-height: 44px; color: var(--ink); opacity: 0; transform: translateY(12%); visibility: hidden; transition: opacity calc(180ms * var(--time-scale)) var(--ease-out), transform calc(180ms * var(--time-scale)) var(--ease-out), visibility 0s calc(180ms * var(--time-scale)); }
 .bulk-toolbar[data-visible="true"] { opacity: 1; transform: translateY(0); visibility: visible; transition-delay: 0s; }
 .bulk-count { font-size: 10px; }
-.bulk-clear { min-height: 44px; font-size: 10px; padding-inline: 11px; background: transparent; color: var(--accent-ink); }
+.bulk-clear { min-height: 44px; font-size: 10px; }
 @media (min-height: 300px) { .bulk-panel { padding: 14px 20px; } .bulk-row, .bulk-all { min-height: 50px; } .bulk-toolbar { margin-top: 6px; } }
 `,
     js: String.raw`
@@ -962,7 +962,7 @@ Demo.onReplay(() => { tasks.forEach(input => { input.checked = false; }); update
     duration: '140 ms press · 160 ms badge',
     easing: 'cubic-bezier(0.23, 1, 0.32, 1)',
     trigger: 'Add demo activity, mark read, or replay',
-    tech: 'CSS', color: 'lavender', tags: ['notification', 'badge', 'unread', 'inbox', 'activity', 'counter'],
+    tech: 'CSS', color: 'lavender', tags: ['notification', 'badge', 'unread', 'inbox', 'activity', 'counter', 'solid', 'outline'],
     intent: 'everyday', collections: ['product-ui', 'dashboards'], complexity: 'starter', added: '2026-10-10',
     reducedMotion: 'The badge and unread description change instantly without scale or fade travel.',
     source: 'emil-design-eng/SKILL.md',
@@ -1007,7 +1007,7 @@ Demo.onReplay(() => { unread = 0; update(); void badge.offsetWidth; unread = 2; 
     duration: '4 × 240 ms simulated phases · 140 ms press',
     easing: 'cubic-bezier(0.23, 1, 0.32, 1)',
     trigger: 'Run the demo export, cancel, or replay',
-    tech: 'WAAPI', color: 'green', tags: ['progress', 'segments', 'pipeline', 'export', 'checkpoints', 'cancel'],
+    tech: 'WAAPI', color: 'green', tags: ['progress', 'segments', 'pipeline', 'export', 'checkpoints', 'cancel', 'solid', 'outline'],
     intent: 'everyday', collections: ['product-ui', 'dashboards'], complexity: 'intermediate', added: '2026-10-10',
     reducedMotion: 'All four demo checkpoints complete immediately; labels and cancellation state remain explicit.',
     source: 'animate/SKILL.md',

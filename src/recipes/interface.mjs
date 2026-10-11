@@ -72,7 +72,7 @@ const recipes = [
     trigger: 'Press or replay',
     tech: 'CSS',
     color: 'lavender',
-    tags: ['button', 'press', 'tap', 'scale', 'microinteraction'],
+    tags: ['button', 'press', 'tap', 'scale', 'microinteraction', 'solid', 'accent'],
     reducedMotion: 'The button changes color immediately; compression is removed.',
     source: 'animate/RECIPES.md',
     featured: true,
@@ -132,7 +132,7 @@ Demo.onReplay(() => {
     trigger: 'Click Save changes',
     tech: 'CSS',
     color: 'green',
-    tags: ['save', 'success', 'button', 'crossfade', 'loading', 'state'],
+    tags: ['save', 'success', 'button', 'crossfade', 'loading', 'state', 'solid', 'accent'],
     reducedMotion: 'The current label and status replace each other instantly; the spinner becomes static.',
     source: 'emil-design-eng/SKILL.md',
     html: String.raw`<main class="stage">
@@ -209,7 +209,7 @@ Demo.onReplay(() => {
     trigger: 'Hold pointer, Space or Enter',
     tech: 'CSS',
     color: 'peach',
-    tags: ['hold', 'confirm', 'clip-path', 'progress', 'asymmetric', 'button'],
+    tags: ['hold', 'confirm', 'clip-path', 'progress', 'asymmetric', 'button', 'outline', 'text action'],
     reducedMotion: 'The hold still takes two seconds. Only a static color and text change; the fill does not travel.',
     source: 'animate/RECIPES.md',
     featured: true,
@@ -224,13 +224,13 @@ Demo.onReplay(() => {
 .hold-stage { gap: 13px; }
 .hold-button {
   position: relative; isolation: isolate; overflow: hidden; width: 218px; max-width: 100%; min-height: 54px;
-  padding: 15px 20px; border: 0; border-radius: 12px; background: var(--accent-soft); color: var(--ink);
+  padding: 13.5px 18.5px; border: 1.5px solid var(--ink); border-radius: 12px; background: var(--paper); color: var(--ink);
   font-size: 14px; font-weight: 650; user-select: none; -webkit-user-select: none; -webkit-touch-callout: none;
   transition: transform calc(160ms * var(--time-scale)) var(--ease-out);
 }
 .hold-button[data-holding="true"] { transform: scale(.97); }
 .hold-fill {
-  position: absolute; inset: 0; z-index: -1; background: color-mix(in srgb, var(--accent) 22%, var(--accent-soft));
+  position: absolute; inset: 0; z-index: -1; background: var(--line);
   clip-path: inset(0 100% 0 0);
   transition: clip-path calc(200ms * var(--time-scale)) var(--ease-out);
 }
@@ -383,7 +383,7 @@ Demo.onReplay(() => {
     trigger: 'Click Prepare export',
     tech: 'CSS',
     color: 'blue',
-    tags: ['progress', 'loading', 'button', 'linear', 'cancel', 'scaleX'],
+    tags: ['progress', 'loading', 'button', 'linear', 'cancel', 'scaleX', 'soft'],
     reducedMotion: 'The task still runs, with a static Preparing label followed by Ready. The moving fill is hidden.',
     source: 'animate/SKILL.md',
     html: String.raw`<main class="stage">
@@ -446,7 +446,7 @@ Demo.onReplay(() => {
     trigger: 'Try an incomplete code',
     tech: 'WAAPI',
     color: 'peach',
-    tags: ['error', 'shake', 'form', 'validation', 'nudge', 'WAAPI'],
+    tags: ['error', 'shake', 'form', 'validation', 'nudge', 'WAAPI', 'solid'],
     reducedMotion: 'The error text and field outline update without any side-to-side movement.',
     source: 'animation-vocabulary/SKILL.md',
     html: String.raw`<main class="stage error-stage">
@@ -523,7 +523,7 @@ Demo.onCleanup(() => motion?.cancel());
     trigger: 'Select a tab',
     tech: 'CSS',
     color: 'sand',
-    tags: ['tabs', 'indicator', 'underline', 'navigation', 'transform', 'keyboard'],
+    tags: ['tabs', 'indicator', 'underline', 'navigation', 'transform', 'keyboard', 'text action'],
     reducedMotion: 'The indicator moves immediately to the chosen tab and the selected panel stays readable.',
     source: 'animate/SKILL.md',
     html: String.raw`<main class="stage">
@@ -607,7 +607,7 @@ Demo.onCleanup(() => observer.disconnect());
     trigger: 'Select a period',
     tech: 'CSS',
     color: 'graphite',
-    tags: ['segmented', 'tabs', 'clip-path', 'radio', 'selection', 'mask'],
+    tags: ['segmented', 'tabs', 'clip-path', 'radio', 'selection', 'mask', 'solid'],
     reducedMotion: 'The active mask updates immediately. Native radio controls retain their keyboard behavior.',
     source: 'animate/RECIPES.md',
     featured: true,
@@ -674,7 +674,7 @@ Demo.onCleanup(() => observer.disconnect());
     trigger: 'Toggle the menu',
     tech: 'CSS',
     color: 'lavender',
-    tags: ['menu', 'hamburger', 'close', 'icon', 'morph', 'navigation'],
+    tags: ['menu', 'hamburger', 'close', 'icon', 'morph', 'navigation', 'outline', 'solid', 'ghost'],
     reducedMotion: 'The two-line and close states swap immediately, with the expanded state still announced.',
     source: 'animate/SKILL.md',
     html: String.raw`<main class="stage">
@@ -688,7 +688,9 @@ Demo.onCleanup(() => observer.disconnect());
 .menu-card { width: 250px; max-width: 100%; min-height: 160px; padding: 13px 16px 17px; border-radius: 16px; background: var(--paper); }
 .menu-card header { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 .menu-card header strong { font-size: 14px; font-weight: 600; }
-.menu-toggle { display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; padding: 0; border: 0; border-radius: 10px; background: var(--accent-soft); color: var(--ink); }
+.menu-toggle { display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; padding: 0; border: 1.5px solid var(--ink); border-radius: 10px; background: transparent; color: var(--ink); }
+.menu-toggle[aria-expanded="true"] { background: var(--ink); color: var(--on-ink); }
+@media (hover: hover) and (pointer: fine) { .menu-toggle:not([aria-expanded="true"]):hover { background: color-mix(in srgb, var(--ink) 6%, var(--paper)); } }
 .menu-lines { position: relative; width: 20px; height: 16px; }
 .menu-lines > span { position: absolute; left: 0; top: 7px; width: 20px; height: 2px; border-radius: 2px; background: currentColor; transition: transform calc(180ms * var(--time-scale)) var(--ease-out); }
 .menu-lines > span:first-child { transform: translateY(-4px); }
@@ -737,7 +739,7 @@ Demo.onReplay(() => {
     trigger: 'Open Quick actions',
     tech: 'CSS',
     color: 'blue',
-    tags: ['popover', 'origin', 'scale', 'native', 'surface', 'context'],
+    tags: ['popover', 'origin', 'scale', 'native', 'surface', 'context', 'solid', 'ghost'],
     reducedMotion: 'The popover appears in place immediately, retaining its native dismissal and focus behavior.',
     source: 'animate/RECIPES.md',
     featured: true,
@@ -763,7 +765,7 @@ Demo.onReplay(() => {
 .quick-actions > p { padding: 2px 7px 6px; color: var(--muted); font-size: 11px; }
 .quick-actions > button { display: flex; align-items: center; gap: 10px; width: 100%; min-height: 34px; padding: 7px; border: 0; border-radius: 7px; background: transparent; color: var(--ink); text-align: left; font-size: 12px; }
 .quick-actions > button > span { width: 15px; text-align: center; font-size: 16px; }
-@media (hover: hover) and (pointer: fine) { .quick-actions > button:hover { background: var(--accent-soft); } }
+@media (hover: hover) and (pointer: fine) { .quick-actions > button:hover { background: color-mix(in srgb, var(--ink) 6%, var(--paper)); } }
 :root[data-reduced="true"] .quick-actions { transform: none; }
 `,
     js: timeline + String.raw`
@@ -828,7 +830,7 @@ Demo.onCleanup(() => window.removeEventListener('resize', position));
     trigger: 'Hover, focus or tap',
     tech: 'CSS',
     color: 'sand',
-    tags: ['tooltip', 'hint', 'focus', 'hover', 'popover', 'origin'],
+    tags: ['tooltip', 'hint', 'focus', 'hover', 'popover', 'origin', 'surface', 'icon'],
     reducedMotion: 'The hint appears and disappears immediately without scaling.',
     source: 'animate/RECIPES.md',
     html: String.raw`<main class="stage">
@@ -907,7 +909,7 @@ Demo.onReplay(() => {
     trigger: 'Hover, focus or tap',
     tech: 'CSS',
     color: 'peach',
-    tags: ['underline', 'hover', 'link', 'text', 'transform-origin', 'trail'],
+    tags: ['underline', 'hover', 'link', 'text', 'transform-origin', 'trail', 'text action'],
     reducedMotion: 'The underline appears instantly. The text never moves.',
     source: 'emil-design-eng/SKILL.md',
     html: String.raw`<main class="stage">

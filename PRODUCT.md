@@ -24,7 +24,7 @@ Desktop browsing and touch use on phones and tablets. Visitors browse by project
 
 ## Capabilities and Constraints
 
-- 44 distinct animation patterns, including practical interface feedback, loading, layout, charts, reading progress, text, entrances, and expressive experiments. 41 use native browser APIs; three spring studies embed Motion.
+- 100 distinct animation patterns, including practical interface feedback, loading, layout, charts, reading progress, text, entrances, and expressive experiments. 96 use native browser APIs; four spring studies embed Motion.
 - Five project collections: Product UI, Landing pages, Dashboards, Storytelling, and Signature motion. Six motion categories remain available, alongside search, intent, technology, complexity, curated ordering, and A–Z ordering.
 - Bookmarks, related studies, stable deep links, code copy, source download, and an AI handoff with the selected color tokens.
 - One semantic color contract for live previews and exported code. Playground colors retain each study's family; Radix, Geist-inspired, and custom-accent palettes let the actual demonstrations fit other projects. Appearance can be Light, Dark, or Match site; the project palettes offer six accents.
@@ -36,6 +36,8 @@ Desktop browsing and touch use on phones and tablets. Visitors browse by project
 ## Brand Commitments
 
 Name: Animation Playground. Avoid generic AI interface styling, ornamental gradients, unnecessary hero marketing, and animation on the navigation itself. Plain, useful descriptions and visible demonstrations take priority.
+
+Solid and outlined controls lead the demonstration collection. Use a deliberate mix of neutral and accent-solid actions, clear outlines, ghost/text actions, icon and segmented controls, and a few soft treatments. Repeated pastel fills are not the default for ordinary buttons or selected cards. Keep each study internally consistent, and preserve distinctive artwork and color-theme portability.
 
 ## Evidence on Hand
 

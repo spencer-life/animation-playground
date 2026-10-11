@@ -77,7 +77,33 @@ and selected-palette exports. Do not add a private theme implementation to a rec
 
 Use durations like `calc(200ms * var(--time-scale))`. Runtime sets document `data-reduced`, `data-paused`, and `data-keyboard`; the base stylesheet removes animation travel under reduced motion and makes keyboard transitions instant. If JS directly sets transforms or uses Motion, handle `Demo.reduced` explicitly and register settings cleanup. Do not rely on static destructuring of the reduced flag.
 
-Shared classes: `.stage` (full-height centered flex column with gap 20px), `.demo-button` (ink-filled, compact, accessible native button), `.demo-button.secondary` (paper-filled button), `.demo-label` (small muted label), `.demo-row` (flex row centered, gap 12px). They follow the current palette and are embedded into each full example, not external app dependencies.
+Shared classes: `.stage` (full-height centered flex column with gap 20px), `.demo-button` (ink-filled, compact, accessible native button), `.demo-button.secondary` (neutral outlined button), `.demo-label` (small muted label), `.demo-row` (flex row centered, gap 12px). They follow the current palette and are embedded into each full example, not external app dependencies.
+
+### Control treatments
+
+Lead with **solid and outline** controls. A primary everyday action usually uses
+`--ink` / `--on-ink`; deliberate accent emphasis uses `--accent` / `--on-accent`.
+Secondary actions normally use a visible neutral outline and ink text on a
+transparent or paper surface. Use a constant border width and compensate padding
+so hover, selection, and added borders do not change measured control geometry.
+
+Keep a useful range across studies: ghost and underlined text actions, icon
+controls, segmented controls, and selective soft fills. The existing
+`progress-button`, `dock-magnification`, and `chart-bars` demonstrate deliberate
+soft treatments. A soft fill should fit that study's function or composition;
+do not make it the shared default for buttons, toolbars, and selected cards.
+Keep colorful animation artwork distinct from ordinary control surfaces.
+
+Use ink or a contrast-checked muted role for a visible control outline; `--line`
+is often too faint as the only boundary. Derive neutral hover fills from paper
+and ink, since the original canvas can be colored. Preserve each variant's
+foreground on hover, skip hover on disabled controls, and keep focus separate
+from selected state. Never redefine `--accent-soft` globally to restyle controls.
+
+Add accurate search tags such as `solid`, `outline`, `ghost`, `soft`, `surface`,
+`icon`, `segmented`, or `text action` when the study contains that control style.
+These tags describe actual controls, not incidental artwork. A study can show
+more than one treatment without adding duplicate catalog entries.
 
 ## Discovery metadata
 

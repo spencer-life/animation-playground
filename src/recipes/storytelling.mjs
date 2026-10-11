@@ -5,14 +5,14 @@ import { recipeIcon } from '../recipe-icons.mjs';
 const shared = String.raw`
 .story-stage { gap: 12px; padding: 14px 16px; }
 .story-sr { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
-.story-control { display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 44px; padding: 10px 15px; border: 0; border-radius: 10px; color: var(--ink); background: var(--paper); font-size: 12px; font-weight: 600; }
+.story-control { display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 44px; padding: 8.5px 13.5px; border: 1.5px solid var(--ink); border-radius: 10px; color: var(--ink); background: transparent; font-size: 12px; font-weight: 600; }
 .story-stage button { user-select: none; -webkit-user-select: none; touch-action: manipulation; transition: scale calc(160ms * var(--time-scale)) var(--ease-out); }
 .story-stage button:active { scale: .97; }
 :root[data-reduced="true"] .story-stage button:active, :root[data-keyboard="true"] .story-stage button:active { scale: 1; }
 .story-note { margin: 0; font-size: 10px; line-height: 1.45; color: var(--muted); text-align: center; }
 .story-scroll { scrollbar-width: thin; scrollbar-color: var(--muted) var(--paper); }
 .story-scroll:focus-visible { outline-offset: -4px; }
-@media (hover: hover) and (pointer: fine) { .story-control:hover { color: var(--accent-ink); background: var(--accent-soft); } }
+@media (hover: hover) and (pointer: fine) { .story-control:hover { background: color-mix(in srgb, var(--ink) 6%, var(--demo-bg)); } }
 @media (min-height: 320px) { .story-stage { gap: 20px; padding: 26px; } .story-note { font-size: 12px; } }
 `;
 
@@ -67,7 +67,7 @@ export default [
     trigger: 'Replay strip',
     tech: 'WAAPI',
     color: 'graphite',
-    tags: ['marquee', 'typography', 'loop', 'banner', 'brand', 'finite'],
+    tags: ['marquee', 'typography', 'loop', 'banner', 'brand', 'finite', 'outline'],
     collections: ['landing-pages', 'signature'],
     reducedMotion: 'The strip stays in its readable starting composition; both passes are skipped.',
     html: `<main class="stage story-stage marquee-stage"><h2 class="story-sr">Form. Motion. Feeling.</h2><div class="marquee-window" aria-hidden="true"><div class="marquee-track">${Array.from({ length: 2 }, () => `<span class="marquee-group"><b>Form.</b><b>Motion.</b><b>Feeling.</b><span class="marquee-symbol">${recipeIcon('spark', 32)}</span></span>`).join('')}</div></div><p class="story-note">A little rhythm. Then room to breathe.</p>${control('Replay strip')}</main>`,
@@ -106,7 +106,7 @@ wire(play);
     trigger: 'Highlight phrase',
     tech: 'WAAPI',
     color: 'sand',
-    tags: ['highlight', 'marker', 'editorial', 'text', 'emphasis'],
+    tags: ['highlight', 'marker', 'editorial', 'text', 'emphasis', 'outline'],
     collections: ['storytelling', 'landing-pages'],
     reducedMotion: 'The phrase is highlighted immediately; the complete statement remains still.',
     html: `<main class="stage story-stage highlight-stage"><h2 class="highlight-heading">Make the<br><mark><span class="highlight-mark" aria-hidden="true"></span>useful parts</mark><br>unforgettable.</h2>${control('Highlight phrase')}</main>`,
@@ -140,7 +140,7 @@ wire(play);
     trigger: 'Resolve the word',
     tech: 'WAAPI',
     color: 'graphite',
-    tags: ['scramble', 'decode', 'letters', 'text', 'stepped', 'brand'],
+    tags: ['scramble', 'decode', 'letters', 'text', 'stepped', 'brand', 'outline'],
     collections: ['signature', 'landing-pages'],
     reducedMotion: 'The final word is readable immediately; character substitutions are skipped.',
     html: `<main class="stage story-stage scramble-stage"><h2 class="scramble-heading" aria-label="Resonate"><span class="scramble-word" aria-hidden="true">${[...'RESONATE'].map((letter, index) => `<span class="scramble-cell"><span class="scramble-strip"><i>${'X7Q9M2K4'[index]}</i><i>${'A8R3F6P5'[index]}</i><i>${'N4V2W9B7'[index]}</i><i>${letter}</i></span></span>`).join('')}</span></h2><p class="story-note">From noise to something that stays.</p>${control('Resolve the word')}</main>`,
@@ -178,7 +178,7 @@ wire(play);
     trigger: 'Send a wave',
     tech: 'WAAPI',
     color: 'blue',
-    tags: ['wave', 'letters', 'typography', 'stagger', 'finite'],
+    tags: ['wave', 'letters', 'typography', 'stagger', 'finite', 'outline'],
     collections: ['signature', 'storytelling'],
     reducedMotion: 'All four letters remain still on their baseline.',
     html: `<main class="stage story-stage wave-stage"><h2 class="wave-heading" aria-label="Flow"><span aria-hidden="true">${[...'FLOW'].map(letter => `<i>${letter}</i>`).join('')}</span></h2><div class="wave-baseline" aria-hidden="true"></div>${control('Send a wave')}</main>`,
@@ -215,7 +215,7 @@ wire(play);
     trigger: 'Lift curtains',
     tech: 'WAAPI',
     color: 'peach',
-    tags: ['curtain', 'shutter', 'image', 'reveal', 'portfolio', 'stagger'],
+    tags: ['curtain', 'shutter', 'image', 'reveal', 'portfolio', 'stagger', 'outline'],
     collections: ['landing-pages', 'storytelling', 'signature'],
     reducedMotion: 'The full artwork is visible immediately; the covering shutters stay out of view.',
     html: `<main class="stage story-stage curtain-stage"><div class="curtain-frame">${curtainArt}<div class="curtain-shutters" aria-hidden="true"><span></span><span></span><span></span></div></div>${control('Lift curtains')}</main>`,
@@ -252,7 +252,7 @@ wire(play);
     trigger: 'Reveal the frame',
     tech: 'WAAPI',
     color: 'green',
-    tags: ['image', 'zoom', 'crop', 'clip-path', 'reveal', 'portfolio'],
+    tags: ['image', 'zoom', 'crop', 'clip-path', 'reveal', 'portfolio', 'outline'],
     collections: ['landing-pages', 'storytelling'],
     reducedMotion: 'The complete artwork remains at its final crop and scale with no zoom or moving mask.',
     source: 'animate/RECIPES.md',
@@ -289,7 +289,7 @@ wire(play);
     trigger: 'Select a panel or use Previous and Next',
     tech: 'CSS',
     color: 'lavender',
-    tags: ['gallery', 'perspective', '3d', 'portfolio', 'selection'],
+    tags: ['gallery', 'perspective', '3d', 'portfolio', 'selection', 'outline'],
     collections: ['signature', 'landing-pages'],
     complexity: 'intermediate',
     reducedMotion: 'The selected panel changes immediately; neighboring previews remain visible without turning.',
@@ -585,7 +585,7 @@ reset();
     trigger: 'Trace the journey',
     tech: 'WAAPI',
     color: 'blue',
-    tags: ['svg', 'path', 'follower', 'route', 'motion-path', 'diagram'],
+    tags: ['svg', 'path', 'follower', 'route', 'motion-path', 'diagram', 'outline'],
     collections: ['storytelling', 'signature'],
     complexity: 'intermediate',
     reducedMotion: 'The marker is placed at the destination immediately; the complete route remains visible.',
@@ -633,7 +633,7 @@ wire(play);
     trigger: 'Open or close the radial navigation; select a destination',
     tech: 'CSS',
     color: 'lavender',
-    tags: ['radial', 'orbit', 'navigation', 'menu', 'origin-aware', 'portfolio'],
+    tags: ['radial', 'orbit', 'navigation', 'menu', 'origin-aware', 'portfolio', 'solid', 'outline'],
     collections: ['signature', 'landing-pages'],
     complexity: 'intermediate',
     reducedMotion: 'Destinations appear and disappear immediately at their fixed positions; focus and selected labels remain available.',
@@ -644,8 +644,8 @@ wire(play);
 .orbit-navigation { position: relative; width: min(100%, 300px); height: 162px; }
 .orbit-nav-guide { position: absolute; inset: 0; width: 100%; height: 100%; fill: none; stroke: var(--line); stroke-width: 1.5; }
 .orbit-nav-toggle { position: absolute; z-index: 3; left: calc(50% - 26px); top: 62px; display: grid; place-items: center; width: 52px; height: 52px; padding: 0; border: 0; border-radius: 50%; background: var(--accent); color: var(--on-accent); }
-.orbit-destination { position: absolute; z-index: 2; top: 64px; left: calc(50% - 24px); width: 48px; height: 48px; padding: 0; border: 0; border-radius: 50%; background: var(--paper); color: var(--ink); font-size: 10px; font-weight: 600; opacity: 1; transition: transform calc(240ms * var(--time-scale)) var(--ease-out), opacity calc(180ms * var(--time-scale)) var(--ease-out), scale calc(160ms * var(--time-scale)) var(--ease-out) !important; }
-.orbit-destination[aria-current="page"] { background: var(--accent-soft); color: var(--accent-ink); }
+.orbit-destination { position: absolute; z-index: 2; top: 64px; left: calc(50% - 24px); width: 48px; height: 48px; padding: 0; border: 1.5px solid var(--ink); border-radius: 50%; background: var(--paper); color: var(--ink); font-size: 10px; font-weight: 600; opacity: 1; transition: transform calc(240ms * var(--time-scale)) var(--ease-out), opacity calc(180ms * var(--time-scale)) var(--ease-out), scale calc(160ms * var(--time-scale)) var(--ease-out) !important; }
+.orbit-destination[aria-current="page"] { background: var(--ink); color: var(--on-ink); }
 .orbit-destination:nth-child(1) { transform: translateY(-64px); }
 .orbit-destination:nth-child(2) { transform: translate(-72px,36px); }
 .orbit-destination:nth-child(3) { transform: translate(72px,36px); }
@@ -693,7 +693,7 @@ Demo.onReplay(() => { navigation.dataset.reset = 'true'; open(false); void navig
     trigger: 'Celebrate',
     tech: 'WAAPI',
     color: 'peach',
-    tags: ['particles', 'confetti', 'celebration', 'success', 'finite', 'burst'],
+    tags: ['particles', 'confetti', 'celebration', 'success', 'finite', 'burst', 'outline'],
     collections: ['signature', 'landing-pages'],
     reducedMotion: 'A still arrangement of colorful pieces surrounds the message; no particles travel or flash.',
     html: `<main class="stage story-stage burst-stage"><div class="burst-scene"><div class="burst-particles" aria-hidden="true">${Array.from({ length: 12 }, (_, index) => { const angle = index / 12 * Math.PI * 2; return `<i style="transform:translate(${Math.cos(angle) * 103}px,${Math.sin(angle) * 51}px) rotate(${index * 31}deg)"></i>`; }).join('')}</div><h2>Small win.<br><span>Big feeling.</span></h2></div>${control('Celebrate')}</main>`,
@@ -736,7 +736,7 @@ wire(play);
     trigger: 'Unfold ribbon',
     tech: 'WAAPI',
     color: 'green',
-    tags: ['fold', 'ribbon', '3d', 'perspective', 'origin', 'paper'],
+    tags: ['fold', 'ribbon', '3d', 'perspective', 'origin', 'paper', 'outline'],
     collections: ['storytelling', 'signature'],
     complexity: 'intermediate',
     reducedMotion: 'All connected panels remain flat and readable; folding is removed.',
@@ -777,7 +777,7 @@ wire(play);
     trigger: 'Scan once',
     tech: 'WAAPI',
     color: 'green',
-    tags: ['radar', 'scan', 'signals', 'svg', 'discovery', 'finite'],
+    tags: ['radar', 'scan', 'signals', 'svg', 'discovery', 'finite', 'outline'],
     collections: ['signature', 'storytelling'],
     reducedMotion: 'All three illustrative signals are visible immediately; the sweeping sector is removed.',
     html: `<main class="stage story-stage radar-stage"><div class="radar-composition"><svg class="radar-art" viewBox="0 0 180 166" role="img" aria-label="An illustrative radar diagram with three signals; no live data"><g class="radar-rings"><circle cx="90" cy="83" r="68"/><circle cx="90" cy="83" r="44"/><circle cx="90" cy="83" r="20"/><path d="M90 10v146M17 83h146"/></g><g class="radar-sector"><path d="M90 83 90 15a68 68 0 0 1 40 13Z"/><path d="M90 83V15"/></g><circle class="radar-signal" cx="117" cy="43" r="5"/><circle class="radar-signal" cx="130" cy="111" r="5"/><circle class="radar-signal" cx="52" cy="91" r="5"/><circle class="radar-center" cx="90" cy="83" r="4"/></svg><p><strong>Three signals.</strong><span>One clear picture.</span><small>Illustrative data</small></p></div>${control('Scan once')}</main>`,

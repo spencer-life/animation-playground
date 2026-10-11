@@ -8,8 +8,9 @@ const shared = String.raw`
 :root:not([data-keyboard="true"]):not([data-reduced="true"]) .hub-stage button:active:not(:disabled) { scale: .97; }
 .hub-sr { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
 .hub-action { min-height: 44px; padding: 10px 16px; border: 0; border-radius: 10px; background: var(--accent); color: var(--on-accent); font-size: 12px; font-weight: 600; }
-.hub-action.secondary { background: var(--paper); color: var(--ink); }
-@media (hover: hover) and (pointer: fine) { .hub-action:hover { background: var(--accent-hover); color: var(--on-accent); } }
+.hub-action.secondary { padding: 8.5px 14.5px; border: 1.5px solid var(--ink); background: transparent; color: var(--ink); }
+.hub-action:disabled { opacity: .55; cursor: default; }
+@media (hover: hover) and (pointer: fine) { .hub-action:not(.secondary):not(:disabled):hover { background: var(--accent-hover); color: var(--on-accent); } .hub-action.secondary:not(:disabled):hover { background: color-mix(in srgb, var(--paper), var(--ink) 6%); } }
 `;
 
 export default [
@@ -27,7 +28,7 @@ export default [
     trigger: 'Load again or replay',
     tech: 'WAAPI',
     color: 'green',
-    tags: ['skeleton', 'loading', 'content', 'crossfade', 'data', 'card'],
+    tags: ['skeleton', 'loading', 'content', 'crossfade', 'data', 'card', 'solid'],
     intent: 'everyday',
     collections: ['product-ui', 'dashboards'],
     complexity: 'starter',
@@ -127,7 +128,7 @@ Demo.onCleanup(stop);
     trigger: 'Select a step, Back, Next, or replay',
     tech: 'CSS',
     color: 'blue',
-    tags: ['stepper', 'progress', 'onboarding', 'checkout', 'wizard', 'navigation'],
+    tags: ['stepper', 'progress', 'onboarding', 'checkout', 'wizard', 'navigation', 'solid', 'outline'],
     intent: 'everyday',
     collections: ['product-ui'],
     complexity: 'starter',
@@ -150,8 +151,8 @@ Demo.onCleanup(stop);
 .stepper { position: relative; width: min(100%, 310px); padding: 12px 14px; border-radius: 14px; background: var(--paper); }
 .stepper-list { position: relative; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin: 0; padding: 0; list-style: none; }
 .stepper-list button { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; width: 100%; min-height: 54px; padding: 0; border: 0; background: transparent; color: var(--muted); font-size: 10px; }
-.step-dot { display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; background: var(--demo-bg); color: var(--ink); font-size: 11px; font-variant-numeric: tabular-nums; transition: background-color calc(180ms * var(--time-scale)) var(--ease-out), color calc(180ms * var(--time-scale)) var(--ease-out); }
-.stepper-list button[data-reached="true"] .step-dot, .stepper-list button[aria-current="step"] .step-dot { background: var(--accent); color: var(--on-accent); }
+.step-dot { display: grid; place-items: center; width: 26px; height: 26px; border: 1.5px solid var(--muted); border-radius: 50%; background: var(--paper); color: var(--ink); font-size: 11px; font-variant-numeric: tabular-nums; transition: background-color calc(180ms * var(--time-scale)) var(--ease-out), color calc(180ms * var(--time-scale)) var(--ease-out); }
+.stepper-list button[data-reached="true"] .step-dot, .stepper-list button[aria-current="step"] .step-dot { border-color: var(--accent-ink); background: var(--accent); color: var(--on-accent); }
 .stepper-list button[aria-current="step"] { color: var(--ink); font-weight: 650; }
 .stepper-track { position: absolute; left: calc(16.666% + 9px); right: calc(16.666% + 9px); top: 27px; height: 2px; background: var(--line); }
 .stepper-track span { display: block; width: 100%; height: 100%; background: var(--accent); transform: scaleX(0); transform-origin: left; transition: transform calc(240ms * var(--time-scale)) var(--ease-out); }
@@ -159,10 +160,10 @@ Demo.onCleanup(stop);
 .stepper-copy h2 { font-size: 15px; font-weight: 600; }
 .stepper-copy p { margin-top: 2px; color: var(--muted); font-size: 10px; }
 .stepper-actions { display: flex; justify-content: space-between; gap: 12px; }
-.stepper-actions button { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 8px 12px; border: 0; border-radius: 9px; background: var(--accent-soft); color: var(--accent-ink); font-size: 11px; font-weight: 600; }
-.stepper-actions .stepper-back { background: transparent; color: var(--muted); }
+.stepper-actions button { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 6.5px 10.5px; border: 1.5px solid transparent; border-radius: 9px; background: var(--accent); color: var(--on-accent); font-size: 11px; font-weight: 600; }
+.stepper-actions .stepper-back { border-color: var(--ink); background: transparent; color: var(--ink); }
 .stepper-actions button:disabled { opacity: .55; cursor: default; }
-@media (hover: hover) and (pointer: fine) { .stepper-list button:hover .step-dot { background: var(--accent-soft); color: var(--accent-ink); } }
+@media (hover: hover) and (pointer: fine) { .stepper-list button:hover .step-dot { outline: 1.5px solid var(--accent-ink); outline-offset: 1px; } .stepper-next:not(:disabled):hover { background: var(--accent-hover); } .stepper-back:not(:disabled):hover { background: color-mix(in srgb, var(--paper), var(--ink) 6%); } }
 @media (min-height: 300px) { .stepper { padding: 20px; } .stepper-track { top: 35px; } .stepper-copy { padding: 24px 0 18px; } .stepper-copy h2 { font-size: 20px; } .stepper-copy p, .stepper-list button { font-size: 12px; } }
 `,
     js: String.raw`
@@ -214,7 +215,7 @@ Demo.onReplay(() => {
     trigger: 'Collapse or expand navigation',
     tech: 'WAAPI',
     color: 'graphite',
-    tags: ['sidebar', 'rail', 'collapse', 'layout', 'FLIP', 'dashboard', 'workspace'],
+    tags: ['sidebar', 'rail', 'collapse', 'layout', 'FLIP', 'dashboard', 'workspace', 'solid', 'ghost'],
     intent: 'everyday',
     collections: ['product-ui', 'dashboards'],
     complexity: 'intermediate',
@@ -237,12 +238,13 @@ Demo.onReplay(() => {
 .rail-shell { display: grid; grid-template-columns: 108px minmax(0, 1fr); width: min(100%, 340px); height: 170px; overflow: hidden; border-radius: 14px; background: var(--paper); }
 .rail-shell[data-compact="true"] { grid-template-columns: 52px minmax(0, 1fr); }
 .rail-nav { position: relative; display: flex; flex-direction: column; align-items: stretch; gap: 3px; padding: 7px 6px; min-width: 0; }
-.rail-surface { position: absolute; inset: 0; border-radius: 14px 0 0 14px; background: var(--accent-soft); transform-origin: left; }
+.rail-surface { position: absolute; inset: 0; border-radius: 14px 0 0 14px; background: color-mix(in srgb, var(--paper), var(--ink) 6%); transform-origin: left; }
 .rail-nav button { position: relative; display: flex; align-items: center; gap: 8px; width: 100%; min-height: 44px; padding: 10px 8px; border: 0; border-radius: 8px; background: transparent; color: var(--muted); text-align: left; font-size: 10px; white-space: nowrap; }
 .rail-nav button svg { flex: none; }
 .rail-nav button:focus-visible { outline-offset: -3px; }
-.rail-nav button[aria-current="page"] { background: var(--paper); color: var(--ink); }
-.rail-nav .rail-toggle { color: var(--accent-ink); }
+.rail-nav button[aria-current="page"] { background: var(--ink); color: var(--on-ink); }
+.rail-nav button[aria-current="page"]:focus-visible { outline-color: var(--on-ink); }
+.rail-nav .rail-toggle { color: var(--ink); }
 .rail-shell[data-compact="true"] .rail-word { display: none; }
 .rail-view { min-width: 0; padding: 17px 13px 12px; }
 .rail-view h2 { font-size: 13px; font-weight: 650; }
@@ -252,7 +254,7 @@ Demo.onReplay(() => {
 .rail-chart i:nth-child(2) { height: 70%; background: var(--art-2); } .rail-chart i:nth-child(3) { height: 60%; } .rail-chart i:nth-child(4) { height: 100%; background: var(--art-3); } .rail-chart i:nth-child(5) { height: 82%; }
 .rail-view-note { display: block; margin-top: 7px; color: var(--muted); font-size: 9px; }
 .rail-status { font-size: 10px; }
-@media (hover: hover) and (pointer: fine) { .rail-nav button:hover { background: var(--paper); color: var(--ink); } }
+@media (hover: hover) and (pointer: fine) { .rail-nav button:not([aria-current="page"]):hover { background: var(--paper); color: var(--ink); } }
 @media (min-height: 300px) { .rail-shell { grid-template-columns: 120px minmax(0, 1fr); height: 218px; } .rail-nav { padding-top: 12px; gap: 5px; } .rail-nav button { font-size: 11px; } .rail-view { padding: 21px 18px; } .rail-view h2 { font-size: 16px; } .rail-view-copy { font-size: 12px; } .rail-chart { height: 55px; margin-top: 15px; } .rail-view-note { font-size: 10px; } }
 `,
     js: String.raw`
@@ -308,7 +310,7 @@ Demo.onCleanup(() => { stop(); window.removeEventListener('resize', stop); });
     trigger: 'Replay chart reveal',
     tech: 'WAAPI',
     color: 'blue',
-    tags: ['chart', 'bar', 'data', 'dashboard', 'stagger', 'entrance'],
+    tags: ['chart', 'bar', 'data', 'dashboard', 'stagger', 'entrance', 'soft'],
     intent: 'everyday',
     collections: ['dashboards', 'storytelling'],
     complexity: 'starter',
@@ -333,6 +335,7 @@ Demo.onCleanup(() => { stop(); window.removeEventListener('resize', stop); });
 .bars-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 5px; }
 .bars-heading h2 { font-size: 14px; font-weight: 650; }
 .bars-heading p { color: var(--muted); font-size: 10px; margin-top: 2px; }
+/* A localized soft utility control keeps attention on the chart's data. */
 .bars-heading button { display: grid; place-items: center; flex: none; width: 44px; height: 44px; border: 0; border-radius: 10px; color: var(--accent-ink); background: var(--accent-soft); }
 .bars-plot { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; margin: 0; padding: 0; list-style: none; }
 .bars-plot li { display: grid; grid-template-rows: 14px 66px 14px; gap: 3px; min-width: 0; text-align: center; color: var(--muted); font-size: 9px; font-variant-numeric: tabular-nums; }
@@ -374,7 +377,7 @@ Demo.onCleanup(stop);
     trigger: 'Choose All, UI, or Brand',
     tech: 'WAAPI',
     color: 'lavender',
-    tags: ['filter', 'grid', 'FLIP', 'collection', 'search', 'layout'],
+    tags: ['filter', 'grid', 'FLIP', 'collection', 'search', 'layout', 'solid', 'ghost'],
     intent: 'everyday',
     collections: ['product-ui', 'landing-pages'],
     complexity: 'intermediate',
@@ -397,13 +400,13 @@ Demo.onCleanup(stop);
 .filter-stage { gap: 8px; }
 .filter-controls { display: flex; gap: 5px; width: min(100%, 294px); }
 .filter-controls button { flex: 1; min-height: 44px; padding: 9px 12px; border: 0; border-radius: 9px; background: transparent; color: var(--muted); font-size: 11px; font-weight: 600; }
-.filter-controls button[aria-pressed="true"] { color: var(--accent-ink); background: var(--paper); }
+.filter-controls button[aria-pressed="true"] { color: var(--on-ink); background: var(--ink); }
 .filter-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-auto-rows: 52px; align-content: start; gap: 7px; width: min(100%, 294px); min-height: 111px; margin: 0; padding: 0; list-style: none; }
 .filter-item { display: flex; align-items: center; justify-content: center; gap: 6px; min-width: 0; padding: 6px; border-radius: 10px; background: var(--paper); color: var(--ink); font-size: 10px; }
 .filter-item > span:first-child { display: flex; flex: none; color: var(--accent-ink); }
 .filter-item[data-kind="brand"] { background: var(--accent-soft); }
 .filter-count { font-size: 10px; }
-@media (hover: hover) and (pointer: fine) { .filter-controls button:hover { background: var(--paper); color: var(--ink); } }
+@media (hover: hover) and (pointer: fine) { .filter-controls button:not([aria-pressed="true"]):hover { background: var(--paper); color: var(--ink); } }
 @media (min-height: 300px) { .filter-grid { grid-auto-rows: 82px; min-height: 171px; gap: 9px; } .filter-item { flex-direction: column; gap: 8px; font-size: 12px; } .filter-controls button, .filter-count { font-size: 12px; } }
 `,
     js: String.raw`

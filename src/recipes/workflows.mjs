@@ -10,9 +10,11 @@ const shared = String.raw`
 .wf-kicker { color: var(--muted); font-size: 10px; line-height: 1.4; }
 .wf-copy { color: var(--muted); font-size: 11px; line-height: 1.5; }
 .wf-controls { display: flex; align-items: center; gap: 6px; }
-.wf-button { display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-height: 44px; padding: 8px 12px; border: 0; border-radius: 9px; background: var(--accent-soft); color: var(--accent-ink); font-size: 11px; font-weight: 600; line-height: 1.2; }
-.wf-button.quiet { background: transparent; color: var(--muted); }
-.wf-button.icon { width: 44px; padding: 8px; flex: none; }
+.wf-button { display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-height: 44px; padding: 6.5px 10.5px; border: 1.5px solid var(--ink); border-radius: 9px; background: var(--paper); color: var(--ink); font-size: 11px; font-weight: 600; line-height: 1.2; }
+.wf-button.solid { background: var(--ink); color: var(--on-ink); }
+.wf-button.quiet { padding: 8px 12px; border: 0; background: transparent; color: var(--muted); }
+.wf-button.icon { width: 44px; padding: 6.5px; flex: none; }
+.wf-button.icon.quiet { padding: 8px; }
 .wf-button:disabled { cursor: default; opacity: .55; }
 .wf-caption { max-width: 340px; margin: 0; color: var(--muted); font-size: 10px; line-height: 1.4; text-align: center; }
 .wf-sr { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
@@ -20,7 +22,10 @@ const shared = String.raw`
 :root:not([data-reduced="true"]):not([data-keyboard="true"]) .workflow-stage :where(button, summary, a):not(:disabled):active { scale: .97; }
 .workflow-stage input, .workflow-stage select { font-size: 16px; }
 .workflow-stage input[type="range"] { display: block; width: 100%; min-width: 0; height: 36px; margin: 0; accent-color: var(--accent); }
-@media (hover: hover) and (pointer: fine) { .wf-button:not(:disabled):hover { background: var(--accent-hover); color: var(--on-accent); } }
+@media (hover: hover) and (pointer: fine) {
+  .wf-button:not(.solid):not(:disabled):hover { background: color-mix(in srgb, var(--paper) 92%, var(--ink)); color: var(--ink); }
+  .wf-button.solid:not(:disabled):hover { background: color-mix(in srgb, var(--ink) 92%, var(--paper)); color: var(--on-ink); }
+}
 @media (min-height: 300px) { .workflow-stage { gap: 14px; padding: 24px; } .wf-shell { width: min(100%, 430px); padding: 20px; } .wf-title { font-size: 18px; } .wf-copy, .wf-button { font-size: 13px; } .wf-kicker, .wf-caption { font-size: 11px; } }
 `;
 
@@ -69,12 +74,12 @@ export default [
     avoidWhen: 'Search results, tables, or frequently paged records. Keep those changes immediate instead of borrowing the chapter transition.',
     principle: 'Let direction explain sequence, keep the frame steady, and never make navigation wait for an animation.',
     duration: '200 ms · keyboard navigation is immediate', trigger: 'Previous / Next or Replay',
-    color: 'sand', tags: ['pagination', 'page', 'forward', 'back', 'sequence', 'direction'], collections: ['product-ui', 'storytelling'],
+    color: 'sand', tags: ['pagination', 'page', 'forward', 'back', 'sequence', 'direction', 'solid', 'outline'], collections: ['product-ui', 'storytelling'],
     reducedMotion: 'The chosen page and page count change immediately inside the same frame.',
     html: `<main class="stage workflow-stage"><section class="wf-shell page-shell" aria-label="Demo field guide">
   <div class="wf-top"><span class="wf-kicker">FIELD GUIDE</span><span class="page-count wf-kicker" aria-live="polite">1 / 3</span></div>
   <div class="page-window"><article class="page-sheet"><span class="page-mark" aria-hidden="true"></span><div><h2 class="wf-title">Make a little space.</h2><p class="wf-copy">Start with the one thing the page needs to say.</p></div></article></div>
-  <div class="wf-top"><button class="wf-button quiet page-back" type="button" disabled>Previous</button><button class="wf-button page-next" type="button">Next page ${recipeIcon('arrow', 14)}</button></div>
+  <div class="wf-top"><button class="wf-button page-back" type="button" disabled>Previous</button><button class="wf-button solid page-next" type="button">Next page ${recipeIcon('arrow', 14)}</button></div>
 </section><p class="wf-caption">Move through three short chapters.</p></main>`,
     css: String.raw`
 .page-window { overflow: hidden; margin: 8px 0; }
@@ -119,7 +124,7 @@ Demo.onReplay(() => {
     avoidWhen: 'A short path already fits. These are illustrative locations, not a replacement for a production routing component.',
     principle: 'Disclose the omitted context without replacing the current location or hiding the control that closes it.',
     duration: '200 ms', trigger: 'Show or collapse the full path',
-    color: 'peach', tags: ['breadcrumb', 'disclosure', 'path', 'hierarchy', 'overflow'], collections: ['product-ui', 'dashboards'],
+    color: 'peach', tags: ['breadcrumb', 'disclosure', 'path', 'hierarchy', 'overflow', 'ghost', 'icon'], collections: ['product-ui', 'dashboards'],
     reducedMotion: 'The full path appears or collapses immediately; the current location remains labeled.',
     html: `<main class="stage workflow-stage"><section class="wf-shell crumb-shell">
   <nav aria-label="Demo breadcrumb"><ol class="crumbs"><li>Workspace</li><li><button class="crumb-toggle wf-button icon quiet" type="button" aria-label="Show full path" aria-expanded="false" aria-controls="crumb-project crumb-client">${recipeIcon('dots', 18)}</button></li><li id="crumb-project" class="crumb-extra" hidden>Projects</li><li id="crumb-client" class="crumb-extra" hidden>Studio</li><li class="crumb-current" aria-current="page">Brand kit</li></ol></nav>
@@ -165,7 +170,7 @@ Demo.onReplay(() => { disclose(false, false); disclose(true); });
     avoidWhen: 'Frequently switched work views or data that must be read continuously. Use immediate panel replacement for those cases.',
     principle: 'Keep selection, focus, and the content relationship correct before adding a contained, optional fade.',
     duration: '180 ms · keyboard selection is immediate', trigger: 'Select tabs, use arrow keys, or Replay',
-    color: 'blue', tags: ['tabs', 'tabpanel', 'content fade', 'roving focus', 'content', 'navigation'], collections: ['product-ui', 'dashboards'],
+    color: 'blue', tags: ['tabs', 'tabpanel', 'content fade', 'roving focus', 'content', 'navigation', 'solid', 'ghost'], collections: ['product-ui', 'dashboards'],
     reducedMotion: 'The selected panel is shown immediately with the same tab and focus semantics.',
     html: `<main class="stage workflow-stage"><section class="wf-shell panel-tabs">
   <div class="panel-tablist" role="tablist" aria-label="Demo project views"><button id="view-overview" type="button" role="tab" aria-controls="panel-overview" aria-selected="true" tabindex="0">Overview</button><button id="view-notes" type="button" role="tab" aria-controls="panel-notes" aria-selected="false" tabindex="-1">Notes</button><button id="view-activity" type="button" role="tab" aria-controls="panel-activity" aria-selected="false" tabindex="-1">Activity</button></div>
@@ -174,11 +179,11 @@ Demo.onReplay(() => { disclose(false, false); disclose(true); });
     css: String.raw`
 .panel-tablist { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 3px; padding-bottom: 5px; border-bottom: 1px solid var(--line); }
 .panel-tablist button { min-height: 44px; border: 0; border-radius: 7px; background: transparent; color: var(--muted); font-size: 11px; font-weight: 550; }
-.panel-tablist button[aria-selected="true"] { color: var(--accent-ink); background: var(--accent-soft); }
+.panel-tablist button[aria-selected="true"] { color: var(--on-ink); background: var(--ink); }
 .panel-viewport { position: relative; min-height: 104px; }
 .content-panel { display: flex; min-height: 104px; flex-direction: column; align-items: flex-start; justify-content: center; gap: 6px; padding: 9px 6px; border-radius: 6px; }
 .panel-emblem { color: var(--accent-ink); }
-@media (hover: hover) and (pointer: fine) { .panel-tablist button:hover { color: var(--ink); } }
+@media (hover: hover) and (pointer: fine) { .panel-tablist button[aria-selected="false"]:hover { color: var(--ink); background: color-mix(in srgb, var(--paper) 92%, var(--ink)); } .panel-tablist button[aria-selected="true"]:hover { color: var(--on-ink); background: color-mix(in srgb, var(--ink) 92%, var(--paper)); } }
 @media (min-height: 300px) { .panel-tablist button { font-size: 13px; } .panel-viewport, .content-panel { min-height: 180px; } .content-panel { gap: 12px; padding: 15px 8px; } }
 `,
     js: String.raw`
@@ -210,7 +215,7 @@ Demo.onReplay(() => { choose(0); choose(1, true); });
     avoidWhen: 'High-frequency settings navigation or a deep tree that would be easier to scan in one view. Production routing is outside this study.',
     principle: 'Make the return route obvious and preserve keyboard focus when a parent view is replaced.',
     duration: '200 ms · keyboard navigation is immediate', trigger: 'Open a collection and go back, or Replay',
-    color: 'green', tags: ['drilldown', 'hierarchy', 'back', 'resource picker', 'mobile navigation'], collections: ['product-ui'],
+    color: 'green', tags: ['drilldown', 'hierarchy', 'back', 'resource picker', 'mobile navigation', 'outline', 'ghost'], collections: ['product-ui'],
     reducedMotion: 'Parent and child views replace each other immediately, including their focus targets.',
     html: `<main class="stage workflow-stage"><section class="wf-shell drill-shell" aria-label="Demo resource browser">
   <div class="drill-parent"><p class="wf-kicker">YOUR LIBRARY</p><h2 class="wf-title">Keep the good pieces.</h2><div class="drill-folders"><button type="button" class="drill-folder" data-folder="Color"><span>${recipeIcon('half-circle', 22)} Color studies</span><span aria-hidden="true">›</span></button><button type="button" class="drill-folder" data-folder="Type"><span>${recipeIcon('code', 22)} Type studies</span><span aria-hidden="true">›</span></button></div></div>
@@ -220,11 +225,12 @@ Demo.onReplay(() => { choose(0); choose(1, true); });
 .drill-shell { min-height: 180px; overflow: hidden; }
 .drill-parent > h2 { margin-top: 4px; }
 .drill-folders { display: grid; gap: 4px; margin-top: 12px; }
-.drill-folder { display: flex; justify-content: space-between; align-items: center; gap: 10px; width: 100%; min-height: 44px; padding: 7px 10px; border: 0; border-radius: 9px; background: var(--accent-soft); color: var(--accent-ink); font-size: 12px; }
+.drill-folder { display: flex; justify-content: space-between; align-items: center; gap: 10px; width: 100%; min-height: 44px; padding: 5.5px 8.5px; border: 1.5px solid var(--ink); border-radius: 9px; background: var(--paper); color: var(--ink); font-size: 12px; }
 .drill-folder > span:first-child { display: flex; align-items: center; gap: 9px; }
 .drill-back { padding-left: 0; min-height: 44px; }
 .drill-heading { margin: 5px 0 8px; }
 .drill-items { margin: 0; padding-left: 17px; color: var(--muted); font-size: 11px; line-height: 1.7; }
+@media (hover: hover) and (pointer: fine) { .drill-folder:hover { background: color-mix(in srgb, var(--paper) 92%, var(--ink)); } }
 @media (min-height: 300px) { .drill-shell { min-height: 246px; } .drill-folders { margin-top: 22px; gap: 8px; } .drill-folder { min-height: 56px; font-size: 14px; } .drill-items { font-size: 14px; line-height: 1.9; } }
 `,
     js: String.raw`
@@ -253,10 +259,10 @@ Demo.onReplay(() => { close(); open('Color', true); });
     avoidWhen: 'Search is the primary task, or a command palette is used constantly. Keep that field visible and its interactions immediate.',
     principle: 'Reveal the input, move focus intentionally, and keep typed filtering immediate. Replay alone demonstrates the arrival.',
     duration: '180 ms on Replay · search and typing are immediate', trigger: 'Toggle Search and type an asset name',
-    color: 'graphite', tags: ['search', 'input', 'disclosure', 'filter', 'assets'], collections: ['product-ui', 'dashboards'],
+    color: 'graphite', tags: ['search', 'input', 'disclosure', 'filter', 'assets', 'outline', 'icon'], collections: ['product-ui', 'dashboards'],
     reducedMotion: 'The search field appears immediately; matching assets and the result count update without animation.',
     source: 'emil-design-eng/SKILL.md',
-    html: `<main class="stage workflow-stage"><section class="wf-shell search-shell"><div class="wf-top"><div><p class="wf-kicker">ASSET LIBRARY</p><h2 class="wf-title">Find the right piece.</h2></div><button class="wf-button icon quiet search-toggle" type="button" aria-label="Open search" aria-expanded="false" aria-controls="asset-search">${recipeIcon('spark', 20)}</button></div>
+    html: `<main class="stage workflow-stage"><section class="wf-shell search-shell"><div class="wf-top"><div><p class="wf-kicker">ASSET LIBRARY</p><h2 class="wf-title">Find the right piece.</h2></div><button class="wf-button icon search-toggle" type="button" aria-label="Open search" aria-expanded="false" aria-controls="asset-search">${recipeIcon('spark', 20)}</button></div>
   <form id="asset-search" class="asset-search" role="search" hidden><label class="wf-sr" for="asset-query">Search demo assets</label><input id="asset-query" type="search" autocomplete="off" enterkeyhint="search" placeholder="Try “icon”" /></form>
   <ul class="search-items" tabindex="0" aria-label="Matching demo assets"><li data-name="wordmark">${recipeIcon('code', 17)}<span>Wordmark</span><span>SVG</span></li><li data-name="cover image">${recipeIcon('diamond', 17)}<span>Cover image</span><span>PNG</span></li><li data-name="app icon">${recipeIcon('half-circle', 17)}<span>App icon</span><span>SVG</span></li></ul><p class="search-count wf-kicker" role="status">3 assets</p>
 </section></main>`,
@@ -303,7 +309,7 @@ Demo.onReplay(() => { input.value = ''; filter(); disclose(false); disclose(true
     principle: 'Spring the decorative faces as a group, preserve their velocity when retargeted, and keep every hit area fixed.',
     duration: 'Physics-driven · finite Replay', easing: 'Spring · duration 0.5 · bounce 0.2',
     trigger: 'Move a fine pointer across the dock, or choose a tool', tech: 'Motion', usesMotion: true,
-    color: 'lavender', tags: ['dock', 'magnification', 'spring', 'pointer', 'navigation', 'tools'], intent: 'expressive', collections: ['signature', 'landing-pages'],
+    color: 'lavender', tags: ['dock', 'magnification', 'spring', 'pointer', 'navigation', 'tools', 'soft', 'solid', 'icon'], intent: 'expressive', collections: ['signature', 'landing-pages'],
     reducedMotion: 'Tool faces stay at their natural size. Selection, native focus, and tool labels remain available.',
     source: 'apple-design/SKILL.md',
     html: `<main class="stage workflow-stage"><section class="wf-shell dock-scene" aria-label="Demo creative tools"><p class="wf-kicker">A SMALL CREATIVE DESKTOP</p><div class="dock-tools" role="group" aria-label="Choose a demo tool"><button class="dock-tool" type="button" data-tool="Draw" aria-pressed="true"><span class="dock-face" aria-hidden="true">${recipeIcon('spark', 22)}</span><span>Draw</span></button><button class="dock-tool" type="button" data-tool="Notes" aria-pressed="false"><span class="dock-face" aria-hidden="true">${recipeIcon('code', 22)}</span><span>Notes</span></button><button class="dock-tool" type="button" data-tool="Files" aria-pressed="false"><span class="dock-face" aria-hidden="true">${recipeIcon('diamond', 22)}</span><span>Files</span></button><button class="dock-tool" type="button" data-tool="Inbox" aria-pressed="false"><span class="dock-face" aria-hidden="true">${recipeIcon('check', 22)}</span><span>Inbox</span></button></div><p class="dock-status wf-copy" role="status">Draw is open</p></section><p class="wf-caption">A moving face. A steady target.</p></main>`,
@@ -372,18 +378,19 @@ Demo.onCleanup(() => { version++; springs.forEach(spring => spring.destroy()); d
     avoidWhen: 'A production rich-text editor needs selection, composition, and accessibility behavior beyond this two-block study.',
     principle: 'Keep the tool near what it changes, preserve native buttons, and make frequent selection and keyboard formatting immediate.',
     duration: '200 ms on Replay · selection and formatting are immediate', easing: 'cubic-bezier(0.77, 0, 0.175, 1)', trigger: 'Choose a line; toggle Bold, Italic, or Underline',
-    color: 'sand', tags: ['toolbar', 'selection', 'contextual', 'formatting', 'editor', 'anchor'], collections: ['product-ui'],
+    color: 'sand', tags: ['toolbar', 'selection', 'contextual', 'formatting', 'editor', 'anchor', 'solid', 'outline', 'ghost'], collections: ['product-ui'],
     reducedMotion: 'The toolbar moves to the selected block immediately; formatting and focus remain unchanged.',
     html: `<main class="stage workflow-stage"><section class="wf-shell format-shell" aria-label="Demo block formatting"><div class="format-toolbar" role="toolbar" aria-label="Text formatting"><button type="button" data-format="bold" aria-label="Bold" aria-pressed="false" tabindex="0">B</button><button type="button" data-format="italic" aria-label="Italic" aria-pressed="false" tabindex="-1"><i>I</i></button><button type="button" data-format="underline" aria-label="Underline" aria-pressed="false" tabindex="-1"><u>U</u></button></div><div class="format-lines"><button class="format-line" type="button" aria-pressed="true"><span>Good ideas need room.</span></button><button class="format-line" type="button" aria-pressed="false"><span>Give the details a little care.</span></button></div></section><p class="wf-caption">Choose a line, then format it.</p></main>`,
     css: String.raw`
 .format-shell { position: relative; padding-top: 66px; }
 .format-toolbar { position: absolute; z-index: 2; left: 12px; top: 10px; display: flex; padding: 0 4px; border: 1px solid var(--line); border-radius: 9px; background: var(--paper); box-shadow: 0 4px 10px var(--shadow); }
 .format-toolbar button { width: 44px; height: 44px; padding: 8px; border: 0; border-radius: 7px; background: transparent; color: var(--ink); font-size: 14px; font-weight: 650; }
-.format-toolbar button[aria-pressed="true"] { background: var(--accent-soft); color: var(--accent-ink); }
+.format-toolbar button[aria-pressed="true"] { background: var(--ink); color: var(--on-ink); }
 .format-lines { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
-.format-line { min-width: 0; min-height: 78px; padding: 10px; border: 1px solid transparent; border-radius: 8px; background: transparent; color: var(--ink); font-size: 12px; line-height: 1.5; text-align: left; }
-.format-line[aria-pressed="true"] { border-color: var(--line); background: var(--accent-soft); }
-@media (min-height: 300px) { .format-shell { padding-top: 83px; } .format-toolbar { left: 20px; top: 20px; } .format-line { min-height: 112px; padding: 15px; font-size: 15px; } .format-lines { gap: 12px; } }
+.format-line { min-width: 0; min-height: 78px; padding: 9.5px; border: 1.5px solid var(--ink); border-radius: 8px; background: var(--paper); color: var(--ink); font-size: 12px; line-height: 1.5; text-align: left; }
+.format-line[aria-pressed="true"] { box-shadow: inset 0 0 0 1px var(--ink); }
+@media (hover: hover) and (pointer: fine) { .format-toolbar button[aria-pressed="false"]:hover, .format-line:hover { background: color-mix(in srgb, var(--paper) 92%, var(--ink)); } .format-toolbar button[aria-pressed="true"]:hover { background: color-mix(in srgb, var(--ink) 92%, var(--paper)); color: var(--on-ink); } }
+@media (min-height: 300px) { .format-shell { padding-top: 83px; } .format-toolbar { left: 20px; top: 20px; } .format-line { min-height: 112px; padding: 14.5px; font-size: 15px; } .format-lines { gap: 12px; } }
 `,
     js: String.raw`
 const shell = document.querySelector('.format-shell'), toolbar = document.querySelector('.format-toolbar'), controls = [...toolbar.querySelectorAll('button')], lines = [...document.querySelectorAll('.format-line')];
@@ -427,7 +434,7 @@ select(0);
     avoidWhen: 'Short documents, decorative scroll hijacking, or a nested reading pane in the final page. This pane bounds the study only.',
     principle: 'Follow native scroll position, keep anchors meaningful, and let the marker explain location without delaying navigation.',
     duration: '200 ms marker movement on Replay · reading and links are immediate', trigger: 'Scroll or select a section link',
-    color: 'blue', tags: ['scrollspy', 'anchors', 'table of contents', 'reading', 'section', 'native scroll'], collections: ['landing-pages', 'storytelling'],
+    color: 'blue', tags: ['scrollspy', 'anchors', 'table of contents', 'reading', 'section', 'native scroll', 'ghost'], collections: ['landing-pages', 'storytelling'],
     reducedMotion: 'Section links, scroll position, and the current marker update immediately.',
     source: 'emil-design-eng/SKILL.md',
     html: `<main class="stage workflow-stage"><section class="wf-shell spy-shell"><nav class="spy-nav" aria-label="Demo article sections"><a href="#spy-start" aria-current="location">Start</a><a href="#spy-details">Details</a><a href="#spy-finish">Finish</a><span class="spy-indicator" aria-hidden="true"></span></nav><article class="spy-pane" tabindex="0" aria-label="Demo article"><section id="spy-start"><h2>Start with a reason.</h2><p>Give the page one clear job. The rest of the design should help it do that job.</p></section><section id="spy-details"><h2>Make the details useful.</h2><p>Good spacing and clear labels make an interface easier to understand before anything moves.</p></section><section id="spy-finish"><h2>Leave a clear next step.</h2><p>Finish with a decision the reader can make confidently. Let them choose their own pace.</p></section></article></section></main>`,
@@ -435,8 +442,9 @@ select(0);
 .spy-shell { padding: 6px 12px 10px; }
 .spy-nav { position: relative; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-bottom: 1px solid var(--line); }
 .spy-nav a { display: grid; place-items: center; min-height: 44px; color: var(--muted); text-decoration: none; font-size: 11px; border-radius: 6px; }
-.spy-nav a[aria-current] { color: var(--accent-ink); font-weight: 650; }
+.spy-nav a[aria-current] { color: var(--ink); font-weight: 650; }
 .spy-indicator { position: absolute; bottom: -1px; left: 0; width: 33.333%; height: 3px; border-radius: 2px; background: var(--accent); pointer-events: none; }
+@media (hover: hover) and (pointer: fine) { .spy-nav a:hover { color: var(--ink); background: color-mix(in srgb, var(--paper) 92%, var(--ink)); } }
 .spy-pane { position: relative; height: 136px; overflow: auto; scrollbar-width: thin; scrollbar-color: var(--muted) var(--paper); border-radius: 5px; }
 .spy-pane:focus-visible { outline-offset: -3px; }
 .spy-pane section { min-height: 126px; padding: 17px 8px; }
@@ -468,7 +476,7 @@ update();
     avoidWhen: 'Headers that chase scroll direction, repeatedly hide controls, or occupy too much of a small screen.',
     principle: 'Let the browser own scrolling and stickiness. Keep the compact title supplementary and ordinary scrolling immediate.',
     duration: '180 ms title arrival on Replay · native scrolling is immediate', trigger: 'Scroll the article or continue reading',
-    color: 'peach', tags: ['sticky', 'header', 'scroll', 'title', 'document', 'orientation'], collections: ['landing-pages', 'storytelling'],
+    color: 'peach', tags: ['sticky', 'header', 'scroll', 'title', 'document', 'orientation', 'ghost'], collections: ['landing-pages', 'storytelling'],
     reducedMotion: 'The compact title appears without travel as the article scrolls; the browser’s native sticky behavior is unchanged.',
     source: 'emil-design-eng/SKILL.md',
     html: `<main class="stage workflow-stage"><section class="wf-shell sticky-shell"><div class="sticky-pane" tabindex="0" aria-label="Demo scrolling article"><header class="sticky-bar"><span class="sticky-brand">Fieldwork</span><span class="sticky-small-title">Space to think</span></header><article class="sticky-article"><p class="wf-kicker">A NOTE ON MAKING THINGS</p><h2>Space<br>to think.</h2><p>A clear page starts with a little room around the important things.</p><button class="wf-button quiet sticky-jump" type="button">Continue reading ↓</button><h3>Leave the edges quiet.</h3><p>When everything asks for attention, nothing feels clear. Give the ideas enough room to stand on their own.</p><h3>Keep the useful parts close.</h3><p>A small, steady title can remind you where you are without getting in the way.</p></article></div></section></main>`,
@@ -508,7 +516,7 @@ update();
     avoidWhen: 'Frequently sorted or live tables. Ordinary sorting is immediate here, and data values never animate or change for the effect.',
     principle: 'Sort the real DOM first and make data available immediately; use measured transforms only when the motion is explicitly requested.',
     duration: '240 ms on Replay · header sorting is immediate', easing: 'cubic-bezier(0.77, 0, 0.175, 1)', trigger: 'Sort by Name or Tasks; Replay studies row continuity',
-    color: 'green', tags: ['table', 'sort', 'FLIP', 'data', 'rows', 'reorder'], collections: ['dashboards', 'product-ui'],
+    color: 'green', tags: ['table', 'sort', 'FLIP', 'data', 'rows', 'reorder', 'ghost'], collections: ['dashboards', 'product-ui'],
     reducedMotion: 'Rows move directly into their sorted order, with accurate column sort semantics and unchanged data.',
     html: `<main class="stage workflow-stage"><section class="wf-shell sort-shell"><table class="sort-table"><caption>Weekly contributors · demo data</caption><thead><tr><th scope="col" aria-sort="ascending"><button type="button" data-sort="name">Name <span aria-hidden="true">↕</span></button></th><th scope="col" aria-sort="none"><button type="button" data-sort="tasks">Tasks <span aria-hidden="true">↕</span></button></th></tr></thead><tbody><tr data-name="Alex" data-tasks="34"><th scope="row"><span class="sort-avatar">A</span> Alex</th><td>34</td></tr><tr data-name="June" data-tasks="56"><th scope="row"><span class="sort-avatar">J</span> June</th><td>56</td></tr><tr data-name="Mira" data-tasks="21"><th scope="row"><span class="sort-avatar">M</span> Mira</th><td>21</td></tr></tbody></table></section><p class="wf-caption sort-status" role="status">Name · ascending</p></main>`,
     css: String.raw`
@@ -516,11 +524,12 @@ update();
 .sort-table caption { padding: 0 0 3px; color: var(--muted); font-size: 10px; text-align: left; }
 .sort-table thead th { padding: 0; border-bottom: 1px solid var(--line); }
 .sort-table thead button { display: flex; align-items: center; justify-content: space-between; gap: 8px; width: 100%; min-height: 44px; padding: 7px; border: 0; border-radius: 5px; background: transparent; color: var(--muted); font-size: 10px; text-align: left; }
-.sort-table thead th[aria-sort="ascending"] button, .sort-table thead th[aria-sort="descending"] button { color: var(--accent-ink); }
+.sort-table thead th[aria-sort="ascending"] button, .sort-table thead th[aria-sort="descending"] button { color: var(--ink); font-weight: 600; }
 .sort-table tbody th, .sort-table tbody td { height: 31px; padding: 4px 7px; font-weight: 500; }
 .sort-table tbody th { text-align: left; }
 .sort-table td { text-align: right; font-variant-numeric: tabular-nums; }
 .sort-avatar { display: inline-grid; place-items: center; width: 20px; height: 20px; margin-right: 5px; border-radius: 6px; background: var(--accent-soft); color: var(--accent-ink); font-size: 10px; }
+@media (hover: hover) and (pointer: fine) { .sort-table thead button:hover { color: var(--ink); background: color-mix(in srgb, var(--paper) 92%, var(--ink)); } }
 @media (min-height: 300px) { .sort-table { font-size: 14px; } .sort-table caption, .sort-table thead button { font-size: 12px; } .sort-table tbody th, .sort-table tbody td { height: 49px; padding: 7px 10px; } .sort-avatar { width: 30px; height: 30px; font-size: 12px; margin-right: 9px; } }
 `,
     js: String.raw`
@@ -546,7 +555,7 @@ Demo.onReplay(() => { sort('name', true); sort('tasks', false, true); });
     avoidWhen: 'Large virtualized tables, multiple complex disclosures, or live rows that would move beneath the reader. Use a maintained table primitive there.',
     principle: 'Keep row and header semantics intact, make disclosure explicit, and animate the measured position of neighboring rows rather than table height.',
     duration: '200 ms', easing: 'Position: shared ease-in-out · detail: shared ease-out', trigger: 'Open or close either record',
-    color: 'graphite', tags: ['table', 'row', 'disclosure', 'details', 'FLIP', 'records'], collections: ['dashboards', 'product-ui'],
+    color: 'graphite', tags: ['table', 'row', 'disclosure', 'details', 'FLIP', 'records', 'ghost'], collections: ['dashboards', 'product-ui'],
     reducedMotion: 'Detail rows and disclosure labels change immediately, with the real table structure preserved.',
     html: `<main class="stage workflow-stage"><section class="wf-shell row-detail-shell"><table class="detail-table"><caption>Project estimates · demo data</caption><thead><tr><th scope="col">Work</th><th scope="col">Hours</th></tr></thead><tbody><tr class="detail-summary"><th scope="row"><button type="button" data-record="0" aria-expanded="false" aria-controls="record-brand"><span class="row-chevron" aria-hidden="true">›</span> Brand direction</button></th><td>12</td></tr><tr id="record-brand" class="detail-record" hidden><td colspan="2"><div>Two visual directions, a palette, and a compact reference guide.</div></td></tr><tr class="detail-summary"><th scope="row"><button type="button" data-record="1" aria-expanded="false" aria-controls="record-web"><span class="row-chevron" aria-hidden="true">›</span> Web foundations</button></th><td>18</td></tr><tr id="record-web" class="detail-record" hidden><td colspan="2"><div>Responsive type, reusable spacing, and three core page layouts.</div></td></tr></tbody></table></section></main>`,
     css: String.raw`
@@ -561,6 +570,7 @@ Demo.onReplay(() => { sort('name', true); sort('tasks', false, true); });
 .detail-summary button[aria-expanded="true"] .row-chevron { transform: rotate(90deg); }
 .detail-record td { padding: 0; }
 .detail-record div { padding: 8px 10px; border-radius: 7px; background: var(--accent-soft); color: var(--accent-ink); font-size: 10px; line-height: 1.5; }
+@media (hover: hover) and (pointer: fine) { .detail-summary button:hover { background: color-mix(in srgb, var(--paper) 92%, var(--ink)); } }
 @media (min-height: 300px) { .detail-table { font-size: 14px; } .detail-table caption, .detail-table thead th { font-size: 12px; } .detail-summary button { min-height: 55px; font-size: 14px; } .detail-record div { padding: 15px; font-size: 12px; } }
 `,
     js: String.raw`
@@ -583,14 +593,14 @@ Demo.onReplay(() => { disclose(-1, false); disclose(0); });
     avoidWhen: 'Live data, a large virtualized list, or automatic density changes while someone reads. Keep those layout updates immediate.',
     principle: 'Change the actual layout once, then connect the old and new row positions with short transforms.',
     duration: '200 ms', easing: 'cubic-bezier(0.77, 0, 0.175, 1)', trigger: 'Choose Comfortable or Compact',
-    color: 'blue', tags: ['density', 'compact', 'comfortable', 'list', 'layout', 'preference'], collections: ['dashboards', 'product-ui'],
+    color: 'blue', tags: ['density', 'compact', 'comfortable', 'list', 'layout', 'preference', 'outline', 'solid'], collections: ['dashboards', 'product-ui'],
     reducedMotion: 'Row spacing and the selected density change immediately; names and values remain readable.',
     html: `<main class="stage workflow-stage"><section class="wf-shell density-shell" data-density="comfortable"><div class="density-controls" role="group" aria-label="List density"><button type="button" data-density="comfortable" aria-pressed="true">Comfortable</button><button type="button" data-density="compact" aria-pressed="false">Compact</button></div><ul class="density-list" aria-label="Demo projects"><li><span class="density-dot" aria-hidden="true"></span><span>Studio site<small>Design review</small></span><strong>08</strong></li><li><span class="density-dot" aria-hidden="true"></span><span>Field notes<small>Content ready</small></span><strong>12</strong></li><li><span class="density-dot" aria-hidden="true"></span><span>Pattern book<small>In progress</small></span><strong>06</strong></li></ul></section><p class="wf-caption">The information stays. The spacing changes.</p></main>`,
     css: String.raw`
 .density-shell { padding: 10px 12px; }
 .density-controls { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin-bottom: 6px; }
-.density-controls button { min-height: 44px; padding: 7px; border: 0; border-radius: 8px; background: transparent; color: var(--muted); font-size: 11px; }
-.density-controls button[aria-pressed="true"] { background: var(--accent-soft); color: var(--accent-ink); font-weight: 600; }
+.density-controls button { min-height: 44px; padding: 5.5px; border: 1.5px solid var(--ink); border-radius: 8px; background: var(--paper); color: var(--ink); font-size: 11px; }
+.density-controls button[aria-pressed="true"] { background: var(--ink); color: var(--on-ink); font-weight: 600; }
 .density-list { display: grid; gap: 2px; min-height: 108px; align-content: start; margin: 0; padding: 0; list-style: none; }
 .density-list li { display: flex; align-items: center; gap: 9px; min-height: 35px; padding: 3px 7px; border-radius: 6px; color: var(--ink); font-size: 11px; line-height: 1.25; }
 .density-list small { display: block; margin-top: 2px; color: var(--muted); font-size: 9px; }
@@ -598,6 +608,7 @@ Demo.onReplay(() => { disclose(-1, false); disclose(0); });
 .density-dot { width: 8px; height: 8px; border-radius: 3px; background: var(--accent); flex: none; }
 .density-shell[data-density="compact"] .density-list li { min-height: 27px; padding-block: 5px; }
 .density-shell[data-density="compact"] .density-list small { display: none; }
+@media (hover: hover) and (pointer: fine) { .density-controls button[aria-pressed="false"]:hover { background: color-mix(in srgb, var(--paper) 92%, var(--ink)); } .density-controls button[aria-pressed="true"]:hover { background: color-mix(in srgb, var(--ink) 92%, var(--paper)); color: var(--on-ink); } }
 @media (min-height: 300px) { .density-shell { padding: 18px; } .density-controls { margin-bottom: 12px; } .density-controls button, .density-list li, .density-list strong { font-size: 13px; } .density-list { min-height: 165px; gap: 4px; } .density-list li { min-height: 52px; padding: 7px 10px; } .density-list small { font-size: 11px; } .density-shell[data-density="compact"] .density-list li { min-height: 34px; } }
 `,
     js: String.raw`
@@ -619,13 +630,14 @@ Demo.onReplay(() => { setDensity('comfortable', false); setDensity('compact'); }
     avoidWhen: 'Hundreds of records, frequent view switching, or a layout morph that would obscure active reading or editing.',
     principle: 'Update the native card surfaces immediately, then move the actual artwork and labels above them without scaling or clipping. Separate columns before joining a grid row, and separate rows before joining a list column; sample live positions when the choice changes mid-flight.',
     duration: '240 ms', easing: 'Two phases: shared ease-in-out · surfaces: shared ease-out', trigger: 'Choose List or Grid',
-    color: 'lavender', tags: ['list', 'grid', 'morph', 'FLIP', 'view', 'assets'], collections: ['product-ui', 'dashboards'],
+    color: 'lavender', tags: ['list', 'grid', 'morph', 'FLIP', 'view', 'assets', 'outline', 'solid'], collections: ['product-ui', 'dashboards'],
     reducedMotion: 'The existing asset cards change directly to their new list or grid arrangement.',
     html: `<main class="stage workflow-stage"><section class="wf-shell view-shell" data-view="grid"><div class="wf-top"><span class="wf-kicker">THREE GOOD PIECES</span><div class="view-controls" role="group" aria-label="Asset view"><button type="button" data-view="list" aria-pressed="false">List</button><button type="button" data-view="grid" aria-pressed="true">Grid</button></div></div><ul class="asset-views" aria-label="Demo assets"><li><span class="asset-view-surface" aria-hidden="true"></span><span class="asset-view-art" aria-hidden="true">${recipeIcon('diamond', 26)}</span><span class="asset-view-copy"><strong>Mark</strong><small>Brand</small></span></li><li><span class="asset-view-surface" aria-hidden="true"></span><span class="asset-view-art" aria-hidden="true">${recipeIcon('half-circle', 26)}</span><span class="asset-view-copy"><strong>Cover</strong><small>Image</small></span></li><li><span class="asset-view-surface" aria-hidden="true"></span><span class="asset-view-art" aria-hidden="true">${recipeIcon('code', 26)}</span><span class="asset-view-copy"><strong>Type</strong><small>System</small></span></li></ul></section><p class="wf-caption">New arrangement. The same three objects.</p></main>`,
     css: String.raw`
 .view-controls { display: flex; gap: 3px; }
-.view-controls button { min-width: 44px; min-height: 44px; padding: 7px; border: 0; border-radius: 8px; background: transparent; color: var(--muted); font-size: 10px; }
-.view-controls button[aria-pressed="true"] { background: var(--accent-soft); color: var(--accent-ink); }
+.view-controls button { min-width: 44px; min-height: 44px; padding: 5.5px; border: 1.5px solid var(--ink); border-radius: 8px; background: var(--paper); color: var(--ink); font-size: 10px; }
+.view-controls button[aria-pressed="true"] { background: var(--ink); color: var(--on-ink); }
+@media (hover: hover) and (pointer: fine) { .view-controls button[aria-pressed="false"]:hover { background: color-mix(in srgb, var(--paper) 92%, var(--ink)); } .view-controls button[aria-pressed="true"]:hover { background: color-mix(in srgb, var(--ink) 92%, var(--paper)); color: var(--on-ink); } }
 .asset-views { position: relative; isolation: isolate; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; min-height: 103px; margin: 8px 0 0; padding: 0; list-style: none; }
 .asset-views li { position: relative; display: flex; align-items: center; justify-content: center; gap: 6px; min-width: 0; min-height: 103px; padding: 8px; border-radius: 9px; }
 .asset-view-surface { position: absolute; inset: 0; z-index: 0; border-radius: inherit; background: var(--accent-soft); }
@@ -673,13 +685,13 @@ Demo.onReplay(() => { choose('list', false); choose('grid'); });
     avoidWhen: 'Frequently changing metrics, financial trading views, or animations that invent intermediate data. The total and values here remain exact.',
     principle: 'Keep the number stable and reveal the relationship between the total and its parts, with a clear route back.',
     duration: '200 ms', easing: 'Position: shared ease-in-out · breakdown: shared ease-out', trigger: 'Explore sources or return to the overview',
-    color: 'green', tags: ['metric', 'drilldown', 'breakdown', 'dashboard', 'data', 'explanation'], collections: ['dashboards', 'storytelling'],
+    color: 'green', tags: ['metric', 'drilldown', 'breakdown', 'dashboard', 'data', 'explanation', 'outline'], collections: ['dashboards', 'storytelling'],
     reducedMotion: 'The metric takes its compact position and the exact source values appear immediately.',
     source: 'emil-design-eng/SKILL.md',
-    html: `<main class="stage workflow-stage"><section class="wf-shell metric-shell" data-expanded="false"><div class="wf-top"><span class="wf-kicker">WEEKLY VISITS · DEMO</span><button class="metric-toggle wf-button quiet" type="button" aria-expanded="false" aria-controls="metric-sources">Explore sources</button></div><div class="metric-overview"><strong class="metric-total">1,280</strong><span class="metric-summary wf-copy">Three paths to your work.</span></div><ul id="metric-sources" class="metric-sources" hidden><li><span>Direct</span><span class="metric-track"><i style="transform:scaleX(.594)"></i></span><strong>760</strong></li><li><span>Search</span><span class="metric-track"><i style="transform:scaleX(.25)"></i></span><strong>320</strong></li><li><span>Referral</span><span class="metric-track"><i style="transform:scaleX(.156)"></i></span><strong>200</strong></li></ul></section><p class="wf-caption">A total with a story you can inspect.</p></main>`,
+    html: `<main class="stage workflow-stage"><section class="wf-shell metric-shell" data-expanded="false"><div class="wf-top"><span class="wf-kicker">WEEKLY VISITS · DEMO</span><button class="metric-toggle wf-button" type="button" aria-expanded="false" aria-controls="metric-sources">Explore sources</button></div><div class="metric-overview"><strong class="metric-total">1,280</strong><span class="metric-summary wf-copy">Three paths to your work.</span></div><ul id="metric-sources" class="metric-sources" hidden><li><span>Direct</span><span class="metric-track"><i style="transform:scaleX(.594)"></i></span><strong>760</strong></li><li><span>Search</span><span class="metric-track"><i style="transform:scaleX(.25)"></i></span><strong>320</strong></li><li><span>Referral</span><span class="metric-track"><i style="transform:scaleX(.156)"></i></span><strong>200</strong></li></ul></section><p class="wf-caption">A total with a story you can inspect.</p></main>`,
     css: String.raw`
 .metric-shell { min-height: 180px; }
-.metric-toggle { padding-inline: 7px; font-size: 10px; }
+.metric-toggle { padding-inline: 5.5px; font-size: 10px; }
 .metric-overview { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; min-height: 112px; }
 .metric-total { display: block; font-size: 43px; font-weight: 550; line-height: 1; letter-spacing: -.045em; font-variant-numeric: tabular-nums; }
 .metric-shell[data-expanded="true"] .metric-overview { align-items: flex-start; justify-content: flex-start; min-height: 0; padding: 2px 0 8px; }
@@ -713,7 +725,7 @@ Demo.onReplay(() => { reveal(false, false); reveal(true); });
     avoidWhen: 'Treating a functional data tooltip as decoration. Point inspection is immediate; only Replay demonstrates anchor movement.',
     principle: 'Keep the exact value attached to its point, make every point reachable, and avoid trailing movement while someone reads data.',
     duration: '180 ms label movement on Replay · point inspection is immediate', easing: 'cubic-bezier(0.77, 0, 0.175, 1)', trigger: 'Hover, focus, or tap a chart point',
-    color: 'blue', tags: ['chart', 'tooltip', 'data', 'inspector', 'focus', 'points'], collections: ['dashboards'],
+    color: 'blue', tags: ['chart', 'tooltip', 'data', 'inspector', 'focus', 'points', 'ghost'], collections: ['dashboards'],
     reducedMotion: 'The data label moves immediately to its selected point and retains the accurate value.',
     source: 'emil-design-eng/SKILL.md',
     html: `<main class="stage workflow-stage"><section class="wf-shell point-shell"><div class="wf-top"><h2 class="wf-title">A week of visits</h2><span class="wf-kicker">DEMO</span></div><div class="point-chart"><svg viewBox="0 0 260 100" preserveAspectRatio="none" aria-hidden="true"><path d="M20 80H240M20 50H240M20 20H240"/><polyline points="26,67 78,42 130,54 182,20 234,33"/></svg><button class="chart-point" type="button" data-index="0" style="left:10%;top:67%" aria-label="Monday, 42 visits" aria-describedby="point-value"><span></span></button><button class="chart-point" type="button" data-index="1" style="left:30%;top:42%" aria-label="Tuesday, 68 visits"><span></span></button><button class="chart-point" type="button" data-index="2" style="left:50%;top:54%" aria-label="Wednesday, 55 visits"><span></span></button><button class="chart-point" type="button" data-index="3" style="left:70%;top:20%" aria-label="Thursday, 91 visits"><span></span></button><button class="chart-point" type="button" data-index="4" style="left:90%;top:33%" aria-label="Friday, 76 visits"><span></span></button><div id="point-value" class="point-value" role="tooltip">Mon · 42</div></div><div class="point-axis" aria-hidden="true"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span></div></section><p class="wf-caption">The same data, however you reach it.</p></main>`,
@@ -759,15 +771,16 @@ inspect(0);
     avoidWhen: 'Live or financial data, misleading interpolation between unrelated ranges, or delaying a reader who is comparing values.',
     principle: 'Replace the range and its values together, keep the data exact, and reserve the graphical reveal for explicit Replay.',
     duration: '240 ms on Replay · range selection is immediate', trigger: 'Choose Week, Month, or Year; Replay studies the reveal',
-    color: 'green', tags: ['chart', 'range', 'time', 'series', 'data', 'dashboard'], collections: ['dashboards', 'storytelling'],
+    color: 'green', tags: ['chart', 'range', 'time', 'series', 'data', 'dashboard', 'outline', 'ghost'], collections: ['dashboards', 'storytelling'],
     reducedMotion: 'The selected series, its total, and its axis label appear immediately without a reveal.',
     source: 'emil-design-eng/SKILL.md',
     html: `<main class="stage workflow-stage"><section class="wf-shell range-shell"><div class="wf-top"><div><p class="wf-kicker">VISITS · DEMO</p><h2 class="range-total">420</h2></div><div class="range-choices" role="group" aria-label="Chart range"><button type="button" data-range="week" aria-pressed="true">Week</button><button type="button" data-range="month" aria-pressed="false">Month</button><button type="button" data-range="year" aria-pressed="false">Year</button></div></div><svg class="range-chart" viewBox="0 0 300 108" preserveAspectRatio="none" role="img" aria-labelledby="range-chart-label"><title id="range-chart-label">Week: 420 visits across seven days</title><path class="range-grid" d="M8 24H292M8 60H292M8 96H292"/><g class="range-series"><path class="range-area" d="M8 75L55 59L102 68L149 28L197 43L244 59L292 49V99H8Z"/><path class="range-line" d="M8 75L55 59L102 68L149 28L197 43L244 59L292 49"/></g></svg><div class="range-axis"><span class="range-start">Monday</span><span class="range-scale">Maximum 100</span><span class="range-end">Sunday</span></div></section><p class="wf-caption">The range changes. The values stay honest.</p></main>`,
     css: String.raw`
 .range-total { font-size: 25px; font-weight: 600; line-height: 1.1; letter-spacing: -.04em; font-variant-numeric: tabular-nums; }
 .range-choices { display: flex; gap: 2px; }
-.range-choices button { min-width: 44px; min-height: 44px; padding: 6px; border: 0; border-radius: 7px; background: transparent; color: var(--muted); font-size: 10px; }
-.range-choices button[aria-pressed="true"] { background: var(--accent-soft); color: var(--accent-ink); font-weight: 600; }
+.range-choices button { min-width: 44px; min-height: 44px; padding: 4.5px; border: 1.5px solid transparent; border-radius: 7px; background: transparent; color: var(--muted); font-size: 10px; }
+.range-choices button[aria-pressed="true"] { border-color: var(--ink); background: var(--paper); color: var(--ink); font-weight: 600; }
+@media (hover: hover) and (pointer: fine) { .range-choices button:hover { background: color-mix(in srgb, var(--paper) 92%, var(--ink)); color: var(--ink); } }
 .range-chart { display: block; width: 100%; height: 92px; margin-top: 4px; overflow: visible; }
 .range-grid { fill: none; stroke: var(--line); stroke-width: .65; }
 .range-area { fill: var(--accent-soft); }
@@ -808,7 +821,7 @@ choose('week');
     avoidWhen: 'Adding easing behind a user’s scrub gesture or presenting this illustrative track as a complete media player.',
     principle: 'Track the native range control directly. The chosen time is exact, and only explicit Replay animates the visual seek cue.',
     duration: '200 ms on Replay · scrubbing is direct', easing: 'cubic-bezier(0.77, 0, 0.175, 1)', trigger: 'Drag the range control or use its arrow keys',
-    color: 'peach', tags: ['timeline', 'scrubber', 'cursor', 'range', 'media', 'chapters'], collections: ['product-ui', 'storytelling'],
+    color: 'peach', tags: ['timeline', 'scrubber', 'cursor', 'range', 'media', 'chapters', 'native'], collections: ['product-ui', 'storytelling'],
     reducedMotion: 'The seek cue, selected time, and current chapter update immediately with the range control.',
     source: 'apple-design/SKILL.md',
     html: `<main class="stage workflow-stage"><section class="wf-shell timeline-shell"><div class="wf-top"><div><p class="wf-kicker">A ONE-MINUTE STORY</p><h2 class="wf-title timeline-chapter">Opening</h2></div><output class="timeline-time" for="timeline-range">00:00</output></div><div class="timeline-ruler" aria-hidden="true"><span>0s</span><span>20s</span><span>40s</span><span>60s</span></div><div class="timeline-track" aria-hidden="true"><div class="timeline-clip" data-current="true">Opening</div><div class="timeline-clip">The detail</div><div class="timeline-clip">Finish</div><span class="timeline-cursor"><i></i></span></div><label class="wf-sr" for="timeline-range">Selected time in seconds</label><input id="timeline-range" type="range" min="0" max="60" step="1" value="0" aria-valuetext="0 seconds, Opening" /></section><p class="wf-caption">Native scrubbing. A visible place in the story.</p></main>`,
@@ -851,9 +864,9 @@ seek(0);
     avoidWhen: 'Large collaborative boards or production drag-and-drop. This bounded study uses native selection and move buttons; use a maintained drag primitive if dragging is required.',
     principle: 'Move the real task, keep both column counts accurate, and connect measured positions without blocking the next action.',
     duration: '240 ms', easing: 'cubic-bezier(0.77, 0, 0.175, 1)', trigger: 'Select a task, then move it to the other column',
-    color: 'sand', tags: ['kanban', 'task', 'board', 'move', 'FLIP', 'status'], collections: ['product-ui', 'dashboards'],
+    color: 'sand', tags: ['kanban', 'task', 'board', 'move', 'FLIP', 'status', 'outline', 'solid'], collections: ['product-ui', 'dashboards'],
     reducedMotion: 'The selected task changes columns immediately, with its counts and move destination updated.',
-    html: `<main class="stage workflow-stage"><section class="wf-shell kanban-shell" aria-label="Demo task board"><div class="kanban-columns"><section data-column="Backlog"><h2>Backlog <span class="kanban-count">2</span></h2><ul tabindex="0" aria-label="Backlog tasks"><li data-task="Navigation"><button type="button" aria-pressed="true"><strong>Navigation</strong><span>Interface</span></button></li><li data-task="Type scale"><button type="button" aria-pressed="false"><strong>Type scale</strong><span>Foundation</span></button></li></ul></section><section data-column="Ready"><h2>Ready <span class="kanban-count">1</span></h2><ul tabindex="0" aria-label="Ready tasks"><li data-task="Copy review"><button type="button" aria-pressed="false"><strong>Copy review</strong><span>Content</span></button></li></ul></section></div><div class="kanban-footer"><span class="kanban-status wf-kicker" role="status">Navigation selected</span><button class="kanban-move wf-button" type="button">Move to Ready</button></div></section></main>`,
+    html: `<main class="stage workflow-stage"><section class="wf-shell kanban-shell" aria-label="Demo task board"><div class="kanban-columns"><section data-column="Backlog"><h2>Backlog <span class="kanban-count">2</span></h2><ul tabindex="0" aria-label="Backlog tasks"><li data-task="Navigation"><button type="button" aria-pressed="true"><strong>Navigation</strong><span>Interface</span><span class="kanban-selection" aria-hidden="true">${recipeIcon('check', 10)}</span></button></li><li data-task="Type scale"><button type="button" aria-pressed="false"><strong>Type scale</strong><span>Foundation</span><span class="kanban-selection" aria-hidden="true">${recipeIcon('check', 10)}</span></button></li></ul></section><section data-column="Ready"><h2>Ready <span class="kanban-count">1</span></h2><ul tabindex="0" aria-label="Ready tasks"><li data-task="Copy review"><button type="button" aria-pressed="false"><strong>Copy review</strong><span>Content</span><span class="kanban-selection" aria-hidden="true">${recipeIcon('check', 10)}</span></button></li></ul></section></div><div class="kanban-footer"><span class="kanban-status wf-kicker" role="status">Navigation selected</span><button class="kanban-move wf-button solid" type="button">Move to Ready</button></div></section></main>`,
     css: String.raw`
 .kanban-shell { padding: 10px; }
 .kanban-columns { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
@@ -864,14 +877,17 @@ seek(0);
 .kanban-columns ul:focus-visible { outline-offset: -2px; border-radius: 7px; }
 .kanban-flight { position: fixed; z-index: 3; margin: 0; list-style: none; pointer-events: none; }
 .kanban-columns li { min-width: 0; }
-.kanban-columns button { display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: 3px; width: 100%; min-height: 44px; padding: 7px 8px; border: 1px solid var(--line); border-radius: 7px; background: var(--demo-bg); color: var(--ink); text-align: left; }
-.kanban-columns button[aria-pressed="true"] { border-color: var(--accent-ink); background: var(--accent-soft); }
+.kanban-columns button { position: relative; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: 3px; width: 100%; min-height: 44px; padding: 6.5px 25px 6.5px 7.5px; border: 1.5px solid var(--ink); border-radius: 7px; background: var(--paper); color: var(--ink); text-align: left; }
+.kanban-columns button[aria-pressed="true"] { box-shadow: inset 0 0 0 1px var(--ink); }
 .kanban-columns strong { font-size: 10px; font-weight: 600; line-height: 1.2; }
 .kanban-columns button > span { color: var(--muted); font-size: 9px; line-height: 1.2; }
+.kanban-columns button > .kanban-selection { position: absolute; display: grid; place-items: center; right: 7px; top: 7px; width: 14px; height: 14px; border-radius: 50%; background: var(--ink); color: var(--on-ink); opacity: 0; pointer-events: none; }
+.kanban-columns button[aria-pressed="true"] > .kanban-selection { opacity: 1; }
 .kanban-footer { display: flex; align-items: center; justify-content: space-between; gap: 7px; margin-top: 7px; }
 .kanban-status { max-width: 115px; font-size: 9px; }
-.kanban-move { flex: none; padding-inline: 9px; font-size: 10px; }
-@media (min-height: 300px) { .kanban-shell { padding: 18px; } .kanban-columns { gap: 17px; } .kanban-columns h2 { font-size: 12px; margin-bottom: 12px; } .kanban-columns ul { height: 156px; gap: 9px; } .kanban-columns button { min-height: 68px; padding: 13px; } .kanban-columns strong { font-size: 13px; } .kanban-columns button > span { font-size: 11px; } .kanban-footer { margin-top: 17px; } .kanban-status { max-width: 180px; font-size: 11px; } .kanban-move { font-size: 12px; } }
+.kanban-move { flex: none; padding-inline: 7.5px; font-size: 10px; }
+@media (hover: hover) and (pointer: fine) { .kanban-columns button:hover { background: color-mix(in srgb, var(--paper) 92%, var(--ink)); } }
+@media (min-height: 300px) { .kanban-shell { padding: 18px; } .kanban-columns { gap: 17px; } .kanban-columns h2 { font-size: 12px; margin-bottom: 12px; } .kanban-columns ul { height: 156px; gap: 9px; } .kanban-columns button { min-height: 68px; padding: 12.5px 30px 12.5px 12.5px; } .kanban-columns button > .kanban-selection { right: 12px; top: 12px; } .kanban-columns strong { font-size: 13px; } .kanban-columns button > span { font-size: 11px; } .kanban-footer { margin-top: 17px; } .kanban-status { max-width: 180px; font-size: 11px; } .kanban-move { font-size: 12px; } }
 `,
     js: String.raw`
 const columns = [...document.querySelectorAll('.kanban-columns section')], lists = columns.map(column => column.querySelector('ul')), cards = [...document.querySelectorAll('[data-task]')], move = document.querySelector('.kanban-move');
@@ -894,7 +910,11 @@ function revealCard(card) {
   clearFlight(card, snapshot);
 }
 function refresh(message) {
-  cards.forEach(card => card.querySelector('button').setAttribute('aria-pressed', String(card === selected)));
+  cards.forEach(card => {
+    const pressed = String(card === selected);
+    card.querySelector('button').setAttribute('aria-pressed', pressed);
+    flights.get(card)?.querySelector('button')?.setAttribute('aria-pressed', pressed);
+  });
   columns.forEach(column => { column.querySelector('.kanban-count').textContent = String(column.querySelectorAll('li').length); });
   const destination = selected.parentElement === lists[0] ? 'Ready' : 'Backlog';
   move.textContent = 'Move to ' + destination; move.setAttribute('aria-label', 'Move ' + selected.dataset.task + ' to ' + destination);
@@ -957,7 +977,7 @@ refresh();
     avoidWhen: 'Production toast delivery, timers, background announcements, or a full notification system. This study contains two fictional messages only.',
     principle: 'Keep disclosure and message state separate, preserve symmetric open/close paths, and make triage immediate.',
     duration: '180 ms open · 160 ms close', trigger: 'Toggle Inbox; mark either message read or unread',
-    color: 'lavender', tags: ['notifications', 'inbox', 'disclosure', 'unread', 'message center', 'origin'], collections: ['product-ui', 'dashboards'],
+    color: 'lavender', tags: ['notifications', 'inbox', 'disclosure', 'unread', 'message center', 'origin', 'outline', 'ghost'], collections: ['product-ui', 'dashboards'],
     reducedMotion: 'The center opens or closes immediately. Read states and the unread count remain accurate.',
     source: 'animate/RECIPES.md',
     html: `<main class="stage workflow-stage"><section class="wf-shell inbox-shell"><div class="wf-top"><p class="wf-kicker">STUDIO UPDATES</p><button class="wf-button inbox-toggle" type="button" aria-expanded="true" aria-controls="demo-inbox">Inbox <span class="inbox-count">2</span></button></div><section id="demo-inbox" class="inbox-panel" aria-label="Demo inbox"><p class="wf-kicker">TWO RECENT MESSAGES</p><ul><li><button type="button" data-message="Navigation review" aria-label="Mark Navigation review as read" aria-pressed="false"><span class="inbox-dot" aria-hidden="true"></span><span><strong>Navigation review</strong><small>Unread · ready for your eyes</small></span></button></li><li><button type="button" data-message="Type scale approved" aria-label="Mark Type scale approved as read" aria-pressed="false"><span class="inbox-dot" aria-hidden="true"></span><span><strong>Type scale approved</strong><small>Unread · one detail settled</small></span></button></li></ul></section></section></main>`,
@@ -973,7 +993,7 @@ refresh();
 .inbox-panel small { display: block; margin-top: 3px; color: var(--muted); font-size: 9px; line-height: 1.3; }
 .inbox-dot { flex: none; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
 .inbox-panel button[aria-pressed="true"] .inbox-dot { background: var(--line); }
-@media (hover: hover) and (pointer: fine) { .inbox-panel li button:hover { background: var(--accent-soft); } }
+@media (hover: hover) and (pointer: fine) { .inbox-panel li button:hover { background: color-mix(in srgb, var(--paper) 92%, var(--ink)); } }
 @media (min-height: 300px) { .inbox-shell { min-height: 276px; } .inbox-panel { margin-top: 16px; padding-top: 13px; } .inbox-panel > p { font-size: 11px; } .inbox-panel li button { min-height: 63px; padding: 10px; } .inbox-panel strong { font-size: 14px; } .inbox-panel small { font-size: 11px; } }
 `,
     js: String.raw`
@@ -1015,7 +1035,7 @@ Demo.onCleanup(() => { generation++; window.removeEventListener('resize', settle
     avoidWhen: 'A production resizable-panel system with nested panes, persistence, or custom drag separators. Use an established primitive for that larger scope.',
     principle: 'Keep pointer and keyboard resizing direct and one-to-one. Replay connects pane origins with translation; text reflows immediately without nonuniform scaling.',
     duration: '220 ms on Replay · native resizing is direct', easing: 'cubic-bezier(0.77, 0, 0.175, 1)', trigger: 'Adjust the navigation-width range control',
-    color: 'graphite', tags: ['split pane', 'resize', 'range', 'workspace', 'panels', 'layout'], collections: ['product-ui', 'dashboards'],
+    color: 'graphite', tags: ['split pane', 'resize', 'range', 'workspace', 'panels', 'layout', 'native'], collections: ['product-ui', 'dashboards'],
     reducedMotion: 'The pane proportions change immediately; the native range control retains its full keyboard behavior.',
     source: 'apple-design/SKILL.md',
     html: `<main class="stage workflow-stage"><section class="wf-shell split-shell"><div class="wf-top"><span class="wf-kicker">MAKE ROOM FOR YOUR WORK</span><output class="split-value wf-kicker" for="split-range">40%</output></div><div class="split-workspace" style="grid-template-columns:40% minmax(0,1fr)"><aside class="split-navigation" aria-label="Demo workspace files"><strong>Files</strong><ul><li>Notes</li><li>Assets</li><li>Outline</li></ul></aside><section class="split-preview"><span class="split-preview-symbol" aria-hidden="true">${recipeIcon('half-circle', 24)}</span><h2>Outline</h2><p>Plan the next idea.</p></section></div><label class="wf-sr" for="split-range">Navigation width, percent</label><input id="split-range" type="range" min="25" max="65" value="40" step="1" aria-valuetext="Navigation 40 percent" /></section><p class="wf-caption">Drag or use arrow keys. The layout follows.</p></main>`,

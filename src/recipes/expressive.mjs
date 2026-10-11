@@ -169,7 +169,7 @@ export default [
     trigger: "Open / close",
     tech: "WAAPI",
     color: "sand",
-    tags: ["dialog","modal","scale","entrance","native"],
+    tags: ["dialog","modal","scale","entrance","native","solid","outline"],
     reducedMotion: "Opening and closing happen immediately; native focus and Escape behavior remain.",
     source: "animate/RECIPES.md",
     html: `<main class="stage dialog-stage">
@@ -270,7 +270,7 @@ export default [
     trigger: "Open / close",
     tech: "WAAPI",
     color: "blue",
-    tags: ["drawer","sheet","slide","native","entrance"],
+    tags: ["drawer","sheet","slide","native","entrance","outline","ghost"],
     reducedMotion: "The sheet opens and closes without sliding; focus, buttons, and Escape still work.",
     source: "animate/RECIPES.md",
     html: `<main class="stage sheet-stage">
@@ -286,9 +286,9 @@ export default [
 .study-sheet { position: fixed; left: 50%; bottom: 57px; top: auto; translate: -50% 0; width: min(280px, calc(100% - 34px)); margin: 0; padding: 16px; border: 0; border-radius: 19px; background: var(--paper); color: var(--ink); box-shadow: 0 5px 14px var(--shadow); max-height: calc(100% - 72px); overflow: auto; }
 .study-sheet header { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
 .study-sheet h2 { font-size: 16px; line-height: 1.3; letter-spacing: -.02em; }
-.sheet-close { width: 30px; height: 30px; flex-shrink: 0; display: grid; place-items: center; padding: 0; background: var(--accent-soft); border: 0; border-radius: 50%; color: var(--muted); font-size: 21px; line-height: 1; }
+.sheet-close { width: 30px; height: 30px; flex-shrink: 0; display: grid; place-items: center; padding: 0; background: transparent; border: 0; border-radius: 50%; color: var(--muted); font-size: 21px; line-height: 1; }
 .study-sheet p { margin: 1px 0 13px; font-size: 10px; color: var(--muted); }
-.sheet-option { width: 100%; min-height: 50px; padding: 9px; display: flex; align-items: center; gap: 10px; border: 0; border-radius: 11px; text-align: left; background: var(--accent-soft); color: var(--ink); font-size: 11px; font-weight: 600; }
+.sheet-option { width: 100%; min-height: 50px; padding: 7.5px; display: flex; align-items: center; gap: 10px; border: 1.5px solid var(--ink); border-radius: 11px; text-align: left; background: transparent; color: var(--ink); font-size: 11px; font-weight: 600; }
 .file-symbol { display: grid; place-items: center; width: 29px; height: 32px; border-radius: 6px; background: var(--paper); color: var(--ink); font-size: 15px; }
 .sheet-option small { display: block; margin-top: 2px; color: var(--muted); font-size: 9px; font-weight: 400; }
 .option-arrow { margin-left: auto; font-size: 17px; color: var(--ink); }
@@ -450,7 +450,7 @@ export default [
     trigger: "Replay",
     tech: "WAAPI",
     color: "green",
-    tags: ["sequence","orchestration","onboarding","stagger"],
+    tags: ["sequence","orchestration","onboarding","stagger","solid"],
     reducedMotion: "All parts appear immediately. The action stays available throughout.",
     source: "animate/RECIPES.md",
     html: `<main class="stage">
@@ -469,7 +469,7 @@ export default [
 .welcome-copy { text-align: center; }
 .welcome-copy h2 { font-size: 17px; line-height: 1.3; letter-spacing: -.025em; font-weight: 650; }
 .welcome-copy p { margin-top: 4px; font-size: 10px; color: var(--muted); }
-.welcome-action { display: flex; align-items: center; justify-content: space-between; gap: 35px; min-height: 35px; padding: 9px 12px; margin-top: 13px; width: 100%; border: 0; border-radius: 8px; background: var(--accent-soft); color: var(--ink); font-size: 10px; font-weight: 600; transition: transform calc(160ms * var(--time-scale)) var(--ease-out); }
+.welcome-action { display: flex; align-items: center; justify-content: space-between; gap: 35px; min-height: 35px; padding: 9px 12px; margin-top: 13px; width: 100%; border: 0; border-radius: 8px; background: var(--ink); color: var(--on-ink); font-size: 10px; font-weight: 600; transition: transform calc(160ms * var(--time-scale)) var(--ease-out); }
 .welcome-action:active { transform: scale(.97); }
 @media (min-height: 300px) { .welcome-panel { padding: 24px; } .welcome-action { min-height: 44px; font-size: 12px; } .welcome-copy p { font-size: 11px; } }`,
     js: `(function(specs) {
@@ -565,7 +565,7 @@ action.addEventListener('click', () => {
     trigger: "Choose a target",
     tech: "Motion",
     color: "sand",
-    tags: ["spring","physics","interruptible","playful"],
+    tags: ["spring","physics","interruptible","playful","segmented"],
     reducedMotion: "The orb moves directly to the selected point without travel or bounce.",
     source: "apple-design/SKILL.md",
     usesMotion: true,
@@ -660,7 +660,7 @@ action.addEventListener('click', () => {
     trigger: "Hover / press",
     tech: "Motion",
     color: "graphite",
-    tags: ["magnetic","pointer","spring","button","hover"],
+    tags: ["magnetic","pointer","spring","button","hover","solid"],
     reducedMotion: "Pointer tracking is disabled; the native button and its pressed state remain fully usable.",
     source: "emil-design-eng/SKILL.md",
     usesMotion: true,
@@ -773,7 +773,7 @@ action.addEventListener('click', () => {
     trigger: "Drag / arrow keys / buttons",
     tech: "Motion",
     color: "peach",
-    tags: ["drag","gesture","momentum","spring","snap","touch"],
+    tags: ["drag","gesture","momentum","spring","snap","touch","segmented"],
     reducedMotion: "Dragging remains a direct response to your finger; release and keyboard changes snap without an animated settle.",
     source: "apple-design/SKILL.md",
     usesMotion: true,
@@ -958,7 +958,7 @@ action.addEventListener('click', () => {
     trigger: "Ambient / pause / Replay",
     tech: "CSS",
     color: "blue",
-    tags: ["3d","orbit","ambient","css","perspective"],
+    tags: ["3d","orbit","ambient","css","perspective","outline"],
     reducedMotion: "The orbit stops in a deliberate arrangement; all three satellites remain visible.",
     source: "emil-design-eng/SKILL.md",
     html: `<main class="stage orbit-stage">
@@ -970,8 +970,8 @@ action.addEventListener('click', () => {
 </main>`,
     css: `.orbit-stage { gap: 10px; }
 .orbit-controls { display: flex; align-items: center; justify-content: center; gap: 12px; max-width: 100%; }
-.orbit-toggle { min-height: 44px; padding: 9px 12px; border: 0; border-radius: 10px; background: color-mix(in srgb, var(--paper) 60%, transparent); color: var(--ink); font-size: 11px; font-weight: 550; white-space: nowrap; }
-.orbit-toggle:disabled { cursor: default; background: color-mix(in srgb, var(--paper) 42%, transparent); color: var(--muted); }
+.orbit-toggle { min-height: 44px; padding: 7.5px 10.5px; border: 1.5px solid var(--ink); border-radius: 10px; background: transparent; color: var(--ink); font-size: 11px; font-weight: 550; white-space: nowrap; }
+.orbit-toggle:disabled { cursor: default; border-color: var(--line); color: var(--muted); }
 .orbit-scene { position: relative; width: 242px; max-width: 100%; height: 138px; perspective: 500px; transform-style: preserve-3d; }
 .orbit-plane { position: absolute; inset: 0; transform-style: preserve-3d; transform: rotateX(-24deg) rotateZ(-17deg); }
 .orbit-track { position: absolute; left: 50%; top: 50%; width: 168px; height: 168px; border: 2px solid var(--line); border-radius: 50%; transform: translate(-50%, -50%) rotateX(90deg); }
