@@ -1,8 +1,8 @@
 # Working on Animation Playground
 
-Animation Playground is a static reference hub of 44 reusable web animations.
-The website uses HTML, CSS, and JavaScript; 41 studies use native browser APIs and
-three spring studies embed Motion. Keep the site portable and the examples easy
+Animation Playground is a static reference hub of 100 reusable web animations.
+The website uses HTML, CSS, and JavaScript; 96 studies use native browser APIs and
+four spring studies embed Motion. Keep the site portable and the examples easy
 to take into another project.
 
 ## Start with the relevant source

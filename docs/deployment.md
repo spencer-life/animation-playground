@@ -6,6 +6,27 @@ The initial production host is Vercel, connected to this repository's `main`
 branch. The public domain is
 [animation-playground-murex.vercel.app](https://animation-playground-murex.vercel.app/).
 
+## 100-study expansion delivery record
+
+The expansion in [issue #7](https://github.com/spencer-life/animation-playground/issues/7)
+is prepared in [PR #8](https://github.com/spencer-life/animation-playground/pull/8).
+Its first validated candidate was
+[`a9e4f3130d7cb322bf0849ec7b897371a01d08f2`](https://github.com/spencer-life/animation-playground/commit/a9e4f3130d7cb322bf0849ec7b897371a01d08f2).
+Vercel deployment
+[`dpl_46Ck6yStbzRe4n6EudpormTg8Xzr`](https://vercel.com/spencer-schofields-projects/animation-playground/46Ck6yStbzRe4n6EudpormTg8Xzr)
+reached `READY` as a preview for that exact Git revision. An authenticated connector
+fetch returned HTTP 200 and the 100-entry catalog, whose SHA-256 matched the
+locally validated build. This records the initial expansion preview, not the
+final production delivery.
+
+The [catalog expansion record](catalog-expansion.md) describes the 56 additions,
+67 everyday / 33 expressive balance, relevant Emil guidance, source and visual
+review, and browser coverage. Final review also corrected a Codex keyboard-focus
+finding and list/grid midpoint visibility. The PR and issue preserve their exact
+reviewed revision, refreshed validation, final deployment, and public-host
+verification. The existing Git integration and authentication settings are
+retained; issue #7 is the authority for this expansion's final delivery status.
+
 ## Theme-aware hub delivery record
 
 The expansion in [issue #5](https://github.com/spencer-life/animation-playground/issues/5)

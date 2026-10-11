@@ -107,6 +107,6 @@ search tags concrete and include the terms a person would use for the task.
 - Start at a coherent visible state, even if paused or JS fails. No forever timers. Ambient animations are CSS animations, paused through the runtime. Replayable sequences are user/preview-triggered and cancel previous work.
 - Never autoplay sound, vibrate, navigate away, submit real data, or perform destructive actions. Label fictional UI content as demo content when necessary.
 - Each stage must compose at 300×230 and 700×420 without horizontal overflow. Avoid viewport units for demo content sizing.
-- The collection currently contains 44 studies. Useful, distinct animations take precedence over slight variants counted separately; color variations belong to the theme system.
+- The collection currently contains 100 studies. Useful, distinct animations take precedence over slight variants counted separately; color variations belong to the theme system. The shared catalog contract also protects the preceding 44 published IDs and featured-collection membership.
 - Check new studies in the Playground palette and at least one project palette, in light and dark modes. The full copied/downloaded example must reproduce the chosen palette offline.
 - All code is original adaptation from MIT-licensed principles; preserve source attribution in metadata. Keep IDs stable.

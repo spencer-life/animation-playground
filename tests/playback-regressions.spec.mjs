@@ -7,6 +7,44 @@ const transitionStudies = [
   { id: 'notification-stack', target: '.activity-entry', status: '.activity-status', result: 'Timing refined.' },
 ];
 
+test('wheel scrolling resumes decorative tracking after keyboard navigation without requiring a click', async ({ page }) => {
+  await page.setViewportSize({ width: 700, height: 420 });
+  await page.goto('/examples/parallax-layers.html?reduced=false');
+  const pane = page.locator('.depth-scroll');
+  const travel = () => page.locator('.depth-near').evaluate(element => new DOMMatrixReadOnly(getComputedStyle(element).transform).f);
+  // Park the pointer before keyboard input so the subsequent wheel event,
+  // without a pointer move or down, must establish the new input modality.
+  await pane.hover();
+  await pane.press('End');
+  await expect.poll(() => pane.evaluate(element => Math.abs(element.scrollTop - (element.scrollHeight - element.clientHeight)))).toBeLessThan(1);
+  await expect(page.locator('html')).toHaveAttribute('data-keyboard', 'true');
+  expect(await travel()).toBe(0);
+  const before = await pane.evaluate(element => element.scrollTop);
+  await page.mouse.wheel(0, -80);
+  await expect.poll(() => pane.evaluate(element => element.scrollTop)).toBeLessThan(before);
+  await expect(page.locator('html')).toHaveAttribute('data-keyboard', 'false');
+  await expect.poll(travel).toBeLessThan(-1);
+  await pane.press('Home');
+  await expect(page.locator('html')).toHaveAttribute('data-keyboard', 'true');
+  await expect.poll(travel).toBe(0);
+});
+
+test('fine-pointer hover works after keyboard navigation while dock hit targets stay still', async ({ page }) => {
+  await page.setViewportSize({ width: 700, height: 420 });
+  await page.goto('/examples/dock-magnification.html?reduced=false');
+  await page.evaluate(() => { Demo.setSettings({ reduced: true }); Demo.setSettings({ reduced: false }); });
+  await page.mouse.move(0, 0);
+  await page.getByRole('button', { name: 'Draw', exact: true }).press('Tab');
+  await expect(page.locator('html')).toHaveAttribute('data-keyboard', 'true');
+  const notes = page.getByRole('button', { name: 'Notes', exact: true });
+  const box = await notes.boundingBox();
+  await notes.hover();
+  await expect(page.locator('html')).toHaveAttribute('data-keyboard', 'false');
+  await expect.poll(() => notes.locator('.dock-face').evaluate(element => new DOMMatrixReadOnly(getComputedStyle(element).transform).a)).toBeGreaterThan(1.05);
+  expect(await notes.boundingBox()).toEqual(box);
+  await expect(page.getByRole('status')).toHaveText('Draw is open');
+});
+
 for (const { id, target } of [
   { id: 'staggered-words', target: '.word-visual i' },
   ...transitionStudies,

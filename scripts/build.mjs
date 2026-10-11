@@ -3,6 +3,7 @@ import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { build } from 'esbuild';
 import { collections, enrichRecipe } from '../src/collections.mjs';
+import { validateCatalog } from '../src/catalog-contract.mjs';
 import { defaults, themeCss, resolveTheme, palettes, accents } from '../src/theme.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
@@ -32,8 +33,8 @@ const themeBundle = (await build({ entryPoints: [resolve(root, 'src/theme.mjs')]
 const files = (await readdir(resolve(root, 'src/recipes'))).filter(file => file.endsWith('.mjs')).sort();
 const recipes = [];
 for (const file of files) recipes.push(...(await import(resolve(root, 'src/recipes', file))).default.map(recipe => enrichRecipe({ ...recipe, module: `src/recipes/${file}` })));
-if (recipes.length < 44) throw new Error(`Expected at least 44 distinct recipes, found ${recipes.length}`);
-const featured = ['sliding-tabs', 'skeleton-reveal', 'spotlight-card', 'chart-bars', 'spring-orb', 'card-stack', 'stepper-progress', 'filter-grid', 'toggle-switch'];
+validateCatalog(recipes, collections);
+const featured = ['sliding-tabs', 'upload-queue', 'perspective-gallery', 'bulk-selection-toolbar', 'kanban-move', 'text-marquee', 'chart-range', 'spring-orb', 'form-success', 'hold-confirm', 'particle-burst', 'split-pane'];
 recipes.sort((a, b) => {
   const ai = featured.indexOf(a.id), bi = featured.indexOf(b.id);
   if (ai !== -1 || bi !== -1) return (ai === -1 ? 99 : ai) - (bi === -1 ? 99 : bi);

@@ -2,11 +2,12 @@ import assert from 'node:assert/strict';
 import { readFile, readdir } from 'node:fs/promises';
 import vm from 'node:vm';
 import { spawnSync } from 'node:child_process';
-import { enrichRecipe } from '../src/collections.mjs';
+import { collections, enrichRecipe } from '../src/collections.mjs';
+import { validateCatalog } from '../src/catalog-contract.mjs';
 
 const modules = (await readdir('src/recipes')).filter(file => file.endsWith('.mjs'));
 const recipes = (await Promise.all(modules.map(file => import(`../src/recipes/${file}`)))).flatMap(module => module.default);
-assert(recipes.length >= 44,'The expanded collection must retain at least 44 distinct examples.');
+validateCatalog(recipes.map(enrichRecipe), collections);
 const ids = new Set();
 const required = ['id','title','category','description','purpose','useWhen','avoidWhen','principle','duration','easing','trigger','tech','color','reducedMotion','source','html','css','js'];
 for (const recipe of recipes) {
@@ -21,6 +22,7 @@ for (const recipe of recipes) {
   assert(!/transition\s*:\s*all\b/i.test(recipe.css),`${recipe.id}: enumerate transition properties.`);
   assert(!/scale\(\s*0\s*\)/.test(recipe.css + recipe.js),`${recipe.id}: no scale-zero entrances.`);
   assert(!/\bease-in\s*(;|,|\})/.test(recipe.css),`${recipe.id}: ease-in delays interface feedback.`);
+  assert(!/easing\s*:\s*['"](?:ease-in|ease-out|ease-in-out)['"]/.test(recipe.js),`${recipe.id}: deliberate motion must use the shared custom easing curves.`);
   assert(!/<script\b/i.test(recipe.html),`${recipe.id}: put behavior in js for source consistency.`);
   assert(!/#[a-f\d]{3,8}\b/i.test(recipe.css),`${recipe.id}: use semantic color tokens, not fixed recipe colors.`);
   assert(!/\b(?:fill|stroke|style)=["'][^"']*#[a-f\d]{3,8}\b/i.test(recipe.html),`${recipe.id}: SVG and inline styles must use semantic colors.`);

@@ -22,7 +22,7 @@ test('catalog search, category and saved state remain useful across reloads',asy
   await page.locator('[data-save="sliding-tabs"]').click();
   await expect(page.getByRole('heading',{name:'Keep the good ones.'})).toBeVisible();
   await page.locator('[data-category="text"]').click();
-  await expect(page.locator('.sample')).toHaveCount(6);
+  await expect(page.locator('.sample')).toHaveCount(catalog.recipes.filter(recipe => recipe.category === 'text').length);
 });
 
 test('workbench exposes exact runnable source, reference tabs and a portable AI brief',async ({page,context}) => {

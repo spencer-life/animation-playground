@@ -215,5 +215,5 @@ the values used by this implementation.
 Keep palette definitions, normalization, URL handling, preview installation, and
 export resolution together in `src/theme.mjs`. Review the theme guide and the
 [recipe contract](recipe-contract.md) when adding roles or palettes. Changes to
-the resolver affect all 44 standalone examples, so verify both live previews and
+the resolver affect all 100 standalone examples, so verify both live previews and
 copied/downloaded files rather than only the surrounding gallery.
