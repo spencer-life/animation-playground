@@ -21,6 +21,7 @@ for (const recipe of recipes) {
   assert(!/transition\s*:\s*all\b/i.test(recipe.css),`${recipe.id}: enumerate transition properties.`);
   assert(!/scale\(\s*0\s*\)/.test(recipe.css + recipe.js),`${recipe.id}: no scale-zero entrances.`);
   assert(!/\bease-in\s*(;|,|\})/.test(recipe.css),`${recipe.id}: ease-in delays interface feedback.`);
+  assert(!/easing\s*:\s*['"]ease-out['"]/.test(recipe.js),`${recipe.id}: deliberate motion must use the shared custom ease-out curve.`);
   assert(!/<script\b/i.test(recipe.html),`${recipe.id}: put behavior in js for source consistency.`);
   assert(!/#[a-f\d]{3,8}\b/i.test(recipe.css),`${recipe.id}: use semantic color tokens, not fixed recipe colors.`);
   assert(!/\b(?:fill|stroke|style)=["'][^"']*#[a-f\d]{3,8}\b/i.test(recipe.html),`${recipe.id}: SVG and inline styles must use semantic colors.`);

@@ -4,6 +4,8 @@ import { recipeIcon } from '../recipe-icons.mjs';
 
 const shared = String.raw`
 .hub-stage { gap: 10px; padding: 16px; }
+.hub-stage button { transition: scale calc(120ms * var(--time-scale)) var(--ease-out); }
+:root:not([data-keyboard="true"]):not([data-reduced="true"]) .hub-stage button:active:not(:disabled) { scale: .97; }
 .hub-sr { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
 .hub-action { min-height: 44px; padding: 10px 16px; border: 0; border-radius: 10px; background: var(--accent); color: var(--on-accent); font-size: 12px; font-weight: 600; }
 .hub-action.secondary { background: var(--paper); color: var(--ink); }
@@ -100,7 +102,7 @@ function load() {
     status.textContent = 'Demo content loaded';
     content.style.opacity = '1';
     const reveal = Demo.animate(content, [{ opacity: 0 }, { opacity: 1 }], { duration: 200, easing: 'cubic-bezier(0.23, 1, 0.32, 1)' });
-    const dismiss = Demo.animate(skeleton, [{ opacity: .65 }, { opacity: 0 }], { duration: 200, easing: 'ease-out' });
+    const dismiss = Demo.animate(skeleton, [{ opacity: .65 }, { opacity: 0 }], { duration: 200, easing: 'cubic-bezier(0.23, 1, 0.32, 1)' });
     animations.push(reveal, dismiss);
     dismiss.finished.then(() => { if (run === generation) settle(); }).catch(() => {});
   }).catch(() => {});
