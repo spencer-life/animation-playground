@@ -981,14 +981,16 @@ const badge = document.querySelector('.unread-badge');
 const status = document.querySelector('.badge-status');
 const latest = document.querySelector('.badge-latest');
 const read = document.querySelector('.badge-read');
+const add = document.querySelector('.badge-add');
 let unread = 2;
 function update() {
   badge.dataset.visible = String(unread > 0); badge.textContent = unread > 9 ? '9+' : String(unread);
   status.textContent = unread ? unread + (unread === 1 ? ' unread demo update' : ' unread demo updates') : 'All demo updates read';
   latest.textContent = unread ? 'A new note on the homepage.' : 'You’re all caught up.';
+  if (unread === 0 && document.activeElement === read) add.focus({ preventScroll: true });
   read.disabled = unread === 0;
 }
-document.querySelector('.badge-add').addEventListener('click', () => { unread = Math.min(99, unread + 1); update(); });
+add.addEventListener('click', () => { unread = Math.min(99, unread + 1); update(); });
 read.addEventListener('click', () => { unread = 0; update(); });
 Demo.onReplay(() => { unread = 0; update(); void badge.offsetWidth; unread = 2; update(); });
 `,

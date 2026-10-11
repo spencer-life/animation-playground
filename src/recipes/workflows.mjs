@@ -617,57 +617,52 @@ Demo.onReplay(() => { setDensity('comfortable', false); setDensity('compact'); }
     purpose: 'Spatial consistency',
     useWhen: 'An occasional view preference switches a small collection between scanning names and recognizing visual assets.',
     avoidWhen: 'Hundreds of records, frequent view switching, or a layout morph that would obscure active reading or editing.',
-    principle: 'For these three bounded cards, animate measured width, height, and position together so every edge stays inside the collection. This short layout-property exception keeps text and artwork unscaled; use immediate layout changes for large lists.',
-    duration: '240 ms', easing: 'cubic-bezier(0.77, 0, 0.175, 1)', trigger: 'Choose List or Grid',
+    principle: 'Update the native card surfaces immediately, then move the actual artwork and labels above them without scaling or clipping. Separate columns before joining a grid row, and separate rows before joining a list column; sample live positions when the choice changes mid-flight.',
+    duration: '240 ms', easing: 'Two phases: shared ease-in-out · surfaces: shared ease-out', trigger: 'Choose List or Grid',
     color: 'lavender', tags: ['list', 'grid', 'morph', 'FLIP', 'view', 'assets'], collections: ['product-ui', 'dashboards'],
     reducedMotion: 'The existing asset cards change directly to their new list or grid arrangement.',
-    html: `<main class="stage workflow-stage"><section class="wf-shell view-shell" data-view="grid"><div class="wf-top"><span class="wf-kicker">THREE GOOD PIECES</span><div class="view-controls" role="group" aria-label="Asset view"><button type="button" data-view="list" aria-pressed="false">List</button><button type="button" data-view="grid" aria-pressed="true">Grid</button></div></div><ul class="asset-views" aria-label="Demo assets"><li><span class="asset-view-art" aria-hidden="true">${recipeIcon('diamond', 26)}</span><strong>Mark</strong><small>Brand</small></li><li><span class="asset-view-art" aria-hidden="true">${recipeIcon('half-circle', 26)}</span><strong>Cover</strong><small>Image</small></li><li><span class="asset-view-art" aria-hidden="true">${recipeIcon('code', 26)}</span><strong>Type</strong><small>System</small></li></ul></section><p class="wf-caption">New arrangement. The same three objects.</p></main>`,
+    html: `<main class="stage workflow-stage"><section class="wf-shell view-shell" data-view="grid"><div class="wf-top"><span class="wf-kicker">THREE GOOD PIECES</span><div class="view-controls" role="group" aria-label="Asset view"><button type="button" data-view="list" aria-pressed="false">List</button><button type="button" data-view="grid" aria-pressed="true">Grid</button></div></div><ul class="asset-views" aria-label="Demo assets"><li><span class="asset-view-surface" aria-hidden="true"></span><span class="asset-view-art" aria-hidden="true">${recipeIcon('diamond', 26)}</span><span class="asset-view-copy"><strong>Mark</strong><small>Brand</small></span></li><li><span class="asset-view-surface" aria-hidden="true"></span><span class="asset-view-art" aria-hidden="true">${recipeIcon('half-circle', 26)}</span><span class="asset-view-copy"><strong>Cover</strong><small>Image</small></span></li><li><span class="asset-view-surface" aria-hidden="true"></span><span class="asset-view-art" aria-hidden="true">${recipeIcon('code', 26)}</span><span class="asset-view-copy"><strong>Type</strong><small>System</small></span></li></ul></section><p class="wf-caption">New arrangement. The same three objects.</p></main>`,
     css: String.raw`
 .view-controls { display: flex; gap: 3px; }
 .view-controls button { min-width: 44px; min-height: 44px; padding: 7px; border: 0; border-radius: 8px; background: transparent; color: var(--muted); font-size: 10px; }
 .view-controls button[aria-pressed="true"] { background: var(--accent-soft); color: var(--accent-ink); }
-.asset-views { position: relative; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; min-height: 103px; margin: 8px 0 0; padding: 0; list-style: none; }
-.asset-views li { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; min-width: 0; min-height: 103px; padding: 8px; border-radius: 9px; background: var(--accent-soft); }
-.asset-view-art { display: flex; margin-bottom: 4px; color: var(--accent-ink); }
-.asset-views strong { font-size: 11px; font-weight: 600; }
-.asset-views small { color: var(--muted); font-size: 9px; }
+.asset-views { position: relative; isolation: isolate; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; min-height: 103px; margin: 8px 0 0; padding: 0; list-style: none; }
+.asset-views li { position: relative; display: flex; align-items: center; justify-content: center; gap: 6px; min-width: 0; min-height: 103px; padding: 8px; border-radius: 9px; }
+.asset-view-surface { position: absolute; inset: 0; z-index: 0; border-radius: inherit; background: var(--accent-soft); }
+.asset-view-art, .asset-views strong, .asset-views small { position: relative; z-index: 1; }
+.asset-view-art { display: block; flex: none; width: 22px; height: 22px; color: var(--accent-ink); }
+.asset-view-art svg { display: block; width: 100%; height: 100%; }
+.asset-view-copy { display: grid; flex: none; width: max-content; gap: 2px; white-space: nowrap; }
+.asset-views strong { font-size: 11px; font-weight: 600; line-height: 1.25; }
+.asset-views small { color: var(--muted); font-size: 9px; line-height: 1.25; }
 .view-shell[data-view="list"] .asset-views { grid-template-columns: 1fr; gap: 5px; }
-.view-shell[data-view="list"] .asset-views li { flex-direction: row; justify-content: flex-start; min-height: 31px; padding: 4px 9px; gap: 9px; }
-.view-shell[data-view="list"] .asset-view-art { margin: 0; }
-.view-shell[data-view="list"] .asset-view-art svg { width: 20px; height: 20px; }
-.view-shell[data-view="list"] .asset-views small { margin-left: auto; }
-@media (min-height: 300px) { .asset-views { min-height: 176px; gap: 10px; margin-top: 16px; } .asset-views li { min-height: 176px; gap: 8px; } .asset-views strong { font-size: 15px; } .asset-views small { font-size: 11px; } .asset-view-art svg { width: 43px; height: 43px; } .view-shell[data-view="list"] .asset-views li { min-height: 54px; padding: 9px 14px; } .view-shell[data-view="list"] .asset-view-art svg { width: 29px; height: 29px; } .view-controls button { font-size: 12px; } }
+.view-shell[data-view="list"] .asset-views li { justify-content: flex-start; min-height: 31px; padding: 2px 9px; }
+@media (min-height: 300px) { .asset-views { min-height: 176px; gap: 10px; margin-top: 16px; } .asset-views li { min-height: 176px; gap: 10px; } .asset-view-art { width: 36px; height: 36px; } .asset-view-copy { gap: 3px; } .asset-views strong { font-size: 15px; } .asset-views small { font-size: 11px; } .view-shell[data-view="list"] .asset-views li { min-height: 54px; padding: 9px 14px; } .view-controls button { font-size: 12px; } }
 `,
     js: String.raw`
-const shell = document.querySelector('.view-shell'), collection = document.querySelector('.asset-views'), assets = [...document.querySelectorAll('.asset-views li')], controls = [...document.querySelectorAll('.view-controls button')];
-let layoutVersion = 0;
-function clearLayout() {
-  collection.style.removeProperty('height');
-  assets.forEach(asset => ['position', 'left', 'top', 'width', 'height', 'min-height', 'overflow'].forEach(property => asset.style.removeProperty(property)));
-}
-function settleLayout() { layoutVersion++; clearLayout(); }
+const shell = document.querySelector('.view-shell'), foreground = [...document.querySelectorAll('.asset-view-art, .asset-views strong, .asset-views small')], surfaces = [...document.querySelectorAll('.asset-view-surface')], controls = [...document.querySelectorAll('.view-controls button')];
 function choose(view, animate = true) {
-  const first = wfMeasure(assets), run = ++layoutVersion;
-  wfStop(); clearLayout(); shell.dataset.view = view;
+  if (animate && shell.dataset.view === view) return;
+  const first = wfMeasure(foreground), opacity = surfaces.map(surface => getComputedStyle(surface).opacity);
+  const interrupted = foreground.some(element => element.getAnimations().some(animation => animation.playState === 'running' || animation.playState === 'paused'));
+  wfStop(); shell.dataset.view = view;
   controls.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.view === view)));
   if (!animate || Demo.duration(1) === 0 || Demo.paused) return;
-  const last = wfMeasure(assets), bounds = collection.getBoundingClientRect();
-  collection.style.height = bounds.height + 'px';
-  // The three temporary absolute shells cannot reflow their neighbors. Their
-  // measured edges interpolate inside the fixed collection; content is clipped
-  // by its own shell while it reflows, never nonuniformly scaled.
-  const animations = assets.map(asset => {
-    const before = first.get(asset), after = last.get(asset);
-    Object.assign(asset.style, { position: 'absolute', left: after.left - bounds.left + 'px', top: after.top - bounds.top + 'px', width: after.width + 'px', height: after.height + 'px', minHeight: '0', overflow: 'hidden' });
-    return wfAnimate(asset, [{ transform: 'translate(' + (before.left - after.left) + 'px,' + (before.top - after.top) + 'px)', width: before.width + 'px', height: before.height + 'px' }, { transform: 'translate(0,0)', width: after.width + 'px', height: after.height + 'px' }], 240, wfMove);
+  const last = wfMeasure(foreground);
+  // All nine real content nodes share one layer above every native card surface.
+  // Separate the destination columns (grid) or rows (list) before converging on
+  // the other axis, keeping each unscaled label and artwork clear of its neighbors.
+  foreground.forEach(element => {
+    const before = first.get(element), after = last.get(element);
+    const x = before.left - after.left, y = before.top - after.top;
+    const corner = view === 'grid' ? 'translate(0,' + y + 'px)' : 'translate(' + x + 'px,0)';
+    // The master timeline only schedules the two phases; each movement uses the shared custom curve.
+    wfAnimate(element, [{ transform: 'translate(' + x + 'px,' + y + 'px)', offset: 0, easing: wfMove }, { transform: corner, offset: .5, easing: wfMove }, { transform: 'translate(0,0)', offset: 1 }], 240, 'linear');
   });
-  Promise.allSettled(animations.map(animation => animation.finished)).then(() => { if (run === layoutVersion) clearLayout(); });
+  surfaces.forEach((surface, index) => wfAnimate(surface, [{ opacity: interrupted ? opacity[index] : .45 }, { opacity: 1 }], 140));
 }
 controls.forEach(button => button.addEventListener('click', () => choose(button.dataset.view)));
 Demo.onReplay(() => { choose('list', false); choose('grid'); });
-Demo.onSettings(() => { if (Demo.reduced) settleLayout(); });
-window.addEventListener('resize', settleLayout);
-Demo.onCleanup(() => { settleLayout(); window.removeEventListener('resize', settleLayout); });
 `,
   }),
   study({

@@ -248,6 +248,31 @@ test('retry and phased progress retain canceled state and recover focus only whe
   await expect(page.getByRole('button', { name: 'Cancel', exact: true })).toBeDisabled();
 });
 
+test('marking updates read preserves keyboard focus without redirecting unrelated focus', async ({ page }) => {
+  await openStudy(page, 'notification-badge');
+  const read = page.getByRole('button', { name: 'Mark read', exact: true });
+  const add = page.getByRole('button', { name: 'Add demo', exact: true });
+  await read.press('Enter');
+  await expect(read).toBeDisabled();
+  await expect(add).toBeFocused();
+  // Continue with the keyboard from the recovered focus, without refocusing
+  // the next control through a locator or an extra Tab.
+  await page.keyboard.press('Enter');
+  await expect(page.locator('.badge-status')).toHaveText('1 unread demo update');
+  await expect(read).toBeEnabled();
+
+  await page.evaluate(() => {
+    const outside = document.createElement('button');
+    outside.textContent = 'Unrelated action';
+    document.body.append(outside);
+    outside.focus();
+    document.querySelector('.badge-read').click();
+  });
+  await expect(page.getByRole('button', { name: 'Unrelated action', exact: true })).toBeFocused();
+  await expect(page.locator('.badge-status')).toHaveText('All demo updates read');
+  await expect(read).toBeDisabled();
+});
+
 test('selection, connection, unread state, and the live range expose meaningful state changes', async ({ page }) => {
   await openStudy(page, 'bulk-selection-toolbar');
   const all = page.locator('#bulk-all');

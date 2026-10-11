@@ -209,55 +209,114 @@ test('table sorting preserves exact data and disclosures retain real table struc
   expect(await manualMotionCount(page)).toBe(0);
 });
 
-test('list/grid interruption keeps measured shells bounded and content unscaled while keyboard density changes stay direct', async ({ page }) => {
+test('list/grid keeps actual artwork and labels uncovered through reversals while keyboard density changes stay direct', async ({ page }) => {
   for (const viewport of [{ width: 300, height: 230 }, { width: 700, height: 420 }]) {
     await page.setViewportSize(viewport);
     await openStudy(page, 'list-grid-morph');
-    const retarget = await page.evaluate(() => {
+    const motion = await page.evaluate(() => {
+      const collection = document.querySelector('.asset-views'), cards = [...collection.querySelectorAll('li')];
+      const selector = '.asset-view-art, .asset-views strong, .asset-views small';
+      const foreground = [...document.querySelectorAll(selector)], surfaces = [...collection.querySelectorAll('.asset-view-surface')];
+      const boxes = () => foreground.map(element => { const rect = element.getBoundingClientRect(); return { x: rect.x, y: rect.y, width: rect.width, height: rect.height }; });
+      const baseline = boxes(), retargets = [], samples = [];
+      const animations = () => collection.getAnimations({ subtree: true });
+      const seek = (active, fraction) => {
+        const duration = foreground[0].getAnimations()[0].effect.getTiming().duration;
+        active.forEach(animation => { animation.pause(); animation.currentTime = duration * fraction; });
+      };
+      const inspect = context => {
+        const bounds = collection.getBoundingClientRect(), caption = document.querySelector('.wf-caption').getBoundingClientRect();
+        samples.push(...foreground.map((element, index) => {
+          const rect = element.getBoundingClientRect(), style = getComputedStyle(element), matrix = new DOMMatrixReadOnly(style.transform);
+          // Test the actual foreground, including its corners. An opaque later
+          // card or a clipped parent must not pass merely because the list fits.
+          const covered = [];
+          for (const x of [rect.left + 1, rect.left + rect.width / 2, rect.right - 1]) {
+            for (const y of [rect.top + 1, rect.top + rect.height / 2, rect.bottom - 1]) {
+              const hit = document.elementFromPoint(x, y);
+              if (hit !== element && !element.contains(hit)) covered.push(hit?.className?.baseVal ?? hit?.className ?? hit?.tagName ?? 'outside viewport');
+            }
+          }
+          return {
+            context, node: element.textContent.trim() || 'art ' + Math.floor(index / 3), covered,
+            bounded: rect.top >= bounds.top - .5 && rect.left >= bounds.left - .5 && rect.right <= bounds.right + .5 && rect.bottom <= bounds.bottom + .5 && rect.bottom < caption.top,
+            scale: [matrix.a, matrix.d], dimensions: [rect.width, rect.height], expectedDimensions: [baseline[index].width, baseline[index].height], opacity: style.opacity,
+          };
+        }));
+      };
       Demo.replay();
-      const cards = [...document.querySelectorAll('.asset-views li')];
-      const boxes = () => cards.map(card => { const rect = card.getBoundingClientRect(); return { x: rect.x, y: rect.y, width: rect.width, height: rect.height }; });
-      const previous = cards.flatMap(card => card.getAnimations());
-      previous.forEach(animation => { animation.pause(); animation.currentTime = animation.effect.getTiming().duration * .35; });
-      const before = boxes();
-      document.querySelector('.view-controls [data-view="list"]').click();
-      const current = cards.flatMap(card => card.getAnimations());
-      current.forEach(animation => { animation.pause(); animation.currentTime = 0; });
-      return { before, after: boxes(), sameNodes: cards.every((card, index) => card === document.querySelectorAll('.asset-views li')[index]), canceled: previous.every(animation => animation.playState === 'idle') };
-    });
-    expect(retarget.sameNodes).toBe(true);
-    expect(retarget.canceled).toBe(true);
-    for (let index = 0; index < retarget.before.length; index++) {
-      for (const property of ['x', 'y', 'width', 'height']) expect(retarget.after[index][property]).toBeCloseTo(retarget.before[index][property], 0);
-    }
-    const samples = await page.evaluate(() => {
-      const cards = [...document.querySelectorAll('.asset-views li')], results = [];
-      for (const view of ['grid', 'list']) {
+      const first = animations();
+      seek(first, .35);
+      const held = boxes();
+      document.querySelector('.view-controls [data-view="grid"]').click();
+      const sameChoiceUnchanged = first.every(animation => animations().includes(animation)) && JSON.stringify(held) === JSON.stringify(boxes());
+
+      // Reverse during both phases, then reverse that live presentation again.
+      // Positions, dimensions, and the decorative fade must all continue from
+      // their current values instead of restarting from a cached layout.
+      for (const [view, fraction] of [['list', .25], ['grid', .75], ['list', .75], ['grid', .25]]) {
+        const previous = animations(); seek(previous, fraction);
+        inspect('before reversal to ' + view + ' at ' + fraction);
+        const before = boxes(), opacityBefore = surfaces.map(surface => getComputedStyle(surface).opacity);
         document.querySelector('.view-controls [data-view="' + view + '"]').click();
-        const animations = cards.flatMap(card => card.getAnimations());
-        for (const fraction of [0, .15, .5, .85, .99]) {
-          animations.forEach(animation => { animation.pause(); animation.currentTime = animation.effect.getTiming().duration * fraction; });
-          const collection = document.querySelector('.asset-views').getBoundingClientRect(), caption = document.querySelector('.wf-caption').getBoundingClientRect();
-          results.push(...cards.map(card => {
-            const rect = card.getBoundingClientRect(), icon = card.querySelector('svg').getBoundingClientRect(), matrix = new DOMMatrixReadOnly(getComputedStyle(card).transform);
-            return { bounded: rect.top >= collection.top - .5 && rect.left >= collection.left - .5 && rect.right <= collection.right + .5 && rect.bottom <= collection.bottom + .5 && rect.bottom < caption.top, scale: [matrix.a, matrix.d], ratio: icon.width / icon.height };
-          }));
-        }
+        const current = animations(); seek(current, 0);
+        retargets.push({
+          before, after: boxes(), opacityBefore, opacityAfter: surfaces.map(surface => getComputedStyle(surface).opacity),
+          foregroundAnimations: foreground.flatMap(element => element.getAnimations()).length,
+          canceled: previous.every(animation => animation.playState === 'idle'),
+        });
+        inspect('after reversal to ' + view);
       }
-      return results;
+      animations().forEach(animation => animation.finish());
+      for (const view of ['list', 'grid']) {
+        document.querySelector('.view-controls [data-view="' + view + '"]').click();
+        const active = animations();
+        for (const fraction of [0, .1, .25, .49, .5, .51, .75, .9, .99]) {
+          seek(active, fraction); inspect(view + ' at ' + fraction);
+        }
+        active.forEach(animation => animation.finish());
+      }
+      return {
+        nodeCount: foreground.length, sameChoiceUnchanged, retargets, samples,
+        sameNodes: cards.every((card, index) => card === collection.querySelectorAll('li')[index]) && foreground.every((element, index) => element === document.querySelectorAll(selector)[index]),
+      };
     });
-    for (const sample of samples) {
-      expect(sample.bounded).toBe(true);
-      expect(sample.scale).toEqual([1, 1]);
-      expect(sample.ratio).toBeCloseTo(1, 2);
+    expect(motion.nodeCount).toBe(9);
+    expect(motion.sameNodes).toBe(true);
+    expect(motion.sameChoiceUnchanged).toBe(true);
+    for (const retarget of motion.retargets) {
+      expect(retarget.foregroundAnimations).toBe(9);
+      expect(retarget.canceled).toBe(true);
+      for (let index = 0; index < retarget.before.length; index++) {
+        for (const property of ['x', 'y', 'width', 'height']) expect(retarget.after[index][property]).toBeCloseTo(retarget.before[index][property], 1);
+      }
+      for (let index = 0; index < retarget.opacityBefore.length; index++) expect(Number(retarget.opacityAfter[index])).toBeCloseTo(Number(retarget.opacityBefore[index]), 3);
+    }
+    for (const sample of motion.samples) {
+      const context = `${viewport.width}px ${sample.context}: ${sample.node}`;
+      expect(sample.covered, context).toEqual([]);
+      expect(sample.bounded, context).toBe(true);
+      expect(sample.scale, context).toEqual([1, 1]);
+      expect(sample.opacity, context).toBe('1');
+      for (let index = 0; index < 2; index++) expect(sample.dimensions[index], context).toBeCloseTo(sample.expectedDimensions[index], 1);
     }
     await finishMotion(page);
-    await expect(page.locator('.view-shell')).toHaveAttribute('data-view', 'list');
+    await expect(page.locator('.view-shell')).toHaveAttribute('data-view', 'grid');
     await expect(page.locator('.asset-views strong')).toHaveText(['Mark', 'Cover', 'Type']);
-    expect(await page.locator('.asset-views li').evaluateAll(cards => cards.every(card => !card.style.position && !card.style.height))).toBe(true);
+    await expect(page.locator('.asset-views small')).toHaveText(['Brand', 'Image', 'System']);
+    expect(await page.locator('.asset-views, .asset-views li').evaluateAll(elements => elements.every(element => !element.getAttribute('style')))).toBe(true);
+    expect(await page.locator('.asset-view-art, .asset-views strong, .asset-views small').evaluateAll(elements => elements.every(element => getComputedStyle(element).transform === 'none'))).toBe(true);
+    expect(await page.locator('.asset-view-art svg').evaluateAll(elements => elements.every(element => {
+      const rect = element.getBoundingClientRect(); return Math.abs(rect.width - rect.height) < .01;
+    }))).toBe(true);
     await expectCanvasFit(page);
-    await page.locator('.view-controls [data-view="grid"]').press('Enter');
+    await expect(page.locator('html')).toHaveAttribute('data-paused', 'false');
+    await page.locator('.view-controls [data-view="list"]').press('Enter');
+    await expect(page.locator('.view-shell')).toHaveAttribute('data-view', 'list');
     expect(await manualMotionCount(page)).toBe(0);
+    await page.evaluate(() => { Demo.replay(); Demo.setSettings({ reduced: true }); });
+    expect(await page.locator('.asset-views').evaluate(element => element.getAnimations({ subtree: true }).length)).toBe(0);
+    expect(await page.locator('.asset-view-art, .asset-views strong, .asset-views small').evaluateAll(elements => elements.every(element => getComputedStyle(element).transform === 'none'))).toBe(true);
   }
 
   await page.setViewportSize({ width: 300, height: 230 });

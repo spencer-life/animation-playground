@@ -98,22 +98,29 @@ must remain within its stage.
 | The sticky title used a fixed threshold, and a result scroller lacked keyboard access. | The title follows the measured heading boundary; the result pane supports native keyboard scrolling and visible focus. | Match the actual layout and retain native reading controls. |
 | Repeated tab selection could replay an unnecessary transition; pagination endpoints could disable the focused control. | Selecting the active tab is a no-op, and endpoint focus recovery is conditional. | Frequent actions stay direct, and focus follows the user's action. |
 | Timeline End displayed `00:60`; an interrupted inbox exit could leave a visible inert panel. | The endpoint reads `01:00`, and resize/reduced-motion settlement completes the inbox's actual open/closed state. | Labels and interactivity must remain consistent with the current state. |
-| List/grid scaling distorted text, while a position-only version grew cards over the caption during travel. | Three temporary card shells interpolate measured width, height, and position together for 240ms, with generation-guarded cleanup. | Keep every edge inside the collection without scaling text or artwork. This is an explicit, bounded layout-property exception for three cards. |
+| List/grid scaling distorted text; later shell morphs stayed inside the canvas but covered labels and clipped artwork during travel. | Native card surfaces update immediately and fade below the nine actual artwork/text nodes. Fixed-size content follows measured, two-phase translations that separate destination columns or rows before converging on the other axis. | Keep identities readable throughout travel, with current-position retargeting and transform/opacity motion. No temporary absolute shells, content scaling, or width/height animation is needed. |
 | Moving a second Kanban task could clip the first task's remaining travel. | A map bounded by the three real tasks retains one inert visual snapshot for each task in flight and retargets from its current rectangle. | Simultaneous transfers preserve continuity while the real DOM, counts, and selection remain authoritative. |
 | A paused task transfer could hide its real button's focus, and native column scrolling could leave visual copies detached from their destinations. | Focusing a real task reveals it immediately; native scrolling settles the visual copies. Identity guards protect teardown and replacement. | Pause must not hide keyboard focus or interfere with native navigation. |
 | Some keyboard-immediacy assertions started while playback was paused. | The tests explicitly enable playback before ordinary keyboard actions. | Verify the keyboard behavior independently of the Pause setting. |
+| Codex found that Mark read disabled itself while holding keyboard focus. | Before disabling Mark read, the unread-badge study moves focus to Add demo only when Mark read owns it. The regression continues with native Enter from the recovered focus and checks that unrelated focus is preserved. | Keep keyboard navigation usable without redirecting someone working elsewhere. The new test reproduced the original failure before the source correction. |
 
-The revised ten-case workflow suite passed after these corrections. It samples
-both list/grid directions at five intermediate fractions in both canvas sizes,
-checks live position and dimensions on interruption, and verifies cleanup. Task
-tests cover multiple simultaneous transfers, native keyboard focus during Pause,
-native column scrolling, and teardown of all visual copies.
+The revised ten-case workflow suite and eleven-case forms suite passed together
+(21 tests). List/grid checks sample nine fractions in both directions and both
+canvas sizes, plus four rapid reversals. Nine hit-test points on each of the nine
+actual content nodes detect obscured labels or artwork; the checks also verify
+constant dimensions, live position/opacity continuity, DOM identity, and cleanup.
+Task tests cover multiple simultaneous transfers, native keyboard focus during
+Pause, native column scrolling, and teardown of all visual copies. The unread
+badge regression verifies both continued native keyboard use and preservation of
+unrelated focus.
 
 ### Verification scope
 
-The final complete browser suite passed **301 tests, with zero failed, skipped,
-or flaky results**, after all source-review corrections. The run began at
-01:13:55 UTC on 11 October 2026 and completed in 78.7 seconds. Validation used
+The final complete browser suite passed **302 tests, with zero failed, skipped,
+or flaky results**, after the Codex focus correction and final list/grid revision.
+The run began at 01:33:39 UTC on 11 October 2026 and completed in 79.3 seconds.
+The first 100-study candidate had previously passed 301 tests; the added keyboard
+regression reproduced Codex's finding before passing against the fix. Validation used
 Node 24.19.0, pnpm 11.25.0, Playwright 1.64.0, and the available Chromium
 153.0.8010.0 executable. The frozen lockfile and existing dependencies are
 unchanged.
@@ -123,7 +130,7 @@ unchanged.
 | `pnpm install --frozen-lockfile` | Passed; the committed lockfile and dependency choices remain unchanged. |
 | `pnpm check` | Passed: 100 unique complete studies, retained published IDs, valid featured membership, parseable scripts, semantic color rules, and pinned dependencies. |
 | `pnpm build` | Passed: 100 standalone examples, the catalog, and portable agent references. |
-| `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=… pnpm test` | 301 passed; 0 failed, 0 skipped, 0 flaky. The separately revised workflow suite also passed all 10 cases. |
+| `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=… pnpm test` | 302 passed; 0 failed, 0 skipped, 0 flaky. The focused forms/workflow run also passed all 21 cases. |
 | `pnpm security` | Passed runtime asset/isolation checks; production dependency audit reported no known vulnerabilities. This is a focused check, not a comprehensive security audit. |
 | `git diff --cached --check` | Passed. |
 
@@ -139,20 +146,31 @@ light and Radix Indigo dark, and at 700 by 420 in Playground light. The second
 capture pass produced 175 images across 16 contact sheets with no browser errors
 or outer geometry flags: 168 settled states and seven real paused motion samples.
 Still images supplement the interaction tests; they do not establish temporal
-quality by themselves. The later task-transfer correction receives its own
-interaction and visual verification.
+quality by themselves. Four final list/grid midpoint captures cover both
+directions at compact Radix dark and expanded Playground light sizes. All three
+complete icons and six labels remain readable, separated, and above the native
+surfaces, with no caption occlusion. The final scoped visual verdict is Approve.
+Separate Kanban captures confirm readable simultaneous task transfers, restored
+real-card focus, and native-scroll settlement at both sizes. The bounded
+collectors recorded no browser/request errors and left the build unchanged.
 
 The actual hub was also inspected at 1440 by 1000 and 390 by 1000 pixels, along
 with a 1440 by 1000 Geist Dark/Violet workbench. Both galleries rendered all 100
 cards, the workbench's selected colors matched its real iframe, and all three
 views had no outer overlap, horizontal overflow, browser errors, or external
-requests. The corrected motion frames receive a separate final visual check.
+requests.
 
 Independent source review has approved the forms, storytelling, workflows, and
-shared catalog/export integration within the documented scope. No material source
-finding remains open. Codex review is pending on the published PR. Exact
-reviewed revisions, hosted deployment evidence, and the final verdict are tracked
-in [issue #7](https://github.com/spencer-life/animation-playground/issues/7).
+shared catalog/export integration within the documented scope, including the
+final focus and list/grid changes. Codex's initial review of
+`a9e4f3130d7cb322bf0849ec7b897371a01d08f2` raised the
+[Mark read focus finding](https://github.com/spencer-life/animation-playground/pull/8#discussion_r4239843283).
+The correction and its positive/negative regression are included in the 302-test
+result. A refreshed Codex review is required on the published correction before
+delivery. Exact reviewed revisions, the resolved thread, hosted deployment
+evidence, and the final verdict are tracked in
+[issue #7](https://github.com/spencer-life/animation-playground/issues/7) and
+[PR #8](https://github.com/spencer-life/animation-playground/pull/8).
 
 These are bounded educational examples, not complete production upload,
 notification, charting, or drag-and-drop systems. Automated accessibility checks
