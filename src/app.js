@@ -1,4 +1,5 @@
 import { palettes, accents, defaults, normalizeTheme, resolveTheme, themeCss, themeFromParams, addThemeParams, themedCode, tokenExport } from './theme.mjs';
+import { createGalleryPlayback } from './gallery-playback.js';
 
 const $ = (selector, root = document) => root.querySelector(selector);
 const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
@@ -43,13 +44,14 @@ const state = {
   reduced: getStored('ap-reduced', systemMotion.matches) === true,
   playing: getStored('ap-playing', true) !== false,
   speed: 1, detailPaused: false, inspectorTab: 'code', codeTab: 'css',
-  selected: null, category: 'all', query: '', detail: null, request: 0,
+  selected: null, category: 'all', query: '', detail: null, request: 0, quick: null,
 };
 let lastGallery = './';
 let announcementTimer;
-let frameObserver;
-let requestController;
+let galleryPlayback;
+let copyRequest = 0;
 const cache = new Map();
+const pendingSources = new Map();
 const visibleFrames = new Set();
 const app = $('#app');
 
@@ -58,6 +60,8 @@ function announce(message) {
   const element = $('#announcement');
   element.textContent = message;
   element.classList.add('visible');
+  const status = $('#quick-status');
+  if (status && state.quick) status.textContent = message;
   announcementTimer = setTimeout(() => element.classList.remove('visible'), 3800);
 }
 function routeUrl(changes) {
@@ -69,6 +73,7 @@ function routeUrl(changes) {
   return url;
 }
 function navigate(url, { replace = false, scroll = true } = {}) {
+  dismissTransientPanels(false);
   history[replace ? 'replaceState' : 'pushState']({}, '', url);
   renderRoute();
   $('#main')?.focus({preventScroll:true});
@@ -96,7 +101,7 @@ function selectedTheme() {
 }
 function recipeTokens(recipe) { return resolveTheme(selectedTheme(), recipe?.color || 'lavender'); }
 function exampleUrl(recipe) { return addThemeParams(new URL(`./${recipe.example || `examples/${recipe.id}.html`}`, location.href), selectedTheme()); }
-function fullCode(recipe) { return themedCode(recipe.code, selectedTheme(), recipe.color); }
+function fullCode(recipe, theme = selectedTheme()) { return themedCode(recipe.code, theme, recipe.color); }
 function clearFilterParams() { return { animation:null, category:null, collection:null, intent:null, tech:null, complexity:null, sort:null, q:null, view:null }; }
 function themeStudio() {
   const theme = selectedTheme();
@@ -125,6 +130,7 @@ function refreshThemePreview() {
   if (swatches) swatches.innerHTML = ['demo-bg','paper','accent','art-2','art-3'].map(name => `<i style="background:${tokens[name]}"></i>`).join('');
   for (const frame of $$('iframe[data-preview], #detail-frame')) sendFrame(frame, { type: 'playground:theme', theme: selectedTheme() });
   if (state.detail) renderInspector();
+  if (state.quick) renderInspector(state.quick);
 }
 function setColorTheme(patch) {
   state.themeOpen = $('.theme-studio')?.open ?? state.themeOpen;
@@ -175,11 +181,22 @@ function renderShell() {
       <header class="topbar" id="desktop-header"></header>
       <main class="main" id="main" tabindex="-1"></main>
     </div>
+    <dialog class="quick-dialog" id="quick-dialog" aria-labelledby="quick-title"></dialog>
     <dialog class="clipboard-dialog" id="clipboard-dialog" aria-labelledby="clipboard-title">
       <h2 id="clipboard-title">Copy manually</h2><p>Your browser couldn’t grant clipboard access. Select and copy the text below.</p>
       <label class="sr-only" for="clipboard-text">Text to copy</label><textarea id="clipboard-text" readonly></textarea>
       <form method="dialog"><button class="button primary">Done</button></form>
     </dialog>`;
+  $('#quick-dialog').addEventListener('cancel', event => { event.preventDefault(); closeQuickInspector(); });
+  $('#quick-dialog').addEventListener('click', event => {
+    if (event.target !== event.currentTarget) return;
+    const bounds = event.currentTarget.getBoundingClientRect();
+    if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) closeQuickInspector();
+  });
+  $('#clipboard-dialog').addEventListener('close', () => {
+    syncFrames();
+    if (!state.quick) document.documentElement.classList.remove('panel-open');
+  });
   const header = `<a class="brand mobile-brand" href="./" data-home>${brand}</a>
     <div class="search">${icon('search')}<label class="sr-only" for="search-input">Search animations</label><input id="search-input" type="search" placeholder="Find an animation…" autocomplete="off" spellcheck="false" maxlength="240"><kbd aria-hidden="true">/</kbd></div>
     <div class="topbar-actions"><a class="text-link" href="https://github.com/spencer-life/animation-playground" target="_blank" rel="noopener noreferrer" aria-label="View Animation Playground on GitHub">${icon('github')} GitHub ${icon('external','sm')}</a>
@@ -198,6 +215,7 @@ function renderShell() {
   mobileMedia.addEventListener('change', placeHeader);
   placeHeader();
   $('#search-input').addEventListener('input', event => {
+    dismissTransientPanels(false);
     state.query = event.target.value;
     const url = routeUrl({ animation: null, view: null, q: state.query });
     history.replaceState({}, '', url);
@@ -240,6 +258,7 @@ function card(recipe) {
     </div>
     <div class="sample-meta"><div class="sample-copy"><button class="sample-title" data-open="${recipe.id}">${escape(recipe.title)}</button><p class="sample-description">${escape(recipe.description)}</p><div class="sample-bottom"><span>${escape(recipe.tech)}</span><span>${escape(recipe.duration)}</span><span>${recipe.intent === 'everyday' ? 'Everyday UI' : 'Expressive'}</span></div></div>
     <button class="icon-button sample-save" data-save="${recipe.id}" aria-label="${saved ? 'Unsave' : 'Save'} ${escape(recipe.title)}" aria-pressed="${saved}" title="${saved ? 'Remove from saved' : 'Save animation'}">${icon('bookmark')}</button></div>
+    <div class="sample-actions"><button class="button primary" data-copy-recipe="${recipe.id}" aria-label="Copy code for ${escape(recipe.title)}">${icon('copy')} <span>Copy code</span></button><button class="button" data-inspect="${recipe.id}" aria-haspopup="dialog" aria-label="Details for ${escape(recipe.title)}">${icon('book')} Details</button><button class="icon-button sample-replay" data-replay-preview="${recipe.id}" aria-label="Replay ${escape(recipe.title)}" title="Replay this preview">${icon('replay','sm')}</button></div>
   </article>`;
 }
 function footer() {
@@ -247,7 +266,6 @@ function footer() {
 }
 function renderGallery() {
   clearFrames();
-  requestController?.abort();
   state.detail = null;
   state.request++;
   lastGallery = location.pathname + location.search;
@@ -274,49 +292,96 @@ function renderGallery() {
   refreshThemePreview();
 }
 function clearFrames() {
-  frameObserver?.disconnect();
+  galleryPlayback?.disconnect();
+  galleryPlayback = null;
   visibleFrames.clear();
 }
 function frameSettings(frame, extra = {}) {
   const detail = frame.id === 'detail-frame';
-  return { reduced: state.reduced, speed: detail ? state.speed : 1, paused: document.hidden || (detail ? state.detailPaused : !state.playing || !visibleFrames.has(frame)), ...extra };
+  const blocked = document.hidden || Boolean(state.quick) || Boolean($('#clipboard-dialog[open]'));
+  return { reduced: state.reduced, speed: detail ? state.speed : 1, blocked, paused: blocked || (detail ? state.detailPaused : !state.playing || !visibleFrames.has(frame)), ...extra };
 }
 function sendFrame(frame, message) { if (frame?.contentWindow) frame.contentWindow.postMessage(message,'*'); }
-function syncFrames() { $$('iframe[data-preview], #detail-frame').forEach(frame => { sendFrame(frame,{type:'playground:settings',settings:frameSettings(frame)}); sendFrame(frame,{type:'playground:theme',theme:selectedTheme()}); }); }
-function watchFrames() {
-  frameObserver = new IntersectionObserver(entries => {
-    for (const entry of entries) {
-      const frame = entry.target;
-      if (entry.isIntersecting) {
-        visibleFrames.add(frame);
-        if (!frame.hasAttribute('src')) {
-          const source = addThemeParams(new URL(frame.dataset.src,location.href),selectedTheme());
-          source.searchParams.set('reduced',String(state.reduced));
-          source.searchParams.set('paused',String(!state.playing));
-          source.searchParams.set('preview','1');
-          frame.src = source.href;
-          frame.addEventListener('load',() => {
-            sendFrame(frame,{type:'playground:settings',settings:frameSettings(frame)});
-            sendFrame(frame,{type:'playground:theme',theme:selectedTheme()});
-          },{once:true});
-        } else sendFrame(frame,{type:'playground:settings',settings:frameSettings(frame)});
-      } else {
-        visibleFrames.delete(frame);
-        sendFrame(frame,{type:'playground:settings',settings:frameSettings(frame,{paused:true})});
-      }
-    }
-  },{ rootMargin:'120px 0px',threshold:0.01 });
-  $$('iframe[data-preview]').forEach(frame => frameObserver.observe(frame));
+function syncFrames({ resetPreviews = false } = {}) {
+  galleryPlayback?.sync({ resetManual: resetPreviews });
+  const frame = $('#detail-frame');
+  if (frame) { sendFrame(frame,{type:'playground:settings',settings:frameSettings(frame)}); sendFrame(frame,{type:'playground:theme',theme:selectedTheme()}); }
 }
-async function loadDetail(recipe) {
-  if (cache.has(recipe.id)) return cache.get(recipe.id);
-  requestController?.abort();
-  requestController = new AbortController();
-  const response = await fetch(`./${recipe.details}`,{signal:requestController.signal});
-  if (!response.ok) throw new Error('The example file could not be loaded.');
-  const detail = await response.json();
-  cache.set(recipe.id,detail);
-  return detail;
+function watchFrames() {
+  galleryPlayback = createGalleryPlayback({ frames: $$('iframe[data-preview]'), visibleFrames, getTheme: selectedTheme, getSettings: frameSettings, send: sendFrame });
+}
+function loadDetail(recipe) {
+  if (cache.has(recipe.id)) return Promise.resolve(cache.get(recipe.id));
+  if (pendingSources.has(recipe.id)) return pendingSources.get(recipe.id);
+  const pending = fetch(`./${recipe.details}`).then(async response => {
+    if (!response.ok) throw new Error('The example file could not be loaded.');
+    const detail = await response.json();
+    if (detail.id !== recipe.id || typeof detail.code !== 'string' || !detail.study || !detail.snippets) throw new Error('The example source is incomplete.');
+    cache.set(recipe.id, detail);
+    return detail;
+  }).finally(() => pendingSources.delete(recipe.id));
+  pendingSources.set(recipe.id, pending);
+  return pending;
+}
+function inspectorTabs(context = state) {
+  const prefix = context === state ? '' : 'quick-';
+  return `<div class="inspector-tabs" role="tablist" aria-label="Reference section">${[['code','Code'],['guide','How it works'],['theme','Colors'],['ai','Copy for AI']].map(([id,label]) => `<button class="tab" role="tab" id="${prefix}tab-${id}" aria-selected="${id === context.inspectorTab}" aria-controls="${prefix}reference-panel" tabindex="${id === context.inspectorTab ? 0 : -1}" data-tab="${id}">${label}</button>`).join('')}</div><div class="inspector-content" id="${prefix}reference-panel" role="tabpanel" aria-labelledby="${prefix}tab-${context.inspectorTab}"></div>`;
+}
+function contextFor(target) { return target.closest('#quick-dialog') ? state.quick : state; }
+function currentContext(context) { return context === state || context === state.quick; }
+function closeQuickInspector({ restoreFocus = true } = {}) {
+  const context = state.quick;
+  if (!context) return;
+  state.quick = null;
+  $('#quick-dialog').close();
+  $('#quick-dialog').replaceChildren();
+  if (!$('#clipboard-dialog[open]')) document.documentElement.classList.remove('panel-open');
+  syncFrames();
+  if (restoreFocus) {
+    const origin = context.opener?.isConnected ? context.opener : $('#search-input');
+    origin?.focus({ preventScroll: true });
+  }
+}
+function dismissTransientPanels(restoreFocus = false) {
+  copyRequest++;
+  $('#clipboard-dialog[open]')?.close();
+  closeQuickInspector({ restoreFocus });
+  document.documentElement.classList.remove('panel-open');
+}
+function openQuickInspector(id, opener) {
+  const recipe = state.recipes.find(item => item.id === id);
+  if (!recipe) return;
+  closeQuickInspector({ restoreFocus: false });
+  const context = { detail: cache.get(id) || recipe, inspectorTab: 'guide', codeTab: 'css', tokenSystem: 'values', opener, loading: false, error: null };
+  state.quick = context;
+  const dialog = $('#quick-dialog');
+  dialog.innerHTML = `<header class="quick-heading"><div><h2 id="quick-title" tabindex="-1">${escape(recipe.title)}</h2><p>${escape(recipe.description)}</p><div class="detail-tags"><span class="tech">${escape(recipe.tech)}</span><span>${escape(recipe.trigger)}</span></div></div><button class="icon-button quick-close" data-action="close-inspector" aria-label="Close animation details">${icon('close')}</button></header>
+    <div class="quick-body"><dl class="quick-specs"><div><dt>Duration</dt><dd>${escape(recipe.duration)}</dd></div><div><dt>Purpose</dt><dd>${escape(recipe.purpose)}</dd></div><div><dt>Easing / spring</dt><dd class="code-value">${escape(recipe.easing)}</dd></div><div><dt>Dependencies</dt><dd>${recipe.usesMotion ? 'Motion 14.1.0 · included in the HTML' : 'None · just the browser'}</dd></div></dl>
+    <section class="inspector" id="quick-inspector" data-inspector="quick" aria-label="Animation reference">${inspectorTabs(context)}</section></div>
+    <footer class="quick-footer"><div class="quick-actions"><button class="button primary" data-action="copy-full">${icon('copy')} Copy full example</button><button class="button" data-action="download-full">${icon('download')} Download HTML</button><button class="button" data-action="copy-link">${icon('link')} Copy link</button></div><div class="quick-footer-end"><p id="quick-status" role="status" aria-live="polite">Code uses your selected preview colors.</p><a class="text-link" href="${escape(routeUrl({animation:id,view:null}).href)}" data-open="${id}">Open workbench ${icon('arrow','sm')}</a></div></footer>`;
+  renderInspector(context);
+  document.documentElement.classList.add('panel-open');
+  dialog.showModal();
+  $('#quick-title').focus({ preventScroll: true });
+  syncFrames({ resetPreviews: true });
+}
+function loadInspectorSource(context) {
+  if (context.loading) return;
+  const id = context.detail.id;
+  const recipe = state.recipes.find(item => item.id === id);
+  context.loading = true;
+  context.error = null;
+  loadDetail(recipe).then(detail => {
+    if (!currentContext(context) || context.detail?.id !== id) return;
+    context.detail = detail;
+    context.loading = false;
+    if (context.inspectorTab === 'code') renderInspector(context);
+  }).catch(error => {
+    if (!currentContext(context) || context.detail?.id !== id) return;
+    context.loading = false;
+    context.error = error;
+    if (context.inspectorTab === 'code') renderInspector(context);
+  });
 }
 async function renderDetail() {
   clearFrames();
@@ -350,7 +415,7 @@ async function renderDetail() {
       <div class="demo-controls"><div class="control-group"><button class="quiet-button" data-action="replay">${icon('replay')} Replay</button><button class="quiet-button" data-action="detail-pause" aria-pressed="false" aria-label="Pause animation">${icon('pause')} Pause</button></div><div class="control-group"><button class="quiet-button" data-action="reduced" aria-pressed="${state.reduced}" title="Toggle reduced-motion mode">${icon('motion')} ${state.reduced ? 'Reduced' : 'Full motion'}</button><div class="speed-control"><label for="speed">Speed</label><select id="speed" aria-label="Animation playback speed"><option value="1">1×</option><option value="0.5">0.5×</option><option value="0.25">0.25×</option></select></div></div></div>
       <p class="demo-hint">${escape(recipe.trigger)} inside the demo, or use Replay to see the sequence. ${state.reduced ? 'Reduced motion shows an immediate, readable state.' : 'Slow it down to see the small decisions.'}</p>
       <dl class="demo-specs"><div><dt>Duration</dt><dd>${escape(recipe.duration)}</dd></div><div><dt>Purpose</dt><dd>${escape(recipe.purpose)}</dd></div><div class="wide"><dt>Easing / spring</dt><dd class="code-value">${escape(recipe.easing)}</dd></div><div class="wide"><dt>Dependencies</dt><dd>${recipe.usesMotion ? 'Motion 14.1.0 · included in the HTML' : 'None · just the browser'}</dd></div></dl></section>
-      <section class="inspector" aria-label="Animation reference"><div class="inspector-tabs" role="tablist" aria-label="Reference section">${[['code','Code'],['guide','How it works'],['theme','Colors'],['ai','Copy for AI']].map(([id,label]) => `<button class="tab" role="tab" id="tab-${id}" aria-selected="${id === 'code'}" aria-controls="reference-panel" tabindex="${id === 'code' ? 0 : -1}" data-tab="${id}">${label}</button>`).join('')}</div><div class="inspector-content" id="reference-panel" role="tabpanel" aria-labelledby="tab-code"></div></section></div>
+      <section class="inspector" id="detail-inspector" data-inspector="detail" aria-label="Animation reference">${inspectorTabs()}</section></div>
       <section class="related"><div class="related-heading"><h2>Keep exploring</h2><button class="text-link" data-action="back">The whole collection ${icon('arrow','sm')}</button></div><div class="gallery">${related.map(card).join('')}</div></section>
       <footer class="detail-footer"><span>Independent examples, informed by <a href="${recipe.sourceUrl}" target="_blank" rel="noopener noreferrer">Emil’s animation principles</a>.</span><button class="text-link" data-action="download-full">${icon('download')} Download standalone HTML</button></footer>`;
     $('#detail-frame').addEventListener('load',syncFrames,{once:true});
@@ -386,35 +451,43 @@ function aiBrief(recipe) {
   const theme = selectedTheme();
   return `Use the “${recipe.title}” animation from my Animation Playground in this project.\n\nReference: ${permalink}\nComplete working source: ${exampleUrl(recipe).href}\nRepository: https://github.com/spencer-life/animation-playground\nRecipe ID: ${recipe.id}\nSource module: ${recipe.module}\n\nBehavior: ${recipe.description}\nPurpose: ${recipe.purpose}. Trigger: ${recipe.trigger}.\nTiming: ${recipe.duration}. Easing/spring: ${recipe.easing}.\nIntent: ${recipe.intent}. Complexity: ${recipe.complexity}. Collections: ${recipe.collections.join(', ')}.\n\nUse it for: ${recipe.useWhen}\nAvoid it when: ${recipe.avoidWhen}\nReduced motion: ${recipe.reducedMotion}\nDependencies: ${recipe.usesMotion ? 'Motion 14.1.0, already bundled in the standalone example.' : 'None; native HTML, CSS, and browser APIs.'}\n\nSelected appearance: ${theme.palette} / ${theme.mode} / ${theme.palette === 'custom' ? theme.custom : theme.accent}.\nColor tokens:\n${tokenExport(theme, recipe.color)}\n\nRead the complete source before adapting. Preserve interruption/cancellation, keyboard and touch access, and the reduced-motion state. Map the semantic color roles to the receiving project’s existing theme (Radix or Geist when present), preserving readable text in both modes. Keep its typography and existing motion tokens. Bring over only this pattern, without recreating the playground’s site chrome. Treat demo content as illustrative.\n\nGuiding principle: ${recipe.principle}\nUpstream reference: ${recipe.sourceUrl}`;
 }
-function renderInspector() {
-  const recipe = state.detail;
+function renderInspector(context = state) {
+  if (!context) return;
+  const recipe = cache.get(context.detail?.id) || context.detail;
   if (!recipe) return;
-  const panel = $('#reference-panel');
-  $$('[data-tab]').forEach(button => { const selected = button.dataset.tab === state.inspectorTab; button.setAttribute('aria-selected',String(selected)); button.tabIndex = selected ? 0 : -1; });
-  panel.setAttribute('aria-labelledby',`tab-${state.inspectorTab}`);
-  if (state.inspectorTab === 'theme') {
+  context.detail = recipe;
+  const prefix = context === state ? '' : 'quick-';
+  const panel = $(`#${prefix}reference-panel`);
+  if (!panel) return;
+  $$('[data-tab]', panel.closest('.inspector')).forEach(button => { const selected = button.dataset.tab === context.inspectorTab; button.setAttribute('aria-selected',String(selected)); button.tabIndex = selected ? 0 : -1; });
+  panel.setAttribute('aria-labelledby',`${prefix}tab-${context.inspectorTab}`);
+  if (context.inspectorTab === 'theme') {
     panel.innerHTML = `<section class="guide-section"><h3>Bring your project’s palette.</h3><p>These roles color every part of the demo. Full HTML embeds the current appearance; token mappings help you reuse your project’s existing design system.</p></section>
-      <label class="token-system-label" for="token-system">Export format<select id="token-system">${[['values','Standalone values'],['radix','Radix token aliases'],['geist','Geist neutral aliases']].map(([id,title]) => `<option value="${id}" ${state.tokenSystem === id ? 'selected' : ''}>${title}</option>`).join('')}</select></label>
-      <div class="code-container theme-code" tabindex="0" aria-label="Theme CSS tokens"><pre><code>${highlight(tokenExport(selectedTheme(), recipe.color, state.tokenSystem))}</code></pre></div><button class="button primary token-copy" data-action="copy-tokens">${icon('copy')} Copy color tokens</button><p class="code-caption">Apply <code>animation-theme</code> to your demo wrapper. Aliases include fallback values; load your host theme first. Review foreground contrast if you swap the accent scale.</p>`;
+      <label class="token-system-label" for="${prefix}token-system">Export format<select id="${prefix}token-system" data-token-system>${[['values','Standalone values'],['radix','Radix token aliases'],['geist','Geist neutral aliases']].map(([id,title]) => `<option value="${id}" ${context.tokenSystem === id ? 'selected' : ''}>${title}</option>`).join('')}</select></label>
+      <div class="code-container theme-code" tabindex="0" aria-label="Theme CSS tokens"><pre><code>${highlight(tokenExport(selectedTheme(), recipe.color, context.tokenSystem))}</code></pre></div><button class="button primary token-copy" data-action="copy-tokens">${icon('copy')} Copy color tokens</button><p class="code-caption">Apply <code>animation-theme</code> to your demo wrapper. Aliases include fallback values; load your host theme first. Review foreground contrast if you swap the accent scale.</p>`;
     return;
   }
-  if (state.inspectorTab === 'guide') {
+  if (context.inspectorTab === 'guide') {
     panel.innerHTML = [['The idea',recipe.principle],['Where it works',recipe.useWhen],['When to leave it out',recipe.avoidWhen],['Reduced motion',recipe.reducedMotion]].map(([title,text]) => `<section class="guide-section"><h3>${title}</h3><p>${escape(text)}</p></section>`).join('') + `<a class="source-link" href="${recipe.sourceUrl}" target="_blank" rel="noopener noreferrer">Read the original principle ${icon('external','sm')}</a>`;
     return;
   }
-  if (state.inspectorTab === 'ai') {
+  if (context.inspectorTab === 'ai') {
     panel.innerHTML = `<p class="ai-intro">Give ChatGPT or Codex the behavior, working source, and constraints in one brief.</p><pre class="ai-prompt">${escape(aiBrief(recipe))}</pre><button class="button primary" data-action="copy-ai">${icon('copy')} Copy for AI</button><p class="code-caption">Links point to this specific experiment. The code is public and requires no login.</p>`;
     return;
   }
-  const full = state.codeTab === 'full';
-  const code = full ? fullCode(recipe) : recipe.study[state.codeTab];
-  panel.innerHTML = `<div class="code-toolbar"><div class="code-languages" aria-label="Code language">${[['css','CSS'],['js','JavaScript'],['html','HTML'],['full','Full file']].map(([id,label]) => `<button data-language="${id}" aria-pressed="${state.codeTab === id}">${label}</button>`).join('')}</div><button class="button code-copy" data-action="copy-section" aria-label="Copy ${full ? 'full standalone HTML' : state.codeTab === 'html' ? 'HTML markup' : `${state.codeTab.toUpperCase()} with shared prerequisites`}">${icon('copy')} Copy</button></div>
-    <div class="code-container" tabindex="0" aria-label="${full ? 'Complete standalone HTML source' : 'Recipe ' + state.codeTab.toUpperCase() + ' source'}"><pre><code>${highlight(code)}</code></pre></div>
-    <p class="code-caption">${full ? 'This is the exact file running on the left. Save it as .html and open it in a browser.' : `${state.codeTab === 'html' ? 'Markup shown here is the demo body.' : 'Showing the motion-specific source. Copy includes the shared tokens or runtime it needs.'} Use <strong>Copy full example</strong> for a complete, portable HTML file.`}${recipe.usesMotion ? ' Motion is embedded in the full file.' : ''}</p>`;
+  if (!recipe.study) {
+    panel.innerHTML = context.error ? `<div class="source-state" role="status"><h3>Couldn’t load the source.</h3><p>The animation details are still available. Try the source again, or open the standalone example.</p><button class="button" data-action="retry-source">Try again</button><a class="source-link" href="${escape(exampleUrl(recipe).href)}" target="_blank" rel="noopener noreferrer">Open standalone example ${icon('external','sm')}</a></div>` : `<p class="source-state" role="status">Loading the complete source…</p>`;
+    if (!context.error) loadInspectorSource(context);
+    return;
+  }
+  const full = context.codeTab === 'full';
+  const code = full ? fullCode(recipe) : recipe.study[context.codeTab];
+  panel.innerHTML = `<div class="code-toolbar"><div class="code-languages" aria-label="Code language">${[['css','CSS'],['js','JavaScript'],['html','HTML'],['full','Full file']].map(([id,label]) => `<button data-language="${id}" aria-pressed="${context.codeTab === id}">${label}</button>`).join('')}</div><button class="button code-copy" data-action="copy-section" aria-label="Copy ${full ? 'full standalone HTML' : context.codeTab === 'html' ? 'HTML markup' : `${context.codeTab.toUpperCase()} with shared prerequisites`}">${icon('copy')} Copy</button></div>
+    <div class="code-container" tabindex="0" aria-label="${full ? 'Complete standalone HTML source' : 'Recipe ' + context.codeTab.toUpperCase() + ' source'}"><pre><code>${highlight(code)}</code></pre></div>
+    <p class="code-caption">${full ? 'This complete file includes the selected preview colors. Save it as .html and open it in a browser.' : `${context.codeTab === 'html' ? 'Markup shown here is the demo body.' : 'Showing the motion-specific source. Copy includes the shared tokens or runtime it needs.'} Use <strong>Copy full example</strong> for a complete, portable HTML file.`}${recipe.usesMotion ? ' Motion is embedded in the full file.' : ''}</p>`;
 }
 function renderNotes() {
   clearFrames();
-  requestController?.abort();
   state.request++;
   state.detail = null;
   document.title = 'Motion notes — Animation Playground';
@@ -432,33 +505,106 @@ function renderNotes() {
     <section class="notes-section"><h2>Take the behavior with you.</h2><p class="notes-source">Every experiment has a stable ID, a direct link, complete HTML, and a “Copy for AI” brief. The standalone HTML includes its own styles and behavior, including Motion where a spring needs it. The public <a href="./catalog.json">JSON catalog</a> and <a href="./llms-full.txt">complete text reference</a> make the collection readable by agents too.</p><p class="notes-source">These are original educational examples informed by all 14 skills in <a href="https://github.com/emilkowalski/skills/tree/e8a175de22ae1e49370fc144c1f3bb9aeedf988d" target="_blank" rel="noopener noreferrer">Emil Kowalski’s collection</a>. They’re an independent project, with no implied endorsement. Native-only guidance was reviewed for transferable principles. See the <a href="https://github.com/spencer-life/animation-playground/blob/main/docs/emil-research.md" target="_blank" rel="noopener noreferrer">full source and applicability review</a>.</p></section>${footer()}</div>`;
 }
 function renderRoute() {
+  dismissTransientPanels(false);
   const view = readRoute();
   renderNav();
   if (view === 'detail') renderDetail();
   else if (view === 'notes') renderNotes();
   else { document.title = 'Animation Playground — Motion worth borrowing'; renderGallery(); }
 }
-async function copyText(text, label) {
+async function copyText(value, label, { origin = document.activeElement, isCurrent = () => true, request = ++copyRequest } = {}) {
+  const current = () => request === copyRequest && isCurrent() && origin?.isConnected;
+  const textReady = Promise.resolve(value);
+  // The write starts in the click gesture, even when source still needs fetching.
+  // Plain text preserves the complete HTML without rich-clipboard sanitization.
+  textReady.catch(() => {});
   try {
-    if (!navigator.clipboard?.writeText) throw new Error('Clipboard unavailable');
-    await navigator.clipboard.writeText(text);
-    announce(`${label} copied.`);
-    return;
+    if (typeof value !== 'string' && navigator.clipboard?.write && typeof ClipboardItem === 'function') {
+      const blobReady = textReady.then(text => {
+        if (!current()) throw new DOMException('Copy superseded', 'AbortError');
+        return new Blob([text], { type: 'text/plain' });
+      });
+      // Some browsers reject the write before consuming the promised item.
+      blobReady.catch(() => {});
+      await navigator.clipboard.write([new ClipboardItem({ 'text/plain': blobReady })]);
+    } else {
+      const text = typeof value === 'string' ? value : await textReady;
+      if (!current()) return false;
+      if (!navigator.clipboard?.writeText) throw new Error('Clipboard unavailable');
+      await navigator.clipboard.writeText(text);
+    }
+    if (current()) announce(`${label} copied.`);
+    return current();
   } catch {
+    const text = await textReady;
+    if (!current()) return false;
+    const activeModal = $$('dialog[open]').at(-1);
+    if (activeModal && !activeModal.contains(origin)) {
+      announce('Clipboard access was blocked. Choose Copy again here to select the text.');
+      return false;
+    }
+    const previousFocus = document.activeElement;
     const textarea = document.createElement('textarea');
     textarea.value = text;
     textarea.style.cssText = 'position:fixed;top:0;left:0;opacity:0;pointer-events:none';
-    document.body.appendChild(textarea);
+    (activeModal || document.body).appendChild(textarea);
+    textarea.focus({ preventScroll: true });
     textarea.select();
     let success = false;
     try { success = document.execCommand('copy'); } catch { /* offer manual copy below */ }
     textarea.remove();
-    if (success) { announce(`${label} copied.`); return; }
+    if (success) {
+      previousFocus?.focus({ preventScroll: true });
+      announce(`${label} copied.`);
+      return true;
+    }
+    origin.focus({ preventScroll: true });
     const dialog = $('#clipboard-dialog');
     $('#clipboard-text').value = text;
+    document.documentElement.classList.add('panel-open');
     dialog.showModal();
+    syncFrames({ resetPreviews: true });
     $('#clipboard-text').focus();
     $('#clipboard-text').select();
+    return false;
+  }
+}
+async function sourceAction(recipe, target, action) {
+  if (!recipe || target.dataset.busy) return;
+  const theme = selectedTheme();
+  const route = state.request;
+  const request = action === 'copy' ? ++copyRequest : null;
+  const current = () => route === state.request && target.isConnected;
+  target.dataset.busy = 'true';
+  target.setAttribute('aria-busy', 'true');
+  target.setAttribute('aria-disabled', 'true');
+  const caption = $('span', target);
+  const previousCaption = caption?.textContent;
+  if (caption) caption.textContent = action === 'copy' ? 'Copying…' : 'Preparing…';
+  try {
+    const cached = cache.get(recipe.id);
+    const source = cached ? fullCode(cached, theme) : loadDetail(recipe).then(detail => fullCode(detail, theme));
+    if (action === 'copy') await copyText(source, 'Full example with colors', { origin: target, isCurrent: current, request });
+    else {
+      const code = await source;
+      if (!current()) return;
+      const url = URL.createObjectURL(new Blob([code], { type: 'text/html;charset=utf-8' }));
+      const anchor = document.createElement('a');
+      anchor.href = url;
+      anchor.download = `${recipe.id}.html`;
+      (state.quick ? $('#quick-dialog') : document.body).appendChild(anchor);
+      anchor.click();
+      anchor.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+      announce('Standalone HTML downloaded.');
+    }
+  } catch {
+    if (current() && (action !== 'copy' || copyRequest === request)) announce('Couldn’t load the source. Please try again.');
+  } finally {
+    delete target.dataset.busy;
+    target.removeAttribute('aria-busy');
+    target.removeAttribute('aria-disabled');
+    if (caption && previousCaption) caption.textContent = previousCaption;
   }
 }
 function toggleSaved(id) {
@@ -479,6 +625,10 @@ function updatePlaybackButtons() {
 document.addEventListener('click',async event => {
   const target = event.target.closest('button,a');
   if (!target) return;
+  if (target.dataset.busy) { event.preventDefault(); return; }
+  if (target.dataset.inspect) { openQuickInspector(target.dataset.inspect, target); return; }
+  if (target.dataset.replayPreview) { galleryPlayback?.replay($(`iframe[data-preview="${target.dataset.replayPreview}"]`)); return; }
+  if (target.dataset.copyRecipe) { await sourceAction(state.recipes.find(recipe => recipe.id === target.dataset.copyRecipe), target, 'copy'); return; }
   if (target.hasAttribute('data-home')) { event.preventDefault(); navigate(routeUrl(clearFilterParams())); return; }
   if (target.dataset.category) { event.preventDefault(); navigate(routeUrl({...(target.dataset.category === 'all' || target.dataset.category === 'saved' ? clearFilterParams() : {animation:null,view:null}),category:target.dataset.category})); return; }
   if (target.dataset.collection) { navigate(routeUrl({ ...clearFilterParams(), collection: state.collection === target.dataset.collection ? null : target.dataset.collection })); return; }
@@ -486,9 +636,23 @@ document.addEventListener('click',async event => {
   if (target.dataset.route === 'notes') { event.preventDefault(); navigate(routeUrl({animation:null,category:null,q:null,view:'notes'})); return; }
   if (target.dataset.open) { event.preventDefault(); navigate(routeUrl({animation:target.dataset.open,q:null,view:null})); return; }
   if (target.dataset.save) { toggleSaved(target.dataset.save); return; }
-  if (target.dataset.tab) { state.inspectorTab = target.dataset.tab; renderInspector(); return; }
-  if (target.dataset.language) { state.codeTab = target.dataset.language; renderInspector(); return; }
+  const context = contextFor(target);
+  if (target.dataset.tab && context) { context.inspectorTab = target.dataset.tab; renderInspector(context); return; }
+  if (target.dataset.language && context) {
+    context.codeTab = target.dataset.language;
+    renderInspector(context);
+    const inspector = $(context === state ? '#detail-inspector' : '#quick-inspector');
+    $(`[data-language="${context.codeTab}"]`, inspector)?.focus({ preventScroll: true });
+    return;
+  }
   const action = target.dataset.action;
+  if (action === 'close-inspector') { closeQuickInspector(); return; }
+  if (action === 'retry-source' && context) {
+    context.error = null;
+    renderInspector(context);
+    $(`${context === state ? '#tab-code' : '#quick-tab-code'}`).focus({ preventScroll: true });
+    return;
+  }
   if (action === 'reset') navigate(routeUrl(clearFilterParams()));
   if (action === 'back') navigate(lastGallery);
   if (action === 'retry-detail') renderDetail();
@@ -500,11 +664,11 @@ document.addEventListener('click',async event => {
     $('meta[name="theme-color"]').content = theme === 'dark' ? '#191c22' : '#f7f8fa';
     refreshThemePreview();
   }
-  if (action === 'previews') { state.playing = !state.playing; saveStored('ap-playing',state.playing); syncFrames(); updatePlaybackButtons(); }
+  if (action === 'previews') { state.playing = !state.playing; saveStored('ap-playing',state.playing); syncFrames({ resetPreviews: true }); updatePlaybackButtons(); }
   if (action === 'reduced') {
     state.reduced = !state.reduced;
     saveStored('ap-reduced',state.reduced);
-    syncFrames();
+    syncFrames({ resetPreviews: true });
     updatePlaybackButtons();
     announce(state.reduced ? 'Reduced motion: state changes without travel.' : 'Full motion enabled.');
   }
@@ -515,20 +679,15 @@ document.addEventListener('click',async event => {
     sendFrame($('#detail-frame'),{type:'playground:replay'});
     updatePlaybackButtons();
   }
-  if (action === 'copy-link' && state.detail) await copyText(addThemeParams(routeUrl({...clearFilterParams(),animation:state.detail.id}),selectedTheme()).href,'Link with colors');
-  if (action === 'copy-full' && state.detail) await copyText(fullCode(state.detail),'Full example with colors');
-  if (action === 'copy-ai' && state.detail) await copyText(aiBrief(state.detail),'AI brief');
-  if (action === 'copy-tokens') await copyText(tokenExport(selectedTheme(),state.detail?.color || 'lavender',state.detail ? state.tokenSystem : 'values'),'Color tokens');
-  if (action === 'download-full' && state.detail) {
-    const url = URL.createObjectURL(new Blob([fullCode(state.detail)],{type:'text/html;charset=utf-8'}));
-    const anchor = document.createElement('a');
-    anchor.href = url; anchor.download = `${state.detail.id}.html`;
-    document.body.appendChild(anchor); anchor.click(); anchor.remove();
-    setTimeout(() => URL.revokeObjectURL(url), 1000);
-  }
-  if (action === 'copy-section' && state.detail) {
-    const code = state.codeTab === 'full' ? fullCode(state.detail) : state.detail.snippets[state.codeTab] + (state.codeTab === 'css' ? '\n\n' + themeCss(selectedTheme(),state.detail.color) : '');
-    await copyText(code,state.codeTab === 'full' ? 'Full example' : state.codeTab.toUpperCase());
+  const recipe = context?.detail;
+  if (action === 'copy-link' && recipe) await copyText(addThemeParams(routeUrl({...clearFilterParams(),animation:recipe.id}),selectedTheme()).href,'Link with colors', { origin: target });
+  if (action === 'copy-full' && recipe) await sourceAction(state.recipes.find(item => item.id === recipe.id), target, 'copy');
+  if (action === 'copy-ai' && recipe) await copyText(aiBrief(recipe),'AI brief', { origin: target });
+  if (action === 'copy-tokens') await copyText(tokenExport(selectedTheme(),recipe?.color || 'lavender',recipe ? context.tokenSystem : 'values'),'Color tokens', { origin: target });
+  if (action === 'download-full' && recipe) await sourceAction(state.recipes.find(item => item.id === recipe.id), target, 'download');
+  if (action === 'copy-section' && recipe?.study) {
+    const code = context.codeTab === 'full' ? fullCode(recipe) : recipe.snippets[context.codeTab] + (context.codeTab === 'css' ? '\n\n' + themeCss(selectedTheme(),recipe.color) : '');
+    await copyText(code,context.codeTab === 'full' ? 'Full example' : context.codeTab.toUpperCase(), { origin: target });
   }
 });
 document.addEventListener('toggle', event => {
@@ -549,33 +708,43 @@ document.addEventListener('change', event => {
     navigate(routeUrl({[filters[id]]:target.value}),{scroll:false});
     document.getElementById(id)?.focus({preventScroll:true});
   }
-  if (target.id === 'token-system') { state.tokenSystem = target.value; renderInspector(); $('#token-system')?.focus({preventScroll:true}); }
+  if (target.hasAttribute('data-token-system')) {
+    const context = contextFor(target);
+    const id = target.id;
+    context.tokenSystem = target.value;
+    renderInspector(context);
+    document.getElementById(id)?.focus({preventScroll:true});
+  }
 });
 document.addEventListener('keydown',event => {
   const editing = event.target.closest('input,textarea,select,[contenteditable="true"]');
-  if (event.key === '/' && !editing && !event.metaKey && !event.ctrlKey && !event.altKey) { event.preventDefault(); $('#search-input')?.focus(); }
+  if (event.key === '/' && !editing && !event.metaKey && !event.ctrlKey && !event.altKey && !$('dialog[open]')) { event.preventDefault(); $('#search-input')?.focus(); }
   if (event.target.matches('[role="tab"]') && ['ArrowLeft','ArrowRight','Home','End'].includes(event.key)) {
     event.preventDefault();
-    const tabs = $$('[role="tab"]');
+    const context = contextFor(event.target);
+    const tabs = $$('[role="tab"]', event.target.closest('[role="tablist"]'));
     const index = tabs.indexOf(event.target);
     const next = event.key === 'Home' ? 0 : event.key === 'End' ? tabs.length - 1 : (index + (event.key === 'ArrowRight' ? 1 : -1) + tabs.length) % tabs.length;
-    state.inspectorTab = tabs[next].dataset.tab;
-    renderInspector();
+    context.inspectorTab = tabs[next].dataset.tab;
+    renderInspector(context);
     tabs[next].focus();
   }
 });
 window.addEventListener('popstate',renderRoute);
-document.addEventListener('visibilitychange',syncFrames);
+document.addEventListener('visibilitychange',() => syncFrames({ resetPreviews: document.hidden }));
 window.addEventListener('message',event => {
   if (event.data?.type !== 'playground:ready') return;
   const frame = $$('iframe').find(candidate => candidate.contentWindow === event.source);
   if (frame) {
-    sendFrame(frame,{type:'playground:settings',settings:frameSettings(frame)});
-    sendFrame(frame,{type:'playground:theme',theme:selectedTheme()});
+    if (frame.hasAttribute('data-preview')) galleryPlayback?.ready(frame);
+    else {
+      sendFrame(frame,{type:'playground:settings',settings:frameSettings(frame)});
+      sendFrame(frame,{type:'playground:theme',theme:selectedTheme()});
+    }
   }
 });
 systemMotion.addEventListener('change',event => {
-  if (getStored('ap-reduced',null) === null) { state.reduced = event.matches; syncFrames(); updatePlaybackButtons(); }
+  if (getStored('ap-reduced',null) === null) { state.reduced = event.matches; syncFrames({ resetPreviews: true }); updatePlaybackButtons(); }
 });
 
 async function start() {

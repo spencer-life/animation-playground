@@ -23,7 +23,8 @@ roles to the preview and embeds those same roles in copied or downloaded HTML.
 | `src/demo-base.css` | Embedded typography, controls, layout helpers, motion tokens, and preference rules. |
 | `src/demo-runtime.js` | Embedded playback state, WAAPI wrapper, replay/settings callbacks, and cleanup. |
 | `src/motion-entry.js` | Explicit Motion exports bundled for the four spring studies. |
-| `src/app.js` | Collection/category browsing, search and filters, workbench, routing, palette controls, copying, saving, and iframe coordination. |
+| `src/app.js` | Collection/category browsing, search and filters, gallery quick inspector, workbench, routing, palette controls, copying, saving, and iframe coordination. |
+| `src/gallery-playback.js` | Near-viewport loading, visible-card playback, re-entry replay, and per-card Replay coordination. |
 | `src/styles.css` and `src/index.html` | Responsive site shell, theme, markup, and loading fallback. |
 | `scripts/build.mjs` | Static output, bundled Motion, executable examples, metadata, and agent references. |
 | `scripts/serve.mjs` | Local HTTP server for the built `dist/` directory. |
@@ -59,10 +60,41 @@ generated output should be rebuilt consistently.
 ## Runtime and isolation
 
 The site shell fetches same-origin catalog and example JSON. Gallery previews are
-sandboxed iframes with script permission, loaded near the viewport and paused
-when out of view. A gallery overlay opens the workbench; the workbench iframe
-provides the interactive example. Parent and child exchange only the documented
-playback and theme messages, with sender-window checks.
+sandboxed iframes with script permission. The gallery playback module preloads
+within 360px of the viewport while paused, then starts the recipe's finite replay
+once at least 25% of the stage is visible. It pauses fully offscreen studies and
+replays them from the beginning on re-entry instead of adding a periodic loop.
+Load and ready messages share startup coordination so a frame does not replay
+twice. Each card's explicit Replay action can run that study while the global
+preview preference remains paused; a hidden page or open reference/manual-copy
+dialog still blocks playback.
+
+Ordinary frame synchronization preserves an explicit card replay, including a
+delayed main-demo load and the main demo's pause, speed, or replay controls. Only
+global preview/reduction changes, opening a dialog, hiding the page, or leaving
+the viewport supersede that temporary per-card choice.
+
+Opening a preview or title leads to the workbench, whose iframe provides the
+interactive example. Parent and child exchange only the documented playback and
+theme messages, with sender-window checks. The five native-scroll studies mark
+their pane with `data-preview-scroll`; only gallery URLs with `preview=1` perform
+a bounded demonstration scroll. Reduced motion goes directly to a readable
+endpoint. Standalone examples and the workbench preserve user-controlled scroll.
+
+Card-level Copy code and Details actions do not navigate or replace the gallery.
+One native dialog provides the quick inspector and pauses the covered previews
+while it is open. Closing restores focus to its invoking control and preserves
+the gallery's scroll position, filters, and frame nodes. The workbench and quick
+inspector share reference rendering and export helpers while keeping their view
+state, tab IDs, and keyboard tab navigation separate.
+
+The catalog already carries the usage guidance, timing, dependencies, and other
+reference metadata. Details initially renders that information without fetching
+complete source; Colors and the AI brief use the same metadata. Code, full HTML
+copy, and downloads fetch example JSON on demand. Resolved source is cached by
+recipe ID, concurrent requests for the same recipe share their load, and failed
+loads can retry. A completed request must not reopen a closed inspector or replace
+a more recently selected study.
 
 Every example embeds the theme resolver and `window.Demo`. The resolver validates
 its embedded configuration and URL overrides, then installs semantic CSS custom
@@ -110,8 +142,12 @@ standalone stylesheet and its configuration; a valid URL override takes preceden
 Favorites, the shell theme, palette/appearance preference, playback preference,
 and the user's reduced-motion choice use browser storage. The site has no account
 or synchronization service. When storage is unavailable, controls continue to
-work for the visit. Clipboard operations
-have a selection-based fallback and then a native manual-copy dialog.
+work for the visit. Copy and download actions capture the selected appearance
+when invoked, including while source is still loading. Clipboard writes with
+asynchronous source initiate a promise-backed plain-text item during the user
+action where the browser supports it. Clipboard operations retain a selection
+fallback and a native manual-copy dialog. Recovery stays within the active modal
+and returns focus to the corresponding copy control.
 
 Agents can read `catalog.json` for discovery, `theme-presets.json` for palette
 options, and `llms-full.txt` for explanations and study source. The full standalone

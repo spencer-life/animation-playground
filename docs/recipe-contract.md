@@ -79,6 +79,24 @@ Use durations like `calc(200ms * var(--time-scale))`. Runtime sets document `dat
 
 Shared classes: `.stage` (full-height centered flex column with gap 20px), `.demo-button` (ink-filled, compact, accessible native button), `.demo-button.secondary` (neutral outlined button), `.demo-label` (small muted label), `.demo-row` (flex row centered, gap 12px). They follow the current palette and are embedded into each full example, not external app dependencies.
 
+### Gallery replay and scroll studies
+
+Keep the finite demonstration in `Demo.onReplay`. Gallery entry, re-entry, and
+the card's Replay action deliberately reset that sequence. Pause and resume
+preserve completed effects; they must not reset a finished study or introduce an
+automatic repeating timer.
+
+A native-scroll study can mark one pane with `data-preview-scroll` to opt into
+the gallery's bounded scroll demonstration. Only a `preview=1` URL enables it:
+at normal speed, the runtime holds the opening position for 240ms and then makes
+one 1800ms linear native-scroll pass. Real input, a new replay, and cleanup cancel
+the previous pass. Reduced motion jumps to a readable endpoint. Keep the normal
+standalone and workbench interaction reader-controlled; this attribute does not
+add a new public `Demo` API or change the recipe's own scroll response.
+Optionally mark an element inside the pane with `data-preview-scroll-target` to
+center that resting composition within the native scroll range. Without a target,
+the pass ends at the bottom of the pane.
+
 ### Control treatments
 
 Lead with **solid and outline** controls. A primary everyday action usually uses
