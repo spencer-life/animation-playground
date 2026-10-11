@@ -16,6 +16,61 @@
   let initializing = true;
   let hasPlayed = false;
   let explicitlyReduced = params.has('reduced');
+  let previewScroll = null;
+  let previewScrollFrame = 0;
+
+  function suspendPreviewScroll() {
+    cancelAnimationFrame(previewScrollFrame);
+    previewScrollFrame = 0;
+    if (previewScroll) previewScroll.lastTime = null;
+  }
+  function stopPreviewScroll() {
+    suspendPreviewScroll();
+    previewScroll = null;
+  }
+  function previewScrollEnd({ pane, target }) {
+    const range = pane.scrollHeight - pane.clientHeight;
+    if (!target) return range;
+    const frame = pane.getBoundingClientRect();
+    const content = target.getBoundingClientRect();
+    const centered = pane.scrollTop + content.top - frame.top - pane.clientTop - (pane.clientHeight - content.height) / 2;
+    return Math.max(0, Math.min(range, centered));
+  }
+  function syncPreviewScroll() {
+    if (!previewScroll) return;
+    if (settings.reduced) {
+      const pane = previewScroll.pane;
+      const end = previewScrollEnd(previewScroll);
+      stopPreviewScroll();
+      pane.scrollTop = end;
+    } else if (settings.paused || document.hidden) {
+      suspendPreviewScroll();
+    } else if (!previewScrollFrame) {
+      previewScrollFrame = requestAnimationFrame(advancePreviewScroll);
+    }
+  }
+  function advancePreviewScroll(now) {
+    previewScrollFrame = 0;
+    const sequence = previewScroll;
+    if (!sequence) return;
+    if (settings.paused || settings.reduced || document.hidden) { syncPreviewScroll(); return; }
+    if (sequence.lastTime !== null) sequence.elapsed += (now - sequence.lastTime) * settings.speed;
+    sequence.lastTime = now;
+    // A short look at the opening, followed by one linear native-scroll pass.
+    // This drives the real scroll listeners/observers and then stops completely.
+    const progress = Math.max(0, Math.min(1, (sequence.elapsed - 240) / 1800));
+    sequence.pane.scrollTop = previewScrollEnd(sequence) * progress;
+    if (progress === 1) stopPreviewScroll();
+    else syncPreviewScroll();
+  }
+  function startPreviewScroll() {
+    stopPreviewScroll();
+    if (params.get('preview') !== '1') return;
+    const pane = document.querySelector('[data-preview-scroll]');
+    if (!pane || pane.scrollHeight <= pane.clientHeight) return;
+    previewScroll = { pane, target: pane.querySelector('[data-preview-scroll-target]'), elapsed: 0, lastTime: null };
+    syncPreviewScroll();
+  }
   function cssState() {
     root.dataset.reduced = String(settings.reduced);
     root.dataset.paused = String(settings.paused);
@@ -27,7 +82,7 @@
       if (settings.reduced) {
         try { animation.finish(); } catch { animation.cancel(); }
       } else if (settings.paused) {
-        animation.pause();
+        if (animation.playState === 'running') animation.pause();
       } else if (animation.playState === 'paused') {
         animation.play();
       }
@@ -61,11 +116,13 @@
     // Replay is an explicit request to study motion, including from a keyboard.
     keyboard = false;
     hasPlayed = true;
+    stopPreviewScroll();
     for (const animation of owned) animation.cancel();
     owned.clear();
     settings.paused = false;
     cssState();
     for (const callback of replayCallbacks) callback();
+    startPreviewScroll();
     syncAnimations();
   }
   function setSettings(next, { explicit = true } = {}) {
@@ -74,7 +131,7 @@
     if (typeof next.paused === 'boolean') settings.paused = next.paused;
     if ([0.25, 0.5, 1].includes(next.speed)) settings.speed = next.speed;
     const changed = Object.keys(settings).some(key => settings[key] !== previous[key]);
-    if (!changed) { cssState(); syncAnimations(); return; }
+    if (!changed) { cssState(); syncAnimations(); syncPreviewScroll(); return; }
     // Existing WAAPI timelines retain their position when the speed changes.
     if (previous.speed !== settings.speed) {
       for (const animation of owned) animation.updatePlaybackRate(animation.playbackRate * settings.speed / previous.speed);
@@ -85,6 +142,7 @@
     // Existing scenes resume their native animations and remaining timers.
     if (previous.paused && !settings.paused && !hasPlayed) { replay(); return; }
     syncAnimations();
+    syncPreviewScroll();
   }
   window.Demo = {
     get reduced() { return settings.reduced; },
@@ -98,19 +156,19 @@
     replay, setSettings,
   };
   cssState();
-  document.addEventListener('keydown', () => { keyboard = true; cssState(); }, true);
+  document.addEventListener('keydown', () => { stopPreviewScroll(); keyboard = true; cssState(); }, true);
   function pointerInput() {
     if (!keyboard) return;
     keyboard = false;
     cssState();
   }
-  document.addEventListener('pointerdown', pointerInput, true);
+  document.addEventListener('pointerdown', () => { stopPreviewScroll(); pointerInput(); }, true);
   // A wheel or a deliberate hover movement can follow keyboard navigation
   // without a click. Recognize that input while leaving native scrolling alone.
   document.addEventListener('pointermove', event => {
     if (event.pointerType !== 'touch' && (event.movementX || event.movementY)) pointerInput();
   }, { capture: true, passive: true });
-  document.addEventListener('wheel', pointerInput, { capture: true, passive: true });
+  document.addEventListener('wheel', () => { stopPreviewScroll(); pointerInput(); }, { capture: true, passive: true });
   for (const name of ['animationstart', 'transitionrun']) document.addEventListener(name, () => {
     if (settings.paused || settings.reduced) requestAnimationFrame(syncAnimations);
   }, true);
@@ -122,11 +180,13 @@
   media.addEventListener('change', () => { if (!explicitlyReduced) setSettings({ reduced: media.matches }, { explicit: false }); });
   document.addEventListener('visibilitychange', () => {
     if (document.hidden) {
-      for (const animation of document.getAnimations()) animation.pause();
+      for (const animation of document.getAnimations()) if (animation.playState === 'running') animation.pause();
     } else syncAnimations();
+    syncPreviewScroll();
   });
   window.addEventListener('pagehide', event => {
     if (event.persisted) return; // The browser freezes back/forward-cache pages.
+    stopPreviewScroll();
     cleanups.forEach(callback => callback());
     owned.forEach(animation => animation.cancel());
   });

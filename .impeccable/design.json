@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-10T22:56:12Z",
+  "generatedAt": "2026-10-11T11:30:18Z",
   "title": "Design System: Animation Playground",
   "extensions": {
     "colorMeta": {
@@ -538,7 +538,7 @@
       },
       "demo-bg": {
         "role": "neutral",
-        "displayName": "Study Canvas — Playground Light",
+        "displayName": "Study Canvas \u2014 Playground Light",
         "tonalRamp": [
           "oklch(15.00% 0.02056 298.18)",
           "oklch(26.43% 0.02056 298.18)",
@@ -552,7 +552,7 @@
       },
       "demo-paper": {
         "role": "neutral",
-        "displayName": "Study Surface — Playground Light",
+        "displayName": "Study Surface \u2014 Playground Light",
         "tonalRamp": [
           "oklch(15.00% 0.00000 0.00)",
           "oklch(26.43% 0.00000 0.00)",
@@ -566,7 +566,7 @@
       },
       "demo-ink": {
         "role": "neutral",
-        "displayName": "Study Ink — Playground Light",
+        "displayName": "Study Ink \u2014 Playground Light",
         "tonalRamp": [
           "oklch(15.00% 0.01442 261.67)",
           "oklch(26.43% 0.01442 261.67)",
@@ -580,7 +580,7 @@
       },
       "demo-on-ink": {
         "role": "neutral",
-        "displayName": "Foreground on Study Ink — Playground Light",
+        "displayName": "Foreground on Study Ink \u2014 Playground Light",
         "tonalRamp": [
           "oklch(15.00% 0.00000 0.00)",
           "oklch(26.43% 0.00000 0.00)",
@@ -594,7 +594,7 @@
       },
       "demo-muted": {
         "role": "neutral",
-        "displayName": "Study Secondary Text — Playground Light",
+        "displayName": "Study Secondary Text \u2014 Playground Light",
         "tonalRamp": [
           "oklch(15.00% 0.01468 275.84)",
           "oklch(26.43% 0.01468 275.84)",
@@ -608,7 +608,7 @@
       },
       "demo-line": {
         "role": "neutral",
-        "displayName": "Study Boundary — Playground Light",
+        "displayName": "Study Boundary \u2014 Playground Light",
         "tonalRamp": [
           "oklch(15.00% 0.01863 293.01)",
           "oklch(26.43% 0.01863 293.01)",
@@ -622,7 +622,7 @@
       },
       "demo-accent": {
         "role": "secondary",
-        "displayName": "Study Solid Accent — Playground Light",
+        "displayName": "Study Solid Accent \u2014 Playground Light",
         "tonalRamp": [
           "oklch(15.00% 0.12758 292.91)",
           "oklch(26.43% 0.12758 292.91)",
@@ -636,7 +636,7 @@
       },
       "demo-accent-hover": {
         "role": "secondary",
-        "displayName": "Study Accent Hover — Playground Light",
+        "displayName": "Study Accent Hover \u2014 Playground Light",
         "tonalRamp": [
           "oklch(15.00% 0.11735 293.01)",
           "oklch(26.43% 0.11735 293.01)",
@@ -650,7 +650,7 @@
       },
       "demo-accent-soft": {
         "role": "secondary",
-        "displayName": "Study Accent Wash — Playground Light",
+        "displayName": "Study Accent Wash \u2014 Playground Light",
         "tonalRamp": [
           "oklch(15.00% 0.01371 299.79)",
           "oklch(26.43% 0.01371 299.79)",
@@ -664,7 +664,7 @@
       },
       "demo-accent-ink": {
         "role": "secondary",
-        "displayName": "Readable Study Accent — Playground Light",
+        "displayName": "Readable Study Accent \u2014 Playground Light",
         "tonalRamp": [
           "oklch(15.00% 0.12758 292.91)",
           "oklch(26.43% 0.12758 292.91)",
@@ -678,7 +678,7 @@
       },
       "demo-on-accent": {
         "role": "neutral",
-        "displayName": "Foreground on Study Accent — Playground Light",
+        "displayName": "Foreground on Study Accent \u2014 Playground Light",
         "tonalRamp": [
           "oklch(15.00% 0.00000 0.00)",
           "oklch(26.43% 0.00000 0.00)",
@@ -692,7 +692,7 @@
       },
       "demo-success": {
         "role": "tertiary",
-        "displayName": "Study Success — Playground Light",
+        "displayName": "Study Success \u2014 Playground Light",
         "tonalRamp": [
           "oklch(15.00% 0.08075 160.43)",
           "oklch(26.43% 0.08075 160.43)",
@@ -706,7 +706,7 @@
       },
       "demo-danger": {
         "role": "tertiary",
-        "displayName": "Study Error — Playground Light",
+        "displayName": "Study Error \u2014 Playground Light",
         "tonalRamp": [
           "oklch(15.00% 0.16782 21.31)",
           "oklch(26.43% 0.16782 21.31)",
@@ -720,7 +720,7 @@
       },
       "demo-art-1": {
         "role": "secondary",
-        "displayName": "Study Artwork One — Playground Light",
+        "displayName": "Study Artwork One \u2014 Playground Light",
         "tonalRamp": [
           "oklch(15.00% 0.09139 298.07)",
           "oklch(26.43% 0.09139 298.07)",
@@ -734,7 +734,7 @@
       },
       "demo-art-2": {
         "role": "secondary",
-        "displayName": "Study Artwork Two — Playground Light",
+        "displayName": "Study Artwork Two \u2014 Playground Light",
         "tonalRamp": [
           "oklch(15.00% 0.05726 56.09)",
           "oklch(26.43% 0.05726 56.09)",
@@ -748,7 +748,7 @@
       },
       "demo-art-3": {
         "role": "secondary",
-        "displayName": "Study Artwork Three — Playground Light",
+        "displayName": "Study Artwork Three \u2014 Playground Light",
         "tonalRamp": [
           "oklch(15.00% 0.03372 224.41)",
           "oklch(26.43% 0.03372 224.41)",
@@ -762,7 +762,7 @@
       },
       "demo-shadow": {
         "role": "neutral",
-        "displayName": "Study Shadow Color — Playground Light",
+        "displayName": "Study Shadow Color \u2014 Playground Light",
         "tonalRamp": [
           "oklch(15.00% 0.03913 262.61 / 0.14118)",
           "oklch(26.43% 0.03913 262.61 / 0.14118)",
@@ -776,7 +776,7 @@
       },
       "demo-dark-bg": {
         "role": "neutral",
-        "displayName": "Study Canvas — Playground Dark",
+        "displayName": "Study Canvas \u2014 Playground Dark",
         "tonalRamp": [
           "oklch(15.00% 0.03691 288.22)",
           "oklch(26.43% 0.03691 288.22)",
@@ -790,7 +790,7 @@
       },
       "demo-dark-paper": {
         "role": "neutral",
-        "displayName": "Study Surface — Playground Dark",
+        "displayName": "Study Surface \u2014 Playground Dark",
         "tonalRamp": [
           "oklch(15.00% 0.03351 289.20)",
           "oklch(26.43% 0.03351 289.20)",
@@ -804,7 +804,7 @@
       },
       "demo-dark-ink": {
         "role": "neutral",
-        "displayName": "Study Ink — Playground Dark",
+        "displayName": "Study Ink \u2014 Playground Dark",
         "tonalRamp": [
           "oklch(15.00% 0.00866 264.52)",
           "oklch(26.43% 0.00866 264.52)",
@@ -818,7 +818,7 @@
       },
       "demo-dark-on-ink": {
         "role": "neutral",
-        "displayName": "Foreground on Study Ink — Playground Dark",
+        "displayName": "Foreground on Study Ink \u2014 Playground Dark",
         "tonalRamp": [
           "oklch(15.00% 0.00407 285.98)",
           "oklch(26.43% 0.00407 285.98)",
@@ -832,7 +832,7 @@
       },
       "demo-dark-muted": {
         "role": "neutral",
-        "displayName": "Study Secondary Text — Playground Dark",
+        "displayName": "Study Secondary Text \u2014 Playground Dark",
         "tonalRamp": [
           "oklch(15.00% 0.01427 277.00)",
           "oklch(26.43% 0.01427 277.00)",
@@ -846,7 +846,7 @@
       },
       "demo-dark-line": {
         "role": "neutral",
-        "displayName": "Study Boundary — Playground Dark",
+        "displayName": "Study Boundary \u2014 Playground Dark",
         "tonalRamp": [
           "oklch(15.00% 0.02361 285.52)",
           "oklch(26.43% 0.02361 285.52)",
@@ -860,7 +860,7 @@
       },
       "demo-dark-accent": {
         "role": "secondary",
-        "displayName": "Study Solid Accent — Playground Dark",
+        "displayName": "Study Solid Accent \u2014 Playground Dark",
         "tonalRamp": [
           "oklch(15.00% 0.05614 296.79)",
           "oklch(26.43% 0.05614 296.79)",
@@ -874,7 +874,7 @@
       },
       "demo-dark-accent-hover": {
         "role": "secondary",
-        "displayName": "Study Accent Hover — Playground Dark",
+        "displayName": "Study Accent Hover \u2014 Playground Dark",
         "tonalRamp": [
           "oklch(15.00% 0.05140 296.65)",
           "oklch(26.43% 0.05140 296.65)",
@@ -888,7 +888,7 @@
       },
       "demo-dark-accent-soft": {
         "role": "secondary",
-        "displayName": "Study Accent Wash — Playground Dark",
+        "displayName": "Study Accent Wash \u2014 Playground Dark",
         "tonalRamp": [
           "oklch(15.00% 0.03703 292.96)",
           "oklch(26.43% 0.03703 292.96)",
@@ -902,7 +902,7 @@
       },
       "demo-dark-accent-ink": {
         "role": "secondary",
-        "displayName": "Readable Study Accent — Playground Dark",
+        "displayName": "Readable Study Accent \u2014 Playground Dark",
         "tonalRamp": [
           "oklch(15.00% 0.05614 296.79)",
           "oklch(26.43% 0.05614 296.79)",
@@ -916,7 +916,7 @@
       },
       "demo-dark-on-accent": {
         "role": "neutral",
-        "displayName": "Foreground on Study Accent — Playground Dark",
+        "displayName": "Foreground on Study Accent \u2014 Playground Dark",
         "tonalRamp": [
           "oklch(15.00% 0.00000 0.00)",
           "oklch(26.43% 0.00000 0.00)",
@@ -930,7 +930,7 @@
       },
       "demo-dark-success": {
         "role": "tertiary",
-        "displayName": "Study Success — Playground Dark",
+        "displayName": "Study Success \u2014 Playground Dark",
         "tonalRamp": [
           "oklch(15.00% 0.12288 158.32)",
           "oklch(26.43% 0.12288 158.32)",
@@ -944,7 +944,7 @@
       },
       "demo-dark-danger": {
         "role": "tertiary",
-        "displayName": "Study Error — Playground Dark",
+        "displayName": "Study Error \u2014 Playground Dark",
         "tonalRamp": [
           "oklch(15.00% 0.11870 20.05)",
           "oklch(26.43% 0.11870 20.05)",
@@ -958,7 +958,7 @@
       },
       "demo-dark-art-1": {
         "role": "secondary",
-        "displayName": "Study Artwork One — Playground Dark",
+        "displayName": "Study Artwork One \u2014 Playground Dark",
         "tonalRamp": [
           "oklch(15.00% 0.07903 298.19)",
           "oklch(26.43% 0.07903 298.19)",
@@ -972,7 +972,7 @@
       },
       "demo-dark-art-2": {
         "role": "secondary",
-        "displayName": "Study Artwork Two — Playground Dark",
+        "displayName": "Study Artwork Two \u2014 Playground Dark",
         "tonalRamp": [
           "oklch(15.00% 0.04800 55.88)",
           "oklch(26.43% 0.04800 55.88)",
@@ -986,7 +986,7 @@
       },
       "demo-dark-art-3": {
         "role": "secondary",
-        "displayName": "Study Artwork Three — Playground Dark",
+        "displayName": "Study Artwork Three \u2014 Playground Dark",
         "tonalRamp": [
           "oklch(15.00% 0.02915 227.02)",
           "oklch(26.43% 0.02915 227.02)",
@@ -1000,7 +1000,7 @@
       },
       "demo-dark-shadow": {
         "role": "neutral",
-        "displayName": "Study Shadow Color — Playground Dark",
+        "displayName": "Study Shadow Color \u2014 Playground Dark",
         "tonalRamp": [
           "oklch(15.00% 0.00000 0.00 / 0.33333)",
           "oklch(26.43% 0.00000 0.00 / 0.33333)",
@@ -1201,7 +1201,7 @@
       {
         "name": "overlay",
         "value": "0 8px 26px rgb(19 29 51 / .1)",
-        "purpose": "Shared announcement and manual-copy dialog shadow in the light shell."
+        "purpose": "Shared announcement, gallery reference dialog, and manual-copy dialog shadow in the light shell."
       },
       {
         "name": "overlay-dark",
@@ -1290,47 +1290,47 @@
       "refersTo": "button-primary",
       "description": "The principal copy action uses ink and surface colors and responds immediately.",
       "html": "<button class=\"ds-btn-primary\" type=\"button\"><svg class=\"ds-icon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><rect x=\"8\" y=\"8\" width=\"12\" height=\"13\" rx=\"2\"/><path d=\"M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h3\"/></svg>Copy full example</button>",
-      "css": ".ds-btn-primary{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:38px;padding:9px 13px;border:0;border-radius:8px;font-family:Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif;font-size:12px;line-height:1.5;font-weight:500;white-space:nowrap;cursor:pointer;touch-action:manipulation;background:var(--ink,#20242c);color:var(--surface,#fff)}.ds-icon{width:15px;height:15px;display:block;flex:none;stroke:currentColor;fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}.ds-btn-primary:focus-visible{outline:3px solid var(--accent,#3358d4);outline-offset:4px}.ds-btn-primary:disabled{cursor:not-allowed;opacity:.55}@media(hover:hover) and (pointer:fine){.ds-btn-primary:hover{filter:brightness(1.15)}}"
+      "css": ".ds-btn-primary{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:38px;padding:7.5px 11.5px;border:1.5px solid var(--ink,#20242c);border-radius:8px;font-family:Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif;font-size:12px;line-height:1.5;font-weight:500;white-space:nowrap;cursor:pointer;touch-action:manipulation;background:var(--ink,#20242c);color:var(--surface,#fff)}.ds-icon{width:15px;height:15px;display:block;flex:none;stroke:currentColor;fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}.ds-btn-primary:focus-visible{outline:3px solid var(--accent,#3358d4);outline-offset:4px}.ds-btn-primary:disabled{cursor:not-allowed;opacity:.55}@media(hover:hover) and (pointer:fine){.ds-btn-primary:not(:disabled):hover{background:color-mix(in srgb,var(--ink,#20242c) 90%,var(--surface,#fff));color:var(--surface,#fff)}}"
     },
     {
       "name": "Secondary Copy Button",
       "kind": "button",
       "refersTo": "button-secondary",
-      "description": "A surface-filled secondary action sits alongside the main copy action.",
+      "description": "A surface-colored secondary action has a clear 1.5px ink outline and sits beside the solid primary copy action.",
       "html": "<button class=\"ds-btn-secondary\" type=\"button\"><svg class=\"ds-icon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"m10 13 4-4m-5 7-1.5 1.5a3.5 3.5 0 0 1-5-5L6 9m9-1 1.5-1.5a3.5 3.5 0 0 1 5 5L18 15\"/></svg>Copy link</button>",
-      "css": ".ds-btn-secondary{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:38px;padding:9px 13px;border:0;border-radius:8px;font-family:Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif;font-size:12px;line-height:1.5;font-weight:500;white-space:nowrap;cursor:pointer;touch-action:manipulation;background:var(--surface,#fff);color:var(--ink,#20242c)}.ds-icon{width:15px;height:15px;display:block;flex:none;stroke:currentColor;fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}.ds-btn-secondary:focus-visible{outline:3px solid var(--accent,#3358d4);outline-offset:4px}.ds-btn-secondary:disabled{cursor:not-allowed;opacity:.55}@media(hover:hover) and (pointer:fine){.ds-btn-secondary:hover{filter:brightness(.97)}}"
+      "css": ".ds-btn-secondary{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:38px;padding:7.5px 11.5px;border:1.5px solid var(--ink,#20242c);border-radius:8px;font-family:Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif;font-size:12px;line-height:1.5;font-weight:500;white-space:nowrap;cursor:pointer;touch-action:manipulation;background:var(--surface,#fff);color:var(--ink,#20242c)}.ds-icon{width:15px;height:15px;display:block;flex:none;stroke:currentColor;fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}.ds-btn-secondary:focus-visible{outline:3px solid var(--accent,#3358d4);outline-offset:4px}.ds-btn-secondary:disabled{cursor:not-allowed;opacity:.55}@media(hover:hover) and (pointer:fine){.ds-btn-secondary:not(:disabled):hover{background:color-mix(in srgb,var(--ink,#20242c) 6%,var(--surface,#fff));color:var(--ink,#20242c)}}"
     },
     {
       "name": "Quiet Playback Button",
       "kind": "button",
       "refersTo": "button-quiet",
-      "description": "A pressed quiet control exposes selection through the accent pair; the attribute also styles the unpressed state.",
+      "description": "An outlined playback control uses solid ink and inverse surface-colored text while pressed; focus remains separate from selection.",
       "html": "<button class=\"ds-btn-quiet\" type=\"button\" aria-pressed=\"true\"><svg class=\"ds-icon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M8 5v14M16 5v14\"/></svg>Pause previews</button>",
-      "css": ".ds-btn-quiet{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:38px;padding:9px 13px;border:0;border-radius:8px;font-family:Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif;font-size:12px;line-height:1.5;font-weight:500;white-space:nowrap;cursor:pointer;touch-action:manipulation;background:transparent;color:var(--muted,#626b79)}.ds-btn-quiet[aria-pressed=\"true\"]{background:var(--accent-soft,#e9edfc);color:var(--accent,#3358d4)}.ds-icon{width:15px;height:15px;display:block;flex:none;stroke:currentColor;fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}.ds-btn-quiet:focus-visible{outline:3px solid var(--accent,#3358d4);outline-offset:4px}.ds-btn-quiet:disabled{cursor:wait;opacity:.65}@media(hover:hover) and (pointer:fine){.ds-btn-quiet:hover{background:var(--subtle,#eceff3);color:var(--ink,#20242c)}}"
+      "css": ".ds-btn-quiet{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:38px;padding:7.5px 11.5px;border:1.5px solid var(--ink,#20242c);border-radius:8px;font-family:Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif;font-size:12px;line-height:1.5;font-weight:500;white-space:nowrap;cursor:pointer;touch-action:manipulation;background:transparent;color:var(--ink,#20242c)}.ds-btn-quiet[aria-pressed=\"true\"]{background:var(--ink,#20242c);color:var(--surface,#fff)}.ds-icon{width:15px;height:15px;display:block;flex:none;stroke:currentColor;fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}.ds-btn-quiet:focus-visible{outline:3px solid var(--accent,#3358d4);outline-offset:4px}.ds-btn-quiet:disabled{cursor:wait;opacity:.65}@media(hover:hover) and (pointer:fine){.ds-btn-quiet:not(:disabled):hover{background:color-mix(in srgb,var(--ink,#20242c) 6%,var(--surface,#fff));color:var(--ink,#20242c)}}@media(hover:hover) and (pointer:fine){.ds-btn-quiet[aria-pressed=\"true\"]:not(:disabled):hover{background:color-mix(in srgb,var(--ink,#20242c) 90%,var(--surface,#fff));color:var(--surface,#fff)}}"
     },
     {
       "name": "Detail Save Icon Button",
       "kind": "button",
       "refersTo": "button-icon",
-      "description": "The detail save action exposes its pressed state through the accent pair and an outline bookmark.",
+      "description": "The outlined detail bookmark exposes its pressed state with solid ink and an inverse foreground, retaining its outline icon.",
       "html": "<button class=\"ds-bookmark\" type=\"button\" aria-label=\"Unsave animation\" aria-pressed=\"true\"><svg class=\"ds-icon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M6 4.5A1.5 1.5 0 0 1 7.5 3h9A1.5 1.5 0 0 1 18 4.5V21l-6-4-6 4Z\"/></svg></button>",
-      "css": ".ds-bookmark{width:38px;height:38px;display:inline-flex;align-items:center;justify-content:center;border:0;background:transparent;color:var(--ink,#20242c);border-radius:8px;cursor:pointer;touch-action:manipulation;font-family:Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif}.ds-bookmark[aria-pressed=\"true\"]{background:var(--accent-soft,#e9edfc);color:var(--accent,#3358d4)}.ds-icon{width:18px;height:18px;display:block;flex:none;stroke:currentColor;fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}.ds-bookmark:focus-visible{outline:3px solid var(--accent,#3358d4);outline-offset:4px}@media(hover:hover) and (pointer:fine){.ds-bookmark:hover{background:var(--subtle,#eceff3);color:var(--ink,#20242c)}}"
+      "css": ".ds-bookmark{width:38px;height:38px;display:inline-flex;align-items:center;justify-content:center;border:1.5px solid var(--ink,#20242c);background:transparent;color:var(--ink,#20242c);border-radius:8px;cursor:pointer;touch-action:manipulation;font-family:Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif}.ds-bookmark[aria-pressed=\"true\"]{background:var(--ink,#20242c);color:var(--surface,#fff)}.ds-icon{width:18px;height:18px;display:block;flex:none;stroke:currentColor;fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}.ds-bookmark:focus-visible{outline:3px solid var(--accent,#3358d4);outline-offset:4px}@media(hover:hover) and (pointer:fine){.ds-bookmark:not(:disabled):hover{background:color-mix(in srgb,var(--ink,#20242c) 6%,var(--surface,#fff));color:var(--ink,#20242c)}}@media(hover:hover) and (pointer:fine){.ds-bookmark[aria-pressed=\"true\"]:not(:disabled):hover{background:color-mix(in srgb,var(--ink,#20242c) 90%,var(--surface,#fff));color:var(--surface,#fff)}}"
     },
     {
       "name": "Search Field",
       "kind": "input",
       "refersTo": "search-field",
       "description": "A quiet desktop search becomes a surface-filled, 16px input at the mobile breakpoint.",
-      "html": "<div class=\"ds-search\"><svg class=\"ds-icon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><circle cx=\"10.7\" cy=\"10.7\" r=\"6.7\"/><path d=\"m16 16 4.2 4.2\"/></svg><input class=\"ds-search-input\" type=\"search\" aria-label=\"Search animations\" placeholder=\"Find an animation…\" autocomplete=\"off\" spellcheck=\"false\" maxlength=\"240\"><kbd class=\"ds-search-key\" aria-hidden=\"true\">/</kbd></div>",
+      "html": "<div class=\"ds-search\"><svg class=\"ds-icon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><circle cx=\"10.7\" cy=\"10.7\" r=\"6.7\"/><path d=\"m16 16 4.2 4.2\"/></svg><input class=\"ds-search-input\" type=\"search\" aria-label=\"Search animations\" placeholder=\"Find an animation\u2026\" autocomplete=\"off\" spellcheck=\"false\" maxlength=\"240\"><kbd class=\"ds-search-key\" aria-hidden=\"true\">/</kbd></div>",
       "css": ".ds-search{display:flex;align-items:center;gap:10px;max-width:420px;width:100%;color:var(--muted,#626b79);position:relative}.ds-search-input{box-sizing:border-box;width:100%;min-width:0;background:transparent;color:var(--ink,#20242c);padding:13px 38px 13px 0;border:0;border-radius:4px;font-family:Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif;font-size:14px;line-height:1.5;caret-color:var(--accent,#3358d4)}.ds-search-input::placeholder{color:var(--muted,#626b79);opacity:1}.ds-search-key{position:absolute;right:2px;font:11px Inter,sans-serif;background:var(--surface,#fff);color:var(--muted,#626b79);border-radius:5px;min-width:23px;text-align:center;padding:3px 7px;box-shadow:0 1px 3px rgb(18 28 44 / .09)}.ds-icon{width:18px;height:18px;display:block;flex:none;stroke:currentColor;fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}.ds-search-input:focus-visible{outline:3px solid var(--accent,#3358d4);outline-offset:6px}@media(max-width:780px){.ds-search{max-width:none;background:var(--surface,#fff);padding:0 13px;border-radius:9px;width:auto}.ds-search-input{font-size:16px;min-height:45px;padding-top:10px;padding-bottom:10px}.ds-search-key{display:none}}"
     },
     {
       "name": "Collection Navigation",
       "kind": "nav",
       "refersTo": "navigation-item",
-      "description": "Current, saved, and category links share one row grammar and collapse to a horizontal strip on mobile.",
+      "description": "Current, saved, and category links share solid neutral selection, reserved border geometry, and inverse selected focus; mobile links form a horizontal outlined strip.",
       "html": "<nav class=\"ds-collection-nav\" aria-label=\"Collection\"><a class=\"ds-nav-item\" href=\"?category=all\" aria-current=\"page\"><svg class=\"ds-icon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><rect x=\"3\" y=\"3\" width=\"7\" height=\"7\" rx=\"1.5\"/><rect x=\"14\" y=\"3\" width=\"7\" height=\"7\" rx=\"1.5\"/><rect x=\"3\" y=\"14\" width=\"7\" height=\"7\" rx=\"1.5\"/><rect x=\"14\" y=\"14\" width=\"7\" height=\"7\" rx=\"1.5\"/></svg><span class=\"ds-nav-label\">All animations</span><span class=\"ds-nav-count\">36</span></a><a class=\"ds-nav-item\" href=\"?category=saved\"><svg class=\"ds-icon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M6 4.5A1.5 1.5 0 0 1 7.5 3h9A1.5 1.5 0 0 1 18 4.5V21l-6-4-6 4Z\"/></svg><span class=\"ds-nav-label\">Saved</span><span class=\"ds-nav-count\">0</span></a><a class=\"ds-nav-item\" href=\"?category=feedback\"><span class=\"ds-category-dot\" aria-hidden=\"true\"></span><span class=\"ds-nav-label\">Feedback</span><span class=\"ds-nav-count\">6</span></a></nav>",
-      "css": ".ds-collection-nav{display:grid;gap:4px;width:172px}.ds-nav-item{box-sizing:border-box;width:100%;display:flex;align-items:center;text-align:left;gap:10px;min-height:43px;border-radius:9px;padding:10px 11px;background:transparent;color:var(--ink,#20242c);font-family:Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif;font-size:13px;line-height:1.5;font-weight:500;white-space:nowrap;text-decoration:none}.ds-nav-count{margin-left:auto;color:var(--muted,#626b79);font-size:11px;font-variant-numeric:tabular-nums}.ds-nav-item[aria-current=\"page\"]{background:var(--accent-soft,#e9edfc);color:var(--accent,#3358d4)}.ds-nav-item[aria-current=\"page\"] .ds-nav-count{color:var(--accent,#3358d4)}.ds-category-dot{width:7px;height:7px;border-radius:50%;background:#9a7758;margin:0 5px;flex:none}.ds-icon{width:18px;height:18px;display:block;flex:none;stroke:currentColor;fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}.ds-nav-item:focus-visible{outline:3px solid var(--accent,#3358d4);outline-offset:4px}@media(hover:hover) and (pointer:fine){.ds-nav-item:hover{background:var(--subtle,#eceff3)}.ds-nav-item[aria-current=\"page\"]:hover{background:var(--accent-soft,#e9edfc)}}@media(max-width:780px){.ds-collection-nav{display:flex;gap:7px;width:100%;overflow-x:auto;padding-bottom:8px;scrollbar-width:none}.ds-nav-item{width:auto;flex:none;min-height:36px;padding:8px 11px;gap:7px;font-size:12px;border-radius:7px;background:var(--surface,#fff)}.ds-nav-count{font-size:10px;margin-left:3px}.ds-category-dot{width:5px;height:5px;margin:0 2px}.ds-nav-item .ds-icon{width:14px;height:14px}}"
+      "css": ".ds-collection-nav{display:grid;gap:4px;width:172px}.ds-nav-item{box-sizing:border-box;width:100%;display:flex;align-items:center;text-align:left;gap:10px;min-height:43px;border-radius:9px;padding:8.5px 9.5px;background:transparent;color:var(--ink,#20242c);font-family:Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif;font-size:13px;line-height:1.5;font-weight:500;white-space:nowrap;text-decoration:none;border:1.5px solid transparent}.ds-nav-count{margin-left:auto;color:var(--muted,#626b79);font-size:11px;font-variant-numeric:tabular-nums}.ds-nav-item[aria-current=\"page\"]{background:var(--ink,#20242c);color:var(--surface,#fff);border-color:var(--ink,#20242c)}.ds-nav-item[aria-current=\"page\"] .ds-nav-count{color:inherit}.ds-category-dot{width:7px;height:7px;border-radius:50%;background:#9a7758;margin:0 5px;flex:none}.ds-icon{width:18px;height:18px;display:block;flex:none;stroke:currentColor;fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}.ds-nav-item:focus-visible{outline:3px solid var(--accent,#3358d4);outline-offset:-5px}@media(hover:hover) and (pointer:fine){.ds-nav-item:hover{background:color-mix(in srgb,var(--ink,#20242c) 6%,var(--bg,#f7f8fa))}.ds-nav-item[aria-current=\"page\"]:hover{background:var(--ink,#20242c);color:var(--surface,#fff)}}@media(max-width:780px){.ds-collection-nav{display:flex;gap:7px;width:100%;overflow-x:auto;padding-bottom:8px;scrollbar-width:none}.ds-nav-item{width:auto;flex:none;min-height:36px;padding:6.5px 9.5px;gap:7px;font-size:12px;border-radius:7px;background:transparent;border-color:var(--muted,#626b79)}.ds-nav-count{font-size:10px;margin-left:3px}.ds-category-dot{width:5px;height:5px;margin:0 2px}.ds-nav-item .ds-icon{width:14px;height:14px}}.ds-nav-item[aria-current=\"page\"] .ds-category-dot{background:currentColor}.ds-nav-item[aria-current=\"page\"]:focus-visible{outline-color:var(--surface,#fff)}"
     },
     {
       "name": "Technology Tag",
@@ -1344,48 +1344,56 @@
       "name": "Motion Sample Card",
       "kind": "card",
       "refersTo": "sample-stage",
-      "description": "The current open caption, stage boundary, and shell overlay surround a static Playground/lavender/light depiction. Scoped demonstration colors come from the shared resolver; the retained press-study geometry is illustrative and is not a universal shell token.",
-      "html": "<article class=\"ds-sample\"><div class=\"ds-sample-stage\"><div class=\"ds-study-depiction\" aria-hidden=\"true\"><span class=\"ds-study-label\">A little give goes a long way.</span><span class=\"ds-study-press\">Press me <svg class=\"ds-study-arrow\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M5 12h14m-5-5 5 5-5 5\"/></svg></span><span class=\"ds-study-label\">Ready when you are</span></div><button class=\"ds-sample-open\" type=\"button\" aria-label=\"Explore Press feedback\"><span class=\"ds-open-label\">Try it <svg class=\"ds-icon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M5 12h14m-5-5 5 5-5 5\"/></svg></span></button></div><div class=\"ds-sample-meta\"><div class=\"ds-sample-copy\"><button class=\"ds-sample-title\" type=\"button\">Press feedback</button><p class=\"ds-sample-description\">A three-percent compression makes a button acknowledge the moment your finger lands.</p><div class=\"ds-sample-bottom\"><span class=\"ds-sample-tech\">CSS</span><span class=\"ds-sample-duration\">160 ms</span><span class=\"ds-sample-intent\">Everyday UI</span></div></div><button class=\"ds-sample-save\" type=\"button\" aria-label=\"Save Press feedback\" aria-pressed=\"false\"><svg class=\"ds-icon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M6 4.5A1.5 1.5 0 0 1 7.5 3h9A1.5 1.5 0 0 1 18 4.5V21l-6-4-6 4Z\"/></svg></button></div></article>",
-      "css": ".ds-sample{min-width:0;width:100%;font-family:Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif;line-height:1.5;color:var(--ink,#20242c)}.ds-sample-stage{height:232px;position:relative;border-radius:var(--radius,14px);overflow:hidden;background:var(--sample-bg,#e8e4f3);isolation:isolate;outline:1px solid color-mix(in srgb,var(--ink,#20242c) 7%,transparent);outline-offset:-1px}.ds-study-depiction{--demo-bg:#e8e4f3;--paper:#ffffff;--ink:#20242b;--on-ink:#ffffff;--muted:#585a63;--line:#aaa8b5;--accent:#6550a2;--accent-hover:#5b4892;--accent-soft:#edeaf4;--accent-ink:#6550a2;--on-accent:#ffffff;--success:#246346;--danger:#b12d38;--art-1:#a592d0;--art-2:#d1ab91;--art-3:#94afba;--shadow:#17213424;height:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:20px}.ds-study-label{font-size:12px;line-height:1.5;color:var(--muted);text-align:center}.ds-study-press{display:inline-flex;align-items:center;justify-content:center;gap:22px;min-width:174px;min-height:54px;box-sizing:border-box;padding:14px 24px;border-radius:13px;background:var(--accent);color:var(--on-accent);font-size:15px;font-weight:600;box-shadow:0 3px 0 var(--shadow)}.ds-sample-open{position:absolute;inset:0;width:100%;display:flex;align-items:flex-end;justify-content:flex-end;padding:14px;background:transparent;border:0;border-radius:inherit;color:#20242c;cursor:pointer;touch-action:manipulation}.ds-open-label{display:inline-flex;align-items:center;gap:6px;font-family:Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif;font-size:11px;line-height:1.5;font-weight:600;background:var(--surface,#fff);color:var(--ink,#20242c);padding:7px 10px;border-radius:6px;box-shadow:0 2px 8px rgb(20 26 40 / .08);opacity:0}.ds-sample-meta{display:flex;align-items:flex-start;gap:10px;margin-top:13px;padding-left:1px}.ds-sample-copy{flex:1;min-width:0}.ds-sample-title{display:inline-block;font-family:Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif;font-size:14px;font-weight:600;letter-spacing:-.015em;line-height:1.5;text-align:left;color:var(--ink,#20242c);background:transparent;border:0;padding:0;cursor:pointer}.ds-sample-description{color:var(--muted,#626b79);font-size:12px;line-height:1.65;margin:5px 0 0;max-width:42ch}.ds-sample-bottom{display:flex;flex-wrap:wrap;gap:8px;row-gap:3px;margin-top:8px;font-size:11px;color:var(--muted,#626b79);align-items:center}.ds-sample-bottom span+span::before{content:\"·\";margin-right:8px}.ds-sample-save{width:38px;height:38px;margin-top:-5px;display:inline-flex;align-items:center;justify-content:center;flex:none;border:0;border-radius:8px;background:transparent;color:var(--ink,#20242c);cursor:pointer}.ds-sample-save[aria-pressed=\"true\"]{color:var(--accent,#3358d4)}.ds-sample-save[aria-pressed=\"true\"] .ds-icon{fill:currentColor}.ds-icon{width:16px;height:16px;display:block;flex:none;stroke:currentColor;fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}.ds-study-arrow{width:18px;height:18px;display:block;flex:none;stroke:currentColor;fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}.ds-sample-open:focus-visible{outline:3px solid var(--accent,#3358d4);outline-offset:-5px}.ds-sample-title:focus-visible{outline:3px solid var(--accent,#3358d4);outline-offset:4px}.ds-sample-save:focus-visible{outline:3px solid var(--accent,#3358d4);outline-offset:4px}.ds-sample-open:focus-visible .ds-open-label{opacity:1}@media(hover:hover) and (pointer:fine){.ds-sample-open:hover .ds-open-label{opacity:1}.ds-sample-title:hover{color:var(--accent,#3358d4)}.ds-sample-save:hover{background:var(--subtle,#eceff3);color:var(--ink,#20242c)}}@media(max-width:780px){.ds-sample-stage{height:226px}.ds-open-label{display:none}}@media(max-width:520px){.ds-sample-stage{height:262px}.ds-sample-title{font-size:14px}.ds-sample-description{font-size:12px;max-width:48ch}.ds-sample-save{width:38px;height:38px;margin-top:-3px}.ds-sample-bottom{font-size:10px}}"
+      "description": "An open caption and persistent 44px Copy code, Details, and Replay actions sit beneath a clipped stage. The static lavender press depiction retains its local recipe geometry; the app plays finite previews on viewport entry and opens Details in place.",
+      "html": "<article class=\"ds-sample\"><div class=\"ds-sample-stage\"><div class=\"ds-study-depiction\" aria-hidden=\"true\"><span class=\"ds-study-label\">A little give goes a long way.</span><span class=\"ds-study-press\">Press me <svg class=\"ds-study-arrow\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M5 12h14m-5-5 5 5-5 5\"/></svg></span><span class=\"ds-study-label\">Ready when you are</span></div><button class=\"ds-sample-open\" type=\"button\" aria-label=\"Explore Press feedback\"><span class=\"ds-open-label\">Try it <svg class=\"ds-icon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M5 12h14m-5-5 5 5-5 5\"/></svg></span></button></div><div class=\"ds-sample-meta\"><div class=\"ds-sample-copy\"><button class=\"ds-sample-title\" type=\"button\">Press feedback</button><p class=\"ds-sample-description\">A three-percent compression makes a button acknowledge the moment your finger lands.</p><div class=\"ds-sample-bottom\"><span class=\"ds-sample-tech\">CSS</span><span class=\"ds-sample-duration\">160 ms</span><span class=\"ds-sample-intent\">Everyday UI</span></div></div><button class=\"ds-sample-save\" type=\"button\" aria-label=\"Save Press feedback\" aria-pressed=\"false\"><svg class=\"ds-icon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M6 4.5A1.5 1.5 0 0 1 7.5 3h9A1.5 1.5 0 0 1 18 4.5V21l-6-4-6 4Z\"/></svg></button></div><div class=\"ds-sample-actions\"><button class=\"ds-sample-action ds-sample-action-primary\" type=\"button\" aria-label=\"Copy code for Press feedback\"><svg class=\"ds-icon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><rect x=\"8\" y=\"8\" width=\"12\" height=\"13\" rx=\"2\"/><path d=\"M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h3\"/></svg><span>Copy code</span></button><button class=\"ds-sample-action\" type=\"button\" aria-haspopup=\"dialog\" aria-label=\"Details for Press feedback\"><svg class=\"ds-icon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 6c-3-3-7-3-10-2v15c3-1 7-1 10 2 3-3 7-3 10-2V4c-3-1-7-1-10 2Zm0 0v15\"/></svg>Details</button><button class=\"ds-sample-replay\" type=\"button\" aria-label=\"Replay Press feedback\" title=\"Replay this preview\"><svg class=\"ds-icon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M3 10a9 9 0 1 1 2.5 8M3 4v6h6\"/></svg></button></div></article>",
+      "css": ".ds-sample{min-width:0;width:100%;font-family:Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif;line-height:1.5;color:var(--ink,#20242c)}.ds-sample-stage{height:232px;position:relative;border-radius:var(--radius,14px);overflow:hidden;background:var(--sample-bg,#e8e4f3);isolation:isolate;outline:1px solid color-mix(in srgb,var(--ink,#20242c) 7%,transparent);outline-offset:-1px}.ds-study-depiction{--demo-bg:#e8e4f3;--paper:#ffffff;--ink:#20242b;--on-ink:#ffffff;--muted:#585a63;--line:#aaa8b5;--accent:#6550a2;--accent-hover:#5b4892;--accent-soft:#edeaf4;--accent-ink:#6550a2;--on-accent:#ffffff;--success:#246346;--danger:#b12d38;--art-1:#a592d0;--art-2:#d1ab91;--art-3:#94afba;--shadow:#17213424;height:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:20px}.ds-study-label{font-size:12px;line-height:1.5;color:var(--muted);text-align:center}.ds-study-press{display:inline-flex;align-items:center;justify-content:center;gap:22px;min-width:174px;min-height:54px;box-sizing:border-box;padding:14px 24px;border-radius:13px;background:var(--accent);color:var(--on-accent);font-size:15px;font-weight:600;box-shadow:0 3px 0 var(--shadow)}.ds-sample-open{position:absolute;inset:0;width:100%;display:flex;align-items:flex-end;justify-content:flex-end;padding:14px;background:transparent;border:0;border-radius:inherit;color:#20242c;cursor:pointer;touch-action:manipulation}.ds-open-label{display:inline-flex;align-items:center;gap:6px;font-family:Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif;font-size:11px;line-height:1.5;font-weight:600;background:var(--surface,#fff);color:var(--ink,#20242c);padding:7px 10px;border-radius:6px;box-shadow:0 2px 8px rgb(20 26 40 / .08);opacity:0}.ds-sample-meta{display:flex;align-items:flex-start;gap:10px;margin-top:13px;padding-left:1px}.ds-sample-copy{flex:1;min-width:0}.ds-sample-title{display:inline-block;font-family:Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif;font-size:14px;font-weight:600;letter-spacing:-.015em;line-height:1.5;text-align:left;color:var(--ink,#20242c);background:transparent;border:0;padding:0;cursor:pointer}.ds-sample-description{color:var(--muted,#626b79);font-size:12px;line-height:1.65;margin:5px 0 0;max-width:42ch}.ds-sample-bottom{display:flex;flex-wrap:wrap;gap:8px;row-gap:3px;margin-top:8px;font-size:11px;color:var(--muted,#626b79);align-items:center}.ds-sample-bottom span+span::before{content:\"\u00b7\";margin-right:8px}.ds-sample-save{width:38px;height:38px;margin-top:-5px;display:inline-flex;align-items:center;justify-content:center;flex:none;border:1.5px solid var(--ink,#20242c);border-radius:8px;background:transparent;color:var(--ink,#20242c);cursor:pointer}.ds-sample-save[aria-pressed=\"true\"]{color:var(--surface,#fff);background:var(--ink,#20242c)}.ds-sample-save[aria-pressed=\"true\"] .ds-icon{fill:currentColor}.ds-icon{width:16px;height:16px;display:block;flex:none;stroke:currentColor;fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}.ds-study-arrow{width:18px;height:18px;display:block;flex:none;stroke:currentColor;fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}.ds-sample-open:focus-visible{outline:3px solid var(--accent,#3358d4);outline-offset:-5px}.ds-sample-title:focus-visible{outline:3px solid var(--accent,#3358d4);outline-offset:4px}.ds-sample-save:focus-visible{outline:3px solid var(--accent,#3358d4);outline-offset:4px}.ds-sample-open:focus-visible .ds-open-label{opacity:1}@media(hover:hover) and (pointer:fine){.ds-sample-open:hover .ds-open-label{opacity:1}.ds-sample-title:hover{color:var(--accent,#3358d4)}.ds-sample-save:not(:disabled):hover{background:color-mix(in srgb,var(--ink,#20242c) 6%,var(--surface,#fff));color:var(--ink,#20242c)}}@media(max-width:780px){.ds-sample-stage{height:226px}.ds-open-label{display:none}}@media(max-width:520px){.ds-sample-stage{height:262px}.ds-sample-title{font-size:14px}.ds-sample-description{font-size:12px;max-width:48ch}.ds-sample-save{width:38px;height:38px;margin-top:-3px}.ds-sample-bottom{font-size:10px}}@media(hover:hover) and (pointer:fine){.ds-sample-save[aria-pressed=\"true\"]:not(:disabled):hover{background:color-mix(in srgb,var(--ink,#20242c) 90%,var(--surface,#fff));color:var(--surface,#fff)}}.ds-sample-actions{display:flex;align-items:center;gap:8px;margin-top:13px}.ds-sample-action{display:inline-flex;align-items:center;justify-content:center;gap:8px;flex:1;min-width:0;min-height:44px;padding:9px 10px;border:1.5px solid var(--ink,#20242c);border-radius:8px;background:var(--surface,#fff);color:var(--ink,#20242c);font-family:Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif;font-size:12px;line-height:1.5;font-weight:500;white-space:nowrap;cursor:pointer}.ds-sample-action-primary{background:var(--ink,#20242c);color:var(--surface,#fff)}.ds-sample-action .ds-icon{width:15px;height:15px}.ds-sample-replay{display:inline-flex;align-items:center;justify-content:center;flex:none;width:44px;height:44px;border:1.5px solid var(--ink,#20242c);border-radius:8px;background:transparent;color:var(--ink,#20242c);cursor:pointer}.ds-sample-replay .ds-icon{width:15px;height:15px}.ds-sample-action:focus-visible,.ds-sample-replay:focus-visible{outline:3px solid var(--accent,#3358d4);outline-offset:4px}.ds-sample-action:disabled{cursor:not-allowed;opacity:.55}.ds-sample-action[aria-busy=\"true\"]{cursor:progress}@media(hover:hover) and (pointer:fine){.ds-sample-action:not(:disabled):hover,.ds-sample-replay:not(:disabled):hover{background:color-mix(in srgb,var(--ink,#20242c) 6%,var(--surface,#fff));color:var(--ink,#20242c)}.ds-sample-action-primary:not(:disabled):hover{background:color-mix(in srgb,var(--ink,#20242c) 90%,var(--surface,#fff));color:var(--surface,#fff)}}@media(max-width:520px){.ds-sample-action{font-size:11px;gap:6px}}"
     },
     {
       "name": "Source Inspector",
       "kind": "custom",
       "refersTo": "source-inspector",
-      "description": "Code, How it works, Colors, and Copy for AI share the same source surface. This preview shows source states; the app supplies tab behavior, scoped token export, and copying.",
+      "description": "The shared reference uses text tabs with an ink underline, an outlined source-language group with solid neutral selection, and an outlined Copy action. The app supplies tabs, on-demand source loading, scoped exports, and copying in both the workbench and gallery dialog.",
       "html": "<section class=\"ds-inspector\" aria-label=\"Animation reference\"><div class=\"ds-inspector-tabs\" role=\"tablist\" aria-label=\"Reference section\"><button class=\"ds-tab\" type=\"button\" role=\"tab\" aria-selected=\"true\">Code</button><button class=\"ds-tab\" type=\"button\" role=\"tab\" aria-selected=\"false\" tabindex=\"-1\">How it works</button><button class=\"ds-tab\" type=\"button\" role=\"tab\" aria-selected=\"false\" tabindex=\"-1\">Colors</button><button class=\"ds-tab\" type=\"button\" role=\"tab\" aria-selected=\"false\" tabindex=\"-1\">Copy for AI</button></div><div class=\"ds-inspector-content\"><div class=\"ds-code-toolbar\"><div class=\"ds-code-languages\" role=\"group\" aria-label=\"Source language\"><button class=\"ds-code-language\" type=\"button\" aria-pressed=\"true\">CSS</button><button class=\"ds-code-language\" type=\"button\" aria-pressed=\"false\">JavaScript</button><button class=\"ds-code-language\" type=\"button\" aria-pressed=\"false\">HTML</button><button class=\"ds-code-language\" type=\"button\" aria-pressed=\"false\">Full file</button></div><button class=\"ds-code-copy\" type=\"button\" aria-label=\"Copy CSS\"><svg class=\"ds-icon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><rect x=\"8\" y=\"8\" width=\"12\" height=\"13\" rx=\"2\"/><path d=\"M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h3\"/></svg>Copy</button></div><div class=\"ds-code-container\"><pre class=\"ds-code-pre\"><code class=\"ds-code-text\"><span class=\"ds-code-comment\">/* The selection moves; content stays immediate. */</span>\n.tab-indicator {\n  height: <span class=\"ds-code-number\">3</span>px;\n  transform-origin: left center;\n  transition: transform\n    calc(<span class=\"ds-code-number\">220</span>ms * var(--time-scale))\n    var(--ease-in-out);\n}</code></pre></div><p class=\"ds-code-caption\">Showing the motion-specific source. Use <strong class=\"ds-code-strong\">Copy full example</strong> for a complete, portable HTML file.</p></div></section>",
-      "css": ".ds-inspector{background:var(--surface,#fff);border-radius:14px;min-width:0;overflow:hidden;color:var(--ink,#20242c);font-family:Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif;line-height:1.5;width:100%}.ds-inspector-tabs{display:flex;gap:18px;padding:0 19px;border-bottom:1px solid var(--faint,#dce1e8)}.ds-tab{background:transparent;border:0;font-family:Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif;font-size:12px;line-height:1.5;font-weight:500;min-height:50px;color:var(--muted,#626b79);padding:0 1px;border-radius:0;position:relative;white-space:nowrap;cursor:pointer}.ds-tab[aria-selected=\"true\"]{color:var(--ink,#20242c)}.ds-tab[aria-selected=\"true\"]::after{content:\"\";position:absolute;bottom:-1px;height:2px;background:var(--ink,#20242c);left:0;right:0;border-radius:2px}.ds-inspector-content{padding:18px}.ds-code-toolbar{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px}.ds-code-languages{display:flex;align-items:center;gap:3px;background:var(--subtle,#eceff3);padding:3px;border-radius:6px}.ds-code-language{background:transparent;color:var(--muted,#626b79);font-family:Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif;font-size:10px;line-height:1.5;border:0;padding:5px 8px;border-radius:4px;min-height:27px;cursor:pointer}.ds-code-language[aria-pressed=\"true\"]{color:var(--ink,#20242c);background:var(--surface,#fff)}.ds-code-copy{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif;font-size:10px;line-height:1.5;font-weight:500;padding:6px 7px;min-height:30px;border:0;border-radius:8px;background:transparent;color:var(--muted,#626b79);cursor:pointer}.ds-code-container{background:var(--code,#f0f2f6);border-radius:9px;overflow:auto;max-height:430px;min-height:338px;overscroll-behavior:contain}.ds-code-pre{margin:0;padding:17px 17px 24px;font-family:\"SFMono-Regular\", Consolas, \"Liberation Mono\", monospace;font-size:12px;line-height:1.85;tab-size:2;white-space:pre;width:max-content;min-width:100%;color:var(--ink,#20242c)}.ds-code-text{font:inherit}.ds-code-comment{color:var(--code-comment,#5b677b)}.ds-code-number{color:var(--code-number,#954e2d)}.ds-code-caption{font-size:10px;line-height:1.6;color:var(--muted,#626b79);margin:11px 0 0}.ds-icon{width:13px;height:13px;display:block;flex:none;stroke:currentColor;fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}.ds-tab:focus-visible{outline:3px solid var(--accent,#3358d4);outline-offset:4px}.ds-code-language:focus-visible{outline:3px solid var(--accent,#3358d4);outline-offset:4px}.ds-code-copy:focus-visible{outline:3px solid var(--accent,#3358d4);outline-offset:4px}@media(hover:hover) and (pointer:fine){.ds-code-copy:hover{background:var(--subtle,#eceff3);color:var(--ink,#20242c)}}@media(max-width:780px){.ds-inspector-content{padding:16px}.ds-inspector-tabs{gap:18px;padding:0 17px}.ds-code-pre{font-size:11px}.ds-tab{min-height:48px}}@media(max-width:520px){.ds-inspector-tabs{gap:0;justify-content:space-between;padding:0 13px}.ds-tab{font-size:11px}.ds-code-language{padding:5px 7px}.ds-code-copy{font-size:0;gap:0;padding:8px}.ds-code-copy .ds-icon{width:16px;height:16px}.ds-code-container{min-height:300px;max-height:400px}}"
+      "css": ".ds-inspector{background:var(--surface,#fff);border-radius:14px;min-width:0;overflow:hidden;color:var(--ink,#20242c);font-family:Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif;line-height:1.5;width:100%}.ds-inspector-tabs{display:flex;gap:18px;padding:0 19px;border-bottom:1px solid var(--faint,#dce1e8)}.ds-tab{background:transparent;border:0;font-family:Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif;font-size:12px;line-height:1.5;font-weight:500;min-height:50px;color:var(--muted,#626b79);padding:0 1px;border-radius:0;position:relative;white-space:nowrap;cursor:pointer}.ds-tab[aria-selected=\"true\"]{color:var(--ink,#20242c)}.ds-tab[aria-selected=\"true\"]::after{content:\"\";position:absolute;bottom:-1px;height:2px;background:var(--ink,#20242c);left:0;right:0;border-radius:2px}.ds-inspector-content{padding:18px}.ds-code-toolbar{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px}.ds-code-languages{display:flex;align-items:center;gap:3px;background:transparent;padding:1.5px;border-radius:6px;border:1.5px solid var(--muted,#626b79)}.ds-code-language{background:transparent;color:var(--ink,#20242c);font-family:Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif;font-size:10px;line-height:1.5;border:0;padding:5px 8px;border-radius:4px;min-height:27px;cursor:pointer}.ds-code-language[aria-pressed=\"true\"]{color:var(--surface,#fff);background:var(--ink,#20242c)}.ds-code-copy{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif;font-size:10px;line-height:1.5;font-weight:500;padding:4.5px 5.5px;min-height:30px;border:1.5px solid var(--ink,#20242c);border-radius:8px;background:transparent;color:var(--ink,#20242c);cursor:pointer}.ds-code-container{background:var(--code,#f0f2f6);border-radius:9px;overflow:auto;max-height:430px;min-height:338px;overscroll-behavior:contain}.ds-code-pre{margin:0;padding:17px 17px 24px;font-family:\"SFMono-Regular\", Consolas, \"Liberation Mono\", monospace;font-size:12px;line-height:1.85;tab-size:2;white-space:pre;width:max-content;min-width:100%;color:var(--ink,#20242c)}.ds-code-text{font:inherit}.ds-code-comment{color:var(--code-comment,#5b677b)}.ds-code-number{color:var(--code-number,#954e2d)}.ds-code-caption{font-size:10px;line-height:1.6;color:var(--muted,#626b79);margin:11px 0 0}.ds-icon{width:13px;height:13px;display:block;flex:none;stroke:currentColor;fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}.ds-tab:focus-visible{outline:3px solid var(--accent,#3358d4);outline-offset:4px}.ds-code-language:focus-visible{outline:3px solid var(--accent,#3358d4);outline-offset:-3px}.ds-code-copy:focus-visible{outline:3px solid var(--accent,#3358d4);outline-offset:4px}@media(hover:hover) and (pointer:fine){.ds-code-copy:not(:disabled):hover{background:color-mix(in srgb,var(--ink,#20242c) 6%,var(--surface,#fff));color:var(--ink,#20242c)}}@media(max-width:780px){.ds-inspector-content{padding:16px}.ds-inspector-tabs{gap:18px;padding:0 17px}.ds-code-pre{font-size:11px}.ds-tab{min-height:48px}}@media(max-width:520px){.ds-inspector-tabs{gap:0;justify-content:space-between;padding:0 13px}.ds-tab{font-size:11px}.ds-code-language{padding:5px 7px}.ds-code-copy{font-size:0;gap:0;padding:6.5px}.ds-code-copy .ds-icon{width:16px;height:16px}.ds-code-container{min-height:300px;max-height:400px}}.ds-code-language[aria-pressed=\"true\"]:focus-visible{outline-color:var(--surface,#fff)}.ds-code-copy:disabled{cursor:not-allowed;opacity:.55}@media(hover:hover) and (pointer:fine){.ds-code-language:not(:disabled):hover{background:color-mix(in srgb,var(--ink,#20242c) 6%,var(--surface,#fff));color:var(--ink,#20242c)}.ds-code-language[aria-pressed=\"true\"]:not(:disabled):hover{background:var(--ink,#20242c);color:var(--surface,#fff)}}"
     },
     {
       "name": "Motion Specifications",
       "kind": "custom",
       "refersTo": "motion-specifications",
       "description": "A noninteractive definition list pairs practical motion facts with an exact, wrapping curve value.",
-      "html": "<dl class=\"ds-motion-specs\"><div class=\"ds-spec\"><dt class=\"ds-spec-label\">Duration</dt><dd class=\"ds-spec-value\">220 ms</dd></div><div class=\"ds-spec\"><dt class=\"ds-spec-label\">Purpose</dt><dd class=\"ds-spec-value\">Spatial consistency</dd></div><div class=\"ds-spec ds-spec-wide\"><dt class=\"ds-spec-label\">Easing / spring</dt><dd class=\"ds-spec-value ds-spec-code\">cubic-bezier(0.77, 0, 0.175, 1)</dd></div><div class=\"ds-spec ds-spec-wide\"><dt class=\"ds-spec-label\">Dependencies</dt><dd class=\"ds-spec-value\">None · just the browser</dd></div></dl>",
+      "html": "<dl class=\"ds-motion-specs\"><div class=\"ds-spec\"><dt class=\"ds-spec-label\">Duration</dt><dd class=\"ds-spec-value\">220 ms</dd></div><div class=\"ds-spec\"><dt class=\"ds-spec-label\">Purpose</dt><dd class=\"ds-spec-value\">Spatial consistency</dd></div><div class=\"ds-spec ds-spec-wide\"><dt class=\"ds-spec-label\">Easing / spring</dt><dd class=\"ds-spec-value ds-spec-code\">cubic-bezier(0.77, 0, 0.175, 1)</dd></div><div class=\"ds-spec ds-spec-wide\"><dt class=\"ds-spec-label\">Dependencies</dt><dd class=\"ds-spec-value\">None \u00b7 just the browser</dd></div></dl>",
       "css": ".ds-motion-specs{display:grid;grid-template-columns:1fr 1fr;gap:16px 20px;padding:20px;margin:0;background:var(--surface,#fff);color:var(--ink,#20242c);border-radius:12px;font-family:Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif;line-height:1.5}.ds-spec{min-width:0}.ds-spec-label{font-size:10px;color:var(--muted,#626b79);margin-bottom:6px}.ds-spec-value{margin:0;font-size:12px;overflow-wrap:anywhere}.ds-spec-wide{grid-column:1/-1}.ds-spec-code{font-family:\"SFMono-Regular\", Consolas, \"Liberation Mono\", monospace;font-size:11px;letter-spacing:-.02em}@media(max-width:520px){.ds-motion-specs{padding:18px}}"
     },
     {
       "name": "Color Disclosure",
       "kind": "custom",
       "refersTo": "theme-studio",
-      "description": "Native details/summary in its expanded default Playground state. The app sets the initial desktop/mobile disclosure, remembers the visitor’s choice, and resolves palette changes; this snippet preserves the native disclosure and shared control styling.",
-      "html": "<details class=\"ds-theme-studio\" open><summary class=\"ds-theme-heading\"><div><h2 class=\"ds-theme-title\">Preview in your colors</h2><p class=\"ds-theme-summary\"><span class=\"ds-theme-value\">Playground colors · Match site</span><span class=\"ds-theme-explanation\">One palette, from the live demo to the code you take.</span></p></div><span class=\"ds-theme-end\"><span class=\"ds-theme-swatches\" aria-hidden=\"true\"><i class=\"ds-theme-swatch\" style=\"--ds-swatch:#e8e4f3\"></i><i class=\"ds-theme-swatch\" style=\"--ds-swatch:#ffffff\"></i><i class=\"ds-theme-swatch\" style=\"--ds-swatch:#6550a2\"></i><i class=\"ds-theme-swatch\" style=\"--ds-swatch:#d1ab91\"></i><i class=\"ds-theme-swatch\" style=\"--ds-swatch:#94afba\"></i></span><svg class=\"ds-theme-chevron\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M5 12h14m-5-5 5 5-5 5\"/></svg></span></summary><div class=\"ds-theme-fields\"><label class=\"ds-theme-field\">Palette<select class=\"ds-theme-select\"><option selected>Playground colors</option><option>Radix</option><option>Geist-inspired</option><option>Custom accent</option></select></label><label class=\"ds-theme-field\">Appearance<select class=\"ds-theme-select\"><option selected>Match site</option><option>Light</option><option>Dark</option></select></label><label class=\"ds-theme-field\">Accent<select class=\"ds-theme-select\" disabled><option selected>Indigo</option><option>Blue</option><option>Violet</option><option>Jade</option><option>Amber</option><option>Crimson</option></select></label><button class=\"ds-theme-copy\" type=\"button\" disabled title=\"Open a study to copy its individual color family, or choose a project palette.\"><svg class=\"ds-theme-icon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><rect x=\"8\" y=\"8\" width=\"12\" height=\"13\" rx=\"2\"/><path d=\"M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h3\"/></svg>Copy tokens</button></div><p class=\"ds-theme-help\">Each study keeps its own color family. Choose a project palette to compare the whole collection.</p></details>",
-      "css": ".ds-theme-studio{padding:18px 20px;background:var(--surface,#fff);color:var(--ink,#20242c);border-radius:14px;min-width:0;width:100%;font-family:Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif;line-height:1.5}.ds-theme-heading{display:flex;justify-content:space-between;align-items:center;gap:18px;list-style:none;cursor:pointer;min-height:44px}.ds-theme-heading::-webkit-details-marker{display:none}.ds-theme-studio[open] .ds-theme-heading{margin-bottom:14px}.ds-theme-title{margin:0;font-size:14px;font-weight:600;letter-spacing:-.01em;line-height:1.3}.ds-theme-summary{font-size:12px;color:var(--muted,#626b79);margin:4px 0 0;line-height:1.5}.ds-theme-end{display:flex;align-items:center;gap:14px;flex:none}.ds-theme-swatches{display:flex;gap:5px;align-items:center;flex:none}.ds-theme-swatch{display:block;width:22px;height:22px;border-radius:6px;background:var(--ds-swatch);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--ink,#20242c) 12%,transparent)}.ds-theme-chevron{width:16px;height:16px;transform:rotate(90deg);color:var(--muted,#626b79);stroke:currentColor;fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round;flex:none}.ds-theme-studio[open] .ds-theme-chevron{transform:rotate(-90deg)}.ds-theme-explanation,.ds-theme-studio[open] .ds-theme-value{display:none}.ds-theme-studio[open] .ds-theme-explanation{display:inline}.ds-theme-fields{display:grid;grid-template-columns:minmax(135px,1.25fr) minmax(120px,1fr) minmax(130px,1fr) auto;gap:14px;align-items:end}.ds-theme-field{display:flex;flex-direction:column;gap:6px;font-size:11px;color:var(--muted,#626b79);min-width:0}.ds-theme-select{min-height:42px;background:var(--subtle,#eceff3);color:var(--ink,#20242c);border:0;border-radius:7px;padding:8px 11px;font-family:Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif;font-size:13px;line-height:1.4;width:100%;max-width:100%}.ds-theme-select:disabled{opacity:.65;cursor:not-allowed}.ds-theme-copy{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:42px;padding:9px 13px;background:var(--subtle,#eceff3);color:var(--ink,#20242c);border:0;border-radius:8px;font-family:Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif;font-size:12px;font-weight:500;line-height:1.5;white-space:nowrap;cursor:pointer;align-self:end}.ds-theme-copy:disabled{opacity:.55;cursor:not-allowed}.ds-theme-icon{width:15px;height:15px;display:block;flex:none;stroke:currentColor;fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}.ds-theme-help{margin:11px 0 0;font-size:11px;line-height:1.6;color:var(--muted,#626b79)}.ds-theme-heading:focus-visible,.ds-theme-select:focus-visible,.ds-theme-copy:focus-visible{outline:3px solid var(--accent,#3358d4);outline-offset:4px}@media(hover:hover) and (pointer:fine){.ds-theme-copy:hover{filter:brightness(.97)}}@media(max-width:1190px){.ds-theme-fields{grid-template-columns:1.25fr 1fr 1fr auto;gap:10px}.ds-theme-copy{font-size:11px;padding:9px}}@media(max-width:780px){.ds-theme-studio{padding:17px}.ds-theme-fields{grid-template-columns:1fr 1fr;gap:13px}.ds-theme-select{font-size:16px;min-height:44px}.ds-theme-copy{min-height:44px;font-size:12px}.ds-theme-swatch{width:17px;height:22px;border-radius:5px}.ds-theme-heading{gap:12px}.ds-theme-end{gap:10px}.ds-theme-summary{max-width:34ch;font-size:11px}}@media(max-width:520px){.ds-theme-studio{padding:15px}.ds-theme-swatches{gap:3px}.ds-theme-swatch{width:12px;height:22px;border-radius:4px}.ds-theme-title{font-size:13px}.ds-theme-summary{max-width:27ch}}"
+      "description": "Native details/summary in its expanded default Playground state. The app sets the initial desktop/mobile disclosure, remembers the visitor\u2019s choice, and resolves palette changes; this snippet preserves the native disclosure and shared control styling.",
+      "html": "<details class=\"ds-theme-studio\" open><summary class=\"ds-theme-heading\"><div><h2 class=\"ds-theme-title\">Preview in your colors</h2><p class=\"ds-theme-summary\"><span class=\"ds-theme-value\">Playground colors \u00b7 Match site</span><span class=\"ds-theme-explanation\">One palette, from the live demo to the code you take.</span></p></div><span class=\"ds-theme-end\"><span class=\"ds-theme-swatches\" aria-hidden=\"true\"><i class=\"ds-theme-swatch\" style=\"--ds-swatch:#e8e4f3\"></i><i class=\"ds-theme-swatch\" style=\"--ds-swatch:#ffffff\"></i><i class=\"ds-theme-swatch\" style=\"--ds-swatch:#6550a2\"></i><i class=\"ds-theme-swatch\" style=\"--ds-swatch:#d1ab91\"></i><i class=\"ds-theme-swatch\" style=\"--ds-swatch:#94afba\"></i></span><svg class=\"ds-theme-chevron\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M5 12h14m-5-5 5 5-5 5\"/></svg></span></summary><div class=\"ds-theme-fields\"><label class=\"ds-theme-field\">Palette<select class=\"ds-theme-select\"><option selected>Playground colors</option><option>Radix</option><option>Geist-inspired</option><option>Custom accent</option></select></label><label class=\"ds-theme-field\">Appearance<select class=\"ds-theme-select\"><option selected>Match site</option><option>Light</option><option>Dark</option></select></label><label class=\"ds-theme-field\">Accent<select class=\"ds-theme-select\" disabled><option selected>Indigo</option><option>Blue</option><option>Violet</option><option>Jade</option><option>Amber</option><option>Crimson</option></select></label><button class=\"ds-theme-copy\" type=\"button\" disabled title=\"Open a study to copy its individual color family, or choose a project palette.\"><svg class=\"ds-theme-icon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><rect x=\"8\" y=\"8\" width=\"12\" height=\"13\" rx=\"2\"/><path d=\"M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h3\"/></svg>Copy tokens</button></div><p class=\"ds-theme-help\">Each study keeps its own color family. Choose a project palette to compare the whole collection.</p></details>",
+      "css": ".ds-theme-studio{padding:18px 20px;background:var(--surface,#fff);color:var(--ink,#20242c);border-radius:14px;min-width:0;width:100%;font-family:Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif;line-height:1.5}.ds-theme-heading{display:flex;justify-content:space-between;align-items:center;gap:18px;list-style:none;cursor:pointer;min-height:44px}.ds-theme-heading::-webkit-details-marker{display:none}.ds-theme-studio[open] .ds-theme-heading{margin-bottom:14px}.ds-theme-title{margin:0;font-size:14px;font-weight:600;letter-spacing:-.01em;line-height:1.3}.ds-theme-summary{font-size:12px;color:var(--muted,#626b79);margin:4px 0 0;line-height:1.5}.ds-theme-end{display:flex;align-items:center;gap:14px;flex:none}.ds-theme-swatches{display:flex;gap:5px;align-items:center;flex:none}.ds-theme-swatch{display:block;width:22px;height:22px;border-radius:6px;background:var(--ds-swatch);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--ink,#20242c) 12%,transparent)}.ds-theme-chevron{width:16px;height:16px;transform:rotate(90deg);color:var(--muted,#626b79);stroke:currentColor;fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round;flex:none}.ds-theme-studio[open] .ds-theme-chevron{transform:rotate(-90deg)}.ds-theme-explanation,.ds-theme-studio[open] .ds-theme-value{display:none}.ds-theme-studio[open] .ds-theme-explanation{display:inline}.ds-theme-fields{display:grid;grid-template-columns:minmax(135px,1.25fr) minmax(120px,1fr) minmax(130px,1fr) auto;gap:14px;align-items:end}.ds-theme-field{display:flex;flex-direction:column;gap:6px;font-size:11px;color:var(--muted,#626b79);min-width:0}.ds-theme-select{min-height:42px;background:var(--surface,#fff);color:var(--ink,#20242c);border:1.5px solid var(--muted,#626b79);border-radius:7px;padding:6.5px 9.5px;font-family:Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif;font-size:13px;line-height:1.4;width:100%;max-width:100%}.ds-theme-select:disabled{opacity:.65;cursor:not-allowed}.ds-theme-copy{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:42px;padding:7.5px 11.5px;background:var(--surface,#fff);color:var(--ink,#20242c);border:1.5px solid var(--ink,#20242c);border-radius:8px;font-family:Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif;font-size:12px;font-weight:500;line-height:1.5;white-space:nowrap;cursor:pointer;align-self:end}.ds-theme-copy:disabled{opacity:.55;cursor:not-allowed}.ds-theme-icon{width:15px;height:15px;display:block;flex:none;stroke:currentColor;fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}.ds-theme-help{margin:11px 0 0;font-size:11px;line-height:1.6;color:var(--muted,#626b79)}.ds-theme-heading:focus-visible,.ds-theme-select:focus-visible,.ds-theme-copy:focus-visible{outline:3px solid var(--accent,#3358d4);outline-offset:4px}@media(hover:hover) and (pointer:fine){.ds-theme-copy:not(:disabled):hover{background:color-mix(in srgb,var(--ink,#20242c) 6%,var(--surface,#fff));color:var(--ink,#20242c)}}@media(max-width:1190px){.ds-theme-fields{grid-template-columns:1.25fr 1fr 1fr auto;gap:10px}.ds-theme-copy{font-size:11px;padding:7.5px}}@media(max-width:780px){.ds-theme-studio{padding:17px}.ds-theme-fields{grid-template-columns:1fr 1fr;gap:13px}.ds-theme-select{font-size:16px;min-height:44px}.ds-theme-copy{min-height:44px;font-size:12px}.ds-theme-swatch{width:17px;height:22px;border-radius:5px}.ds-theme-heading{gap:12px}.ds-theme-end{gap:10px}.ds-theme-summary{max-width:34ch;font-size:11px}}@media(max-width:520px){.ds-theme-studio{padding:15px}.ds-theme-swatches{gap:3px}.ds-theme-swatch{width:12px;height:22px;border-radius:4px}.ds-theme-title{font-size:13px}.ds-theme-summary{max-width:27ch}}@media(hover:hover) and (pointer:fine){.ds-theme-select:not(:disabled):hover{border-color:var(--ink,#20242c)}}"
     },
     {
       "name": "Discovery Filters",
       "kind": "custom",
       "refersTo": "intent-group",
-      "description": "Pressed intent controls and native technology, complexity, and ordering selects share the quiet shell vocabulary. The application supplies result filtering; the snippet shows the observed default and selected styles.",
-      "html": "<div class=\"ds-discovery\"><div class=\"ds-intents\" role=\"group\" aria-label=\"Animation purpose\"><button class=\"ds-intent\" type=\"button\" aria-pressed=\"true\">All motion</button><button class=\"ds-intent\" type=\"button\" aria-pressed=\"false\">Everyday UI</button><button class=\"ds-intent\" type=\"button\" aria-pressed=\"false\">Expressive</button></div><div class=\"ds-filter-selects\"><select class=\"ds-filter-select\" aria-label=\"Filter by technology\"><option selected>Any technology</option><option>CSS only</option><option>Web Animations API</option><option>Motion springs</option></select><select class=\"ds-filter-select\" aria-label=\"Filter by complexity\"><option selected>Any complexity</option><option>Starter friendly</option><option>Intermediate</option></select><select class=\"ds-filter-select\" aria-label=\"Sort animations\"><option selected>Curated order</option><option>Name A–Z</option></select></div></div>",
-      "css": ".ds-discovery{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;width:100%;font-family:Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif;line-height:1.5}.ds-intents{display:flex;align-items:center;gap:3px;padding:3px;border-radius:8px;background:var(--subtle,#eceff3)}.ds-intent{min-height:36px;padding:8px 12px;border:0;border-radius:6px;font-family:Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif;font-size:12px;line-height:1.5;font-weight:500;background:transparent;color:var(--muted,#626b79);white-space:nowrap;cursor:pointer}.ds-intent[aria-pressed=\"true\"]{color:var(--ink,#20242c);background:var(--surface,#fff)}.ds-filter-selects{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.ds-filter-select{background:transparent;color:var(--muted,#626b79);font-family:Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif;font-size:12px;line-height:1.5;padding:8px 16px 8px 0;border:0;max-width:175px;min-height:38px;cursor:pointer}.ds-filter-select option{background:var(--surface,#fff);color:var(--ink,#20242c)}.ds-intent:focus-visible,.ds-filter-select:focus-visible{outline:3px solid var(--accent,#3358d4);outline-offset:4px}@media(hover:hover) and (pointer:fine){.ds-filter-select:hover{color:var(--ink,#20242c)}}@media(max-width:1190px){.ds-filter-selects{gap:16px}}@media(max-width:780px){.ds-discovery{gap:10px}.ds-filter-selects{gap:10px;row-gap:0}.ds-filter-select{min-height:40px;max-width:160px}.ds-intent{min-height:39px}}@media(max-width:520px){.ds-filter-selects{width:100%;justify-content:flex-start;gap:6px 10px}.ds-filter-select{font-size:11px;max-width:155px}.ds-intents{width:100%}.ds-intent{flex:1;padding:8px 10px}}"
+      "description": "A neutral outlined intent group uses solid ink for its selected segment; technology, complexity, and ordering remain clear native outlined selects. The application supplies filtering; the snippet shows default and selected styles.",
+      "html": "<div class=\"ds-discovery\"><div class=\"ds-intents\" role=\"group\" aria-label=\"Animation purpose\"><button class=\"ds-intent\" type=\"button\" aria-pressed=\"true\">All motion</button><button class=\"ds-intent\" type=\"button\" aria-pressed=\"false\">Everyday UI</button><button class=\"ds-intent\" type=\"button\" aria-pressed=\"false\">Expressive</button></div><div class=\"ds-filter-selects\"><select class=\"ds-filter-select\" aria-label=\"Filter by technology\"><option selected>Any technology</option><option>CSS only</option><option>Web Animations API</option><option>Motion springs</option></select><select class=\"ds-filter-select\" aria-label=\"Filter by complexity\"><option selected>Any complexity</option><option>Starter friendly</option><option>Intermediate</option></select><select class=\"ds-filter-select\" aria-label=\"Sort animations\"><option selected>Curated order</option><option>Name A\u2013Z</option></select></div></div>",
+      "css": ".ds-discovery{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;width:100%;font-family:Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif;line-height:1.5}.ds-intents{display:flex;align-items:center;gap:3px;padding:1.5px;border-radius:8px;background:transparent;border:1.5px solid var(--muted,#626b79)}.ds-intent{min-height:36px;padding:8px 12px;border:0;border-radius:6px;font-family:Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif;font-size:12px;line-height:1.5;font-weight:500;background:transparent;color:var(--ink,#20242c);white-space:nowrap;cursor:pointer}.ds-intent[aria-pressed=\"true\"]{color:var(--surface,#fff);background:var(--ink,#20242c)}.ds-filter-selects{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.ds-filter-select{background:transparent;color:var(--ink,#20242c);font-family:Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif;font-size:12px;line-height:1.5;padding:6.5px 8.5px;border:1.5px solid var(--muted,#626b79);max-width:175px;min-height:38px;cursor:pointer;border-radius:6px}.ds-filter-select option{background:var(--surface,#fff);color:var(--ink,#20242c)}.ds-intent:focus-visible,.ds-filter-select:focus-visible{outline:3px solid var(--accent,#3358d4);outline-offset:4px}@media(hover:hover) and (pointer:fine){.ds-filter-select:not(:disabled):hover{border-color:var(--ink,#20242c)}}@media(max-width:1190px){.ds-filter-selects{gap:16px}}@media(max-width:780px){.ds-discovery{gap:10px}.ds-filter-selects{gap:10px;row-gap:8px}.ds-filter-select{min-height:40px;max-width:160px}.ds-intent{min-height:39px}}@media(max-width:520px){.ds-filter-selects{width:100%;justify-content:flex-start;gap:6px 10px}.ds-filter-select{font-size:11px;max-width:155px}.ds-intents{width:100%}.ds-intent{flex:1;padding:8px 10px}}.ds-intent:focus-visible{outline-offset:-3px}.ds-intent[aria-pressed=\"true\"]:focus-visible{outline-color:var(--surface,#fff)}@media(hover:hover) and (pointer:fine){.ds-intent:not(:disabled):hover{background:color-mix(in srgb,var(--ink,#20242c) 6%,var(--surface,#fff));color:var(--ink,#20242c)}.ds-intent[aria-pressed=\"true\"]:not(:disabled):hover{background:var(--ink,#20242c);color:var(--surface,#fff)}}"
+    },
+    {
+      "name": "Gallery Quick Inspector",
+      "kind": "custom",
+      "refersTo": "quick-inspector",
+      "description": "Static open-state rendering of the shared native Details dialog, initially on How it works. The live app uses showModal for focus containment and backdrop, pauses covered previews, loads source on demand, keeps export actions available around the scrolling body, and restores the gallery opener on close. This snippet supplies appearance only.",
+      "html": "<dialog class=\"ds-qi-dialog\" open aria-labelledby=\"ds-qi-title\"><header class=\"ds-qi-heading\"><div><h2 id=\"ds-qi-title\" class=\"ds-qi-title\">Press feedback</h2><p>A three-percent compression makes a button acknowledge the moment your finger lands.</p><div class=\"ds-qi-detail-tags\"><span class=\"ds-qi-tech\">CSS</span><span>Press or replay</span></div></div><button class=\"ds-qi-icon-button ds-qi-close\" type=\"button\" aria-label=\"Close animation details\"><svg class=\"ds-qi-icon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"m6 6 12 12M6 18 18 6\"/></svg></button></header><div class=\"ds-qi-body\"><dl class=\"ds-qi-specs\"><div><dt>Duration</dt><dd>160 ms</dd></div><div><dt>Purpose</dt><dd>Feedback</dd></div><div><dt>Easing / spring</dt><dd class=\"ds-qi-code-value\">cubic-bezier(0.23, 1, 0.32, 1)</dd></div><div><dt>Dependencies</dt><dd>None \u00b7 just the browser</dd></div></dl><section class=\"ds-qi-inspector\" aria-label=\"Animation reference\"><div class=\"ds-qi-inspector-tabs\" role=\"tablist\" aria-label=\"Reference section\"><button class=\"ds-qi-tab\" type=\"button\" role=\"tab\" aria-selected=\"false\" tabindex=\"-1\">Code</button><button class=\"ds-qi-tab\" type=\"button\" role=\"tab\" aria-selected=\"true\" aria-controls=\"ds-qi-guide\" id=\"ds-qi-guide-tab\">How it works</button><button class=\"ds-qi-tab\" type=\"button\" role=\"tab\" aria-selected=\"false\" tabindex=\"-1\">Colors</button><button class=\"ds-qi-tab\" type=\"button\" role=\"tab\" aria-selected=\"false\" tabindex=\"-1\">Copy for AI</button></div><div class=\"ds-qi-inspector-content\" id=\"ds-qi-guide\" role=\"tabpanel\" aria-labelledby=\"ds-qi-guide-tab\"><section class=\"ds-qi-guide-section\"><h3>The idea</h3><p>Respond on pointer-down. Keep frequently repeated feedback small and fast.</p></section><section class=\"ds-qi-guide-section\"><h3>Where it works</h3><p>Buttons, icon controls and other deliberate presses that need immediate acknowledgement.</p></section><section class=\"ds-qi-guide-section\"><h3>When to leave it out</h3><p>The target is already tiny, or scaling could make closely packed controls feel unstable.</p></section><section class=\"ds-qi-guide-section\"><h3>Reduced motion</h3><p>The button changes color immediately; compression is removed.</p></section></div></section></div><footer class=\"ds-qi-footer\"><div class=\"ds-qi-actions\"><button class=\"ds-qi-button ds-qi-primary\" type=\"button\"><svg class=\"ds-qi-icon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><rect x=\"8\" y=\"8\" width=\"12\" height=\"13\" rx=\"2\"/><path d=\"M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h3\"/></svg>Copy full example</button><button class=\"ds-qi-button\" type=\"button\"><svg class=\"ds-qi-icon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 3v12m-5-5 5 5 5-5M4 16v4a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4\"/></svg>Download HTML</button><button class=\"ds-qi-button\" type=\"button\"><svg class=\"ds-qi-icon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"m10 13 4-4m-5 7-1.5 1.5a3.5 3.5 0 0 1-5-5L6 9m9-1 1.5-1.5a3.5 3.5 0 0 1 5 5L18 15\"/></svg>Copy link</button></div><div class=\"ds-qi-footer-end\"><p role=\"status\">Code uses your selected preview colors.</p><a class=\"ds-qi-text-link\" href=\"?animation=press-feedback\">Open workbench <svg class=\"ds-qi-icon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M5 12h14m-5-5 5 5-5 5\"/></svg></a></div></footer></dialog>",
+      "css": ".ds-qi-dialog{position:relative;margin:0;font-family:Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif;line-height:1.5}.ds-qi-dialog h2,.ds-qi-dialog h3,.ds-qi-dialog p{margin:0}.ds-qi-dialog button{font-family:inherit;line-height:inherit;border:0;cursor:pointer;touch-action:manipulation}.ds-qi-dialog a{color:inherit;text-decoration:none}.ds-qi-dialog :focus-visible{outline:3px solid var(--accent,#3358d4);outline-offset:4px}.ds-qi-dialog h2,.ds-qi-dialog h3,.ds-qi-dialog p{margin:0}.ds-qi-dialog h2,.ds-qi-dialog h3{line-height:1.15}.ds-qi-dialog h2{font-size:21px;font-weight:600;letter-spacing:-.025em}.ds-qi-dialog h3{font-size:16px;font-weight:600;letter-spacing:-.018em}.ds-qi-dialog .ds-qi-icon{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}.ds-qi-dialog .ds-qi-icon.ds-qi-sm{width:16px;height:16px}.ds-qi-dialog .ds-qi-text-link{display:inline-flex;align-items:center;gap:7px;color:var(--muted,#626b79);font-size:12px;white-space:nowrap}.ds-qi-dialog .ds-qi-text-link:hover{color:var(--ink,#20242c)}.ds-qi-dialog .ds-qi-icon-button{width:38px;height:38px;display:inline-flex;align-items:center;justify-content:center;background:transparent;border:1.5px solid var(--ink,#20242c);border-radius:8px;flex:none}.ds-qi-dialog .ds-qi-icon-button[aria-pressed=\"true\"]{color:var(--surface,#fff);background:var(--ink,#20242c)}.ds-qi-dialog .ds-qi-button{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:38px;padding:7.5px 11.5px;border:1.5px solid var(--ink,#20242c);border-radius:8px;font-size:12px;font-weight:500;background:var(--surface,#fff);color:var(--ink,#20242c);white-space:nowrap}.ds-qi-dialog .ds-qi-button.ds-qi-primary{color:var(--surface,#fff);background:var(--ink,#20242c)}.ds-qi-dialog .ds-qi-button .ds-qi-icon{width:15px;height:15px}.ds-qi-dialog .ds-qi-detail-tags{display:flex;align-items:center;gap:12px;margin-top:15px;color:var(--muted,#626b79);font-size:11px}.ds-qi-dialog .ds-qi-detail-tags .ds-qi-tech{padding:3px 7px;border-radius:5px;background:var(--subtle,#eceff3);color:var(--ink,#20242c);font-weight:500}.ds-qi-dialog .ds-qi-inspector{background:var(--surface,#fff);border-radius:14px;min-width:0;overflow:hidden}.ds-qi-dialog .ds-qi-inspector-tabs{display:flex;gap:20px;padding:0 19px;border-bottom:1px solid var(--faint,#dce1e8)}.ds-qi-dialog .ds-qi-tab{background:transparent;font-size:12px;font-weight:500;min-height:50px;color:var(--muted,#626b79);padding:0 1px;border-radius:0;position:relative;white-space:nowrap}.ds-qi-dialog .ds-qi-tab[aria-selected=\"true\"]{color:var(--ink,#20242c)}.ds-qi-dialog .ds-qi-tab[aria-selected=\"true\"]:after{content:\"\";position:absolute;bottom:-1px;height:2px;background:var(--ink,#20242c);left:0;right:0;border-radius:2px}.ds-qi-dialog .ds-qi-inspector-content{padding:18px;min-height:464px}.ds-qi-dialog .ds-qi-guide-section+.ds-qi-guide-section{margin-top:23px}.ds-qi-dialog .ds-qi-guide-section h3{font-size:13px;margin-bottom:8px}.ds-qi-dialog .ds-qi-guide-section p{font-size:12px;line-height:1.75;color:var(--muted,#626b79)}.ds-qi-dialog .ds-qi-guide-section a{color:var(--accent,#3358d4);text-decoration:underline;text-underline-offset:3px}.ds-qi-dialog .ds-qi-source-link{display:inline-flex;align-items:center;gap:6px;font-size:11px;margin-top:20px;color:var(--accent,#3358d4)}@media (hover:hover) and (pointer:fine){.ds-qi-dialog .ds-qi-icon-button:not(:disabled):hover,.ds-qi-dialog .ds-qi-button:not(:disabled):hover{background:color-mix(in srgb,var(--ink,#20242c) 6%,var(--surface,#fff));color:var(--ink,#20242c)}.ds-qi-dialog .ds-qi-icon-button[aria-pressed=\"true\"]:not(:disabled):hover,.ds-qi-dialog .ds-qi-button.ds-qi-primary:not(:disabled):hover{background:color-mix(in srgb,var(--ink,#20242c) 90%,var(--surface,#fff));color:var(--surface,#fff)}}@media (max-width:1190px){.ds-qi-dialog .ds-qi-inspector-content{min-height:0}}@media (max-width:780px){.ds-qi-dialog .ds-qi-inspector-content{padding:16px}.ds-qi-dialog .ds-qi-inspector-tabs{gap:23px;padding:0 17px}.ds-qi-dialog .ds-qi-tab{font-size:12px;min-height:48px}}@media (max-width:520px){.ds-qi-dialog .ds-qi-inspector-tabs{gap:21px}}@media (max-width:360px){.ds-qi-dialog .ds-qi-inspector-tabs{gap:17px}.ds-qi-dialog .ds-qi-tab{font-size:11px}}.ds-qi-dialog .ds-qi-button:disabled{cursor:not-allowed;opacity:.55}.ds-qi-dialog .ds-qi-inspector-tabs{gap:18px}@media (max-width:780px){.ds-qi-dialog .ds-qi-inspector-tabs{gap:18px}}@media (max-width:520px){.ds-qi-dialog .ds-qi-inspector-tabs{gap:0;justify-content:space-between;padding:0 13px}.ds-qi-dialog .ds-qi-tab{font-size:11px}}.ds-qi-dialog .ds-qi-button[aria-busy=\"true\"]{cursor:progress}.ds-qi-dialog{width:min(860px,calc(100% - 40px));max-width:none;max-height:calc(100dvh - 48px);padding:0;border:0;border-radius:14px;background:var(--surface,#fff);color:var(--ink,#20242c);box-shadow:var(--shadow,0 8px 26px rgb(19 29 51 / .1));overflow:hidden}.ds-qi-dialog[open]{display:flex;flex-direction:column}.ds-qi-dialog::backdrop{background:rgb(12 20 34 / .56)}.ds-qi-dialog .ds-qi-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;padding:24px 24px 20px;flex:none}.ds-qi-dialog .ds-qi-heading>div{min-width:0}.ds-qi-dialog .ds-qi-heading h2{font-size:26px;line-height:1.2;letter-spacing:-.025em;overflow-wrap:anywhere}.ds-qi-dialog .ds-qi-heading p{font-size:13px;line-height:1.6;color:var(--muted,#626b79);margin-top:8px;max-width:65ch}.ds-qi-dialog .ds-qi-heading .ds-qi-detail-tags{margin-top:10px;flex-wrap:wrap;gap:7px 12px}.ds-qi-dialog .ds-qi-close{width:44px;height:44px}.ds-qi-dialog .ds-qi-title:focus{outline:none}.ds-qi-dialog .ds-qi-body{min-height:0;overflow:auto;overscroll-behavior:contain}.ds-qi-dialog .ds-qi-specs{margin:0;padding:0 24px 20px;display:grid;grid-template-columns:1fr 1fr;gap:14px 24px}.ds-qi-dialog .ds-qi-specs div{min-width:0}.ds-qi-dialog .ds-qi-specs dt{font-size:11px;color:var(--muted,#626b79);margin-bottom:4px}.ds-qi-dialog .ds-qi-specs dd{margin:0;font-size:12px;line-height:1.5;overflow-wrap:anywhere}.ds-qi-dialog .ds-qi-specs .ds-qi-code-value{font-family:\"SFMono-Regular\",Consolas,\"Liberation Mono\",monospace;font-size:11px}.ds-qi-dialog .ds-qi-inspector{border-radius:0;overflow:visible}.ds-qi-dialog .ds-qi-inspector-tabs{position:sticky;top:0;z-index:1;padding:0 24px;background:var(--surface,#fff)}.ds-qi-dialog .ds-qi-inspector-content{padding:20px 24px;min-height:260px}.ds-qi-dialog .ds-qi-inspector .ds-qi-button,.ds-qi-dialog [data-token-system]{min-height:44px}.ds-qi-dialog .ds-qi-footer{flex:none;border-top:1px solid var(--faint,#dce1e8);padding:16px 24px 20px;background:var(--surface,#fff)}.ds-qi-dialog .ds-qi-actions{display:flex;flex-wrap:wrap;align-items:center;gap:8px}.ds-qi-dialog .ds-qi-actions .ds-qi-button{min-height:44px}.ds-qi-dialog .ds-qi-footer-end{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:12px}.ds-qi-dialog .ds-qi-footer-end p{flex:1;min-width:0;color:var(--muted,#626b79);font-size:11px;line-height:1.5}.ds-qi-dialog .ds-qi-footer-end .ds-qi-text-link{flex:none;min-height:32px}@media(max-width:780px){.ds-qi-dialog{width:calc(100% - 24px);max-height:calc(100dvh - 24px)}.ds-qi-dialog .ds-qi-heading{padding:20px 20px 16px;gap:12px}.ds-qi-dialog .ds-qi-heading h2{font-size:24px}.ds-qi-dialog .ds-qi-specs{padding:0 20px 18px;gap:12px 18px}.ds-qi-dialog .ds-qi-inspector-tabs{padding:0 20px}.ds-qi-dialog .ds-qi-inspector-content{padding:18px 20px}.ds-qi-dialog .ds-qi-footer{padding:14px 20px max(16px,env(safe-area-inset-bottom))}}@media(max-width:520px){.ds-qi-dialog{width:calc(100% - 16px);max-height:calc(100dvh - 16px)}.ds-qi-dialog .ds-qi-heading{padding:16px;gap:10px}.ds-qi-dialog .ds-qi-heading h2{font-size:21px}.ds-qi-dialog .ds-qi-heading p{font-size:12px}.ds-qi-dialog .ds-qi-heading .ds-qi-detail-tags{font-size:10px}.ds-qi-dialog .ds-qi-specs{padding:0 16px 16px;gap:12px}.ds-qi-dialog .ds-qi-inspector-tabs{padding:0 16px;gap:12px}.ds-qi-dialog .ds-qi-tab{font-size:11px;min-height:46px}.ds-qi-dialog .ds-qi-inspector-content{padding:16px;min-height:230px}.ds-qi-dialog .ds-qi-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px}.ds-qi-dialog .ds-qi-actions>.ds-qi-primary{grid-column:1/-1}.ds-qi-dialog .ds-qi-actions .ds-qi-button{font-size:11px;padding:9px}.ds-qi-dialog .ds-qi-footer{padding:12px 16px max(12px,env(safe-area-inset-bottom))}.ds-qi-dialog .ds-qi-footer-end{gap:10px;margin-top:8px}.ds-qi-dialog .ds-qi-footer-end .ds-qi-text-link{font-size:11px}}.ds-qi-dialog .ds-qi-icon{display:block;flex:none;stroke:currentColor;fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}"
     }
   ],
   "narrative": {
     "northStar": "The Material Sample Rack",
-    "overview": "The Material Sample Rack gives small motion studies the clarity of objects laid out for close inspection. The surrounding workspace is cool, quiet, and matter-of-fact: graphite type on paper surfaces, compact cobalt selection cues, and generous sample fields. Precision belongs to the tools; warmth and individual character belong to the examples.\n\nInter supplies a consistent working voice, with system monospace reserved for code and motion values. Rounded rectangles feel handled and practical. Tonal separation carries most of the hierarchy. Playground colors preserve each study's lavender, apricot, blue, green, sand, or graphite family in light and dark compositions. Radix, Geist-inspired, and custom-accent palettes let the demonstrations take on a project's colors. Their appearance can follow the site or use an explicit light or dark mode.\n\nKeep the shared tools still and responsive. Motion belongs inside studies that people choose to inspect, replay, or slow down. Expressive type and playful shapes can be part of a study; the shell remains readable and consistent. Reduced-motion states preserve visible content and understandable state.",
+    "overview": "The Material Sample Rack gives small motion studies the clarity of objects laid out for close inspection. The surrounding workspace is cool, quiet, and matter-of-fact: graphite type on paper surfaces, solid neutral selections, clear control outlines, and generous sample fields. Precision belongs to the tools; warmth and individual character belong to the examples.\n\nInter supplies a consistent working voice, with system monospace reserved for code and motion values. Rounded rectangles feel handled and practical. Tonal separation carries most of the hierarchy. Playground colors preserve each study's lavender, apricot, blue, green, sand, or graphite family in light and dark compositions. Radix, Geist-inspired, and custom-accent palettes let the demonstrations take on a project's colors. Their appearance can follow the site or use an explicit light or dark mode.\n\nKeep the shared tools still and responsive. Motion belongs inside studies that people choose to inspect, replay, or slow down. Expressive type and playful shapes can be part of a study; the shell remains readable and consistent. Reduced-motion states preserve visible content and understandable state.",
     "keyCharacteristics": [
-      "Cool paper surfaces, graphite text, and cobalt control cues.",
+      "Cool paper surfaces, graphite text, neutral solid selections, and outlined controls.",
       "Compact, legible tools around generous sample stages.",
       "A shared semantic palette colors the live demonstration and the implementation taken from it.",
       "Inter for the interface; system monospace for source and precise values.",
@@ -1394,8 +1402,8 @@
     ],
     "rules": [
       {
-        "name": "The Control Accent Rule",
-        "body": "Use the shell accent pair for current navigation, selected utility controls, links, the brand mark, and visible keyboard focus. The principal copy action uses the shell ink and surface pair.",
+        "name": "The Shell Control Rule",
+        "body": "Use solid neutral selection and clear neutral outlines for the shared workspace. Do not reintroduce tinted selected buttons, navigation washes, or soft-filled utility controls. Keep the accent for focus and useful small cues, and keep focus distinct from selection.",
         "section": "colors"
       },
       {
@@ -1420,7 +1428,7 @@
       }
     ],
     "dos": [
-      "Do keep the shell’s background, surfaces, text, selection colors, and source colors bound to the current theme.",
+      "Do keep the shell\u2019s background, surfaces, text, selection colors, and source colors bound to the current theme.",
       "Do preserve each study's original color family in Playground colors and resolve its light or dark composition through the shared theme system.",
       "Do carry the same selected demonstration colors into live previews, copied code, standalone downloads, and AI handoffs.",
       "Do use readable accent and solid-foreground roles for demonstration text and focus, with scoped token exports when adapting a study to a host theme.",
@@ -1433,13 +1441,14 @@
     ],
     "donts": [
       "Don't add ornamental gradients, glow, or unnecessary marketing decoration to the shared workspace.",
+      "Don't use soft accent fills for shell controls or replace a selected solid treatment with a pale hover wash.",
       "Don't add animation to the navigation or make repeated utility actions wait for a transition.",
       "Don't confuse shell selection colors with the selected demonstration palette, or force studies to stay light when a dark appearance is chosen.",
       "Don't hard-code recipe colors or let exported color values diverge from the live demonstration.",
       "Don't assume host token aliases preserve foreground contrast after the receiving theme changes its scale or appearance.",
       "Don't surround every sample with an extra border, shadow, or enclosing card surface.",
       "Don't hide essential meaning behind hover, playback, or spatial movement.",
-      "Don't treat an individual recipe’s expressive colors, type, shadows, or timings as universal shell tokens."
+      "Don't treat an individual recipe\u2019s expressive colors, type, shadows, or timings as universal shell tokens."
     ]
   }
 }

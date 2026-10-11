@@ -41,8 +41,21 @@ The six motion categories remain available as another way to browse:
 | Entrances | Reveals and coordinated group arrivals |
 | Expressive | Springs, gestures, and occasional decorative motion |
 
-The workbench provides replay, pause, 1×/0.5×/0.25× speed, reduced motion, source
-code, usage guidance, color tokens, and a ready-to-copy brief for an AI assistant.
+Previews start when their cards come into view and replay when you return to
+them. Offscreen studies pause. Scroll-driven examples demonstrate a short pass
+inside the card; the workbench keeps the actual scroll interaction. The gallery's
+**Pause previews** and **Reduced motion** controls remain available.
+
+Each gallery card has **Replay**, **Copy code**, and **Details** actions. Copy code
+takes the complete HTML with your selected colors. Details opens the source,
+usage guidance, color tokens, and AI brief over the collection; closing it keeps
+your place, filters, and previews. You can copy a link or download the HTML there
+too. Guidance and colors are available immediately; complete source loads when
+you request it.
+
+Open the workbench when you want to try the actual controls or gestures at a
+larger size. It provides replay, pause, 1×/0.5×/0.25× speed, and the same reference
+and export tools as the gallery inspector.
 The catalog covers everyday form feedback, upload queues, reversible actions,
 navigation, tables, charts, and workspace layouts. Its expressive studies include
 typographic sequences, dimensional galleries, native-scroll storytelling, image
@@ -87,16 +100,20 @@ contrast considerations.
 
 ## Take an animation into a project
 
-1. Open an animation and try its actual control or gesture.
-2. Read **How it works**, including where the effect is useful and where to leave
-   it out.
-3. Choose a project palette and appearance, then use **Copy full example** or
-   download the standalone HTML. It contains the same source and selected color
-   values as the live preview, with its styles and behavior included.
+1. Browse the gallery and use a card's **Replay** button to study its sequence.
+2. Choose a project palette and appearance. Use **Copy code** on the card for
+   complete, portable HTML with those colors and all required behavior included.
+3. Use **Details** to read **How it works**, inspect CSS/JavaScript/HTML, copy an
+   AI brief or link, or download the full file without leaving the collection.
+   Read the guidance on where the effect fits and where to leave it out.
 4. For an existing design system, copy the **Colors** tab's tokens onto a dedicated
    `.animation-theme` wrapper. Adapt typography and map semantic roles to the
    receiving project while preserving timing, interruption behavior, native
    semantics, and the reduced-motion state.
+
+Choose **Open workbench** from Details, or open the preview itself, to test the
+actual interaction and compare playback speeds. Its **Copy full example** action
+produces the same complete export as the card's Copy code button.
 
 The CSS and JavaScript copy buttons include their shared prerequisites. CSS copy
 also includes the current palette. The on-screen short snippets emphasize the

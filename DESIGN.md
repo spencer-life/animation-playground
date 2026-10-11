@@ -231,22 +231,22 @@ components:
     textColor: '{colors.surface}'
     typography: '{typography.label}'
     rounded: '{rounded.control}'
-    padding: 9px 13px
+    padding: 7.5px 11.5px
   button-secondary:
     backgroundColor: '{colors.surface}'
     textColor: '{colors.ink}'
     typography: '{typography.label}'
     rounded: '{rounded.control}'
-    padding: 9px 13px
+    padding: 7.5px 11.5px
   button-quiet:
     backgroundColor: transparent
-    textColor: '{colors.muted}'
+    textColor: '{colors.ink}'
     typography: '{typography.label}'
     rounded: '{rounded.control}'
-    padding: 9px 13px
+    padding: 7.5px 11.5px
   button-quiet-selected:
-    backgroundColor: '{colors.accent-soft}'
-    textColor: '{colors.accent}'
+    backgroundColor: '{colors.ink}'
+    textColor: '{colors.surface}'
   button-icon:
     backgroundColor: transparent
     textColor: '{colors.ink}'
@@ -254,8 +254,8 @@ components:
     width: 38px
     height: 38px
   button-icon-selected:
-    backgroundColor: '{colors.accent-soft}'
-    textColor: '{colors.accent}'
+    backgroundColor: '{colors.ink}'
+    textColor: '{colors.surface}'
   search-field:
     backgroundColor: transparent
     textColor: '{colors.ink}'
@@ -268,11 +268,11 @@ components:
     textColor: '{colors.ink}'
     typography: '{typography.navigation}'
     rounded: '{rounded.navigation}'
-    padding: 10px 11px
+    padding: 8.5px 9.5px
     width: 100%
   navigation-item-current:
-    backgroundColor: '{colors.accent-soft}'
-    textColor: '{colors.accent}'
+    backgroundColor: '{colors.ink}'
+    textColor: '{colors.surface}'
   technology-tag:
     backgroundColor: '{colors.subtle}'
     textColor: '{colors.ink}'
@@ -289,6 +289,22 @@ components:
     textColor: '{colors.ink}'
     typography: '{typography.sample-title}'
     padding: '0'
+  sample-action:
+    backgroundColor: '{colors.surface}'
+    textColor: '{colors.ink}'
+    typography: '{typography.label}'
+    rounded: '{rounded.control}'
+    padding: 9px 10px
+    height: 44px
+  sample-action-primary:
+    backgroundColor: '{colors.ink}'
+    textColor: '{colors.surface}'
+  sample-replay:
+    backgroundColor: transparent
+    textColor: '{colors.ink}'
+    rounded: '{rounded.control}'
+    width: 44px
+    height: 44px
   source-inspector:
     backgroundColor: '{colors.surface}'
     textColor: '{colors.ink}'
@@ -300,6 +316,19 @@ components:
     padding: 0 1px
   inspector-tab-current:
     textColor: '{colors.ink}'
+  source-language-group:
+    backgroundColor: transparent
+    rounded: '{rounded.compact}'
+    padding: 1.5px
+  source-language-option:
+    backgroundColor: transparent
+    textColor: '{colors.ink}'
+    rounded: '{rounded.field}'
+    padding: 5px 8px
+    height: 27px
+  source-language-option-current:
+    backgroundColor: '{colors.ink}'
+    textColor: '{colors.surface}'
   code-pane:
     backgroundColor: '{colors.code}'
     textColor: '{colors.ink}'
@@ -310,35 +339,41 @@ components:
     textColor: '{colors.ink}'
     rounded: '{rounded.specs}'
     padding: 20px
+  quick-inspector:
+    backgroundColor: '{colors.surface}'
+    textColor: '{colors.ink}'
+    rounded: '{rounded.radius}'
+    padding: '0'
+    width: min(860px,calc(100% - 40px))
   collection-link:
     backgroundColor: transparent
-    textColor: '{colors.muted}'
+    textColor: '{colors.ink}'
     typography: '{typography.label}'
     rounded: '{rounded.control}'
-    padding: 8px 12px
+    padding: 6.5px 10.5px
     height: 42px
   collection-link-current:
-    backgroundColor: '{colors.accent-soft}'
-    textColor: '{colors.accent}'
+    backgroundColor: '{colors.ink}'
+    textColor: '{colors.surface}'
   intent-group:
-    backgroundColor: '{colors.subtle}'
+    backgroundColor: transparent
     rounded: '{rounded.control}'
-    padding: 3px
+    padding: 1.5px
   intent-option:
     backgroundColor: transparent
-    textColor: '{colors.muted}'
+    textColor: '{colors.ink}'
     typography: '{typography.label}'
     rounded: '{rounded.compact}'
     padding: 8px 12px
     height: 36px
   intent-option-current:
-    backgroundColor: '{colors.surface}'
-    textColor: '{colors.ink}'
+    backgroundColor: '{colors.ink}'
+    textColor: '{colors.surface}'
   discovery-select:
     backgroundColor: transparent
-    textColor: '{colors.muted}'
+    textColor: '{colors.ink}'
     typography: '{typography.discovery-input}'
-    padding: 8px 16px 8px 0
+    padding: 6.5px 8.5px
     height: 38px
   theme-studio:
     backgroundColor: '{colors.surface}'
@@ -346,19 +381,19 @@ components:
     rounded: '{rounded.radius}'
     padding: 18px 20px
   theme-field:
-    backgroundColor: '{colors.subtle}'
+    backgroundColor: '{colors.surface}'
     textColor: '{colors.ink}'
     typography: '{typography.theme-input}'
     rounded: '{rounded.theme-field}'
-    padding: 8px 11px
+    padding: 6.5px 9.5px
     height: 42px
     width: 100%
   theme-copy:
-    backgroundColor: '{colors.subtle}'
+    backgroundColor: '{colors.surface}'
     textColor: '{colors.ink}'
     typography: '{typography.label}'
     rounded: '{rounded.control}'
-    padding: 9px 13px
+    padding: 7.5px 11.5px
     height: 42px
 ---
 
@@ -368,7 +403,7 @@ components:
 
 **Creative North Star: "The Material Sample Rack"**
 
-The Material Sample Rack gives small motion studies the clarity of objects laid out for close inspection. The surrounding workspace is cool, quiet, and matter-of-fact: graphite type on paper surfaces, compact cobalt selection cues, and generous sample fields. Precision belongs to the tools; warmth and individual character belong to the examples.
+The Material Sample Rack gives small motion studies the clarity of objects laid out for close inspection. The surrounding workspace is cool, quiet, and matter-of-fact: graphite type on paper surfaces, solid neutral selections, clear control outlines, and generous sample fields. Precision belongs to the tools; warmth and individual character belong to the examples.
 
 Inter supplies a consistent working voice, with system monospace reserved for code and motion values. Rounded rectangles feel handled and practical. Tonal separation carries most of the hierarchy. Playground colors preserve each study's lavender, apricot, blue, green, sand, or graphite family in light and dark compositions. Radix, Geist-inspired, and custom-accent palettes let the demonstrations take on a project's colors. Their appearance can follow the site or use an explicit light or dark mode.
 
@@ -376,14 +411,14 @@ Keep the shared tools still and responsive. Motion belongs inside studies that p
 
 **Key Characteristics:**
 
-- Cool paper surfaces, graphite text, and cobalt control cues.
+- Cool paper surfaces, graphite text, neutral solid selections, and outlined controls.
 - Compact, legible tools around generous sample stages.
 - A shared semantic palette colors the live demonstration and the implementation taken from it.
 - Inter for the interface; system monospace for source and precise values.
 - Flat containers, restrained rounding, and small functional shadows.
 - Immediate navigation with deliberate, controllable motion inside examples.
 
-This specification records the shared values in [the shell stylesheet](src/styles.css), [the rendered interface](src/app.js), [the shared demo styles](src/demo-base.css), and [the theme resolver](src/theme.mjs). The YAML owns the documented shell primitives and resolved default demonstration values. The resolver is canonical for the complete palette and appearance matrix; [the theming guide](docs/theming.md) records its integration contract. The sidecar extends the frontmatter with preview components and metadata; its synthesized tonal ramps are panel display aids, not additional implementation tokens.
+This specification records the shared values in [the shell stylesheet](src/styles.css), [the rendered interface](src/app.js), [the shared demo styles](src/demo-base.css), and [the theme resolver](src/theme.mjs). [Gallery playback](src/gallery-playback.js) and [the demo runtime](src/demo-runtime.js) define the preview lifecycle. The YAML owns the documented shell primitives and resolved default demonstration values. The resolver is canonical for the complete palette and appearance matrix; [the theming guide](docs/theming.md) records its integration contract. The sidecar extends the frontmatter with preview components and metadata; its synthesized tonal ramps are panel display aids, not additional implementation tokens.
 
 ## Colors
 
@@ -391,11 +426,11 @@ The palette combines cool neutral tools with sample material that can adapt to t
 
 ### Primary
 
-- **Cobalt control accent** (`accent`) identifies active navigation, selected playback preferences, links, the three-bar brand, and keyboard focus. **Cobalt wash** (`accent-soft`) gives those selected controls a quiet filled background.
-- **Night cobalt** (`dark-accent`) and **night cobalt wash** (`dark-accent-soft`) are the corresponding dark-theme values. They replace the same shell variables when the root theme changes.
-- The main “Copy full example” action uses **Graphite ink** (`ink`) with **Paper surface** (`surface`), reversing with the theme. The accent is a control cue rather than a fill applied to every button.
+- **Graphite ink** (`ink`) with **Paper surface** (`surface`) identifies primary actions and selected navigation, collection, playback, icon, and segmented controls. The same roles reverse with the shell theme; labels, counts, and icons remain readable on the solid fill.
+- **Cobalt control accent** (`accent`) remains for links, the three-bar brand, text selection, and keyboard focus. **Night cobalt** (`dark-accent`) supplies the dark-theme value.
+- Ordinary actions and native selects use neutral outlines. The declared shell `accent-soft` values are not used as control fills; demonstration soft colors retain their independent, intentionally limited uses.
 
-**The Control Accent Rule.** Use the shell accent pair for current navigation, selected utility controls, links, the brand mark, and visible keyboard focus. The principal copy action uses the shell ink and surface pair.
+**The Shell Control Rule.** Use solid neutral selection and clear neutral outlines for the shared workspace. Do not reintroduce tinted selected buttons, navigation washes, or soft-filled utility controls. Keep the accent for focus and useful small cues, and keep focus distinct from selection.
 
 ### Secondary
 
@@ -450,8 +485,8 @@ Full examples embed the selected concrete colors and appearance for offline use.
 ### Neutral
 
 - **Cool paper** (`bg`) is the full workspace canvas and rail. **Paper surface** (`surface`) is the input surface on mobile, the button surface, and the inspector or specifications panel.
-- **Inset grey** (`subtle`) supports technology tags, the source-language group, and restrained hover feedback. **Graphite ink** (`ink`) is the primary reading color.
-- **Slate text** (`muted`) carries descriptions, counts, controls at rest, and explanatory metadata. **Cool divider** (`faint`) separates navigation groups, source tabs, tables, and footers.
+- **Inset grey** (`subtle`) supports static technology tags. **Graphite ink** (`ink`) is the primary reading color and solid-control fill; neutral hover surfaces mix ink with the shell surface.
+- **Slate text** (`muted`) carries descriptions, inactive counts, explanatory metadata, and readable neutral field boundaries. **Cool divider** (`faint`) separates navigation groups, source tabs, tables, and footers.
 - **Code paper** (`code`) is the source and agent-brief surface. **Comment slate** (`code-comment`) keeps comments secondary while preserving readability.
 - The `dark-` tokens record the actual overrides of these same variables. In implementation, switch the root theme and continue using the original variable names; do not hard-code dark values into individual components.
 
@@ -497,7 +532,9 @@ Discovery adds a wrapping project-collection row, a native color disclosure, and
 | At most (520px) | The main gallery becomes one column with stages of (262px). Detail stages become (330px). Notes principles stack. Related samples remain a compact two-column strip. The color panel padding becomes (15px), the intent group fills the row, and the native filter selects use a separate wrapping row. |
 | At most (360px) | Horizontal main and header insets narrow to (16px), sample stages to (245px), and detail stages to (310px). |
 
-Mobile sample actions remain available through the stage button, title, and save control. The hover-only “Try it” label is suppressed on the mobile layout. The category strip can scroll; do not wrap it into a large multi-row header. Bottom padding accounts for the device safe area.
+Mobile samples retain the stage button, title, and save control, with Copy code, Details, and Replay directly below the caption. Their targets remain at least (44px), with (8px) between actions; the two text actions use (11px) type at the single-column breakpoint. The mobile gallery toolbar keeps its solid playback and reduction controls separated by (6px) at that breakpoint. The hover-only “Try it” label is suppressed on the mobile layout. The category strip can scroll; do not wrap it into a large multi-row header. Bottom padding accounts for the device safe area.
+
+The gallery reference dialog is bounded to (860px) on wide screens, with (20px) viewport side insets and a maximum height leaving (48px) of vertical space. At the mobile breakpoint those insets become (12px) with (24px) of vertical space; at the single-column breakpoint they become (8px) and (16px). Its heading and export footer stay outside the scrolling body. The reference tabs stay at the top of that body while the reader scrolls; code also has its own bounded scroll area. The compact footer places Copy full example above a two-column row for Download HTML and Copy link.
 
 The color disclosure starts open above the mobile breakpoint and closed at or below it. After that initial choice, the visitor's native disclosure state survives palette changes and view changes during the visit; resizing is not an instruction to overwrite that choice.
 
@@ -507,11 +544,11 @@ Ordinary shell surfaces are flat. Tone, padding, clipping, and space establish t
 
 ### Shadow Vocabulary
 
-- **Temporary overlay** (`extensions.shadows: overlay`) is the exact shared shell shadow for announcements and the manual-copy dialog. Its dark-theme counterpart is `overlay-dark`.
+- **Temporary overlay** (`extensions.shadows: overlay`) is the exact shared shell shadow for announcements, the gallery reference dialog, and the manual-copy dialog. Its dark-theme counterpart is `overlay-dark`.
 - **Shortcut key** (`shortcut-key`) gives the search keyboard hint a slight raised edge.
 - **Preview action** (`preview-action`) lifts the small “Try it” label over a sample when it is revealed.
 
-The sidecar carries the literal shadow values because the frontmatter component schema has no shadow property. The manual-copy dialog also uses a translucent backdrop; focus uses an outline rather than a glow.
+The sidecar carries the literal shadow values because the frontmatter component schema has no shadow property. The gallery reference and manual-copy dialogs also use translucent backdrops; focus uses an outline rather than a glow.
 
 **The Surface Before Shadow Rule.** Separate ordinary containers with tone and spacing. Reserve shell shadows for the shortcut key, the revealed preview action, and temporary overlays.
 
@@ -527,17 +564,17 @@ Sample stages clip the embedded work, while captions remain open on the page can
 
 Compact, legible, and immediate.
 
-- **Primary:** Ink fill and surface-colored text, the shared control corner, padding (9px 13px), and a minimum height of (38px). This is the principal copy action.
-- **Secondary:** The same dimensions and type on a surface-colored background with ink text. Use it for adjacent actions such as copying a link.
-- **Quiet:** Transparent at rest with muted text. Selected playback and reduction preferences use the accent pair through their pressed state.
-- **Icon controls:** A square target (38px) with the shared control corner. Theme and detail save actions use outline icons; a saved gallery bookmark fills its icon. Save controls expose their pressed state. The main gallery's save targets also use (38px); related-study exceptions remain local.
-- **Hover:** On devices with a fine hover pointer, ordinary buttons subtly brighten or darken through the implemented filter; quiet and icon controls gain an inset-grey fill. The principal ink button uses its established brighter hover filter. There is no shell hover animation.
-- **Focus:** A visible shell-accent outline (3px) sits outside the control with an offset of (4px). Regular disabled action buttons use partial opacity (.55) and a not-allowed cursor; quiet controls retain their inherited disabled treatment. Demonstration focus uses its readable `--accent-ink` role with an offset of (5px). Do not add a press transform to the shared tools simply because a recipe demonstrates one.
-- **Text actions:** Related-collection and reference-footer buttons use an explicit transparent background and the surrounding muted text color. Their background must stay consistent in both shell appearances.
+- **Primary:** Ink fill and surface-colored text, a matching (1.5px) border, the shared control corner, and a minimum height of (38px). Padding is (7.5px 11.5px), preserving the previous outer dimensions after adding the border. This is the principal copy action.
+- **Secondary:** The same geometry with a surface-colored background, ink text, and a clear ink outline. Use it for adjacent actions such as copying a link.
+- **Utility:** Playback, replay, and reduction controls use an outline at rest and ink text. Their pressed state uses solid ink with a surface-colored foreground. The existing `quiet-button` class describes this compact utility role, not a soft color treatment.
+- **Icon controls:** A square outlined target (38px) with the shared control corner. Theme and detail save actions use outline icons; a saved gallery bookmark fills both its icon and its button, with an inverse foreground. Save controls expose their pressed state. The main gallery's save targets also use (38px); related-study exceptions remain local.
+- **Hover:** On devices with a fine hover pointer, enabled outlined actions gain a neutral ink/surface mix. Selected solid actions retain a readable inverse foreground and solid treatment. Disabled controls do not gain enabled hover feedback. There is no shell hover animation.
+- **Focus:** A visible shell-accent outline (3px) normally sits outside the control with an offset of (4px). Navigation and collection rows use an inset ring to avoid clipping; selected rows use the inverse surface color for that inset ring. Intent and source-language options follow the same distinction between selection and inset focus. Regular disabled action buttons use partial opacity (.55) and a not-allowed cursor; utility controls retain their inherited disabled treatment. Demonstration focus uses its readable `--accent-ink` role with an offset of (5px). Do not add a press transform to the shared tools simply because a recipe demonstrates one.
+- **Text actions:** Back, clear filters, related-collection, and reference-footer actions remain unfilled text affordances. They keep readable foregrounds and visible focus without receiving an unnecessary button box.
 
 ### Demonstration control styles
 
-Solid and outline are the preferred starting points for controls inside the studies. This applies to the demonstrations; the surrounding workspace keeps the shell button rules above.
+Solid and outline are the preferred starting points for controls inside the studies. The surrounding workspace follows the stricter solid/outline shell rules above; demonstrations can retain the deliberate treatment variety below.
 
 | Treatment | Color and boundary | Use |
 | --- | --- | --- |
@@ -565,6 +602,7 @@ A sample has a stage and an open caption, rather than a second enclosing card.
 
 - **Stage:** The shared sample corner, resolved demonstration canvas, clipped content, and isolated visual stacking. Gallery stages have a quiet inset boundary: an outline of (1px) using shell ink mixed at (7%) with transparent. The gallery embeds a preview; the workbench exposes the live controls inside the larger stage.
 - **Caption:** A semibold title, one concise muted description, then small technology, duration, and intent metadata. The metadata can wrap; a save action aligns to the right.
+- **Direct actions:** Copy code, Details, and Replay sit in a separate row beneath the caption, leaving the artwork unobscured. Copy code uses the solid primary treatment; Details and the replay icon use outlines. Each new action has a target of at least (44px). Compact related cards let the copy action span its own row.
 - **Open state:** A transparent stage button opens the study. Fine-pointer hover and visible keyboard focus reveal the small “Try it” label on desktop. Its focus outline is inset so clipping does not hide it.
 - **Containers:** The inspector and specification panels use a surface fill without a shell shadow. Fine dividers separate source navigation and longer tabular content.
 
@@ -572,21 +610,21 @@ A sample has a stage and an open caption, rather than a second enclosing card.
 
 The search field is quiet and integrated on desktop: transparent fill, a leading outline search icon, and a small slash-key hint. On the mobile layout its container gains a surface fill and rounded corners, the keyboard hint disappears, and the text grows to the mobile input role. Keep a real accessible search label even when the visible prompt is a placeholder.
 
-Input focus keeps the same accent outline vocabulary; the search input uses the existing larger outline offset (6px). The speed selector stays a native select with a surface fill, compact corners, and visible keyboard focus. The manual-copy fallback uses a readable textarea on the code surface with a fine border. No shared search error styling is currently defined.
+Input focus keeps the same accent outline vocabulary; the search input uses the existing larger outline offset (6px). The speed selector stays a native select with a surface fill, clear (1.5px) muted outline, compact corners, and visible keyboard focus. The manual-copy fallback uses a readable textarea on the code surface with a fine border. No shared search error styling is currently defined.
 
-Color controls remain native labeled selects and inputs. Their subtle fill, ink text, and softly rounded field corners keep them within the shell. The regular field target is (42px), growing to (44px) for text inputs and selects on mobile. A custom accent pairs a color picker of (44px) width with a flexible hex field. Invalid hex text receives an accent outline of (2px) with an offset of (2px), and leaves the active palette unchanged. The disabled original-palette accent selector stays visible at opacity (.65) with a not-allowed cursor.
+Color controls remain native labeled selects and inputs. Their surface-colored fill, ink text, clear (1.5px) muted outline, and rounded field corners keep them within the shell. Padding compensates for the border so the regular field target remains (42px), growing to (44px) for text inputs and selects on mobile. A custom accent pairs a color picker of (44px) width with a flexible hex field. Invalid hex text receives an accent outline of (2px) with an offset of (2px), and leaves the active palette unchanged. The disabled original-palette accent selector stays visible at opacity (.65) with a not-allowed cursor.
 
 ### Navigation
 
-The collection rail uses left-aligned icon or category-dot rows, labels, and right-aligned tabular counts. A current row combines the accent text and accent wash through `aria-current`. On fine-pointer hover, inactive rows receive the subtle fill while the current row retains its selection treatment. The mobile layout turns these same links into a single horizontal strip with smaller icons and counts.
+The collection rail uses left-aligned icon or category-dot rows, labels, and right-aligned tabular counts. A current row uses an ink fill and surface-colored foreground through `aria-current`; its count and marker inherit that readable foreground. On fine-pointer hover, inactive rows receive a neutral ink/canvas mix while the current row retains its solid selection. The mobile layout turns these same links into a single horizontal strip with smaller icons and counts, neutral outlines at rest, and the same solid current item. Border space is reserved before selection so switching categories does not shift labels.
 
 Keep active-route state separate from hover. Category changes, search results, and keyboard navigation update immediately. The shell has no entrance sequence or animated navigation indicator.
 
 ### Discovery Controls
 
-Project collections extend the rail with a compact row for Product UI, Landing pages, Dashboards, Storytelling, and Signature motion. Each control has an outline icon, a label, a tabular count, and a target of at least (42px). Resting controls are transparent with muted text; `aria-pressed` selection uses the shell accent pair. Fine-pointer hover uses the subtle surface, with selected controls retaining their accent treatment.
+Project collections extend the rail with a compact row for Product UI, Landing pages, Dashboards, Storytelling, and Signature motion. Each control has an outline icon, a label, a tabular count, and a target of at least (42px). Resting controls are transparent with ink text and a neutral (1.5px) outline; `aria-pressed` selection uses solid ink with a surface-colored foreground. Fine-pointer hover stays neutral, with selected controls retaining their solid treatment.
 
-The All motion, Everyday UI, and Expressive choices form a quiet inset group. Its selected button uses a surface fill and ink text. Technology, complexity, and ordering remain native selects alongside it; their transparent resting style keeps this row lighter than the color panel. Curated order and Name A–Z share the same control. These choices update results immediately and preserve visible keyboard focus.
+The All motion, Everyday UI, and Expressive choices form an outlined, unfilled group. Its selected button uses solid ink and surface-colored text. Technology, complexity, and ordering remain native selects alongside it, with clear neutral outlines and ink text. Curated order and Name A–Z share the same control. These choices update results immediately and preserve visible keyboard focus.
 
 ### Color Disclosure
 
@@ -598,15 +636,21 @@ The expanded controls expose Palette, Appearance, and Accent or the custom picke
 
 A calm reading surface beside the material being studied.
 
-The top row uses plain text tabs, a fine divider, and a short ink underline for the selected section. Selection and focus are distinct: the underline records selection and the accent outline records keyboard focus. The source-language selector uses a subtle group surface and a surface-colored selected item. The code inset uses its dedicated paper, restrained syntax colors, and the code type role. It scrolls locally so a long line does not widen the workbench.
+The top row uses plain text tabs, a fine divider, and a short ink underline for the selected section. Selection and focus are distinct: the underline records selection and the accent outline records keyboard focus. The source-language selector uses an outlined, unfilled group and a solid ink selected item with surface-colored text. The code inset uses its dedicated paper, restrained syntax colors, and the code type role. It scrolls locally so a long line does not widen the workbench.
 
 Code, How it works, Colors, and Copy for AI share the same container. The Colors section uses a native export-format select and the existing code inset for standalone values, Radix aliases, or Geist neutral aliases. Their state changes are immediate. The live application owns tab interaction and copy behavior; sidecar snippets show the visual states without supplying the application runtime.
+
+Gallery Details opens the same reference in one native modal, beginning with How it works. The heading and export footer remain available around a scrolling reference area. Duration, purpose, easing, and dependencies appear above the tabs. The local dialog title uses Inter at (26px), line height (1.2), and tracking (-.025em), stepping to (24px) and then (21px) at the existing mobile and single-column breakpoints. Use the established surface, corner, type, solid actions, and outlined alternatives; do not animate the modal. At compact widths, the full-example copy action spans the footer before the download and link actions.
+
+The modal keeps the gallery and its previews in place. Close and Escape restore focus to the invoking Details button without changing scroll or filters. Pause covered previews while reading. Keep copying status within the active reference and preserve the manual-copy fallback above it. Guidance and metadata render immediately; source is fetched on demand, with simultaneous requests for the same study sharing a fetch. A source-loading error belongs inside the Code panel and offers a retry. Source-language changes preserve keyboard focus, and full-example copy or download captures the selected demonstration palette at the time of the action.
 
 ### Motion Specifications and Demo Behavior
 
 The definition list presents duration, purpose, easing or spring, and dependencies in a lightly structured surface panel. Short labels use muted text; values use ink, with system mono for the precise curve. Long values may wrap.
 
 Shared demo motion uses the existing ease-out, ease-in-out, and drawer curves in the sidecar. The demo base button uses its established short press response, while recipe-specific durations remain with the recipe. Replay, pause, speed, and reduction controls are explicit tools for studying the effect. Respect the operating-system preference and the user’s chosen reduction setting; the still version must preserve the meaningful content and state. Keyboard-triggered changes remain immediate.
+
+Gallery studies prepare while paused within a (360px) vertical preload margin and begin when at least (25%) of their stage is visible. Once started, a study keeps playing until it leaves the viewport completely, so small movements around the entry threshold do not restart it. Returning to a card replays its finite demonstration. Explicit Replay works on that card without changing the gallery's saved playback preference; hidden pages and open dialogs still pause previews. Scroll studies may demonstrate one bounded pass in previews, ending on a readable composition; the workbench and exported HTML retain the actual user-controlled interaction. Do not add a periodic gallery loop.
 
 ## Do's and Don'ts
 
@@ -626,6 +670,7 @@ Shared demo motion uses the existing ease-out, ease-in-out, and drawer curves in
 ### Don't:
 
 - Don't add ornamental gradients, glow, or unnecessary marketing decoration to the shared workspace.
+- Don't use soft accent fills for shell controls or replace a selected solid treatment with a pale hover wash.
 - Don't add animation to the navigation or make repeated utility actions wait for a transition.
 - Don't confuse shell selection colors with the selected demonstration palette, or force studies to stay light when a dark appearance is chosen.
 - Don't hard-code recipe colors or let exported color values diverge from the live demonstration.

@@ -16,7 +16,7 @@ const scriptSafe = value => value.replace(/<\/script/gi, '<\\/script');
 await rm(out, { recursive: true, force: true });
 await mkdir(resolve(out, 'assets'), { recursive: true });
 await mkdir(resolve(out, 'examples'), { recursive: true });
-for (const file of ['index.html', 'styles.css', 'app.js', 'theme.mjs']) await copyFile(resolve(root, 'src', file), resolve(out, file));
+for (const file of ['index.html', 'styles.css', 'app.js', 'theme.mjs', 'gallery-playback.js']) await copyFile(resolve(root, 'src', file), resolve(out, file));
 await copyFile(resolve(root, 'src/favicon.svg'), resolve(out, 'assets/favicon.svg'));
 await copyFile(resolve(root, 'node_modules/@fontsource-variable/inter/files/inter-latin-wght-normal.woff2'), resolve(out, 'assets/inter-latin.woff2'));
 await writeFile(resolve(out, '.nojekyll'), '');
