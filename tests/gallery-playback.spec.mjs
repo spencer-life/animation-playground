@@ -96,6 +96,81 @@ test('a card Replay overrides gallery Pause only for that visible card, and a di
   await expect(frame.locator('html')).toHaveAttribute('data-paused', 'true');
 });
 
+for (const queued of [true, false]) {
+  test(`${queued ? 'queued' : 'active'} related-card Replay survives a delayed workbench load and unrelated playback controls`, async ({ page }) => {
+    await recordReplays(page, { playing: false });
+    let releaseMain;
+    let releasePreview;
+    let previewRequested;
+    const mainGate = new Promise(resolve => { releaseMain = resolve; });
+    const previewGate = new Promise(resolve => { releasePreview = resolve; });
+    const previewRequest = new Promise(resolve => { previewRequested = resolve; });
+    await page.route('**/examples/anchor-scrollspy.html*', async route => {
+      await mainGate;
+      await route.continue();
+    });
+    await page.route('**/examples/underline-trail.html*', async route => {
+      previewRequested();
+      if (queued) await previewGate;
+      await route.continue();
+    });
+
+    try {
+      await page.goto('/?animation=anchor-scrollspy', { waitUntil: 'domcontentloaded' });
+      const frame = await positionPreview(page, 'underline-trail', true);
+      await previewRequest;
+      await page.locator('#detail-frame').evaluate(element => {
+        element.addEventListener('load', () => { element.dataset.testLoaded = 'true'; }, { once: true });
+      });
+      if (!queued) {
+        await expect(frame.locator('html')).toHaveAttribute('data-paused', 'true');
+        expect(await replayCount(frame)).toBe(0);
+      }
+      await page.locator('[data-replay-preview="underline-trail"]').click();
+      if (!queued) {
+        await expect.poll(() => replayCount(frame)).toBe(1);
+        await expect(frame.locator('.text-action')).toHaveClass(/is-preview/);
+      }
+
+      // A real late load on the main iframe synchronizes all frames while this
+      // separate card's explicit Replay is either waiting for source or active.
+      releaseMain();
+      await expect(page.locator('#detail-frame')).toHaveAttribute('data-test-loaded', 'true');
+      const main = page.frameLocator('#detail-frame');
+      if (!queued) await expect(frame.locator('html')).toHaveAttribute('data-paused', 'false');
+
+      // Dispatch the actual controls without scrolling away from the related
+      // card: leaving the viewport would legitimately end its manual override.
+      await page.locator('[data-action="detail-pause"]').evaluate(button => button.click());
+      await expect(main.locator('html')).toHaveAttribute('data-paused', 'true');
+      if (!queued) await expect(frame.locator('html')).toHaveAttribute('data-paused', 'false');
+      await page.locator('[data-action="replay"]').evaluate(button => button.click());
+      await expect(main.locator('html')).toHaveAttribute('data-paused', 'false');
+      if (!queued) await expect(frame.locator('html')).toHaveAttribute('data-paused', 'false');
+      await page.locator('#speed').selectOption('0.5');
+      await expect.poll(() => main.locator('html').evaluate(() => Demo.speed)).toBe(0.5);
+
+      releasePreview();
+      await expect.poll(() => replayCount(frame)).toBe(1);
+      await expect(frame.locator('html')).toHaveAttribute('data-paused', 'false');
+      expect(await frame.locator('html').evaluate(() => Demo.speed)).toBe(1);
+      if (queued) await expect(frame.locator('.text-action')).toHaveClass(/is-preview/);
+      await expect(frame.locator('.text-action')).not.toHaveClass(/is-preview/);
+      expect(await replayCount(frame)).toBe(1);
+      expect(await page.evaluate(() => JSON.parse(localStorage.getItem('ap-playing')))).toBe(false);
+
+      // A deliberate global preference change still supersedes one-card Replay.
+      await page.locator('.demo-controls [data-action="reduced"]').evaluate(button => button.click());
+      await expect(frame.locator('html')).toHaveAttribute('data-reduced', 'true');
+      await expect(frame.locator('html')).toHaveAttribute('data-paused', 'true');
+      expect(await replayCount(frame)).toBe(1);
+    } finally {
+      releaseMain();
+      releasePreview();
+    }
+  });
+}
+
 test('a delayed preview uses current preferences and starts once after load and ready races', async ({ page }) => {
   await recordReplays(page);
   let release;

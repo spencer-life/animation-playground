@@ -302,8 +302,8 @@ function frameSettings(frame, extra = {}) {
   return { reduced: state.reduced, speed: detail ? state.speed : 1, blocked, paused: blocked || (detail ? state.detailPaused : !state.playing || !visibleFrames.has(frame)), ...extra };
 }
 function sendFrame(frame, message) { if (frame?.contentWindow) frame.contentWindow.postMessage(message,'*'); }
-function syncFrames() {
-  galleryPlayback?.sync();
+function syncFrames({ resetPreviews = false } = {}) {
+  galleryPlayback?.sync({ resetManual: resetPreviews });
   const frame = $('#detail-frame');
   if (frame) { sendFrame(frame,{type:'playground:settings',settings:frameSettings(frame)}); sendFrame(frame,{type:'playground:theme',theme:selectedTheme()}); }
 }
@@ -363,7 +363,7 @@ function openQuickInspector(id, opener) {
   document.documentElement.classList.add('panel-open');
   dialog.showModal();
   $('#quick-title').focus({ preventScroll: true });
-  syncFrames();
+  syncFrames({ resetPreviews: true });
 }
 function loadInspectorSource(context) {
   if (context.loading) return;
@@ -563,7 +563,7 @@ async function copyText(value, label, { origin = document.activeElement, isCurre
     $('#clipboard-text').value = text;
     document.documentElement.classList.add('panel-open');
     dialog.showModal();
-    syncFrames();
+    syncFrames({ resetPreviews: true });
     $('#clipboard-text').focus();
     $('#clipboard-text').select();
     return false;
@@ -664,11 +664,11 @@ document.addEventListener('click',async event => {
     $('meta[name="theme-color"]').content = theme === 'dark' ? '#191c22' : '#f7f8fa';
     refreshThemePreview();
   }
-  if (action === 'previews') { state.playing = !state.playing; saveStored('ap-playing',state.playing); syncFrames(); updatePlaybackButtons(); }
+  if (action === 'previews') { state.playing = !state.playing; saveStored('ap-playing',state.playing); syncFrames({ resetPreviews: true }); updatePlaybackButtons(); }
   if (action === 'reduced') {
     state.reduced = !state.reduced;
     saveStored('ap-reduced',state.reduced);
-    syncFrames();
+    syncFrames({ resetPreviews: true });
     updatePlaybackButtons();
     announce(state.reduced ? 'Reduced motion: state changes without travel.' : 'Full motion enabled.');
   }
@@ -731,7 +731,7 @@ document.addEventListener('keydown',event => {
   }
 });
 window.addEventListener('popstate',renderRoute);
-document.addEventListener('visibilitychange',syncFrames);
+document.addEventListener('visibilitychange',() => syncFrames({ resetPreviews: document.hidden }));
 window.addEventListener('message',event => {
   if (event.data?.type !== 'playground:ready') return;
   const frame = $$('iframe').find(candidate => candidate.contentWindow === event.source);
@@ -744,7 +744,7 @@ window.addEventListener('message',event => {
   }
 });
 systemMotion.addEventListener('change',event => {
-  if (getStored('ap-reduced',null) === null) { state.reduced = event.matches; syncFrames(); updatePlaybackButtons(); }
+  if (getStored('ap-reduced',null) === null) { state.reduced = event.matches; syncFrames({ resetPreviews: true }); updatePlaybackButtons(); }
 });
 
 async function start() {

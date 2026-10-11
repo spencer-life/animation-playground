@@ -69,6 +69,11 @@ twice. Each card's explicit Replay action can run that study while the global
 preview preference remains paused; a hidden page or open reference/manual-copy
 dialog still blocks playback.
 
+Ordinary frame synchronization preserves an explicit card replay, including a
+delayed main-demo load and the main demo's pause, speed, or replay controls. Only
+global preview/reduction changes, opening a dialog, hiding the page, or leaving
+the viewport supersede that temporary per-card choice.
+
 Opening a preview or title leads to the workbench, whose iframe provides the
 interactive example. Parent and child exchange only the documented playback and
 theme messages, with sender-window checks. The five native-scroll studies mark

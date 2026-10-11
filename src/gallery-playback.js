@@ -91,11 +91,12 @@ export function createGalleryPlayback({ frames, visibleFrames, getTheme, getSett
       syncFrame(frame);
       return true;
     },
-    sync() {
+    sync({ resetManual = false } = {}) {
       for (const [frame, record] of records) {
-        // A new global playback, visibility, or reduction choice supersedes a
-        // one-card Replay without changing the persisted gallery preference.
-        record.manual = false;
+        // Only an intentional gallery preference or blocking-context change
+        // supersedes one-card Replay; unrelated frame loads and controls sync
+        // current settings without canceling that pending or active request.
+        if (resetManual) record.manual = false;
         syncFrame(frame);
       }
     },
